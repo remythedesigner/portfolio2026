@@ -1,0 +1,1414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pal — Rémy Tartanac</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Nav (case study) ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      width: 100%;
+      background: rgba(104, 190, 166, 0.15);
+      border-bottom: 1px solid rgba(104, 190, 166, 0.15);
+      transition: backdrop-filter 0.4s ease;
+    }
+    nav.scrolled {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px; padding: 0 128px;
+    }
+    .cs-nav-back {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 0.8px solid rgba(255, 255, 255, 0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: #050505;
+      font-size: 22px;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
+    }
+    .cs-nav-back:hover { background: rgba(255, 255, 255, 0.22); }
+    .cs-nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 24px; line-height: 1;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #68bea6;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      background: rgba(146, 200, 185, 0.15);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 80px 128px;
+      overflow: hidden;
+      min-height: 752px;
+      position: relative;
+    }
+    .cs-hero-left {
+      width: 740px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+    .cs-hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cs-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .cs-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #68bea6;
+      border: 1px solid rgba(104, 190, 166, 0.3);
+      padding: 8px 16px;
+      border-radius: 160px;
+      background: rgba(255,255,255,0.1);
+    }
+    .cs-hero-title {
+      font-weight: 500; font-size: 80px; line-height: 100px;
+      color: #10042c;
+    }
+    .cs-meta {
+      border-top: 1px solid rgba(104, 190, 166, 0.2);
+      padding-top: 4px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .cs-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cs-meta-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #68bea6;
+    }
+    .cs-meta-value {
+      font-weight: 500; font-size: 20px; line-height: 28px;
+      color: #10042c;
+    }
+
+    /* Hero image — absolutely positioned */
+    .cs-hero-image {
+      position: absolute;
+      right: 0;
+      top: 138px;
+      width: 646px;
+      height: 614px;
+    }
+    .cs-hero-image img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+
+    /* ── Common Section ── */
+    .cs-section {
+      width: 100%;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .cs-section-white { background: #ffffff; }
+    .cs-section-light { background: #f7f6f8; }
+    .cs-section-purple { background: #e6e0f2; }
+
+    .cs-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+    }
+
+    /* ── Body text ── */
+    .cs-body-bold {
+      font-weight: 700; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body-grey {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: #776c92;
+    }
+
+    /* ── Bullet list ── */
+    .cs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-list li {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #68bea6;
+      flex-shrink: 0;
+    }
+
+    /* ── Problem: narrow right padding ── */
+    .cs-problem {
+      padding-left: 128px;
+      padding-right: 480px;
+    }
+    .cs-problem-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── Old Design ── */
+    .cs-old-design-content {
+      display: flex;
+      gap: 76px;
+      align-items: center;
+    }
+    .cs-screens {
+      display: flex;
+      gap: 32px;
+      flex-shrink: 0;
+    }
+    .cs-screen-img {
+      width: 295px; height: 640px;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: 4px 4px 40px -8px rgba(0,0,0,0.25);
+    }
+    .cs-analysis-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-analysis-item {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding-bottom: 21px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .cs-analysis-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #68bea6;
+      flex-shrink: 0;
+      margin-top: 18px;
+    }
+    .cs-analysis-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-analysis-title {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-analysis-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #776c92;
+    }
+
+    /* ── Key Insight / Final Note ── */
+    .cs-centered {
+      align-items: center;
+      justify-content: center;
+      padding: 120px 80px;
+      gap: 24px;
+      text-align: center;
+    }
+    .cs-quote {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+      text-align: center;
+    }
+    .cs-quote u {
+      text-underline-offset: 5px;
+    }
+
+    /* ── Design Principles ── */
+    .cs-principles-grid {
+      display: flex;
+      gap: 1px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .cs-principle {
+      flex: 1;
+      background: white;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 240px;
+    }
+    .cs-principle-num {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-principle-title {
+      font-weight: 700; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-principle-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #776c92;
+    }
+
+    /* ── Solution ── */
+    .cs-flow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cs-flow-tag {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.05);
+      padding: 8px 24px;
+      border-radius: 9999px;
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-flow-arrow {
+      font-weight: 300; font-size: 24px; line-height: 32px;
+      color: #10042c;
+    }
+    .cs-constraint-label {
+      font-weight: 700; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-constraint-text {
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #776c92;
+      margin-top: 12px;
+    }
+    .cs-flow-block { display: flex; flex-direction: column; gap: 0; }
+
+    /* ── Steps ── */
+    .cs-steps { width: 100%; }
+    .cs-step {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .cs-step-left {
+      width: 57.89%;
+      flex-shrink: 0;
+      padding: 80px 128px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      background: #ffffff;
+    }
+    .cs-step-left-alt { background: rgba(236,243,244,0.25); }
+    .cs-step-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(236,243,244,0.15);
+    }
+    .cs-step-right-alt { background: rgba(239,246,241,0.5); }
+    .cs-step-num-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cs-step-num {
+      font-weight: 400; font-size: 14px; line-height: 16px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #776c92;
+      white-space: nowrap;
+    }
+    .cs-step-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,0.1);
+    }
+    .cs-step-title {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: #10042c;
+    }
+    .cs-step-body {
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #776c92;
+    }
+    .cs-step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-step-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #68bea6;
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    /* ── Step 1 UI: Priority cards ── */
+    .ui-priority-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 360px;
+    }
+    .ui-priority-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: 13px 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ui-priority-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: #10042c;
+    }
+    .ui-priority-badge {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 14px; line-height: 18px;
+      padding: 2px 12px;
+      border-radius: 9999px;
+    }
+    .ui-priority-high { color: #6baa80; background: rgba(107,170,128,0.08); }
+    .ui-priority-medium { color: #6baa80; background: rgba(107,170,128,0.08); }
+    .ui-priority-low { color: #776c92; background: rgba(0,0,0,0.04); }
+
+    /* ── Step 2 UI: Move diagram ── */
+    .ui-move-diagram {
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ui-move-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 12px; line-height: 16px;
+      letter-spacing: 0.6px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .ui-move-item {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 14px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .ui-move-item-removed {
+      opacity: 0.5;
+      background: rgba(0,0,0,0.05);
+    }
+    .ui-move-item-icon {
+      font-size: 14px; line-height: 21px;
+    }
+    .ui-move-item-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #10042c;
+      flex: 1;
+    }
+    .ui-move-item-text.strikethrough {
+      text-decoration: line-through;
+    }
+    .ui-move-badge {
+      background: #6baa80;
+      border-radius: 9999px;
+      width: 21px; height: 19px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: white;
+      flex-shrink: 0;
+    }
+    .ui-move-divider {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ui-move-divider-line {
+      flex: 1; height: 1px;
+      background: rgba(0,0,0,0.08);
+    }
+    .ui-move-divider-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 14px; line-height: 20px;
+      color: #776c92;
+    }
+
+    /* ── Step 3 UI: Recipe suggestions ── */
+    .ui-recipe-section {
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ui-recipe-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0 2px;
+    }
+    .ui-recipe-title {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 15px; font-weight: 600;
+      color: #10042c;
+    }
+    .ui-recipe-sub {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px; color: #6baa80;
+    }
+    .ui-recipe-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ui-recipe-info { display: flex; flex-direction: column; gap: 2px; }
+    .ui-recipe-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500; font-size: 18px; line-height: 24px;
+      color: #10042c;
+    }
+    .ui-recipe-cal {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 12px; color: #6baa80;
+    }
+    .ui-recipe-tag {
+      background: rgba(104,190,166,0.12);
+      border-radius: 9999px;
+      padding: 4px 10px;
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px; color: #68bea6;
+      flex-shrink: 0;
+    }
+    .ui-calorie-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .ui-calorie-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .ui-calorie-label {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px; color: #776c92;
+    }
+    .ui-calorie-val {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 13px; font-weight: 600; color: #10042c;
+    }
+    .ui-progress-track {
+      height: 4px; border-radius: 2px;
+      background: rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .ui-progress-fill {
+      height: 100%; border-radius: 2px;
+      background: #68bea6;
+    }
+
+    /* ── New Design ── */
+    .cs-new-design {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      gap: 160px;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px;
+      min-height: 820px;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+    }
+    .cs-new-design-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-new-design-text {
+      width: 400px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 40px;
+      position: relative;
+    }
+    .cs-new-design-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      display: block; margin-bottom: 8px;
+    }
+    .cs-new-design-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: white;
+    }
+    .cs-new-design-body {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: rgba(255,255,255,0.85);
+    }
+    /* Pal phone frame is narrower than Grit */
+    .cs-phone-frame {
+      width: 296px; height: 660px;
+      border: 4px solid #000;
+      border-radius: 32px;
+      background: #0d0d0d;
+      box-shadow: 4px 4px 80px 24px rgba(16,4,44,0.5);
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .cs-phone-video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Impact ── */
+    .cs-impact-subtitle {
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: #10042c;
+      margin-top: -32px;
+    }
+    .cs-impact-cards {
+      display: flex;
+      gap: 1px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .cs-impact-card {
+      flex: 1;
+      background: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 271px;
+    }
+    .cs-impact-card.faded .cs-stat { opacity: 0.5; }
+    .cs-stat {
+      font-weight: 700; font-size: 64px; line-height: normal;
+      color: #68bea6;
+    }
+    .cs-card-title {
+      font-weight: 700; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-card-desc {
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: #776c92;
+    }
+
+    /* ── Extending Impact ── */
+    .cs-extending-phones {
+      display: flex;
+      gap: 1px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cs-ext-phone {
+      width: 295px; height: 640px;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 4px 4px 32px -8px rgba(0,0,0,0.25);
+      flex-shrink: 0;
+    }
+    .cs-ext-phone img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .cs-extending-stat {
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+    }
+    .cs-extending-stat-card {
+      background: rgba(146,200,185,0.15);
+      border-radius: 32px;
+      overflow: hidden;
+      width: 502px;
+    }
+    .cs-extending-stat-inner {
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #10042c; width: 100%;
+      padding: 80px 128px;
+      display: flex; align-items: center; justify-content: space-between;
+      overflow: hidden; position: relative;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .footer-headline {
+      font-weight: 300; font-size: 110px; line-height: 100px;
+      color: white; flex-shrink: 0; position: relative;
+    }
+    .footer-right {
+      width: 440px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+    }
+    .footer-desc {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.24) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-linkedin {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.05), 0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.18) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span { font-weight: 300; font-size: 16px; color: white; }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a class="cs-nav-back" href="index.html" aria-label="Back to projects">←</a>
+        <span class="cs-nav-brand">Pal</span>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="cs-hero-left">
+        <div class="cs-hero-brand reveal">
+          <img class="cs-logo" src="https://www.figma.com/api/mcp/asset/ac3b76dd-939c-4620-8247-fed578c5a181" alt="Pal logo">
+          <span class="cs-tag">Calorie-Tracking App</span>
+        </div>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Turning an unused section into a daily entry point</h1>
+        <div class="cs-meta reveal reveal-delay-2">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Product Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Focus</span>
+            <span class="cs-meta-value">Feature Redesign</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Platform</span>
+            <span class="cs-meta-value">iOS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero image — absolutely positioned -->
+      <div class="cs-hero-image reveal from-right reveal-delay-3">
+        <img src="https://www.figma.com/api/mcp/asset/5a1391f4-199e-44fd-a2fa-fb563d2eb7b0" alt="Pal app screens">
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="cs-section cs-section-white cs-problem">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">The problem</span>
+        <h2 class="cs-heading">Users weren't using an entire section of the app.</h2>
+      </div>
+      <div class="cs-problem-content reveal reveal-delay-1">
+        <p class="cs-body-bold">Parrot Pal's Food Center section was initially created to enhance the user experience once they have entered their meals in the log section.</p>
+        <p class="cs-body">Yet data analysis showed that most users would visit the Food Center section once and never come back, although it is accessible directly through the app's tapbar.</p>
+        <p class="cs-body">Key data:</p>
+        <ul class="cs-list">
+          <li>less than 5% visited the Food Center during their first session</li>
+          <li>users who visited the Food Center were less likely to convert than those who did not</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Old Design -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Old Design</span>
+        <h2 class="cs-heading">UX/UI Analysis</h2>
+      </div>
+      <p class="cs-body reveal reveal-delay-1">The Food Center was a catch-all section mixing custom food creation actions with a food log summary, a recommended meal plan for the day, and uncontextualized recipe suggestions — leaving users with no clear idea what it is used for.</p>
+      <div class="cs-old-design-content">
+        <div class="cs-screens reveal from-left reveal-delay-2">
+          <img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/9176dd19-7406-4502-9462-da22ee3e4d3d" alt="Old design — Food Center screen 1">
+          <img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/715067a0-1bae-4e19-9853-3ed825971980" alt="Old design — Food Center screen 2">
+        </div>
+        <ul class="cs-analysis-list reveal from-right reveal-delay-2">
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Unclear purpose</span>
+              <span class="cs-analysis-desc">Users didn't understand what the page was for or what actions to take.</span>
+            </div>
+          </li>
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Low perceived value</span>
+              <span class="cs-analysis-desc">The benefits of each feature were unclear or not immediate.</span>
+            </div>
+          </li>
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">UI inconsistency</span>
+              <span class="cs-analysis-desc">The design didn't match the rest of the app, reducing trust and coherence.</span>
+            </div>
+          </li>
+          <li class="cs-analysis-item" style="border-bottom:none;">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Misplaced content</span>
+              <span class="cs-analysis-desc">The food log summary added noise and didn't belong in this section.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Key Insight -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">Key insight</span>
+      <p class="cs-quote reveal reveal-delay-1">Users don't explore features. They respond to clear, immediate <u>value</u>.</p>
+    </section>
+
+    <!-- Design Principles -->
+    <section class="cs-section cs-section-white">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Design principles</span>
+      </div>
+      <div class="cs-principles-grid reveal reveal-delay-1">
+        <div class="cs-principle">
+          <span class="cs-principle-num">01</span>
+          <span class="cs-principle-title">Focus on high-value features</span>
+          <p class="cs-principle-desc">Elevate what users actually need.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">02</span>
+          <span class="cs-principle-title">Make benefits obvious</span>
+          <p class="cs-principle-desc">Show value immediately, not after exploration.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">03</span>
+          <span class="cs-principle-title">Remove irrelevant content</span>
+          <p class="cs-principle-desc">Noise reduces trust and clarity.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">04</span>
+          <span class="cs-principle-title">Align with the rest of the app</span>
+          <p class="cs-principle-desc">Consistency builds confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">The solution</span>
+        <h2 class="cs-heading">Refocus the section around the main added value: help users cook according to their needs</h2>
+      </div>
+      <div class="cs-flow-block reveal reveal-delay-1">
+        <p class="cs-constraint-label">New flow:</p>
+        <div class="cs-flow" style="margin-top:12px;">
+          <span class="cs-flow-tag">Retrieving users' logs</span>
+          <span class="cs-flow-arrow">→</span>
+          <span class="cs-flow-tag">Customization options</span>
+          <span class="cs-flow-arrow">→</span>
+          <span class="cs-flow-tag">Meal inspiration</span>
+        </div>
+      </div>
+      <div class="cs-flow-block reveal reveal-delay-2">
+        <p class="cs-constraint-label">Technical constraints:</p>
+        <p class="cs-constraint-text">Due to resource constraints, the proposed solution should maintain the current UI while introducing a more modern look that will serve as the foundation for future changes to the app.</p>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <div class="cs-steps">
+
+      <!-- Step 1 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 1</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Identify what matters</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Through user workshops, two features stood out.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Meal plan — users wanted a coherent daily plan</li>
+            <li>Recipe browsing — users wanted relevant inspiration</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right">
+          <div class="ui-priority-list">
+            <div class="ui-priority-card">
+              <span class="ui-priority-name">Meal plan</span>
+              <span class="ui-priority-badge ui-priority-high">High</span>
+            </div>
+            <div class="ui-priority-card">
+              <span class="ui-priority-name">Recipe browsing</span>
+              <span class="ui-priority-badge ui-priority-high">High</span>
+            </div>
+            <div class="ui-priority-card">
+              <span class="ui-priority-name">Food creation</span>
+              <span class="ui-priority-badge ui-priority-medium">Medium</span>
+            </div>
+            <div class="ui-priority-card">
+              <span class="ui-priority-name">Logs history</span>
+              <span class="ui-priority-badge ui-priority-low">Low</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 2</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Remove noise</h3>
+          <p class="cs-step-body reveal reveal-delay-2">The food log summary was removed from this section.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>It was relocated to the "Today" page, where it naturally belongs.</li>
+            <li>This reduced cognitive load and clarified the purpose of the page.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt reveal from-right">
+          <div class="ui-move-diagram">
+            <span class="ui-move-label">Removed from Food Center</span>
+            <div class="ui-move-item ui-move-item-removed">
+              <span class="ui-move-item-icon">📊</span>
+              <span class="ui-move-item-text strikethrough">Daily food log summary</span>
+            </div>
+            <div class="ui-move-divider">
+              <div class="ui-move-divider-line"></div>
+              <span class="ui-move-divider-text">moved to</span>
+              <div class="ui-move-divider-line"></div>
+            </div>
+            <span class="ui-move-label">Now lives in Today</span>
+            <div class="ui-move-item">
+              <span class="ui-move-item-icon">📊</span>
+              <span class="ui-move-item-text">Daily food log summary</span>
+              <div class="ui-move-badge">✓</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 3</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Make recommendations relevant</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Recipe suggestions were redesigned around remaining daily calories.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Users now see only recipes that match their remaining daily calories.</li>
+            <li>This turns recipe browsing into a personal, actionable tool rather than generic content.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right">
+          <div class="ui-recipe-section">
+            <div class="ui-calorie-bar">
+              <div class="ui-calorie-row">
+                <span class="ui-calorie-label">Calories left today</span>
+                <span class="ui-calorie-val">1163 kcal</span>
+              </div>
+              <div class="ui-progress-track">
+                <div class="ui-progress-fill" style="width: 45%;"></div>
+              </div>
+            </div>
+            <div class="ui-recipe-header">
+              <span class="ui-recipe-title">Smart Suggestions</span>
+              <span class="ui-recipe-sub">Based on your remaining calories</span>
+            </div>
+            <div class="ui-recipe-card">
+              <div class="ui-recipe-info">
+                <span class="ui-recipe-name">Grilled Salmon Bowl</span>
+                <span class="ui-recipe-cal">480 kcal · 42g protein</span>
+              </div>
+              <span class="ui-recipe-tag">Fits your goal</span>
+            </div>
+            <div class="ui-recipe-card">
+              <div class="ui-recipe-info">
+                <span class="ui-recipe-name">Avocado Chicken Wrap</span>
+                <span class="ui-recipe-cal">520 kcal · 38g protein</span>
+              </div>
+              <span class="ui-recipe-tag">Fits your goal</span>
+            </div>
+            <div class="ui-recipe-card">
+              <div class="ui-recipe-info">
+                <span class="ui-recipe-name">Greek Yogurt Parfait</span>
+                <span class="ui-recipe-cal">310 kcal · 22g protein</span>
+              </div>
+              <span class="ui-recipe-tag">Fits your goal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 4</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Redesign the meal plan</h3>
+          <p class="cs-step-body reveal reveal-delay-2">A full daily plan aligned with the user's calorie target.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Instead of generic suggestions, users get a coherent plan for the day.</li>
+            <li>Meals are ranked in categories: breakfast, lunch, dinner, and snacks.</li>
+            <li>The calorie goals are set by default to match the daily ones, but can be adjusted by the user to achieve specific result.</li>
+            <li>When a recipe from the Plan is logged, it automatically updates the Plan's calories and proteins counter.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt reveal from-right" style="align-items:flex-end; justify-content:center; padding: 40px 40px 0;">
+          <div class="cs-phone-teal">
+            <div class="cp-notch"></div>
+            <div class="cp-mp-nav">
+              <div class="cp-mp-nav-btn">←</div>
+              <span class="cp-mp-heading">My Healthy Plan</span>
+              <div class="cp-mp-nav-btn">⋯</div>
+            </div>
+            <div class="cp-counter">
+              <div class="cp-counter-nums">
+                <div class="cp-counter-metric">
+                  <span class="cp-counter-val">1550 <span style="font-size:7.5px;font-weight:400;color:#4a5565">calories</span></span>
+                  <div class="cp-counter-bar"><div class="cp-bar-cal"></div></div>
+                </div>
+                <div class="cp-counter-sep"></div>
+                <div class="cp-counter-metric">
+                  <span class="cp-counter-val">133<small>g</small> <span style="font-size:7.5px;font-weight:400;color:#4a5565">protein</span></span>
+                  <div class="cp-counter-bar"><div class="cp-bar-pro"></div></div>
+                </div>
+              </div>
+              <div class="cp-counter-chips">
+                <span class="cp-counter-chip">Vegetarian</span>
+                <span class="cp-counter-chip">No Carb</span>
+              </div>
+            </div>
+            <div class="cp-meals">
+              <div class="cp-meal-section">
+                <div class="cp-meal-section-hd">Breakfast <span class="cp-meal-section-cal">(525 cal)</span></div>
+                <div class="cp-meal-item">
+                  <div class="cp-meal-thumb"></div>
+                  <div class="cp-meal-info">
+                    <div class="cp-meal-name">Oatmeal &amp; Berries</div>
+                    <div class="cp-meal-meta">🔥 280 cal · ⚡️ 12g protein</div>
+                  </div>
+                  <div class="cp-log-btn">Log</div>
+                </div>
+                <div class="cp-meal-item">
+                  <div class="cp-meal-thumb"></div>
+                  <div class="cp-meal-info">
+                    <div class="cp-meal-name">Greek Yogurt Parfait</div>
+                    <div class="cp-meal-meta">🔥 245 cal · ⚡️ 18g protein</div>
+                  </div>
+                  <div class="cp-log-btn">Log</div>
+                </div>
+              </div>
+              <div class="cp-meal-section">
+                <div class="cp-meal-section-hd">Lunch <span class="cp-meal-section-cal">(380 cal)</span></div>
+                <div class="cp-meal-item">
+                  <div class="cp-meal-thumb"></div>
+                  <div class="cp-meal-info">
+                    <div class="cp-meal-name">Grilled Chicken Salad</div>
+                    <div class="cp-meal-meta">🔥 380 cal · ⚡️ 35g protein</div>
+                  </div>
+                  <div class="cp-log-btn">Log</div>
+                </div>
+              </div>
+              <div class="cp-meal-section">
+                <div class="cp-meal-section-hd">Snack <span class="cp-meal-section-cal">(230 cal)</span></div>
+                <div class="cp-meal-item">
+                  <div class="cp-meal-thumb"></div>
+                  <div class="cp-meal-info">
+                    <div class="cp-meal-name">Protein Energy Bar</div>
+                    <div class="cp-meal-meta">🔥 230 cal · ⚡️ 20g protein</div>
+                  </div>
+                  <div class="cp-log-btn">Log</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 5</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Improve the recipe experience</h3>
+          <p class="cs-step-body reveal reveal-delay-2">The recipe page was redesigned to be more appealing and easier to browse.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Better visuals, clearer structure, and stronger hierarchy.</li>
+            <li>Limiting the number of recipes to keep only the best ones.</li>
+            <li>Like option to save the recipe in a list of favorites.</li>
+            <li>The goal was to make recipes feel desirable, not only functional.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right" style="align-items:flex-end; justify-content:center; padding: 40px 40px 0;">
+          <div class="cs-phone-teal">
+            <div class="cp-notch"></div>
+            <div class="cp-recipe-photo">
+              <div class="cp-recipe-btns">
+                <div class="cp-recipe-btn">←</div>
+                <div class="cp-recipe-btn">♡</div>
+              </div>
+            </div>
+            <div class="cp-recipe-body">
+              <div class="cp-recipe-title">Oatmeal &amp; Berries</div>
+              <div class="cp-recipe-meta">
+                <span class="cp-recipe-meta-item">⏱ 15 min</span>
+                <span class="cp-recipe-meta-item">👤 1 serving</span>
+              </div>
+              <div class="cp-recipe-desc">A wholesome breakfast packed with fiber, antioxidants, and protein to start your day right. Perfect for meal prep!</div>
+              <div class="cp-nutrition">
+                <div class="cp-nutrition-title">Nutrition Facts</div>
+                <div class="cp-nutrition-grid">
+                  <div class="cp-nutrition-cell"><span class="cp-nutrition-val">280</span><span class="cp-nutrition-lbl">Calories</span></div>
+                  <div class="cp-nutrition-cell"><span class="cp-nutrition-val">12g</span><span class="cp-nutrition-lbl">Protein</span></div>
+                  <div class="cp-nutrition-cell"><span class="cp-nutrition-val">42g</span><span class="cp-nutrition-lbl">Carbs</span></div>
+                  <div class="cp-nutrition-cell"><span class="cp-nutrition-val">8g</span><span class="cp-nutrition-lbl">Fat</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 6</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Align the UI</h3>
+          <p class="cs-step-body reveal reveal-delay-2">The entire section was redesigned to match the rest of the app and stand out at the same time.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Consistent components and improved hierarchy.</li>
+            <li>Modern UI that fits in with Apple liquid design.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt reveal from-right">
+          <div class="cs-fc-widget">
+            <div class="cs-fc-counter">
+              <div class="cs-fc-nums">
+                <div class="cs-fc-metric">
+                  <span class="cs-fc-val">1550 <span style="font-size:7.5px;font-weight:400;color:#4a5565">calories</span></span>
+                  <div class="cs-fc-bar"><div class="cp-bar-cal"></div></div>
+                </div>
+                <div class="cs-fc-sep"></div>
+                <div class="cs-fc-metric">
+                  <span class="cs-fc-val">133<small>g</small> <span style="font-size:7.5px;font-weight:400;color:#4a5565">protein</span></span>
+                  <div class="cs-fc-bar"><div class="cp-bar-pro"></div></div>
+                </div>
+              </div>
+              <div class="cs-fc-chips">
+                <span class="cs-fc-chip">Vegetarian</span>
+                <span class="cs-fc-chip">No Carb</span>
+              </div>
+            </div>
+            <div class="cs-fc-mealplan">
+              <img class="cs-fc-parrot" src="https://www.figma.com/api/mcp/asset/ac3b76dd-939c-4620-8247-fed578c5a181" alt="">
+              <span class="cs-fc-mealplan-title">Start Your First Meal Plan</span>
+              <span class="cs-fc-mealplan-body">Create a personalized meal plan to reach your nutrition goals faster.</span>
+              <div class="cs-fc-mealplan-cta">+ Create a Meal Plan</div>
+            </div>
+            <div class="cs-fc-actions">
+              <div class="cs-fc-action">
+                <div class="cs-fc-action-icon">🍽</div>
+                <span class="cs-fc-action-label">Create Meal</span>
+              </div>
+              <div class="cs-fc-action">
+                <div class="cs-fc-action-icon">📖</div>
+                <span class="cs-fc-action-label">Create Recipe</span>
+              </div>
+              <div class="cs-fc-action">
+                <div class="cs-fc-action-icon">🔖</div>
+                <span class="cs-fc-action-label">Saved Food</span>
+              </div>
+            </div>
+            <div class="cs-fc-search">
+              <span style="font-size:12px;opacity:0.4">🔍</span>
+              <span class="cs-fc-search-placeholder">Search recipes...</span>
+              <div class="cs-fc-filter">⚙</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cs-steps -->
+
+    <!-- New Design -->
+    <section class="cs-new-design">
+      <img class="cs-new-design-bg" src="https://www.figma.com/api/mcp/asset/2f93e61e-9c60-4a16-8de7-ca07df7d12e3" alt="">
+      <div class="cs-new-design-text reveal">
+        <div>
+          <span class="cs-new-design-label">New design</span>
+          <h2 class="cs-new-design-heading">A focused entry point for daily meal decisions</h2>
+        </div>
+        <p class="cs-new-design-body">The Food Center now opens with the user's remaining calories and proteins for the day. They can create a personalized meal plan based on these metrics, create their own meals or let themselves be tempted by delicious recipes, all tailored to their needs.</p>
+      </div>
+      <div class="cs-phone-frame reveal from-right reveal-delay-2">
+        <video class="cs-phone-video" autoplay loop muted playsinline>
+          <source src="pal-showcase.mov" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="cs-section cs-section-white">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Impact</span>
+        <h2 class="cs-heading">Major improvements</h2>
+      </div>
+      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">vs. prev. month</span>
+      <div class="cs-impact-cards reveal reveal-delay-1">
+        <div class="cs-impact-card">
+          <span class="cs-stat">+28%</span>
+          <span class="cs-card-title">Return Rate</span>
+          <p class="cs-card-desc">Users revisiting the section in subsequent sessions.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">+57%</span>
+          <span class="cs-card-title">Recipe engagement</span>
+          <p class="cs-card-desc">Taps on recipes and meal plans increased significantly.</p>
+        </div>
+        <div class="cs-impact-card faded">
+          <span class="cs-stat">+6%</span>
+          <span class="cs-card-title">Overall Conversion</span>
+          <p class="cs-card-desc">The overall conversion rate hasn't been significantly affected, since users don't visit that section of the app on their own.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Extending the Impact -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Extending the impact</span>
+        <h2 class="cs-heading">Improving the feature wasn't enough.</h2>
+      </div>
+      <p class="cs-body-grey reveal reveal-delay-1">Despite a rising retention rate, users still needed to understand that this section existed. So we decided to redesign the onboarding tutorial to better explain the structure of the app and drive users toward the Food Center.</p>
+      <div class="cs-extending-phones reveal reveal-delay-2">
+        <div class="cs-ext-phone">
+          <img src="https://www.figma.com/api/mcp/asset/c4b072b7-5c31-4ef5-b883-aab285a9ce42" alt="Onboarding — Welcome">
+        </div>
+        <div class="cs-ext-phone">
+          <img src="https://www.figma.com/api/mcp/asset/c4b072b7-5c31-4ef5-b883-aab285a9ce42" alt="Onboarding — Start tracking">
+        </div>
+        <div class="cs-ext-phone">
+          <img src="https://www.figma.com/api/mcp/asset/092e4355-74be-4844-ac55-33c46d166c4d" alt="Onboarding — Food log">
+        </div>
+        <div class="cs-ext-phone">
+          <img src="https://www.figma.com/api/mcp/asset/092e4355-74be-4844-ac55-33c46d166c4d" alt="Onboarding — Food Center">
+        </div>
+      </div>
+      <div class="cs-extending-stat reveal reveal-delay-3">
+        <div class="cs-extending-stat-card">
+          <div class="cs-extending-stat-inner">
+            <span class="cs-stat">+17%</span>
+            <span class="cs-card-title">Overall Conversion</span>
+            <p class="cs-card-desc">Significant increase in user conversion following the implementation of the new onboarding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Note -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">Final note</span>
+      <p class="cs-quote reveal reveal-delay-1">Good UX doesn't stop at the feature.<br>It fits <u>seamlessly</u> into an existing context.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/2698ac84-f83f-4de2-ad95-f288090d2677" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Let's work</p>
+        <p>together.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Available for new projects — let's build something together.</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>Send an email</span>
+          </a>
+          <a class="btn-linkedin" href="https://linkedin.com/in/remytartanac" target="_blank">
+            <span>LinkedIn ↗</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>
