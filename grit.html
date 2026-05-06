@@ -1,0 +1,1305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grit — Rémy Tartanac</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Nav (case study) ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      width: 100%;
+      background: rgba(59, 130, 246, 0.15);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+      transition: backdrop-filter 0.4s ease;
+    }
+    nav.scrolled {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px; padding: 0 128px;
+    }
+    .cs-nav-back {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 0.8px solid rgba(255, 255, 255, 0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: #050505;
+      font-size: 22px;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
+    }
+    .cs-nav-back:hover { background: rgba(255, 255, 255, 0.22); }
+    .cs-nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 24px; line-height: 1;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #3b82f6;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      background: rgba(59, 130, 246, 0.15);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 80px 128px;
+      overflow: hidden;
+      min-height: 752px;
+      position: relative;
+    }
+    .cs-hero-left {
+      width: 740px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+    .cs-hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cs-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .cs-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #3b82f6;
+      border: 1px solid rgba(59, 130, 246, 0.15);
+      padding: 8px 16px;
+      border-radius: 160px;
+      background: rgba(255,255,255,0.1);
+    }
+    .cs-hero-title {
+      font-weight: 500; font-size: 80px; line-height: 100px;
+      color: #10042c;
+    }
+    .cs-meta {
+      border-top: 1px solid rgba(59, 130, 246, 0.15);
+      padding-top: 4px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .cs-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cs-meta-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #3b82f6;
+    }
+    .cs-meta-value {
+      font-weight: 500; font-size: 20px; line-height: 28px;
+      color: #10042c;
+    }
+
+    /* Hero phones — absolutely positioned group */
+    .cs-hero-phones {
+      position: absolute;
+      right: 6px;
+      top: 152px;
+      width: 646px;
+      height: 600px;
+    }
+    .cs-hero-phones-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+
+    /* ── Common Section ── */
+    .cs-section {
+      width: 100%;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .cs-section-white { background: #ffffff; }
+    .cs-section-light { background: #f7f6f8; }
+    .cs-section-purple { background: #e6e0f2; }
+
+    .cs-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+    }
+
+    /* ── Body text ── */
+    .cs-body-bold {
+      font-weight: 700; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body-grey {
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #776c92;
+    }
+
+    /* ── Bullet list ── */
+    .cs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-list li {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+    }
+
+    /* ── Problem: narrow right padding ── */
+    .cs-problem {
+      padding-left: 128px;
+      padding-right: 480px;
+    }
+    .cs-problem-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── Old Design ── */
+    .cs-old-design-content {
+      display: flex;
+      gap: 76px;
+      align-items: center;
+    }
+    .cs-screens {
+      display: flex;
+      gap: 32px;
+      flex-shrink: 0;
+    }
+    .cs-screen-img {
+      width: 295px; height: 640px;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: 4px 4px 40px -8px black;
+    }
+    .cs-analysis-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-analysis-item {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding-bottom: 21px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .cs-analysis-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+      margin-top: 18px;
+    }
+    .cs-analysis-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-analysis-title {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-analysis-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #776c92;
+    }
+
+    /* ── Key Insight / Final Note ── */
+    .cs-centered {
+      align-items: center;
+      justify-content: center;
+      padding: 120px 80px;
+      gap: 24px;
+      text-align: center;
+    }
+    .cs-quote {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+      text-align: center;
+    }
+    .cs-quote u {
+      text-underline-offset: 5px;
+    }
+
+    /* ── Design Principles ── */
+    .cs-principles-grid {
+      display: flex;
+      gap: 1px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .cs-principle {
+      flex: 1;
+      background: white;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 240px;
+    }
+    .cs-principle-num {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-principle-title {
+      font-weight: 700; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-principle-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #776c92;
+    }
+
+    /* ── Solution ── */
+    .cs-flow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cs-flow-tag {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.05);
+      padding: 8px 24px;
+      border-radius: 9999px;
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-flow-arrow {
+      font-weight: 300; font-size: 24px; line-height: 32px;
+      color: #10042c;
+    }
+    .cs-constraint-label {
+      font-weight: 700; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-constraint-text {
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #776c92;
+      margin-top: 12px;
+    }
+    .cs-flow-block { display: flex; flex-direction: column; gap: 0; }
+
+    /* ── Steps ── */
+    .cs-steps { width: 100%; }
+    .cs-step {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .cs-step-left {
+      width: 57.89%; /* 880/1520 */
+      flex-shrink: 0;
+      padding: 80px 128px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      background: #ffffff;
+    }
+    .cs-step-left-alt { background: #f6f7fd; }
+    .cs-step-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: #f9f9fe;
+    }
+    .cs-step-right-alt { background: rgba(223,233,253,0.4); }
+
+    /* ── UI Mockup: shared ── */
+    .ui-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 14px;
+      width: 360px;
+    }
+
+    /* Step 1 — input field */
+    .ui-input-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 17px;
+    }
+    .ui-input-left { display: flex; align-items: center; gap: 12px; }
+    .ui-dot-grey {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+    .ui-placeholder {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: #776c92; white-space: nowrap;
+    }
+    .ui-return-key {
+      width: 32px; height: 26px;
+      border: 1px solid rgba(0,0,0,0.1);
+      border-radius: 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: rgba(0,0,0,0.25);
+      font-family: -apple-system, system-ui, sans-serif;
+    }
+
+    /* Step 2 — habit recognition cards */
+    .ui-habit-cards { display: flex; flex-direction: column; gap: 16px; }
+    .ui-habit-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 14px;
+      width: 360px;
+      padding: 17px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .ui-habit-row { display: flex; align-items: center; gap: 12px; }
+    .ui-dot-green { width: 8px; height: 8px; border-radius: 50%; background: #6baa80; flex-shrink: 0; }
+    .ui-dot-red   { width: 8px; height: 8px; border-radius: 50%; background: #ff6a6a; flex-shrink: 0; }
+    .ui-habit-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: #10042c; white-space: nowrap;
+    }
+    .ui-tags-row {
+      border-top: 1px solid rgba(0,0,0,0.05);
+      padding-top: 8px;
+      display: flex; gap: 4px; flex-wrap: wrap;
+    }
+    .ui-tag {
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 9999px;
+      padding: 5px 12px;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 14px; line-height: 20px;
+      color: #776c92; white-space: nowrap;
+    }
+
+    /* Step 3 — live preview */
+    .ui-live-preview { display: flex; flex-direction: column; gap: 10px; }
+    .ui-preview-label {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 16px; color: #98989f; padding-left: 2px;
+    }
+    .ui-habit-pill {
+      background: #3e8cf3;
+      border-radius: 22px;
+      width: 360px; height: 76px;
+      display: flex; align-items: center;
+      gap: 8px; padding: 12px 16px;
+    }
+    .ui-pill-emoji {
+      font-size: 20px; width: 27px; height: 27px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .ui-pill-texts { display: flex; flex-direction: column; flex: 1; }
+    .ui-pill-title {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 14.72px; font-weight: 600; color: white;
+    }
+    .ui-pill-sub {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11.56px; color: rgba(255,255,255,0.85);
+    }
+
+    /* Steps 4 & 5 — dark pills */
+    .ui-dark-pills { display: flex; flex-direction: column; gap: 8px; }
+    .ui-dark-pill {
+      background: #2b2b2d;
+      border-radius: 32px;
+      width: 359px; height: 52px;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+    .ui-dark-pill-purple { background: #5450c9; }
+    .ui-pill-left  { display: flex; align-items: center; gap: 14px; }
+    .ui-pill-right { display: flex; align-items: center; gap: 8px; }
+    .ui-pill-wt {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 16px; color: white; white-space: nowrap;
+    }
+    .ui-chevron-r {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1;
+    }
+    .ui-chevron-d {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1;
+      display: inline-block; transform: rotate(90deg);
+    }
+    .ui-date-badge {
+      background: #1e1e1e;
+      border-radius: 8px;
+      padding: 6px 11px;
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 16px; color: white;
+      display: flex; gap: 5px; white-space: nowrap;
+    }
+    .ui-sys-icon {
+      width: 21px; height: 21px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; flex-shrink: 0;
+    }
+    .ui-green-dot {
+      width: 17px; height: 17px;
+      border-radius: 50%; background: #35c759; flex-shrink: 0;
+    }
+    .ui-toggle {
+      width: 64px; height: 28px;
+      background: #1e1e1e;
+      border-radius: 100px;
+      position: relative; overflow: hidden;
+      flex-shrink: 0;
+    }
+    .ui-toggle-knob {
+      position: absolute;
+      top: 7%; bottom: 7%; left: 2px;
+      width: 39px;
+      background: white;
+      border-radius: 100px;
+    }
+    .ui-settings-section { display: flex; flex-direction: column; gap: 8px; }
+    .ui-settings-label {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 16px; color: #98989f;
+      padding: 0 4px; margin-bottom: 2px;
+    }
+    .cs-step-num-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cs-step-num {
+      font-weight: 400; font-size: 14px; line-height: 16px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #776c92;
+      white-space: nowrap;
+    }
+    .cs-step-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,0.1);
+    }
+    .cs-step-title {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: #10042c;
+    }
+    .cs-step-body {
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #776c92;
+    }
+    .cs-step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-step-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    /* ── New Design ── */
+    .cs-new-design {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      gap: 160px;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px;
+      min-height: 960px;
+      /* Dark purple background matching Figma section */
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+    }
+    .cs-new-design-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.4;
+    }
+    .cs-new-design-text {
+      width: 400px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 40px;
+      position: relative;
+    }
+    .cs-new-design-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      display: block; margin-bottom: 8px;
+    }
+    .cs-new-design-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: white;
+    }
+    .cs-new-design-body {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: rgba(255,255,255,0.85);
+    }
+    .cs-phone-frame {
+      width: 367px; height: 800px;
+      border: 4px solid #000;
+      border-radius: 32px;
+      background: #0d0d0d;
+      box-shadow: 4px 4px 80px 24px rgba(16,4,44,0.5);
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .cs-phone-video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Hero phone */
+    .cs-hero-phone {
+      width: 320px; height: 580px;
+      border: 3px solid #000;
+      border-radius: 40px;
+      background: #0d0d0d;
+      box-shadow: 8px 16px 60px rgba(16,4,44,0.3);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: -4px;
+    }
+    .cs-hero-phone-notch {
+      position: absolute;
+      top: 0; left: 50%; transform: translateX(-50%);
+      width: 100px; height: 28px;
+      background: #000; border-radius: 0 0 16px 16px;
+      z-index: 2;
+    }
+    .cs-hero-phone-inner {
+      position: absolute; inset: 0;
+      padding-top: 38px;
+      display: flex; flex-direction: column;
+    }
+    .cs-hero-phone-bar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 4px 18px 12px;
+    }
+    .cs-hero-phone-time {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 14px; font-weight: 600; color: white;
+    }
+    .cs-hero-phone-icons {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px; color: white; letter-spacing: 1px;
+    }
+    .cs-hero-phone-nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 16px 12px;
+    }
+    .cs-hero-phone-back {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 15px; color: rgba(255,255,255,0.55);
+    }
+    .cs-hero-phone-title {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 15px; font-weight: 600; color: white;
+    }
+    .cs-hero-phone-check {
+      width: 28px; height: 28px;
+      background: #3b82f6;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; color: white;
+    }
+    .cs-hero-phone-body {
+      flex: 1; padding: 4px 14px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .cs-hero-phone-row {
+      background: #2b2b2d;
+      border-radius: 28px; height: 46px;
+      display: flex; align-items: center; padding: 0 14px; gap: 10px;
+    }
+    .cs-hero-phone-row-text {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 14px; color: rgba(255,255,255,0.4);
+    }
+    .cs-hero-phone-kbd {
+      background: #1c1c1e; padding: 8px 6px;
+    }
+    .cs-hero-phone-kbd-row {
+      display: flex; gap: 5px; margin-bottom: 5px; justify-content: center;
+    }
+    .cs-hero-phone-key {
+      background: #3a3a3c;
+      border-radius: 4px; flex: 1; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 14px; color: white; max-width: 28px;
+    }
+
+    /* ── Impact ── */
+    .cs-impact-subtitle {
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: #10042c;
+      margin-top: -32px;
+    }
+    .cs-impact-cards {
+      display: flex;
+      gap: 1px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .cs-impact-card {
+      flex: 1;
+      background: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 247px;
+    }
+    .cs-stat {
+      font-weight: 700; font-size: 64px; line-height: normal;
+      color: #3b82f6;
+    }
+    .cs-card-title {
+      font-weight: 700; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-card-desc {
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: #776c92;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #10042c; width: 100%;
+      padding: 80px 128px;
+      display: flex; align-items: center; justify-content: space-between;
+      overflow: hidden; position: relative;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .footer-headline {
+      font-weight: 300; font-size: 110px; line-height: 100px;
+      color: white; flex-shrink: 0; position: relative;
+    }
+    .footer-right {
+      width: 440px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+    }
+    .footer-desc {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.24) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-linkedin {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.05), 0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.18) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span { font-weight: 300; font-size: 16px; color: white; }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a class="cs-nav-back" href="index.html" aria-label="Back to projects">←</a>
+        <span class="cs-nav-brand">Grit</span>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="cs-hero-left">
+        <div class="cs-hero-brand reveal">
+          <img class="cs-logo" src="https://www.figma.com/api/mcp/asset/8fd91758-11e8-4f74-a1f9-b4269171920d" alt="Grit logo">
+          <span class="cs-tag">Habit-Tracking App</span>
+        </div>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Redesigning task creation to feel effortless</h1>
+        <div class="cs-meta reveal reveal-delay-2">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Product Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Focus</span>
+            <span class="cs-meta-value">UX Optimization</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Platform</span>
+            <span class="cs-meta-value">iOS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone mockup image — absolutely positioned like in Figma -->
+      <div class="cs-hero-phones reveal from-right reveal-delay-3">
+        <img src="grit-hero-phones.png" alt="Grit app screens" class="cs-hero-phones-img">
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="cs-section cs-section-white cs-problem">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">The problem</span>
+        <h2 class="cs-heading">Users found creating a task to be complex.</h2>
+      </div>
+      <div class="cs-problem-content reveal reveal-delay-1">
+        <p class="cs-body-bold">Initial configuration is the core activation moment, and this is even more true for a habit tracking app like Grit.</p>
+        <p class="cs-body">Yet, user feedback analysis revealed that creating a habit felt complex and time-consuming for many users, even though the system technically allowed quick creation. Meaning that the issue wasn't actual complexity. It was perceived complexity.</p>
+        <p class="cs-body">Key data:</p>
+        <ul class="cs-list">
+          <li>80% of new users dropped before creating their first habit</li>
+          <li>users spent too much time to complete a task creation (&gt;30s on average)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Old Design -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Old Design</span>
+        <h2 class="cs-heading">UX/UI Analysis</h2>
+      </div>
+      <p class="cs-body reveal reveal-delay-1">Users were confronted with a list of 13 settings options all before a single action was done. While core users appreciated the level of customization, new users felt overwhelmed by the number of options. The app's UI was satisfying and was not considered a priority.</p>
+      <div class="cs-old-design-content">
+        <div class="cs-screens reveal from-left reveal-delay-2">
+          <img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/234ffc22-618a-4ded-94e5-a3638c67b14d" alt="Old design — Food Center screen">
+          <img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/550a7257-fb64-4cc3-a2f1-f53b4d1fd83e" alt="Old design — habit creation screen">
+        </div>
+        <ul class="cs-analysis-list reveal from-right reveal-delay-3">
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Form anxiety</span>
+              <span class="cs-analysis-desc">Too many visible options created pressure before action.</span>
+            </div>
+          </li>
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Decision fatigue</span>
+              <span class="cs-analysis-desc">It's hard for the user to tell which action is useful and which isn't.</span>
+            </div>
+          </li>
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Lost in progression</span>
+              <span class="cs-analysis-desc">The lack of interaction makes it hard to say what changes have been made.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Key Insight -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">Key Insight</span>
+      <p class="cs-quote reveal reveal-delay-1">Users don't want to configure a tool.<br>They want the tool to <u>adapt</u> to their needs.</p>
+    </section>
+
+    <!-- Design Principles -->
+    <section class="cs-section cs-section-white">
+      <span class="cs-label reveal">Design principles</span>
+      <div class="cs-principles-grid reveal reveal-delay-1">
+        <div class="cs-principle">
+          <span class="cs-principle-num">01</span>
+          <span class="cs-principle-title">Quick win</span>
+          <p class="cs-principle-desc">Limit the number of steps before achieving the task to increase satisfaction.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">02</span>
+          <span class="cs-principle-title">Focus on simplicity</span>
+          <p class="cs-principle-desc">Creating a simple task should be simple.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">03</span>
+          <span class="cs-principle-title">Reveal complexity progressively</span>
+          <p class="cs-principle-desc">Show more only when needed.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">04</span>
+          <span class="cs-principle-title">Adapt to user's behaviour</span>
+          <p class="cs-principle-desc">The system should anticipate user's next actions based on their actions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">The solution</span>
+        <h2 class="cs-heading">Limit manual actions through a smart text field that recognizes and pre-configures key settings.</h2>
+      </div>
+      <div class="cs-flow-block reveal reveal-delay-1">
+        <p class="cs-constraint-label">New flow:</p>
+        <div class="cs-flow" style="margin-top:12px;">
+          <span class="cs-flow-tag">Typing</span>
+          <span class="cs-flow-arrow">→</span>
+          <span class="cs-flow-tag">Smart recognition</span>
+          <span class="cs-flow-arrow">→</span>
+          <span class="cs-flow-tag">Manual customization</span>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="cs-constraint-label">Technical constraints:</p>
+        <p class="cs-constraint-text">Due to ressource constraints, the proposed solution should preserve as much of the current UI as possible.</p>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <div class="cs-steps">
+
+      <!-- Step 1 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 1</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Instant creation</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Creation is reduced to a single text input.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Users type the habit name and press enter.</li>
+            <li>They can save. The new habit is created.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right">
+          <div class="ui-card ui-input-card">
+            <div class="ui-input-left">
+              <div class="ui-dot-grey"></div>
+              <span class="ui-placeholder">Name your habit…</span>
+            </div>
+            <div class="ui-return-key">↵</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 2</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Smart recognition</h3>
+          <p class="cs-step-body reveal reveal-delay-2">The system pre-fills common values based on the name.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>An icon is automatically suggested based on the habit's name.</li>
+            <li>By default, the "Habit type" is set on "good" (green color). If the negative form ("Stop", "Do not"…) is used in the name, the habit transforms into a "bad" one (red).</li>
+            <li>Similarly, a habit is "daily" by default. If another frequency is mentioned in the name, it will automatically update the setting.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt reveal from-right">
+          <div class="ui-habit-cards">
+            <div class="ui-habit-card">
+              <div class="ui-habit-row">
+                <div class="ui-dot-green"></div>
+                <span class="ui-habit-name">Take a hot bath every week</span>
+              </div>
+              <div class="ui-tags-row">
+                <span class="ui-tag">Good habit</span>
+                <span class="ui-tag">Green</span>
+                <span class="ui-tag">Bath icon</span>
+                <span class="ui-tag">Weekly</span>
+              </div>
+            </div>
+            <div class="ui-habit-card">
+              <div class="ui-habit-row">
+                <div class="ui-dot-red"></div>
+                <span class="ui-habit-name">Do not smoke</span>
+              </div>
+              <div class="ui-tags-row">
+                <span class="ui-tag">Bad habit</span>
+                <span class="ui-tag">Red</span>
+                <span class="ui-tag">No cigarette icon</span>
+                <span class="ui-tag">Daily</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 3</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Make the experience lively and dynamic</h3>
+          <p class="cs-step-body reveal reveal-delay-2">The changes are immediately visible in the preview.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Users see the impact of their settings right away.</li>
+            <li>In this way, they directly identify how the system works.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right">
+          <div class="ui-live-preview">
+            <span class="ui-preview-label">Live Preview</span>
+            <div class="ui-habit-pill">
+              <span class="ui-pill-emoji">🛁</span>
+              <div class="ui-pill-texts">
+                <span class="ui-pill-title">Take a hot bath</span>
+                <span class="ui-pill-sub">Every week</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 4</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Interconnected options</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Advanced options are displayed based on their relevance in the user's context.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>By default, the frequency is set to "Daily." If the user changes this setting, they are offered to set a start date.</li>
+            <li>If the user adds a start date, then we offer them to set an "End date", etc.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt reveal from-right">
+          <div class="ui-dark-pills">
+            <div class="ui-dark-pill">
+              <div class="ui-pill-left">
+                <span class="ui-sys-icon">🔄</span>
+                <span class="ui-pill-wt">Repeat</span>
+              </div>
+              <div class="ui-pill-right">
+                <span class="ui-pill-wt">Every week</span>
+                <span class="ui-chevron-r">›</span>
+              </div>
+            </div>
+            <div class="ui-dark-pill">
+              <div class="ui-pill-left">
+                <span class="ui-sys-icon">📅</span>
+                <span class="ui-pill-wt">Starts on</span>
+              </div>
+              <div class="ui-pill-right">
+                <span class="ui-date-badge"><span>Today</span><span>2026</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 5</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Reveal complexity progressively</h3>
+          <p class="cs-step-body reveal reveal-delay-2">All advanced options are moved into a secondary screen.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Not used options are hidden by default in a "More options" section.</li>
+            <li>When enabled, they are automatically displayed so that the user can have a clear overview of their actions.</li>
+            <li>Nothing is removed. Everything is just delayed.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right">
+          <div class="ui-settings-section">
+            <span class="ui-settings-label">Editing</span>
+            <div class="ui-dark-pills">
+              <div class="ui-dark-pill">
+                <div class="ui-pill-left">
+                  <span class="ui-sys-icon">✏️</span>
+                  <span class="ui-pill-wt">Take a hot bath every week</span>
+                </div>
+              </div>
+              <div class="ui-dark-pill">
+                <div class="ui-pill-left">
+                  <span class="ui-sys-icon" style="font-size:11px;background:#5450c9;border-radius:50%;color:white;width:18px;height:18px;">⊕</span>
+                  <span class="ui-pill-wt">Type</span>
+                </div>
+                <div class="ui-pill-right">
+                  <div class="ui-green-dot"></div>
+                  <span class="ui-pill-wt">Good</span>
+                  <span class="ui-chevron-r">›</span>
+                </div>
+              </div>
+              <div class="ui-dark-pill">
+                <div class="ui-pill-left">
+                  <span class="ui-sys-icon" style="font-size:11px;background:#ff3b30;border-radius:50%;color:white;width:18px;height:18px;">⊕</span>
+                  <span class="ui-pill-wt">Icon</span>
+                </div>
+                <div class="ui-pill-right">
+                  <span class="ui-pill-emoji" style="font-size:17px;width:20px;height:20px;">🛁</span>
+                  <span class="ui-chevron-r">›</span>
+                </div>
+              </div>
+              <div class="ui-dark-pill">
+                <div class="ui-pill-left">
+                  <span class="ui-sys-icon">🔄</span>
+                  <span class="ui-pill-wt">Repeat</span>
+                </div>
+                <div class="ui-pill-right">
+                  <span class="ui-pill-wt">Every week</span>
+                  <span class="ui-chevron-r">›</span>
+                </div>
+              </div>
+              <div class="ui-dark-pill">
+                <div class="ui-pill-left">
+                  <span class="ui-sys-icon">📅</span>
+                  <span class="ui-pill-wt">Starts on</span>
+                </div>
+                <div class="ui-pill-right">
+                  <span class="ui-date-badge"><span>1 Apr</span><span>2026</span></span>
+                </div>
+              </div>
+              <div class="ui-dark-pill">
+                <div class="ui-pill-left">
+                  <span class="ui-sys-icon">📅</span>
+                  <span class="ui-pill-wt">Ends</span>
+                </div>
+                <div class="ui-toggle"><div class="ui-toggle-knob"></div></div>
+              </div>
+              <div class="ui-dark-pill ui-dark-pill-purple">
+                <div class="ui-pill-left">
+                  <span class="ui-sys-icon" style="color:rgba(255,255,255,0.7);">⊕</span>
+                  <span class="ui-pill-wt">Show more options</span>
+                </div>
+                <span class="ui-chevron-d">›</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cs-steps -->
+
+    <!-- New Design -->
+    <section class="cs-new-design">
+      <img class="cs-new-design-bg" src="https://www.figma.com/api/mcp/asset/2e902f62-71ff-40fb-a0d8-b2ed1ae12daa" alt="">
+      <div class="cs-new-design-text reveal">
+        <div>
+          <span class="cs-new-design-label">New design</span>
+          <h2 class="cs-new-design-heading">One field to rule them all</h2>
+        </div>
+        <p class="cs-new-design-body">With a single action, users can set up their core settings in a smooth, progressive and natural way.<br>By minimizing friction, the new design allows users to focus on what matters most: improving their habits.</p>
+      </div>
+      <div class="cs-phone-frame reveal from-right reveal-delay-2">
+        <video class="cs-phone-video" autoplay loop muted playsinline>
+          <source src="grit-showcase.mov" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="cs-section cs-section-white">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Impact</span>
+        <h2 class="cs-heading">Major improvements</h2>
+      </div>
+      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">vs. prev. month</span>
+      <div class="cs-impact-cards reveal reveal-delay-1">
+        <div class="cs-impact-card">
+          <span class="cs-stat">+23%</span>
+          <span class="cs-card-title">First completion rate</span>
+          <p class="cs-card-desc">Significant increase in new users completing their first habit creation.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">+27%</span>
+          <span class="cs-card-title">Task Creation Speed</span>
+          <p class="cs-card-desc">Average time to create a new habit decreased from 49s to 36s.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">+11%</span>
+          <span class="cs-card-title">FLTV</span>
+          <p class="cs-card-desc">Projected long-term value increased.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Note -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">Final note</span>
+      <p class="cs-quote reveal reveal-delay-1">Complexity isn't necessarily a problem.<br>As long as it is <u>appropriate</u> for the context.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/2698ac84-f83f-4de2-ad95-f288090d2677" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Let's work</p>
+        <p>together.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Available for new projects — let's build something together.</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>Send an email</span>
+          </a>
+          <a class="btn-linkedin" href="https://linkedin.com/in/remytartanac" target="_blank">
+            <span>LinkedIn ↗</span>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>
