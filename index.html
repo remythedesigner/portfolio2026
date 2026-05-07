@@ -203,7 +203,7 @@
     }
     .hero-desc {
       font-weight: 300; font-size: 26px; line-height: 40px;
-      color: #776c92; width: 429px;
+      color: #776c92; width: 540px;
     }
     .hero-tags {
       border-top: 1px solid rgba(255,255,255,0.25);
@@ -267,12 +267,12 @@
       cursor: pointer;
     }
     .project-card-bar {
-      height: 2px; width: 100%;
+      height: 4px; width: 100%;
       opacity: 0;
-      transition: opacity 0.3s ease, height 0.3s ease;
+      transition: opacity 0.3s ease;
       flex-shrink: 0;
     }
-    .project-card:hover .project-card-bar { opacity: 1; height: 4px; }
+    .project-card:hover .project-card-bar { opacity: 1; }
     .project-card-body {
       padding: 80px;
       display: flex; flex-direction: column; gap: 40px;
@@ -316,46 +316,26 @@
       font-weight: 300; font-size: 22px; line-height: 1.5; color: #776c92;
     }
     .project-btn {
-      background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.18) 0%,
-        rgba(255,255,255,0.06) 45%,
-        rgba(255,255,255,0.12) 100%
-      );
-      border: 1px solid rgba(255,255,255,0.32);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.36),
-        inset 0 -1px 0 rgba(0,0,0,0.05),
-        0 4px 16px rgba(16,4,44,0.07);
-      backdrop-filter: blur(12px) saturate(1.4);
-      -webkit-backdrop-filter: blur(12px) saturate(1.4);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 160px;
       width: 70px; height: 70px;
-      border-radius: 9999px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0;
-      transition: background 0.35s ease, border-color 0.35s ease,
-                  box-shadow 0.35s ease, transform 0.3s ease;
+      overflow: hidden;
+      transition: background 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .project-card:hover .project-btn {
-      background: linear-gradient(
-        145deg,
-        rgba(255,255,255,0.30) 0%,
-        rgba(255,255,255,0.12) 45%,
-        rgba(255,255,255,0.20) 100%
-      );
-      border-color: rgba(255,255,255,0.50);
-      box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.48),
-        inset 0 -1px 0 rgba(0,0,0,0.04),
-        0 8px 24px rgba(16,4,44,0.10);
-      transform: scale(1.08);
+      background: rgba(255,255,255,0.25);
+      width: 134px;
     }
     .project-btn span {
-      font-size: 28px; color: #10042c; line-height: 1;
-      display: inline-block;
-      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 36px; color: #050505; line-height: 36px;
+      display: inline-block; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .project-card:hover .project-btn span { transform: translateX(4px) rotate(-45deg); }
+    .project-card:hover .project-btn span { transform: translateX(4px); }
 
     /* ── About Stats ── */
     .about-stats {
@@ -390,6 +370,34 @@
     }
     .about-text {
       font-weight: 300; font-size: 22px; line-height: 1.5; color: #776c92;
+    }
+    .about-app-logos {
+      display: flex; gap: 11px; align-items: center;
+    }
+    .about-app-logo {
+      width: 40px; height: 40px;
+      border-radius: 8.9px; object-fit: cover; flex-shrink: 0;
+      display: block;
+    }
+    .about-app-logo-ctk {
+      width: 40px; height: 40px;
+      border-radius: 8.9px; background: #000;
+      overflow: hidden; flex-shrink: 0;
+      position: relative;
+    }
+    .about-app-logos a {
+      display: flex; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.4s ease;
+      border-radius: 8.9px;
+    }
+    .about-app-logos a:nth-child(odd):hover  { transform: scale(1.3) translateY(-6px) rotate(-10deg); box-shadow: 0 8px 20px rgba(16,4,44,0.18); }
+    .about-app-logos a:nth-child(even):hover { transform: scale(1.3) translateY(-6px) rotate(10deg);  box-shadow: 0 8px 20px rgba(16,4,44,0.18); }
+    .about-app-logo-ctk img {
+      position: absolute;
+      left: 4.7px; top: 9.4px;
+      width: 30.6px; height: 21.1px;
+      object-fit: cover;
     }
 
     /* ── Personal Section ── */
@@ -463,7 +471,7 @@
     footer {
       background: #10042c; width: 100%;
       padding: 80px 128px;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex; align-items: flex-end; justify-content: space-between;
       overflow: hidden; position: relative;
     }
     .footer-bg {
@@ -561,6 +569,98 @@
       font-weight: 300; font-size: 16px; line-height: 16px;
       color: white; white-space: nowrap;
     }
+    .btn-scroll-top {
+      width: 56px; height: 56px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.1);
+      border: 0.8px solid rgba(255,255,255,0.25);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+    .btn-scroll-top-arrow {
+      display: inline-block; transform: rotate(-90deg);
+      font-size: 20px; color: rgba(255,255,255,0.75);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .nav-inner { padding: 0 64px; }
+      .hero { padding: 80px 64px 40px; }
+      .section-divider { padding: 32px 64px; }
+      .project-card-body { padding: 56px; }
+      .about-card { padding: 56px; }
+      .personal { padding: 64px; gap: 56px; }
+      footer { padding: 64px; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner { padding: 0 40px; }
+      .hero { padding: 64px 40px 48px; gap: 56px; }
+      .hero-ellipse { top: 240px; }
+      .hero-name { white-space: normal; line-height: 1; padding-bottom: 24px; }
+      .hero-name-first { font-size: 96px; margin-bottom: -32px; }
+      .hero-name-last { font-size: 112px; margin-bottom: -32px; }
+      .hero-title { font-size: 26px; width: auto; }
+      .hero-desc { font-size: 22px; line-height: 36px; width: 100%; max-width: 540px; }
+      .hero-tags { width: auto; }
+      .section-divider { padding: 32px 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card-body { padding: 48px 40px; }
+      .project-title { font-size: 30px; line-height: 40px; }
+      .about-stats { flex-direction: column; }
+      .about-card { padding: 48px 40px; }
+      .about-metric-value { font-size: 40px; }
+      .personal { flex-direction: column; padding: 48px 40px; gap: 48px; align-items: flex-start; }
+      .personal-me { width: 100%; }
+      .personal-left { width: 100%; flex-shrink: 1; }
+      .personal-right { width: 100%; padding-top: 0; }
+      .personal-location { width: 100%; }
+      footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .footer-headline { font-size: 72px; line-height: 72px; }
+      .footer-right { width: 100%; }
+      .footer-desc { font-size: 28px; line-height: 38px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .hero { padding: 48px 20px 40px; gap: 36px; }
+      .hero-ellipse { top: 180px; }
+      .hero-name-first { font-size: 80px; margin-bottom: -28px; }
+      .hero-name-last { font-size: 96px; margin-bottom: -28px; }
+      .hero-sub { gap: 32px; }
+      .hero-title { font-size: 20px; line-height: 32px; letter-spacing: 1.6px; }
+      .hero-desc { font-size: 18px; line-height: 30px; }
+      .hero-tags { flex-wrap: wrap; gap: 12px; padding-top: 12px; }
+      .hero-tag { font-size: 12px; letter-spacing: 1.4px; }
+      .section-divider { padding: 24px 20px; }
+      .section-divider-title { font-size: 24px; letter-spacing: 1.6px; }
+      .project-card-body { padding: 32px 20px; gap: 28px; }
+      .project-btn { width: 48px; height: 48px; }
+      .project-card:hover .project-btn { width: 96px; }
+      .project-btn span { font-size: 24px; line-height: 24px; }
+      .project-title { font-size: 24px; line-height: 32px; }
+      .project-desc { font-size: 18px; }
+      .about-card { padding: 36px 20px; gap: 24px; }
+      .about-heading { font-size: 28px; line-height: 36px; }
+      .about-text { font-size: 18px; line-height: 28px; }
+      .about-emoji { font-size: 36px; }
+      .about-metric-value { font-size: 32px; }
+      .personal { padding: 40px 20px; gap: 36px; }
+      .personal-me { flex-direction: column; gap: 20px; }
+      .personal-avatar { width: 80px; height: 80px; }
+      .personal-heading { font-size: 36px; line-height: 1.2; }
+      .personal-body { font-size: 20px; line-height: 32px; }
+      .personal-left { gap: 24px; }
+      .tags-cloud { position: static; height: auto; width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
+      .tag-pill { position: static; }
+      .personal-location p { white-space: normal; }
+      footer { padding: 40px 20px; }
+      .footer-headline { font-size: 48px; line-height: 52px; }
+      .footer-desc { font-size: 22px; line-height: 32px; }
+    }
   </style>
 </head>
 <body>
@@ -595,12 +695,12 @@
       <div class="hero-sub">
         <div class="hero-copy">
           <p class="hero-title">Product Designer</p>
-          <p class="hero-desc">specializing in growth, retention, and complex user flows in B2C mobile products.</p>
+          <p class="hero-desc">specializing in growth, retention, and complex user flows in B2B and B2C mobile products, building with AI-assisted workflows.</p>
         </div>
         <div class="hero-tags">
-          <span class="hero-tag">Growth Design</span>
-          <span class="hero-tag">Product Strategy</span>
-          <span class="hero-tag">Data-Driven</span>
+          <span class="hero-tag"><b>Product</b> Strategy</span>
+          <span class="hero-tag"><b>AI</b> Engineering</span>
+          <span class="hero-tag"><b>Data</b>-Driven design</span>
         </div>
       </div>
     </section>
@@ -615,8 +715,8 @@
     <div class="projects-grid">
 
       <!-- ParrotPal -->
-      <a href="pal.html" class="project-card reveal">
-        <div class="project-card-bar" style="background:rgba(146,200,185,0.15);"></div>
+      <a href="parrotpal.html" class="project-card reveal">
+        <div class="project-card-bar" style="background:#68bea6;"></div>
         <div class="project-card-body">
           <div class="project-card-top">
             <div class="project-card-header">
@@ -636,7 +736,7 @@
 
       <!-- Grit -->
       <a href="grit.html" class="project-card reveal reveal-delay-1">
-        <div class="project-card-bar" style="background:rgba(59,130,246,0.15);"></div>
+        <div class="project-card-bar" style="background:#3b82f6;"></div>
         <div class="project-card-body">
           <div class="project-card-top">
             <div class="project-card-header">
@@ -655,8 +755,8 @@
       </a>
 
       <!-- PepTalk -->
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-card-bar" style="background:rgba(255,71,108,0.15);"></div>
+      <a href="peptalk.html" class="project-card reveal reveal-delay-2">
+        <div class="project-card-bar" style="background:#ff476c;"></div>
         <div class="project-card-body">
           <div class="project-card-top">
             <div class="project-card-header">
@@ -672,11 +772,11 @@
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
-      </div>
+      </a>
 
       <!-- Couch to 5K -->
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-card-bar" style="background:rgba(163,189,123,0.15);"></div>
+      <a href="couch-to-5k.html" class="project-card reveal reveal-delay-3">
+        <div class="project-card-bar" style="background:#a3bd7b;"></div>
         <div class="project-card-body">
           <div class="project-card-top">
             <div class="project-card-header">
@@ -692,7 +792,7 @@
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
-      </div>
+      </a>
 
     </div><!-- /projects-grid -->
 
@@ -708,13 +808,32 @@
         <div class="about-card-header">
           <span class="about-emoji">🚀</span>
           <div class="about-metric">
-            <p class="about-metric-value">$1M+</p>
-            <p class="about-metric-label">monthly revenue</p>
+            <p class="about-metric-value">Now</p>
+            <p class="about-metric-label">mobile app publisher</p>
           </div>
         </div>
         <div class="about-body">
-          <p class="about-heading">Currently leading design across apps used by hundreds of thousands of people</p>
-          <p class="about-text">Health and productivity — spaces where design decisions directly impact daily routines. My focus is on experiences that work, not just look good.</p>
+          <p class="about-heading">Currently leading design across 5 apps</p>
+          <p class="about-text">Responsible of a portfolio of 5 apps in Health and Productivity used by hundreds of thousands of people and generating +1M$ MRR.</p>
+        </div>
+        <div class="about-app-logos">
+          <a href="https://apps.apple.com/fr/app/bend-etirements-et-souplesse/id1513988468" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/c65f6931-1d28-4caa-835e-545792800ff5" alt="Bend logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/motivation-daily-peptalk/id976885594" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/27ca6557-fdc5-41c2-a6cf-c7b808c45904" alt="PepTalk logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/grit-habitudes-routines-tdah/id6446997766" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/37360cb1-9e98-4c52-8e5f-9f0226cfd8eb" alt="Grit logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/compteur-de-calorie-parrotpal/id6462694790" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/7f9cd84b-a7ba-412f-b903-9abbc0bfd14d" alt="Parrot Pal logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
+            <div class="about-app-logo-ctk">
+              <img src="https://www.figma.com/api/mcp/asset/9fafd13e-22f9-496f-a089-9339a23a3177" alt="Couch to 5K logo">
+            </div>
+          </a>
         </div>
       </div>
       <div class="about-card reveal from-right reveal-delay-2">
@@ -730,7 +849,7 @@
             <p>Previously worked 4 years in web agencies,</p>
             <p>as PM and UX designer</p>
           </div>
-          <p class="about-text">That taught me constraints, business thinking, and what actually ships. It shaped how I look at every product problem — beyond the screen.</p>
+          <p class="about-text">My experience as a PM taught me to think in constraints — balancing user needs, business goals, and what can realistically ship. Today, as a product designer, I bring that same mindset: designing beyond the screen, with a focus on impact, not just output.</p>
         </div>
       </div>
     </div>
@@ -788,7 +907,7 @@
 
     <!-- Footer -->
     <footer id="contact">
-      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/2698ac84-f83f-4de2-ad95-f288090d2677" alt="">
+      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/be2b59bc-ad2d-4990-a1b1-ede2659e529d" alt="">
       <div class="footer-headline reveal from-left">
         <p>Let's work</p>
         <p>together.</p>
@@ -799,11 +918,14 @@
           <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
             <span>Send an email</span>
           </a>
-          <a class="btn-linkedin" href="https://linkedin.com/in/remytartanac" target="_blank">
-            <span>LinkedIn ↗</span>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
+            <span>LinkedIn</span>
           </a>
         </div>
       </div>
+      <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <span class="btn-scroll-top-arrow">→</span>
+      </button>
     </footer>
 
   </div><!-- /content -->

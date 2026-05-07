@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grit — Rémy Tartanac</title>
+  <title>PepTalk — Rémy Tartanac</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -17,12 +17,12 @@
     .page { position: relative; min-height: 100vh; }
     .content { display: flex; flex-direction: column; align-items: center; }
 
-    /* ── Nav (case study) ── */
+    /* ── Nav ── */
     nav {
       position: sticky; top: 0; z-index: 100;
       width: 100%;
-      background: rgba(59, 130, 246, 0.15);
-      border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+      background: rgba(255, 71, 108, 0.15);
+      border-bottom: 1px solid rgba(255, 71, 108, 0.15);
       transition: backdrop-filter 0.4s ease;
     }
     nav.scrolled {
@@ -50,7 +50,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600; font-size: 24px; line-height: 1;
       letter-spacing: 1.96px; text-transform: uppercase;
-      color: #3b82f6;
+      color: #ff476c;
     }
 
     /* ── Scroll Reveal ── */
@@ -71,7 +71,7 @@
     /* ── Hero ── */
     .cs-hero {
       width: 100%;
-      background: rgba(59, 130, 246, 0.15);
+      background: rgba(255, 71, 108, 0.15);
       border-bottom: 1px solid rgba(0,0,0,0.05);
       display: flex;
       flex-direction: column;
@@ -82,7 +82,7 @@
       position: relative;
     }
     .cs-hero-left {
-      width: 740px;
+      width: 640px;
       flex-shrink: 0;
       display: flex;
       flex-direction: column;
@@ -107,8 +107,8 @@
     .cs-tag {
       font-weight: 400; font-size: 14px; line-height: 20px;
       letter-spacing: 1.96px; text-transform: uppercase;
-      color: #3b82f6;
-      border: 1px solid rgba(59, 130, 246, 0.15);
+      color: #ff476c;
+      border: 1px solid rgba(255, 71, 108, 0.2);
       padding: 8px 16px;
       border-radius: 160px;
       background: rgba(255,255,255,0.1);
@@ -118,7 +118,7 @@
       color: #10042c;
     }
     .cs-meta {
-      border-top: 1px solid rgba(59, 130, 246, 0.15);
+      border-top: 1px solid rgba(255, 71, 108, 0.2);
       padding-top: 4px;
       display: flex;
       gap: 40px;
@@ -132,26 +132,25 @@
     .cs-meta-label {
       font-weight: 400; font-size: 14px; line-height: 20px;
       letter-spacing: 1.96px; text-transform: uppercase;
-      color: #3b82f6;
+      color: #ff476c;
     }
     .cs-meta-value {
       font-weight: 500; font-size: 20px; line-height: 28px;
       color: #10042c;
     }
 
-    /* Hero phones — absolutely positioned group */
+    /* Hero phones — absolutely positioned */
     .cs-hero-phones {
       position: absolute;
-      right: 6px;
-      top: 152px;
+      right: 0;
+      top: 143px;
       width: 646px;
-      height: 600px;
+      height: 609px;
     }
     .cs-hero-phones-img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
-      object-position: center bottom;
+      object-fit: cover;
       display: block;
     }
 
@@ -207,7 +206,7 @@
     }
     .cs-list li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 16px;
       font-weight: 300; font-size: 22px; line-height: 1.5;
       color: #10042c;
@@ -216,8 +215,9 @@
       content: '';
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #3b82f6;
+      background: #ff476c;
       flex-shrink: 0;
+      margin-top: 10px;
     }
 
     /* ── Problem ── */
@@ -315,7 +315,7 @@
     .cs-analysis-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #3b82f6;
+      background: #ff476c;
       flex-shrink: 0;
       margin-top: 18px;
     }
@@ -345,9 +345,7 @@
       color: #10042c;
       text-align: center;
     }
-    .cs-quote u {
-      text-underline-offset: 5px;
-    }
+    .cs-quote u { text-underline-offset: 5px; }
 
     /* ── Design Principles ── */
     .cs-principles-grid {
@@ -376,7 +374,7 @@
       font-size: 112px;
       line-height: 1;
       letter-spacing: -4px;
-      color: rgba(59, 130, 246, 0.08);
+      color: rgba(255, 71, 108, 0.08);
       pointer-events: none;
       user-select: none;
     }
@@ -398,16 +396,16 @@
       flex-wrap: wrap;
     }
     .cs-flow-tag {
-      background: rgba(59, 130, 246, 0.08);
-      border: 1px solid rgba(59, 130, 246, 0.15);
+      background: rgba(255, 71, 108, 0.08);
+      border: 1px solid rgba(255, 71, 108, 0.15);
       padding: 10px 28px;
       border-radius: 9999px;
       font-weight: 400; font-size: 24px; line-height: 36px;
-      color: #3b82f6;
+      color: #ff476c;
     }
     .cs-flow-arrow {
       font-weight: 300; font-size: 24px; line-height: 32px;
-      color: rgba(59, 130, 246, 0.4);
+      color: rgba(255, 71, 108, 0.4);
     }
     .cs-constraint-label {
       font-weight: 400; font-size: 14px; line-height: 20px;
@@ -435,7 +433,7 @@
       border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     .cs-step-left {
-      width: 57.89%; /* 880/1520 */
+      width: 57.89%;
       flex-shrink: 0;
       padding: 80px 128px;
       display: flex;
@@ -443,176 +441,24 @@
       gap: 24px;
       background: #ffffff;
     }
-    .cs-step-left-alt { background: #f6f7fd; }
+    .cs-step-left-alt { background: rgba(252, 231, 234, 0.15); }
     .cs-step-right {
       flex: 1;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 40px;
-      background: #f9f9fe;
+      background: rgba(252, 231, 234, 0.3);
     }
-    .cs-step-right-alt { background: rgba(223,233,253,0.4); }
+    .cs-step-right-alt { background: rgba(252, 231, 234, 0.55); }
 
-    /* ── UI Mockup: shared ── */
-    .ui-card {
-      background: white;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 14px;
-      width: 360px;
-    }
-
-    /* Step 1 — input field */
-    .ui-input-card {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 17px;
-    }
-    .ui-input-left { display: flex; align-items: center; gap: 12px; }
-    .ui-dot-grey {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: rgba(0,0,0,0.05);
-      flex-shrink: 0;
-    }
-    .ui-placeholder {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300; font-size: 18px; line-height: 28px;
-      color: #776c92; white-space: nowrap;
-    }
-    .ui-return-key {
-      width: 32px; height: 26px;
-      border: 1px solid rgba(0,0,0,0.1);
-      border-radius: 4px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; color: rgba(0,0,0,0.25);
-      font-family: -apple-system, system-ui, sans-serif;
+    /* Phone image variant — flush bottom */
+    .cs-step-right-phone {
+      align-items: flex-end;
+      padding: 40px 40px 0;
+      overflow: hidden;
     }
 
-    /* Step 2 — habit recognition cards */
-    .ui-habit-cards { display: flex; flex-direction: column; gap: 16px; }
-    .ui-habit-card {
-      background: white;
-      border: 1px solid rgba(0,0,0,0.08);
-      border-radius: 14px;
-      width: 360px;
-      padding: 17px;
-      display: flex; flex-direction: column; gap: 12px;
-    }
-    .ui-habit-row { display: flex; align-items: center; gap: 12px; }
-    .ui-dot-green { width: 8px; height: 8px; border-radius: 50%; background: #6baa80; flex-shrink: 0; }
-    .ui-dot-red   { width: 8px; height: 8px; border-radius: 50%; background: #ff6a6a; flex-shrink: 0; }
-    .ui-habit-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300; font-size: 18px; line-height: 28px;
-      color: #10042c; white-space: nowrap;
-    }
-    .ui-tags-row {
-      border-top: 1px solid rgba(0,0,0,0.05);
-      padding-top: 8px;
-      display: flex; gap: 4px; flex-wrap: wrap;
-    }
-    .ui-tag {
-      border: 1px solid rgba(0,0,0,0.05);
-      border-radius: 9999px;
-      padding: 5px 12px;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 300; font-size: 14px; line-height: 20px;
-      color: #776c92; white-space: nowrap;
-    }
-
-    /* Step 3 — live preview */
-    .ui-live-preview { display: flex; flex-direction: column; gap: 10px; }
-    .ui-preview-label {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 16px; color: #98989f; padding-left: 2px;
-    }
-    .ui-habit-pill {
-      background: #3e8cf3;
-      border-radius: 22px;
-      width: 360px; height: 76px;
-      display: flex; align-items: center;
-      gap: 8px; padding: 12px 16px;
-    }
-    .ui-pill-emoji {
-      font-size: 20px; width: 27px; height: 27px;
-      display: flex; align-items: center; justify-content: center;
-      flex-shrink: 0;
-    }
-    .ui-pill-texts { display: flex; flex-direction: column; flex: 1; }
-    .ui-pill-title {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 14.72px; font-weight: 600; color: white;
-    }
-    .ui-pill-sub {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 11.56px; color: rgba(255,255,255,0.85);
-    }
-
-    /* Steps 4 & 5 — dark pills */
-    .ui-dark-pills { display: flex; flex-direction: column; gap: 8px; }
-    .ui-dark-pill {
-      background: #2b2b2d;
-      border-radius: 32px;
-      width: 359px; height: 52px;
-      display: flex; align-items: center;
-      justify-content: space-between;
-      padding: 0 16px;
-    }
-    .ui-dark-pill-purple { background: #5450c9; }
-    .ui-pill-left  { display: flex; align-items: center; gap: 14px; }
-    .ui-pill-right { display: flex; align-items: center; gap: 8px; }
-    .ui-pill-wt {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 16px; color: white; white-space: nowrap;
-    }
-    .ui-chevron-r {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1;
-    }
-    .ui-chevron-d {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 18px; color: rgba(255,255,255,0.5); line-height: 1;
-      display: inline-block; transform: rotate(90deg);
-    }
-    .ui-date-badge {
-      background: #1e1e1e;
-      border-radius: 8px;
-      padding: 6px 11px;
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 16px; color: white;
-      display: flex; gap: 5px; white-space: nowrap;
-    }
-    .ui-sys-icon {
-      width: 21px; height: 21px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 15px; flex-shrink: 0;
-    }
-    .ui-green-dot {
-      width: 17px; height: 17px;
-      border-radius: 50%; background: #35c759; flex-shrink: 0;
-    }
-    .ui-toggle {
-      width: 64px; height: 28px;
-      background: #1e1e1e;
-      border-radius: 100px;
-      position: relative; overflow: hidden;
-      flex-shrink: 0;
-    }
-    .ui-toggle-knob {
-      position: absolute;
-      top: 7%; bottom: 7%; left: 2px;
-      width: 39px;
-      background: white;
-      border-radius: 100px;
-    }
-    .ui-settings-section { display: flex; flex-direction: column; gap: 8px; }
-    .ui-settings-label {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 16px; color: #98989f;
-      padding: 0 4px; margin-bottom: 2px;
-    }
     .cs-step-num-row {
       display: flex;
       align-items: center;
@@ -655,13 +501,154 @@
       content: '';
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #3b82f6;
+      background: #ff476c;
       flex-shrink: 0;
       margin-top: 10px;
     }
 
+    /* ── Step 1 Mockup: Coach Selection ── */
+    .pep-coach-select {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 340px;
+    }
+    .pep-coach-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 16px 20px;
+      transition: opacity 0.2s;
+    }
+    .pep-coach-row-selected {
+      border-color: rgba(255, 71, 108, 0.5);
+      background: rgba(255, 71, 108, 0.04);
+    }
+    .pep-coach-row-dimmed { opacity: 0.38; }
+    .pep-radio {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,0.15);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pep-radio-checked { border-color: #ff476c; }
+    .pep-radio-checked::after {
+      content: '';
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ff476c;
+    }
+    .pep-coach-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .pep-coach-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .pep-coach-avatar-placeholder {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: rgba(0,0,0,0.35);
+      flex-shrink: 0;
+    }
+    .pep-coach-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500; font-size: 22px; line-height: 1.4;
+      color: #10042c;
+    }
+
+    /* ── Step 3 Mockup: Topic Detection ── */
+    .pep-topic-detect {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 420px;
+    }
+    .pep-topic-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: white;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 16px;
+      padding: 14px 18px;
+    }
+    .pep-topic-input {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 18px; line-height: 1.4;
+      color: #10042c;
+      flex: 1;
+    }
+    .pep-topic-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 71, 108, 0.1);
+      border-radius: 9999px;
+      padding: 5px 12px;
+      flex-shrink: 0;
+    }
+    .pep-topic-badge-name {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 12px; font-weight: 700;
+      color: #ff476c;
+      white-space: nowrap;
+    }
+    .pep-topic-pct {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px;
+      color: rgba(255, 71, 108, 0.65);
+      white-space: nowrap;
+    }
+
+    /* ── Step phone image (flush bottom, rounded top corners) ── */
+    .pep-step-phone-img {
+      width: 280px;
+      border-radius: 32px 32px 0 0;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ── Step 5 wide screenshot ── */
+    .pep-step5-img {
+      width: 462px;
+      height: auto;
+      border-radius: 24px;
+      display: block;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    /* ── Step 6 stacked UI screenshots ── */
+    .pep-step6-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+    .pep-step6-img {
+      display: block;
+      height: auto;
+    }
+
     /* ── New Design ── */
-    .cs-new-design {
+    .pep-new-design {
       width: 100%;
       position: relative;
       overflow: hidden;
@@ -672,129 +659,45 @@
       justify-content: center;
       padding: 80px;
       min-height: 960px;
-      /* Dark purple background matching Figma section */
-      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
     }
-    .cs-new-design-bg {
+    .pep-new-design-bg {
       position: absolute; inset: 0;
       width: 100%; height: 100%;
       object-fit: cover; pointer-events: none;
-      opacity: 0.4;
     }
-    .cs-new-design-text {
-      width: 400px; flex-shrink: 0;
+    .pep-new-design-text {
+      width: 424px; flex-shrink: 0;
       display: flex; flex-direction: column; gap: 40px;
       position: relative;
     }
-    .cs-new-design-label {
+    .pep-new-design-label {
       font-weight: 400; font-size: 16px; line-height: 24px;
       letter-spacing: 2.4px; text-transform: uppercase;
       color: rgba(255,255,255,0.65);
       display: block; margin-bottom: 8px;
     }
-    .cs-new-design-heading {
+    .pep-new-design-heading {
       font-weight: 500; font-size: 52px; line-height: normal;
       color: white;
     }
-    .cs-new-design-body {
+    .pep-new-design-body {
       font-weight: 300; font-size: 26px; line-height: 40px;
       color: rgba(255,255,255,0.85);
     }
-    .cs-phone-frame {
+    .pep-phone-frame {
       width: 367px; height: 800px;
       border: 4px solid #000;
       border-radius: 32px;
       background: #0d0d0d;
       box-shadow: 4px 4px 80px 24px rgba(16,4,44,0.5);
       flex-shrink: 0;
+      position: relative;
       overflow: hidden;
     }
-    .cs-phone-video {
+    .pep-phone-video {
       width: 100%; height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    /* Hero phone */
-    .cs-hero-phone {
-      width: 320px; height: 580px;
-      border: 3px solid #000;
-      border-radius: 40px;
-      background: #0d0d0d;
-      box-shadow: 8px 16px 60px rgba(16,4,44,0.3);
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: -4px;
-    }
-    .cs-hero-phone-notch {
-      position: absolute;
-      top: 0; left: 50%; transform: translateX(-50%);
-      width: 100px; height: 28px;
-      background: #000; border-radius: 0 0 16px 16px;
-      z-index: 2;
-    }
-    .cs-hero-phone-inner {
-      position: absolute; inset: 0;
-      padding-top: 38px;
-      display: flex; flex-direction: column;
-    }
-    .cs-hero-phone-bar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 4px 18px 12px;
-    }
-    .cs-hero-phone-time {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 14px; font-weight: 600; color: white;
-    }
-    .cs-hero-phone-icons {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 11px; color: white; letter-spacing: 1px;
-    }
-    .cs-hero-phone-nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 16px 12px;
-    }
-    .cs-hero-phone-back {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 15px; color: rgba(255,255,255,0.55);
-    }
-    .cs-hero-phone-title {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 15px; font-weight: 600; color: white;
-    }
-    .cs-hero-phone-check {
-      width: 28px; height: 28px;
-      background: #3b82f6;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; color: white;
-    }
-    .cs-hero-phone-body {
-      flex: 1; padding: 4px 14px;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .cs-hero-phone-row {
-      background: #2b2b2d;
-      border-radius: 28px; height: 46px;
-      display: flex; align-items: center; padding: 0 14px; gap: 10px;
-    }
-    .cs-hero-phone-row-text {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 14px; color: rgba(255,255,255,0.4);
-    }
-    .cs-hero-phone-kbd {
-      background: #1c1c1e; padding: 8px 6px;
-    }
-    .cs-hero-phone-kbd-row {
-      display: flex; gap: 5px; margin-bottom: 5px; justify-content: center;
-    }
-    .cs-hero-phone-key {
-      background: #3a3a3c;
-      border-radius: 4px; flex: 1; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 14px; color: white; max-width: 28px;
     }
 
     /* ── Impact ── */
@@ -821,7 +724,7 @@
     }
     .cs-stat {
       font-weight: 700; font-size: 64px; line-height: normal;
-      color: #3b82f6;
+      color: #ff476c;
     }
     .cs-card-title {
       font-weight: 700; font-size: 22px; line-height: 1.5;
@@ -954,6 +857,9 @@
       .cs-new-design { flex-direction: column; align-items: center; gap: 48px; padding: 60px 40px; min-height: auto; }
       .cs-new-design-text { width: 100%; }
       .cs-phone-frame { width: 300px; height: 652px; }
+      .pep-new-design { flex-direction: column; align-items: center; gap: 48px; padding: 60px 40px; min-height: auto; }
+      .pep-new-design-text { width: 100%; }
+      .pep-phone-frame { width: 300px; height: 652px; }
       .cs-impact-cards { flex-direction: column; }
       .cs-impact-card { min-height: auto; }
       footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
@@ -1000,6 +906,10 @@
       .cs-new-design-heading { font-size: 32px; }
       .cs-new-design-body { font-size: 18px; line-height: 28px; }
       .cs-phone-frame { width: 260px; height: 566px; }
+      .pep-new-design { padding: 48px 20px; gap: 32px; }
+      .pep-new-design-heading { font-size: 32px; }
+      .pep-new-design-body { font-size: 18px; line-height: 28px; }
+      .pep-phone-frame { width: 260px; height: 566px; }
       .cs-stat { font-size: 48px; }
       .cs-card-title { font-size: 18px; }
       footer { padding: 48px 20px; }
@@ -1017,7 +927,7 @@
     <nav>
       <div class="nav-inner">
         <a class="cs-nav-back" href="index.html" aria-label="Back to projects">←</a>
-        <span class="cs-nav-brand">Grit</span>
+        <span class="cs-nav-brand">PepTalk</span>
       </div>
     </nav>
 
@@ -1025,12 +935,12 @@
     <section class="cs-hero">
       <div class="cs-hero-left">
         <div class="cs-hero-brand reveal">
-          <a class="cs-logo-link" href="https://apps.apple.com/fr/app/grit-habitudes-routines-tdah/id6446997766" target="_blank" rel="noopener">
-            <img class="cs-logo" src="https://www.figma.com/api/mcp/asset/8fd91758-11e8-4f74-a1f9-b4269171920d" alt="Grit logo">
+          <a class="cs-logo-link" href="https://apps.apple.com/fr/app/motivation-daily-peptalk/id976885594" target="_blank" rel="noopener">
+            <img class="cs-logo" src="https://www.figma.com/api/mcp/asset/579e86f2-3f67-4027-b39a-22e81cd818b0" alt="PepTalk logo">
           </a>
-          <span class="cs-tag">Habit-Tracking App</span>
+          <span class="cs-tag">Coaching App</span>
         </div>
-        <h1 class="cs-hero-title reveal reveal-delay-1">Redesigning task creation to feel effortless</h1>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Turning AI Chat into Meaningful Coaching</h1>
         <div class="cs-meta reveal reveal-delay-2">
           <div class="cs-meta-item">
             <span class="cs-meta-label">Role</span>
@@ -1038,18 +948,20 @@
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Focus</span>
-            <span class="cs-meta-value">UX Optimization</span>
+            <span class="cs-meta-value">Feature Redesign</span>
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Platform</span>
-            <span class="cs-meta-value">iOS</span>
+            <span class="cs-meta-value">Android, iOS</span>
           </div>
         </div>
       </div>
 
-      <!-- Phone mockup image — absolutely positioned like in Figma -->
+      <!-- Hero phones — single composed image, absolutely positioned right side -->
       <div class="cs-hero-phones reveal from-right reveal-delay-3">
-        <img src="grit-hero-phones.png" alt="Grit app screens" class="cs-hero-phones-img">
+        <img class="cs-hero-phones-img"
+             src="https://www.figma.com/api/mcp/asset/02f0e33e-cfc9-497a-ade3-27196864346c"
+             alt="PepTalk app screens">
       </div>
     </section>
 
@@ -1059,21 +971,21 @@
         <div class="cs-problem-left">
           <div class="cs-section-header reveal">
             <span class="cs-label">The problem</span>
-            <h2 class="cs-heading">Users found creating a task to be complex.</h2>
+            <h2 class="cs-heading">The main premium feature failed to deliver value.</h2>
           </div>
           <div class="cs-problem-content reveal reveal-delay-1">
-            <p class="cs-body-bold">Initial configuration is the core activation moment, and this is even more true for a habit tracking app like Grit.</p>
-            <p class="cs-body">Yet, user feedback analysis revealed that creating a habit felt complex and time-consuming for many users, even though the system technically allowed quick creation. Meaning that the issue wasn't actual complexity. It was perceived complexity.</p>
+            <p class="cs-body-bold">In addition to providing daily motivational videos and audio clips, PepTalk has developed an AI feature that lets users chat with their favorite personalities: PepCoach.</p>
+            <p class="cs-body">If the PepCoach feature initially felt avant-garde, users quickly found it underwhelming compared to what they expected from an AI-powered coaching experience.</p>
           </div>
         </div>
         <div class="cs-problem-stats reveal reveal-delay-2">
           <div class="cs-stat-card">
-            <span class="cs-stat-value">80%</span>
-            <span class="cs-stat-label">of new users dropped before creating their first habit</span>
+            <span class="cs-stat-value">−8%</span>
+            <span class="cs-stat-label">premium plan conversions compared to last year</span>
           </div>
           <div class="cs-stat-card">
-            <span class="cs-stat-value">30s+</span>
-            <span class="cs-stat-label">average task creation time</span>
+            <span class="cs-stat-value">−5%</span>
+            <span class="cs-stat-label">paid subscribers compared to last year</span>
           </div>
         </div>
       </div>
@@ -1085,13 +997,13 @@
         <span class="cs-label">Old Design</span>
         <h2 class="cs-heading">UX/UI Analysis</h2>
       </div>
-      <p class="cs-body reveal reveal-delay-1">Users were confronted with a list of 13 settings options all before a single action was done. While core users appreciated the level of customization, new users felt overwhelmed by the number of options. The app's UI was satisfying and was not considered a priority.</p>
+      <p class="cs-body reveal reveal-delay-1">When it was launched, the promise of chatting with a AI agent acting like your favorite celebrity was quite attractive. But the feature quickly revealed its limits: users were interacting with a standard, outdated AI agent overlaid with a language filter, unable to offer any valuable content... when the app is actually packed with rich content.</p>
       <div class="cs-old-design-content">
         <div class="cs-screens-carousel">
           <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide">←</button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/234ffc22-618a-4ded-94e5-a3638c67b14d" alt="Old design — Food Center screen"></div>
-            <div class="cs-screen-slide"><img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/550a7257-fb64-4cc3-a2f1-f53b4d1fd83e" alt="Old design — habit creation screen"></div>
+            <div class="cs-screen-slide"><img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/1de2d1b0-8f56-4294-a5d1-bf8a77a09861" alt="Old PepCoach design — screen 1"></div>
+            <div class="cs-screen-slide"><img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/ded8aad0-ae33-44e5-a434-2b72904b68e5" alt="Old PepCoach design — screen 2"></div>
           </div>
           <button class="cs-screens-btn cs-screens-next" aria-label="Next slide">→</button>
         </div>
@@ -1099,22 +1011,22 @@
           <li class="cs-analysis-item">
             <div class="cs-analysis-dot"></div>
             <div class="cs-analysis-text">
-              <span class="cs-analysis-title">Form anxiety</span>
-              <span class="cs-analysis-desc">Too many visible options created pressure before action.</span>
+              <span class="cs-analysis-title">Low added value</span>
+              <span class="cs-analysis-desc">The AI responses were generic and not insightful.</span>
             </div>
           </li>
           <li class="cs-analysis-item">
             <div class="cs-analysis-dot"></div>
             <div class="cs-analysis-text">
-              <span class="cs-analysis-title">Decision fatigue</span>
-              <span class="cs-analysis-desc">It's hard for the user to tell which action is useful and which isn't.</span>
+              <span class="cs-analysis-title">Disconnected from the product</span>
+              <span class="cs-analysis-desc">The feature didn't leverage the app's core content: audios, videos, and quotes.</span>
             </div>
           </li>
           <li class="cs-analysis-item">
             <div class="cs-analysis-dot"></div>
             <div class="cs-analysis-text">
-              <span class="cs-analysis-title">Lost in progression</span>
-              <span class="cs-analysis-desc">The lack of interaction makes it hard to say what changes have been made.</span>
+              <span class="cs-analysis-title">Weak positioning</span>
+              <span class="cs-analysis-desc">The "celebrity coach" concept created expectations the product couldn't meet.</span>
             </div>
           </li>
         </ul>
@@ -1124,7 +1036,7 @@
     <!-- Key Insight -->
     <section class="cs-section cs-section-purple cs-centered">
       <span class="cs-label reveal">Key Insight</span>
-      <p class="cs-quote reveal reveal-delay-1">Users don't want to configure a tool.<br>They want the tool to <u>adapt</u> to their needs.</p>
+      <p class="cs-quote reveal reveal-delay-1">The real value isn't the AI itself.<br>It's the <u>relevance</u> of the interactions it can bring up.</p>
     </section>
 
     <!-- Design Principles -->
@@ -1133,23 +1045,23 @@
       <div class="cs-principles-grid reveal reveal-delay-1">
         <div class="cs-principle">
           <span class="cs-principle-num">01</span>
-          <span class="cs-principle-title">Quick win</span>
-          <p class="cs-principle-desc">Limit the number of steps before achieving the task to increase satisfaction.</p>
+          <span class="cs-principle-title">Frame conversations</span>
+          <p class="cs-principle-desc">Structure free input toward relevant themes.</p>
         </div>
         <div class="cs-principle">
           <span class="cs-principle-num">02</span>
-          <span class="cs-principle-title">Focus on simplicity</span>
-          <p class="cs-principle-desc">Creating a simple task should be simple.</p>
+          <span class="cs-principle-title">Push the app's content</span>
+          <p class="cs-principle-desc">Ground every response in audios, videos, and quotes.</p>
         </div>
         <div class="cs-principle">
           <span class="cs-principle-num">03</span>
-          <span class="cs-principle-title">Reveal complexity progressively</span>
-          <p class="cs-principle-desc">Show more only when needed.</p>
+          <span class="cs-principle-title">Personalities as bonus</span>
+          <p class="cs-principle-desc">Turn "Personalities" into an enhancement, not the core.</p>
         </div>
         <div class="cs-principle">
           <span class="cs-principle-num">04</span>
-          <span class="cs-principle-title">Adapt to user's behaviour</span>
-          <p class="cs-principle-desc">The system should anticipate user's next actions based on their actions.</p>
+          <span class="cs-principle-title">Modernize the UI</span>
+          <p class="cs-principle-desc">An outdated design doesn't do justice to a technically advanced feature.</p>
         </div>
       </div>
     </section>
@@ -1158,21 +1070,21 @@
     <section class="cs-section cs-section-light">
       <div class="cs-section-header reveal">
         <span class="cs-label">The solution</span>
-        <h2 class="cs-heading">Limit manual actions through a smart text field that recognizes and pre-configures key settings.</h2>
+        <h2 class="cs-heading">Reframe Pep Coach as a guided, content-driven experience.</h2>
       </div>
       <div class="cs-flow-block reveal reveal-delay-1">
         <p class="cs-constraint-label">New flow:</p>
         <div class="cs-flow" style="margin-top:12px;">
-          <span class="cs-flow-tag">Typing</span>
+          <span class="cs-flow-tag">Guided conversation</span>
           <span class="cs-flow-arrow">→</span>
-          <span class="cs-flow-tag">Smart recognition</span>
+          <span class="cs-flow-tag">Content injection</span>
           <span class="cs-flow-arrow">→</span>
-          <span class="cs-flow-tag">Manual customization</span>
+          <span class="cs-flow-tag">Personalized coaching</span>
         </div>
       </div>
       <div class="cs-constraint-block reveal reveal-delay-2">
         <p class="cs-constraint-label">Technical constraints</p>
-        <p class="cs-constraint-text">Due to ressource constraints, the proposed solution should preserve as much of the current UI as possible.</p>
+        <p class="cs-constraint-text">No certainty as to which AI model would ultimately be used.</p>
       </div>
     </section>
 
@@ -1186,20 +1098,28 @@
             <span class="cs-step-num">Step 1</span>
             <div class="cs-step-line"></div>
           </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Instant creation</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Creation is reduced to a single text input.</p>
+          <h3 class="cs-step-title reveal reveal-delay-1">Default to a generic coach</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Users now start with a neutral AI Coach.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Users type the habit name and press enter.</li>
-            <li>They can save. The new habit is created.</li>
+            <li>Celebrities are optional, not the entry point.</li>
+            <li>This removes the pressure of choosing a personality before the experience begins.</li>
           </ul>
         </div>
         <div class="cs-step-right reveal from-right">
-          <div class="ui-card ui-input-card">
-            <div class="ui-input-left">
-              <div class="ui-dot-grey"></div>
-              <span class="ui-placeholder">Name your habit…</span>
+          <!-- Coach selection UI mockup -->
+          <div class="pep-coach-select">
+            <div class="pep-coach-row pep-coach-row-selected">
+              <div class="pep-radio pep-radio-checked"></div>
+              <div class="pep-coach-avatar">
+                <img src="https://www.figma.com/api/mcp/asset/44ac90f2-6591-4a26-9243-5f3fb895ceb4" alt="AI Coach avatar">
+              </div>
+              <span class="pep-coach-name">AI Coach</span>
             </div>
-            <div class="ui-return-key">↵</div>
+            <div class="pep-coach-row pep-coach-row-dimmed">
+              <div class="pep-radio"></div>
+              <div class="pep-coach-avatar-placeholder">WS</div>
+              <span class="pep-coach-name">Will Smith</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1211,41 +1131,17 @@
             <span class="cs-step-num">Step 2</span>
             <div class="cs-step-line"></div>
           </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Smart recognition</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The system pre-fills common values based on the name.</p>
+          <h3 class="cs-step-title reveal reveal-delay-1">Guide conversations with topics</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Instead of open-ended chat, users start from a predefined coaching topic.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>An icon is automatically suggested based on the habit's name.</li>
-            <li>By default, the "Habit type" is set on "good" (green color). If the negative form ("Stop", "Do not"…) is used in the name, the habit transforms into a "bad" one (red).</li>
-            <li>Similarly, a habit is "daily" by default. If another frequency is mentioned in the name, it will automatically update the setting.</li>
+            <li>Topics ground the conversation in the user's actual needs.</li>
+            <li>They help the AI provide more relevant and actionable responses.</li>
           </ul>
         </div>
-        <div class="cs-step-right cs-step-right-alt reveal from-right">
-          <div class="ui-habit-cards">
-            <div class="ui-habit-card">
-              <div class="ui-habit-row">
-                <div class="ui-dot-green"></div>
-                <span class="ui-habit-name">Take a hot bath every week</span>
-              </div>
-              <div class="ui-tags-row">
-                <span class="ui-tag">Good habit</span>
-                <span class="ui-tag">Green</span>
-                <span class="ui-tag">Bath icon</span>
-                <span class="ui-tag">Weekly</span>
-              </div>
-            </div>
-            <div class="ui-habit-card">
-              <div class="ui-habit-row">
-                <div class="ui-dot-red"></div>
-                <span class="ui-habit-name">Do not smoke</span>
-              </div>
-              <div class="ui-tags-row">
-                <span class="ui-tag">Bad habit</span>
-                <span class="ui-tag">Red</span>
-                <span class="ui-tag">No cigarette icon</span>
-                <span class="ui-tag">Daily</span>
-              </div>
-            </div>
-          </div>
+        <div class="cs-step-right cs-step-right-alt cs-step-right-phone reveal from-right">
+          <img class="pep-step-phone-img"
+               src="https://www.figma.com/api/mcp/asset/8ebb4d90-514d-4bba-82c5-2c6c68e1ff27"
+               alt="Guide conversations — topic selection screen">
         </div>
       </div>
 
@@ -1256,21 +1152,35 @@
             <span class="cs-step-num">Step 3</span>
             <div class="cs-step-line"></div>
           </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Make the experience lively and dynamic</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The changes are immediately visible in the preview.</p>
+          <h3 class="cs-step-title reveal reveal-delay-1">Structure free input subtly</h3>
+          <p class="cs-step-body reveal reveal-delay-2">When users type freely, the AI detects the underlying topic automatically.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Users see the impact of their settings right away.</li>
-            <li>In this way, they directly identify how the system works.</li>
+            <li>Users feel free to express themselves naturally.</li>
+            <li>The system maps their input to the right coaching category.</li>
           </ul>
         </div>
         <div class="cs-step-right reveal from-right">
-          <div class="ui-live-preview">
-            <span class="ui-preview-label">Live Preview</span>
-            <div class="ui-habit-pill">
-              <span class="ui-pill-emoji">🛁</span>
-              <div class="ui-pill-texts">
-                <span class="ui-pill-title">Take a hot bath</span>
-                <span class="ui-pill-sub">Every week</span>
+          <!-- Topic detection UI mockup -->
+          <div class="pep-topic-detect">
+            <div class="pep-topic-row">
+              <span class="pep-topic-input">"I don't feel good in my body"</span>
+              <div class="pep-topic-badge">
+                <span class="pep-topic-badge-name">Fitness</span>
+                <span class="pep-topic-pct">92%</span>
+              </div>
+            </div>
+            <div class="pep-topic-row">
+              <span class="pep-topic-input">"Nothing feels worth it"</span>
+              <div class="pep-topic-badge">
+                <span class="pep-topic-badge-name">Motivation</span>
+                <span class="pep-topic-pct">87%</span>
+              </div>
+            </div>
+            <div class="pep-topic-row">
+              <span class="pep-topic-input">"I keep failing my goals"</span>
+              <div class="pep-topic-badge">
+                <span class="pep-topic-badge-name">Discipline</span>
+                <span class="pep-topic-pct">78%</span>
               </div>
             </div>
           </div>
@@ -1284,35 +1194,17 @@
             <span class="cs-step-num">Step 4</span>
             <div class="cs-step-line"></div>
           </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Interconnected options</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Advanced options are displayed based on their relevance in the user's context.</p>
+          <h3 class="cs-step-title reveal reveal-delay-1">Inject content into conversations</h3>
+          <p class="cs-step-body reveal reveal-delay-2">The AI surfaces relevant videos and audio from the app directly in chat.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>By default, the frequency is set to "Daily." If the user changes this setting, they are offered to set a start date.</li>
-            <li>If the user adds a start date, then we offer them to set an "End date", etc.</li>
+            <li>Content recommendations feel organic and timely.</li>
+            <li>The feature finally connects the AI to the rest of the product.</li>
           </ul>
         </div>
-        <div class="cs-step-right cs-step-right-alt reveal from-right">
-          <div class="ui-dark-pills">
-            <div class="ui-dark-pill">
-              <div class="ui-pill-left">
-                <span class="ui-sys-icon">🔄</span>
-                <span class="ui-pill-wt">Repeat</span>
-              </div>
-              <div class="ui-pill-right">
-                <span class="ui-pill-wt">Every week</span>
-                <span class="ui-chevron-r">›</span>
-              </div>
-            </div>
-            <div class="ui-dark-pill">
-              <div class="ui-pill-left">
-                <span class="ui-sys-icon">📅</span>
-                <span class="ui-pill-wt">Starts on</span>
-              </div>
-              <div class="ui-pill-right">
-                <span class="ui-date-badge"><span>Today</span><span>2026</span></span>
-              </div>
-            </div>
-          </div>
+        <div class="cs-step-right cs-step-right-alt cs-step-right-phone reveal from-right">
+          <img class="pep-step-phone-img"
+               src="https://www.figma.com/api/mcp/asset/d6383714-a34c-4873-9ce6-7f9aa6ee16b6"
+               alt="Content injection — in-chat content card">
         </div>
       </div>
 
@@ -1323,79 +1215,52 @@
             <span class="cs-step-num">Step 5</span>
             <div class="cs-step-line"></div>
           </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Reveal complexity progressively</h3>
-          <p class="cs-step-body reveal reveal-delay-2">All advanced options are moved into a secondary screen.</p>
+          <h3 class="cs-step-title reveal reveal-delay-1">Introduce dynamic coaching</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Coaching adapts in real time based on what the user shares.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Not used options are hidden by default in a "More options" section.</li>
-            <li>When enabled, they are automatically displayed so that the user can have a clear overview of their actions.</li>
-            <li>Nothing is removed. Everything is just delayed.</li>
+            <li>The AI adjusts its tone and suggestions based on the conversation.</li>
+            <li>Users feel heard and understood, not just answered.</li>
           </ul>
         </div>
         <div class="cs-step-right reveal from-right">
-          <div class="ui-settings-section">
-            <span class="ui-settings-label">Editing</span>
-            <div class="ui-dark-pills">
-              <div class="ui-dark-pill">
-                <div class="ui-pill-left">
-                  <span class="ui-sys-icon">✏️</span>
-                  <span class="ui-pill-wt">Take a hot bath every week</span>
-                </div>
-              </div>
-              <div class="ui-dark-pill">
-                <div class="ui-pill-left">
-                  <span class="ui-sys-icon" style="font-size:11px;background:#5450c9;border-radius:50%;color:white;width:18px;height:18px;">⊕</span>
-                  <span class="ui-pill-wt">Type</span>
-                </div>
-                <div class="ui-pill-right">
-                  <div class="ui-green-dot"></div>
-                  <span class="ui-pill-wt">Good</span>
-                  <span class="ui-chevron-r">›</span>
-                </div>
-              </div>
-              <div class="ui-dark-pill">
-                <div class="ui-pill-left">
-                  <span class="ui-sys-icon" style="font-size:11px;background:#ff3b30;border-radius:50%;color:white;width:18px;height:18px;">⊕</span>
-                  <span class="ui-pill-wt">Icon</span>
-                </div>
-                <div class="ui-pill-right">
-                  <span class="ui-pill-emoji" style="font-size:17px;width:20px;height:20px;">🛁</span>
-                  <span class="ui-chevron-r">›</span>
-                </div>
-              </div>
-              <div class="ui-dark-pill">
-                <div class="ui-pill-left">
-                  <span class="ui-sys-icon">🔄</span>
-                  <span class="ui-pill-wt">Repeat</span>
-                </div>
-                <div class="ui-pill-right">
-                  <span class="ui-pill-wt">Every week</span>
-                  <span class="ui-chevron-r">›</span>
-                </div>
-              </div>
-              <div class="ui-dark-pill">
-                <div class="ui-pill-left">
-                  <span class="ui-sys-icon">📅</span>
-                  <span class="ui-pill-wt">Starts on</span>
-                </div>
-                <div class="ui-pill-right">
-                  <span class="ui-date-badge"><span>1 Apr</span><span>2026</span></span>
-                </div>
-              </div>
-              <div class="ui-dark-pill">
-                <div class="ui-pill-left">
-                  <span class="ui-sys-icon">📅</span>
-                  <span class="ui-pill-wt">Ends</span>
-                </div>
-                <div class="ui-toggle"><div class="ui-toggle-knob"></div></div>
-              </div>
-              <div class="ui-dark-pill ui-dark-pill-purple">
-                <div class="ui-pill-left">
-                  <span class="ui-sys-icon" style="color:rgba(255,255,255,0.7);">⊕</span>
-                  <span class="ui-pill-wt">Show more options</span>
-                </div>
-                <span class="ui-chevron-d">›</span>
-              </div>
-            </div>
+          <img class="pep-step5-img"
+               src="https://www.figma.com/api/mcp/asset/bdf79e32-141e-42a0-9967-982e66b2c938"
+               alt="Dynamic coaching — adaptive response UI">
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 6</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Make it look premium</h3>
+          <p class="cs-step-body reveal reveal-delay-2">A modernized UI that signals quality and justifies the premium tier.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Visual refinements elevate the perceived value of the feature.</li>
+            <li>The new design is consistent with the overall app aesthetic.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt reveal from-right">
+          <div class="pep-step6-stack">
+            <img class="pep-step6-img"
+                 style="width:418px;border-radius:40px;"
+                 src="https://www.figma.com/api/mcp/asset/22dfb817-7be7-4c1a-9392-ebafa6cddb54"
+                 alt="Premium UI — component 1">
+            <img class="pep-step6-img"
+                 style="width:420px;border-radius:24px;"
+                 src="https://www.figma.com/api/mcp/asset/58b991b1-0e50-48d0-bceb-9b39d830a7df"
+                 alt="Premium UI — component 2">
+            <img class="pep-step6-img"
+                 style="width:419px;border-radius:40px;"
+                 src="https://www.figma.com/api/mcp/asset/f222d3a1-6a6e-443d-bba2-023df0b859c8"
+                 alt="Premium UI — component 3">
+            <img class="pep-step6-img"
+                 style="width:418px;border-radius:40px;"
+                 src="https://www.figma.com/api/mcp/asset/0086002f-8af0-42c0-9382-cf929c71025f"
+                 alt="Premium UI — component 4">
           </div>
         </div>
       </div>
@@ -1403,18 +1268,18 @@
     </div><!-- /cs-steps -->
 
     <!-- New Design -->
-    <section class="cs-new-design">
-      <img class="cs-new-design-bg" src="https://www.figma.com/api/mcp/asset/2e902f62-71ff-40fb-a0d8-b2ed1ae12daa" alt="">
-      <div class="cs-new-design-text reveal">
+    <section class="pep-new-design">
+      <img class="pep-new-design-bg" src="https://www.figma.com/api/mcp/asset/94e06a33-fe94-4c70-ad0d-51873a0bacaf" alt="">
+      <div class="pep-new-design-text reveal">
         <div>
-          <span class="cs-new-design-label">New design</span>
-          <h2 class="cs-new-design-heading">One field to rule them all</h2>
+          <span class="pep-new-design-label">New design</span>
+          <h2 class="pep-new-design-heading">A content-driven coaching experience</h2>
         </div>
-        <p class="cs-new-design-body">With a single action, users can set up their core settings in a smooth, progressive and natural way.<br>By minimizing friction, the new design allows users to focus on what matters most: improving their habits.</p>
+        <p class="pep-new-design-body">The new design reduces friction by guiding users toward specific, actionable conversations.<br>They are now encouraged to pick a topic, making it easier to get structured advice and relevant content right away.<br><br>This way, the feature becomes a practical daily coach, not just a chatbot.</p>
       </div>
-      <div class="cs-phone-frame reveal from-right reveal-delay-2">
-        <video class="cs-phone-video" autoplay loop muted playsinline>
-          <source src="grit-showcase.mov" type="video/mp4">
+      <div class="pep-phone-frame reveal from-right reveal-delay-2">
+        <video class="pep-phone-video" autoplay loop muted playsinline>
+          <source src="pep-showcase.mov" type="video/mp4">
         </video>
       </div>
     </section>
@@ -1428,19 +1293,19 @@
       <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">vs. prev. month</span>
       <div class="cs-impact-cards reveal reveal-delay-1">
         <div class="cs-impact-card">
-          <span class="cs-stat">+23%</span>
-          <span class="cs-card-title">First completion rate</span>
-          <p class="cs-card-desc">Significant increase in new users completing their first habit creation.</p>
+          <span class="cs-stat">+8%</span>
+          <span class="cs-card-title">Conversion to Premium</span>
+          <p class="cs-card-desc">The new AI feature significantly improved the upgrade rate.</p>
         </div>
         <div class="cs-impact-card">
-          <span class="cs-stat">+27%</span>
-          <span class="cs-card-title">Task Creation Speed</span>
-          <p class="cs-card-desc">Average time to create a new habit decreased from 49s to 36s.</p>
+          <span class="cs-stat">+17%</span>
+          <span class="cs-card-title">Return rate</span>
+          <p class="cs-card-desc">Users revisiting the section in subsequent sessions.</p>
         </div>
         <div class="cs-impact-card">
-          <span class="cs-stat">+11%</span>
+          <span class="cs-stat">+15%</span>
           <span class="cs-card-title">FLTV</span>
-          <p class="cs-card-desc">Projected long-term value increased.</p>
+          <p class="cs-card-desc">Projected long-term value increased due to higher conversion and retention rates.</p>
         </div>
       </div>
     </section>
@@ -1448,7 +1313,7 @@
     <!-- Final Note -->
     <section class="cs-section cs-section-purple cs-centered">
       <span class="cs-label reveal">Final note</span>
-      <p class="cs-quote reveal reveal-delay-1">Complexity isn't necessarily a problem.<br>As long as it is <u>appropriate</u> for the context.</p>
+      <p class="cs-quote reveal reveal-delay-1">The goal wasn't to build a smarter AI.<br>It was to make the AI feel <u>useful</u>.</p>
     </section>
 
     <!-- Footer -->
