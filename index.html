@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rémy Tartanac — Product Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #e6e0f2; overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+    .full-width { width: 100%; }
+
+    /* ── Nav ── */
+    nav {
+      position: relative; z-index: 100;
+      width: 100%;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(230,224,242,0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-color: rgba(255,255,255,0.4);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: center;
+      height: 78px; padding: 0 128px; max-width: 1520px; margin: 0 auto;
+    }
+    .nav-links { display: flex; gap: 40px; align-items: center; }
+    .nav-link {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 14px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #776c92;
+      position: relative;
+      transition: color 0.25s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: #10042c;
+      transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .nav-link:hover { color: #10042c; }
+    .nav-link:hover::after { width: 100%; }
+
+    /* ── Hero entrance ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── Liquid glass ── */
+    @keyframes liquidGlow {
+      0%, 100% { filter: drop-shadow(0 0 16px rgba(255,255,255,0.28)) drop-shadow(0 4px 24px rgba(255,255,255,0.14)); }
+      50%       { filter: drop-shadow(0 0 28px rgba(255,255,255,0.50)) drop-shadow(0 4px 36px rgba(255,255,255,0.24)); }
+    }
+    @keyframes liquidShimmer {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      width: 100%;
+      padding: 80px 128px 40px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 120px; position: relative; overflow-y: clip;
+      background-image: linear-gradient(181deg, #e6e0f2 0.74%, rgba(197,189,218,0.75) 38.88%, #e6e0f2 98.32%);
+    }
+    .hero-ellipse {
+      position: absolute;
+      left: 50%; transform: translateX(-50%);
+      top: 411px;
+      width: 2600px; height: 1497px;
+      pointer-events: none;
+      will-change: transform;
+    }
+    .hero-ellipse img {
+      width: 100%; height: 100%;
+      animation: orbBreath 7s ease-in-out infinite;
+      transform-origin: center center;
+    }
+    @keyframes orbBreath {
+      0%, 100% { transform: scale(1);    filter: brightness(0.96) blur(0px); }
+      50%       { transform: scale(1.04); filter: brightness(1.04) blur(0px); }
+    }
+
+    /* ── Halo rings ── */
+    .halo {
+      position: absolute;
+      left: 50%; top: 50%;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .halo-inner {
+      width: 680px; height: 680px;
+      margin-left: -340px; margin-top: -340px;
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 0 40px rgba(200,170,255,0.1), inset 0 0 20px rgba(200,170,255,0.05);
+      animation: haloSpin 13s linear infinite;
+    }
+    .halo-outer {
+      width: 960px; height: 960px;
+      margin-left: -480px; margin-top: -480px;
+      border: 1px solid rgba(255,255,255,0.09);
+      animation: haloSpinReverse 22s linear infinite;
+    }
+    @keyframes haloSpin {
+      from { transform: perspective(900px) rotateX(70deg) rotateZ(0deg); }
+      to   { transform: perspective(900px) rotateX(70deg) rotateZ(360deg); }
+    }
+    @keyframes haloSpinReverse {
+      from { transform: perspective(900px) rotateX(68deg) rotateZ(0deg); }
+      to   { transform: perspective(900px) rotateX(68deg) rotateZ(-360deg); }
+    }
+    /* Glowing dot riding on each ring */
+    .halo-dot {
+      position: absolute;
+      top: -5px; left: 50%;
+      transform: translateX(-50%);
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.95);
+      box-shadow:
+        0 0 8px  4px  rgba(255,255,255,0.55),
+        0 0 28px 12px rgba(210,180,255,0.40),
+        0 0 70px 28px rgba(180,140,255,0.20);
+    }
+    .halo-dot-outer {
+      width: 6px; height: 6px;
+      top: -3px;
+      background: rgba(255,255,255,0.7);
+      box-shadow:
+        0 0 6px  3px  rgba(255,255,255,0.35),
+        0 0 20px 8px  rgba(210,180,255,0.25),
+        0 0 50px 20px rgba(180,140,255,0.12);
+    }
+    .hero-name {
+      display: flex; flex-direction: column; align-items: center;
+      font-weight: 300; line-height: 150px;
+      padding-bottom: 48px; position: relative;
+      white-space: nowrap;
+      will-change: transform;
+    }
+    .hero-name-first {
+      font-size: 144px;
+      color: #10042c;
+      margin-bottom: -48px;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+    }
+    .hero-name-last {
+      font-size: 168px;
+      margin-bottom: -48px;
+      /* Liquid glass text — simulates refraction & specular reflection */
+      /* White liquid glass — pure specular shades, no purple */
+      background: linear-gradient(
+        162deg,
+        rgba(255,255,255,1.00) 0%,
+        rgba(255,255,255,0.88) 18%,
+        rgba(245,245,250,0.78) 36%,
+        rgba(250,250,255,0.80) 54%,
+        rgba(255,255,255,0.90) 72%,
+        rgba(255,255,255,0.96) 86%,
+        rgba(255,255,255,1.00) 100%
+      );
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.55);
+      animation:
+        fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.25s both,
+        liquidGlow 5.5s ease-in-out 1.3s infinite,
+        liquidShimmer 9s ease-in-out 1.3s infinite;
+    }
+    .hero-sub {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 56px; position: relative;
+      animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+    }
+    .hero-copy { display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+    .hero-title {
+      font-weight: 700; font-size: 32px; line-height: 48px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: #10042c; width: 429px;
+    }
+    .hero-desc {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: #776c92; width: 540px;
+    }
+    .hero-tags {
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 16px;
+      display: flex; gap: 24px; align-items: center; justify-content: center;
+      width: 578px;
+    }
+    .hero-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #10042c; white-space: nowrap;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible {
+      opacity: 1;
+      transform: translate(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Section Dividers ── */
+    .section-divider {
+      background: #10042c; width: 100%;
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px 128px;
+      overflow: hidden;
+      position: relative;
+    }
+    .section-divider-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .section-divider-title {
+      font-weight: 700; font-size: 32px; line-height: 48px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: white; text-align: center; white-space: nowrap;
+    }
+
+    /* ── Projects Grid ── */
+    .projects-grid {
+      width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+    .project-card {
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 1px;
+      display: flex; flex-direction: column;
+      cursor: pointer;
+      position: relative; overflow: hidden;
+      transition: box-shadow 0.4s ease, border-color 0.35s ease;
+    }
+    .project-card:hover {
+      box-shadow: 0 20px 56px rgba(16, 4, 44, 0.16);
+      border-color: rgba(255,255,255,0.5);
+    }
+    .project-card-bar {
+      height: 4px; width: 100%;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      flex-shrink: 0;
+    }
+    .project-card:hover .project-card-bar { opacity: 1; }
+    .project-card-body {
+      padding: 40px 80px;
+      display: flex; flex-direction: column; gap: 40px;
+      flex: 1;
+      position: relative; z-index: 1;
+    }
+    .project-card-top {
+      display: flex; flex-direction: column; gap: 36px;
+    }
+    .project-card-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+    }
+    .project-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px; overflow: hidden; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .project-card:hover .project-logo { transform: scale(1.07) rotate(-2deg); }
+    .project-logo img { width: 100%; height: 100%; object-fit: cover; }
+    .project-logo-ctk {
+      width: 72px; height: 72px;
+      border-radius: 16px; overflow: hidden; flex-shrink: 0;
+      background: #000; position: relative;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .project-card:hover .project-logo-ctk { transform: scale(1.07) rotate(-2deg); }
+    .project-logo-ctk img {
+      position: absolute; left: 8.5px; top: 17px;
+      width: 55px; height: 38px; object-fit: cover;
+    }
+    .project-tag {
+      border-radius: 160px; padding: 8px 16px; flex-shrink: 0;
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .project-content { display: flex; flex-direction: column; gap: 16px; max-width: 400px; }
+    .project-title {
+      font-weight: 500; font-size: 36px; line-height: 45px; color: #10042c;
+    }
+    .project-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.5; color: #776c92;
+    }
+    .project-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 160px;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      transition: background 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover .project-btn {
+      background: rgba(255,255,255,0.25);
+      width: 134px;
+    }
+    .project-btn span {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 36px; color: #050505; line-height: 36px;
+      display: inline-block; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover .project-btn span { transform: translateX(4px); }
+
+    /* ── Project stat badge ── */
+    .project-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      flex-shrink: 0;
+    }
+    .project-stat-num {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .project-stat-label {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #776c92;
+    }
+
+    /* ── Card preview image ── */
+    .project-card-preview {
+      position: absolute;
+      left: 67%; bottom: 0;
+      width: 42%; height: auto;
+      display: block;
+      object-fit: contain;
+      object-position: bottom right;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      transform-origin: bottom right;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover .project-card-preview {
+      transform: scale(1.05);
+    }
+
+    /* ── About Stats ── */
+    .about-stats {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+    }
+    .about-card {
+      border: 1px solid rgba(255,255,255,0.25);
+      flex: 1; padding: 81px;
+      display: flex; flex-direction: column; gap: 32px;
+    }
+    .about-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .about-emoji {
+      font-size: 48px; line-height: 1;
+      display: inline-block;
+    }
+    .about-metric { display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+    .about-metric-value {
+      font-weight: 500; font-size: 52px; color: #10042c; white-space: nowrap;
+    }
+    .about-metric-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #776c92; white-space: nowrap;
+    }
+    .about-body { display: flex; flex-direction: column; gap: 16px; }
+    .about-heading {
+      font-weight: 500; font-size: 36px; line-height: 45px; color: #10042c;
+    }
+    .about-text {
+      font-weight: 300; font-size: 22px; line-height: 1.5; color: #776c92;
+    }
+    .about-app-logos {
+      display: flex; gap: 11px; align-items: center;
+    }
+    .about-app-logo {
+      width: 40px; height: 40px;
+      border-radius: 8.9px; object-fit: cover; flex-shrink: 0;
+      display: block;
+    }
+    .about-app-logo-ctk {
+      width: 40px; height: 40px;
+      border-radius: 8.9px; background: #000;
+      overflow: hidden; flex-shrink: 0;
+      position: relative;
+    }
+    .about-app-logos a {
+      display: flex; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  box-shadow 0.4s ease;
+      border-radius: 8.9px;
+    }
+    .about-app-logos a:nth-child(odd):hover  { transform: scale(1.3) translateY(-6px) rotate(-10deg); box-shadow: 0 8px 20px rgba(16,4,44,0.18); }
+    .about-app-logos a:nth-child(even):hover { transform: scale(1.3) translateY(-6px) rotate(10deg);  box-shadow: 0 8px 20px rgba(16,4,44,0.18); }
+    .about-app-logo-ctk img {
+      position: absolute;
+      left: 4.7px; top: 9.4px;
+      width: 30.6px; height: 21.1px;
+      object-fit: cover;
+    }
+
+    /* ── Personal Section ── */
+    .personal {
+      border: 1px solid rgba(255,255,255,0.25);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+      width: 100%; padding: 80px;
+      display: flex; align-items: flex-end; gap: 80px;
+      background-image: radial-gradient(ellipse at center bottom, rgba(197,189,218,1) 0%, rgba(230,224,242,1) 100%);
+    }
+    .personal-me {
+      display: flex; align-items: flex-start; gap: 40px;
+      flex-shrink: 0;
+    }
+    .personal-avatar {
+      width: 160px; height: 160px;
+      border-radius: 50%; overflow: hidden; flex-shrink: 0;
+    }
+    .personal-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .personal-left {
+      display: flex; flex-direction: column; gap: 40px;
+      width: 560px; flex-shrink: 0;
+    }
+    .personal-header { display: flex; flex-direction: column; gap: 8px; }
+    .personal-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase; color: #776c92;
+    }
+    .personal-heading {
+      font-weight: 500; font-size: 52px; color: #10042c;
+    }
+    .personal-body {
+      font-weight: 300; font-size: 26px; line-height: 40px; color: #776c92;
+    }
+    .personal-right {
+      display: flex; flex-direction: column; gap: 40px;
+      padding-top: 40px; width: 400px; flex-shrink: 0;
+    }
+    .tags-cloud {
+      position: relative; height: 108px; width: 400px;
+    }
+    .tag-pill {
+      position: absolute;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid white;
+      border-radius: 9999px; height: 50px;
+      display: flex; align-items: center; gap: 8px;
+      padding: 1px 17px;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background 0.25s ease;
+    }
+
+    .tag-pill-emoji { font-size: 18px; }
+    .tag-pill-label {
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: #10042c; white-space: nowrap;
+    }
+    .personal-location {
+      border-top: 1px solid rgba(0,0,0,0.05);
+      padding-top: 9px; width: 400px;
+    }
+    .personal-location p {
+      font-weight: 300; font-size: 16px; line-height: 26px;
+      color: #776c92; white-space: nowrap;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #10042c; width: 100%;
+      padding: 80px 128px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      overflow: hidden; position: relative;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .footer-headline {
+      font-weight: 300; font-size: 110px; line-height: 100px;
+      color: white; flex-shrink: 0; position: relative;
+    }
+    .footer-right {
+      width: 440px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+    }
+    .footer-desc {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.22) 0%,
+        rgba(255,255,255,0.08) 50%,
+        rgba(255,255,255,0.15) 100%
+      );
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.38),
+        inset 0 -1px 0 rgba(0,0,0,0.06),
+        0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease,
+                  box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.34) 0%,
+        rgba(255,255,255,0.14) 50%,
+        rgba(255,255,255,0.24) 100%
+      );
+      border-color: rgba(255,255,255,0.50);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.52),
+        inset 0 -1px 0 rgba(0,0,0,0.04),
+        0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span {
+      font-weight: 300; font-size: 16px; line-height: 16px;
+      color: white; white-space: nowrap;
+    }
+    .btn-linkedin {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.15) 0%,
+        rgba(255,255,255,0.05) 50%,
+        rgba(255,255,255,0.10) 100%
+      );
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.28),
+        inset 0 -1px 0 rgba(0,0,0,0.05),
+        0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease,
+                  box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.26) 0%,
+        rgba(255,255,255,0.10) 50%,
+        rgba(255,255,255,0.18) 100%
+      );
+      border-color: rgba(255,255,255,0.50);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.42),
+        inset 0 -1px 0 rgba(0,0,0,0.04),
+        0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span {
+      font-weight: 300; font-size: 16px; line-height: 16px;
+      color: white; white-space: nowrap;
+    }
+    .btn-scroll-top {
+      width: 56px; height: 56px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-scroll-top-arrow {
+      display: inline-block; transform: rotate(-90deg);
+      font-size: 20px; color: rgba(255,255,255,0.75);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1399px) {
+      .personal { gap: 40px; flex-direction: column; align-items: flex-start; }
+      .personal-me { width: 100%; }
+      .personal-left { width: auto; flex: 1; min-width: 0; }
+      .personal-right { width: 100%; padding-top: 0; padding-left: 200px; }
+      .tags-cloud { width: 400px; max-width: 100%; }
+      .personal-location { width: 400px; max-width: 100%; }
+    }
+    @media (max-width: 1200px) {
+      .nav-inner { padding: 0 64px; }
+      .hero { padding: 80px 64px 40px; }
+      .section-divider { padding: 32px 64px; }
+      .project-card-body { padding: 32px 56px; }
+      .project-content { max-width: 320px; }
+      .about-card { padding: 56px; }
+      .personal { padding: 64px; gap: 40px; flex-direction: column; align-items: flex-start; }
+      .personal-me { width: 100%; }
+      .personal-left { width: auto; flex: 1; min-width: 0; }
+      .personal-right { width: 100%; padding-top: 0; padding-left: 200px; }
+      footer { padding: 64px; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner { padding: 0 40px; }
+      .hero { padding: 64px 40px 48px; gap: 56px; }
+      .hero-ellipse { top: 240px; }
+      .hero-name { white-space: normal; line-height: 1; padding-bottom: 24px; }
+      .hero-name-first { font-size: 96px; margin-bottom: -32px; }
+      .hero-name-last { font-size: 112px; margin-bottom: -32px; }
+      .hero-title { font-size: 26px; width: auto; }
+      .hero-desc { font-size: 22px; line-height: 36px; width: 100%; max-width: 540px; }
+      .hero-tags { width: auto; }
+      .section-divider { padding: 32px 40px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card-body { padding: 48px 40px; }
+      .project-card-preview { display: none; }
+      .project-content { max-width: none; }
+      .project-title { font-size: 30px; line-height: 40px; }
+      .about-stats { flex-direction: column; }
+      .about-card { padding: 48px 40px; }
+      .about-metric-value { font-size: 40px; }
+      .personal { flex-direction: column; padding: 48px 40px; gap: 48px; align-items: flex-start; }
+      .personal-me { width: 100%; }
+      .personal-left { width: 100%; flex-shrink: 1; }
+      .personal-right { width: 100%; padding-top: 0; padding-left: 0; }
+      .personal-location { width: 100%; }
+      footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .footer-headline { font-size: 72px; line-height: 72px; }
+      .footer-right { width: 100%; }
+      .footer-desc { font-size: 28px; line-height: 38px; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .hero { padding: 48px 28px 40px; gap: 36px; }
+      .hero-ellipse { top: 180px; }
+      .hero-name-first { font-size: 80px; margin-bottom: -28px; }
+      .hero-name-last { font-size: 96px; margin-bottom: -28px; }
+      .hero-sub { gap: 32px; }
+      .hero-title { font-size: 20px; line-height: 32px; letter-spacing: 1.6px; }
+      .hero-desc { font-size: 22px; line-height: 34px; }
+      .hero-tags { flex-wrap: wrap; gap: 12px; padding-top: 12px; }
+      .hero-tag { font-size: 12px; letter-spacing: 1.4px; }
+      .section-divider { padding: 24px 20px; }
+      .section-divider-title { font-size: 24px; letter-spacing: 1.6px; }
+      .project-card-body { padding: 32px 20px; gap: 28px; }
+      .project-btn { width: 48px; height: 48px; }
+      .project-card:hover .project-btn { width: 96px; }
+      .project-btn span { font-size: 24px; line-height: 24px; }
+      .project-title { font-size: 24px; line-height: 32px; }
+      .project-desc { font-size: 18px; }
+      .project-stat-num { font-size: 18px; }
+      .about-card { padding: 36px 20px; gap: 24px; }
+      .about-heading { font-size: 28px; line-height: 36px; }
+      .about-text { font-size: 18px; line-height: 28px; }
+      .about-emoji { font-size: 36px; }
+      .about-metric-value { font-size: 32px; }
+      .personal { padding: 40px 20px; gap: 36px; }
+      .personal-me { flex-direction: column; gap: 20px; }
+      .personal-avatar { width: 80px; height: 80px; }
+      .personal-heading { font-size: 36px; line-height: 1.2; }
+      .personal-body { font-size: 20px; line-height: 32px; }
+      .personal-left { gap: 24px; }
+      .tags-cloud { position: static; height: auto; width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
+      .tag-pill { position: static; }
+      .personal-location p { white-space: normal; }
+      footer { padding: 40px 20px; }
+      .footer-headline { font-size: 48px; line-height: 52px; }
+      .footer-desc { font-size: 22px; line-height: 32px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <div class="nav-links">
+          <a class="nav-link" href="#projects">Projects</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-ellipse">
+        <img src="https://www.figma.com/api/mcp/asset/778ddd05-00b3-40bc-a62d-f9e9f47789de" alt="">
+        <div class="halo halo-inner"><div class="halo-dot"></div></div>
+        <div class="halo halo-outer"><div class="halo-dot halo-dot-outer"></div></div>
+      </div>
+
+      <div class="hero-name">
+        <p class="hero-name-first">Rémy</p>
+        <p class="hero-name-last">Tartanac</p>
+      </div>
+
+      <div class="hero-sub">
+        <div class="hero-copy">
+          <p class="hero-title">Product Designer</p>
+          <p class="hero-desc">specializing in growth, retention, and complex user flows in B2B and B2C mobile products, building with AI-assisted workflows.</p>
+        </div>
+        <div class="hero-tags">
+          <span class="hero-tag"><b>Product</b> Strategy</span>
+          <span class="hero-tag"><b>AI</b> Engineering</span>
+          <span class="hero-tag"><b>Data</b>-Driven design</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects divider -->
+    <div id="projects" class="section-divider full-width">
+      <img class="section-divider-bg" src="https://www.figma.com/api/mcp/asset/f5a19ef4-009e-418b-aeaa-d9400bf2dd41" alt="">
+      <p class="section-divider-title reveal from-left" style="position:relative;">Projects</p>
+    </div>
+
+    <!-- Projects grid -->
+    <div class="projects-grid">
+
+      <!-- ParrotPal -->
+      <a href="parrotpal.html" class="project-card reveal">
+        <div class="project-card-bar" style="background:#68bea6;"></div>
+        <div class="project-card-body">
+          <div class="project-card-top">
+            <div class="project-card-header">
+              <div class="project-logo">
+                <img src="https://www.figma.com/api/mcp/asset/5c6383df-50b1-4fbc-ad90-0669beaef42e" alt="ParrotPal">
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-num" style="color:#68bea6;">+18%</span>
+                <span class="project-stat-label">return rate</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-title">Turning an unused section into a daily entry point</p>
+              <p class="project-desc">Refocused the section around the main added value: help users cook according to their needs.</p>
+            </div>
+          </div>
+          <div class="project-btn"><span>→</span></div>
+        </div>
+        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/5a1391f4-199e-44fd-a2fa-fb563d2eb7b0" alt="" aria-hidden="true">
+      </a>
+
+      <!-- Grit -->
+      <a href="grit.html" class="project-card reveal reveal-delay-1">
+        <div class="project-card-bar" style="background:#3b82f6;"></div>
+        <div class="project-card-body">
+          <div class="project-card-top">
+            <div class="project-card-header">
+              <div class="project-logo">
+                <img src="https://www.figma.com/api/mcp/asset/9f44676d-ddbb-488c-89e1-e06e98d9234e" alt="Grit">
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-num" style="color:#3b82f6;">+25%</span>
+                <span class="project-stat-label">habit completion</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-title">Redesigning task creation to feel effortless</p>
+              <p class="project-desc">Limited manual actions through a smart text field that recognizes and pre-configures key settings.</p>
+            </div>
+          </div>
+          <div class="project-btn"><span>→</span></div>
+        </div>
+        <img class="project-card-preview" src="grit-hero-phones.webp" alt="" aria-hidden="true">
+      </a>
+
+      <!-- PepTalk -->
+      <a href="peptalk.html" class="project-card reveal reveal-delay-2">
+        <div class="project-card-bar" style="background:#ff476c;"></div>
+        <div class="project-card-body">
+          <div class="project-card-top">
+            <div class="project-card-header">
+              <div class="project-logo">
+                <img src="https://www.figma.com/api/mcp/asset/651df854-6547-476b-93ea-1ffd1ade3882" alt="PepTalk">
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-num" style="color:#ff476c;">+17%</span>
+                <span class="project-stat-label">return rate</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-title">Turning a generic chatbot into a content-driven coaching experience</p>
+              <p class="project-desc">Reframed an outdated AI feature as a guided, content-driven experience.</p>
+            </div>
+          </div>
+          <div class="project-btn"><span>→</span></div>
+        </div>
+        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/02f0e33e-cfc9-497a-ade3-27196864346c" alt="" aria-hidden="true">
+      </a>
+
+      <!-- Couch to 5K -->
+      <a href="couch-to-5k.html" class="project-card reveal reveal-delay-3">
+        <div class="project-card-bar" style="background:#a3bd7b;"></div>
+        <div class="project-card-body">
+          <div class="project-card-top">
+            <div class="project-card-header">
+              <div class="project-logo-ctk">
+                <img src="https://www.figma.com/api/mcp/asset/2ee6f18a-dcd3-4453-8d23-62ce23cb53c4" alt="Couch to 5K">
+              </div>
+              <div class="project-stat">
+                <span class="project-stat-num" style="color:#a3bd7b;">+18%</span>
+                <span class="project-stat-label">onboarding completion</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-title">Reimagining onboarding with adaptive flows &amp; liquid glass UI</p>
+              <p class="project-desc">Shifted from a linear onboarding to adaptive flows</p>
+            </div>
+          </div>
+          <div class="project-btn"><span>→</span></div>
+        </div>
+        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/42b8a332-c6f2-4b67-9032-d343d9b93ffe" alt="" aria-hidden="true">
+      </a>
+
+    </div><!-- /projects-grid -->
+
+    <!-- About divider -->
+    <div id="about" class="section-divider full-width">
+      <img class="section-divider-bg" src="https://www.figma.com/api/mcp/asset/f5a19ef4-009e-418b-aeaa-d9400bf2dd41" alt="">
+      <p class="section-divider-title reveal from-left" style="position:relative;">About</p>
+    </div>
+
+    <!-- About stats -->
+    <div class="about-stats">
+      <div class="about-card reveal from-left">
+        <div class="about-card-header">
+          <span class="about-emoji">🚀</span>
+          <div class="about-metric">
+            <p class="about-metric-value">2026</p>
+            <p class="about-metric-label">mobile app publisher</p>
+          </div>
+        </div>
+        <div class="about-body">
+          <p class="about-heading">End-to-end design across a 5-app portfolio</p>
+          <p class="about-text">Responsible of a portfolio of 5 apps in Health and Productivity used by hundreds of thousands of people and generating +1M$ MRR.</p>
+        </div>
+        <div class="about-app-logos">
+          <a href="https://apps.apple.com/fr/app/bend-etirements-et-souplesse/id1513988468" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/d7145cd2-b4d3-4e78-97c8-22fa7eeb941c" alt="Bend logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/motivation-daily-peptalk/id976885594" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/c50c0654-4866-4c6e-bb63-39dc7344c465" alt="PepTalk logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/grit-habitudes-routines-tdah/id6446997766" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/ec5de540-d73c-4ef2-9f9e-55000d3d698b" alt="Grit logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/compteur-de-calorie-parrotpal/id6462694790" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/d07f0ea3-cbae-4221-8dfb-7dfaa2177c2f" alt="Parrot Pal logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
+            <div class="about-app-logo-ctk">
+              <img src="https://www.figma.com/api/mcp/asset/bcd83999-14cf-4747-b911-9dde9597a88c" alt="Couch to 5K logo">
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="about-card reveal from-right reveal-delay-2">
+        <div class="about-card-header">
+          <span class="about-emoji">🧠</span>
+          <div class="about-metric">
+            <p class="about-metric-value">4 yrs</p>
+            <p class="about-metric-label">Agency background</p>
+          </div>
+        </div>
+        <div class="about-body">
+          <div class="about-heading">
+            <p>Previously worked 4 years in web agencies,</p>
+            <p>as PM and UX designer</p>
+          </div>
+          <p class="about-text">My experience as a PM taught me to think in constraints: balancing user needs, business goals, and what can realistically ship. Today, as a product designer, I bring that same mindset: designing beyond the screen, with a focus on impact, not just output.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Personal section -->
+    <div class="personal">
+      <div class="personal-me reveal from-left">
+        <div class="personal-avatar">
+          <img src="https://www.figma.com/api/mcp/asset/f4a6af29-f1ac-4260-b732-d6ae19c4595a" alt="Rémy Tartanac">
+        </div>
+        <div class="personal-left">
+          <div class="personal-header">
+            <p class="personal-label">Outside of design</p>
+            <p class="personal-heading">Always on the lookout for new experiences</p>
+          </div>
+          <p class="personal-body">I believe the best design comes from people who actually live life. So I try to. I am convinced that curiosity about people, what moves them, what frustrates them, is what makes me a better designer.</p>
+        </div>
+      </div>
+
+      <div class="personal-right reveal from-right reveal-delay-2">
+        <div class="tags-cloud">
+          <!-- Row 1 -->
+          <div class="tag-pill" style="left:0; top:0;">
+            <span class="tag-pill-emoji">🎵</span>
+            <span class="tag-pill-label">Live music</span>
+          </div>
+          <div class="tag-pill" style="left:147px; top:0;">
+            <span class="tag-pill-emoji">🎸</span>
+            <span class="tag-pill-label">Guitar</span>
+          </div>
+          <div class="tag-pill" style="left:265px; top:0;">
+            <span class="tag-pill-emoji">🚞</span>
+            <span class="tag-pill-label">Travel</span>
+          </div>
+          <!-- Row 2 -->
+          <div class="tag-pill" style="left:0; top:58px;">
+            <span class="tag-pill-emoji">📸</span>
+            <span class="tag-pill-label">Photography</span>
+          </div>
+          <div class="tag-pill" style="left:162px; top:58px;">
+            <span class="tag-pill-emoji">🏔️</span>
+            <span class="tag-pill-label">Hiking</span>
+          </div>
+        </div>
+        <div class="personal-location">
+          <p>Based in Paris. Open to remote. Always up for a coffee chat.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/be2b59bc-ad2d-4990-a1b1-ede2659e529d" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Let's work</p>
+        <p>together.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Always happy to hear about new design challenges!</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>Send an email</span>
+          </a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <span class="btn-scroll-top-arrow">→</span>
+      </button>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  function onScroll() {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+    // Ellipse parallax — drifts upward slower than the page
+    const y = window.scrollY;
+    ellipse.style.transform = `translateX(-50%) translateY(${-y * 0.18}px)`;
+    // Hero name subtle parallax
+    heroName.style.transform = `translateY(${y * 0.08}px)`;
+  }
+
+  const ellipse = document.querySelector('.hero-ellipse');
+  const heroName = document.querySelector('.hero-name');
+
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => { onScroll(); ticking = false; });
+      ticking = true;
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>

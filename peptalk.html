@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PepTalk — Rémy Tartanac</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      width: 100%;
+      background: rgba(255, 71, 108, 0.15);
+      border-bottom: 1px solid rgba(255, 71, 108, 0.15);
+      transition: backdrop-filter 0.4s ease;
+    }
+    nav.scrolled {
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px; padding: 0 128px;
+    }
+    .cs-nav-back {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      border: 0.8px solid rgba(255, 255, 255, 0.25);
+      display: flex; align-items: center; justify-content: center;
+      color: #050505;
+      font-size: 22px;
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background 0.2s ease;
+    }
+    .cs-nav-back:hover { background: rgba(255, 255, 255, 0.22); }
+    .cs-nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 24px; line-height: 1;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ff476c;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      background: linear-gradient(135deg, rgba(255,71,108,0.24) 0%, rgba(255,71,108,0.06) 100%);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 80px;
+      padding: 80px 128px;
+      overflow: hidden;
+      min-height: 752px;
+      position: relative;
+    }
+    .cs-hero-left {
+      flex: 1;
+      min-width: 0;
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+    .cs-hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cs-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .cs-logo-link {
+      display: block; flex-shrink: 0; border-radius: 16px;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+    .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
+    .cs-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ff476c;
+      border: 1px solid rgba(255,255,255,0.45);
+      padding: 8px 16px;
+      border-radius: 160px;
+      background: rgba(255,255,255,0.28);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+    }
+    .cs-hero-title {
+      font-weight: 500; font-size: 80px; line-height: 100px;
+      color: #10042c;
+    }
+    .cs-meta {
+      border-top: 1px solid rgba(255, 71, 108, 0.2);
+      padding-top: 20px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .cs-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cs-meta-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ff476c;
+    }
+    .cs-meta-value {
+      font-weight: 500; font-size: 20px; line-height: 28px;
+      color: #10042c;
+    }
+
+    /* Hero phones — in-flow flex sibling */
+    .cs-hero-phones {
+      position: relative;
+      flex-shrink: 0;
+      margin-bottom: -80px;
+      margin-right: -128px;
+      width: 646px;
+      height: 609px;
+    }
+    .cs-hero-phones-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Common Section ── */
+    .cs-section {
+      width: 100%;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .cs-section-white { background: #ffffff; }
+    .cs-section-light { background: #f7f6f8; }
+    .cs-section-purple { background: #e6e0f2; }
+
+    .cs-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+    }
+
+    /* ── Body text ── */
+    .cs-body-bold {
+      font-weight: 700; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body-grey {
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #776c92;
+    }
+
+    /* ── Bullet list ── */
+    .cs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ff476c;
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    /* ── Problem ── */
+    .cs-problem-layout {
+      display: flex;
+      gap: 80px;
+      align-items: flex-start;
+    }
+    .cs-problem-left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+    .cs-problem-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cs-problem-stats {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cs-stat-card {
+      background: #f7f6f8;
+      border-radius: 24px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      line-height: 1;
+      font-weight: 700;
+      color: #e06060;
+    }
+    .cs-stat-label {
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 28px;
+      color: rgba(16, 4, 44, 0.65);
+    }
+
+    /* ── Old Design ── */
+    .cs-old-design-content {
+      display: flex;
+      gap: 76px;
+      align-items: center;
+    }
+    .cs-screens {
+      display: flex;
+      gap: 32px;
+      flex-shrink: 0;
+    }
+    .cs-screen-img {
+      width: 295px; height: 640px;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: 4px 4px 40px -8px black;
+    }
+    /* ── Screen carousel controls ── */
+    .cs-screens-carousel { display: contents; }
+    .cs-screens-btn {
+      display: none;
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+      background: white; border: 1px solid rgba(0,0,0,0.1);
+      align-items: center; justify-content: center;
+      cursor: pointer; font-size: 18px; color: #10042c; line-height: 1;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cs-screens-btn:hover { background: rgba(0,0,0,0.04); transform: scale(1.06); }
+    .cs-screens-btn:disabled { opacity: 0.25; pointer-events: none; }
+    .cs-screen-slide { display: contents; }
+    .cs-analysis-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-analysis-item {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding-bottom: 21px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .cs-analysis-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ff476c;
+      flex-shrink: 0;
+      margin-top: 18px;
+    }
+    .cs-analysis-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-analysis-title {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-analysis-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #776c92;
+    }
+
+    /* ── Key Insight / Final Note ── */
+    .cs-centered {
+      align-items: center;
+      justify-content: center;
+      padding: 120px 80px;
+      gap: 24px;
+      text-align: center;
+    }
+    .cs-quote {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+      text-align: center;
+    }
+    .cs-quote u { text-underline-offset: 5px; }
+
+    /* ── Design Principles ── */
+    .cs-principles-grid {
+      display: flex;
+      gap: 1px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .cs-principle {
+      flex: 1;
+      background: white;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-height: 240px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-principle-num {
+      position: absolute;
+      top: -4px;
+      right: 16px;
+      font-weight: 700;
+      font-size: 112px;
+      line-height: 1;
+      letter-spacing: -4px;
+      color: rgba(255, 71, 108, 0.08);
+      pointer-events: none;
+      user-select: none;
+    }
+    .cs-principle-title {
+      font-weight: 700; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+      margin-top: 32px;
+    }
+    .cs-principle-desc {
+      font-weight: 300; font-size: 20px; line-height: 1.6;
+      color: #776c92;
+    }
+
+    /* ── Solution ── */
+    .cs-flow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cs-flow-tag {
+      background: rgba(255, 71, 108, 0.08);
+      border: 1px solid rgba(255, 71, 108, 0.15);
+      padding: 10px 28px;
+      border-radius: 9999px;
+      font-weight: 400; font-size: 24px; line-height: 36px;
+      color: #ff476c;
+    }
+    .cs-flow-arrow {
+      font-weight: 300; font-size: 24px; line-height: 32px;
+      color: rgba(255, 71, 108, 0.4);
+    }
+    .cs-constraint-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-constraint-text {
+      font-weight: 300; font-size: 22px; line-height: 34px;
+      color: #10042c;
+      margin-top: 8px;
+    }
+    .cs-constraint-block {
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-radius: 16px;
+      padding: 28px 32px;
+    }
+    .cs-flow-block { display: flex; flex-direction: column; gap: 0; }
+
+    /* ── Steps ── */
+    .cs-steps { width: 100%; }
+    .cs-step {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .cs-step-left {
+      width: 57.89%;
+      flex-shrink: 0;
+      padding: 80px 128px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      background: #ffffff;
+    }
+    .cs-step-left-alt { background: rgba(252, 231, 234, 0.15); }
+    .cs-step-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(252, 231, 234, 0.3);
+    }
+    .cs-step-right-alt { background: rgba(252, 231, 234, 0.55); }
+
+    /* Phone image variant — flush bottom */
+    .cs-step-right-phone {
+      align-items: flex-end;
+      padding: 40px 40px 0;
+      overflow: hidden;
+    }
+
+    .cs-step-num-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cs-step-num {
+      font-weight: 400; font-size: 14px; line-height: 16px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #776c92;
+      white-space: nowrap;
+    }
+    .cs-step-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,0.1);
+    }
+    .cs-step-title {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: #10042c;
+    }
+    .cs-step-body {
+      font-weight: 300; font-size: 28px; line-height: 40px;
+      color: #776c92;
+    }
+    .cs-step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-step-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ff476c;
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    /* ── Step 1 Mockup: Coach Selection ── */
+    .pep-coach-select {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 340px;
+    }
+    .pep-coach-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: white;
+      border: 1px solid rgba(0,0,0,0.08);
+      border-radius: 20px;
+      padding: 16px 20px;
+      transition: opacity 0.2s;
+    }
+    .pep-coach-row-selected {
+      border-color: rgba(255, 71, 108, 0.5);
+      background: rgba(255, 71, 108, 0.04);
+    }
+    .pep-coach-row-dimmed { opacity: 0.38; }
+    .pep-radio {
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      border: 2px solid rgba(0,0,0,0.15);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pep-radio-checked { border-color: #ff476c; }
+    .pep-radio-checked::after {
+      content: '';
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #ff476c;
+    }
+    .pep-coach-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .pep-coach-avatar img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .pep-coach-avatar-placeholder {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 13px; font-weight: 600;
+      color: rgba(0,0,0,0.35);
+      flex-shrink: 0;
+    }
+    .pep-coach-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500; font-size: 22px; line-height: 1.4;
+      color: #10042c;
+    }
+
+    /* ── Step 3 Mockup: Topic Detection ── */
+    .pep-topic-detect {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 420px;
+      max-width: 100%;
+    }
+    .pep-topic-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: white;
+      border: 1px solid rgba(0,0,0,0.06);
+      border-radius: 16px;
+      padding: 14px 18px;
+    }
+    .pep-topic-input {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 18px; line-height: 1.4;
+      color: #10042c;
+      flex: 1;
+    }
+    .pep-topic-badge {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: rgba(255, 71, 108, 0.1);
+      border-radius: 9999px;
+      padding: 5px 12px;
+      flex-shrink: 0;
+    }
+    .pep-topic-badge-name {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 12px; font-weight: 700;
+      color: #ff476c;
+      white-space: nowrap;
+    }
+    .pep-topic-pct {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px;
+      color: rgba(255, 71, 108, 0.65);
+      white-space: nowrap;
+    }
+
+    /* ── Step phone image (flush bottom, rounded top corners) ── */
+    .pep-step-phone-img {
+      width: 280px;
+      border-radius: 32px 32px 0 0;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ── Step 5 wide screenshot ── */
+    .pep-step5-img {
+      width: 462px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 24px;
+      display: block;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    }
+
+    /* ── Step 6 stacked UI screenshots ── */
+    .pep-step6-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+    }
+    .pep-step6-img {
+      display: block;
+      height: auto;
+      max-width: 100%;
+    }
+
+    /* ── New Design ── */
+    .pep-new-design {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      gap: 160px;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px;
+      min-height: 960px;
+    }
+    .pep-new-design-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .pep-new-design-text {
+      width: 424px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 40px;
+      position: relative;
+    }
+    .pep-new-design-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      display: block; margin-bottom: 8px;
+    }
+    .pep-new-design-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: white;
+    }
+    .pep-new-design-body {
+      font-weight: 300; font-size: 26px; line-height: 40px;
+      color: rgba(255,255,255,0.85);
+    }
+    .pep-phone-frame {
+      width: 330px; height: 720px;
+      border: 4px solid #000;
+      border-radius: 32px;
+      background: #0d0d0d;
+      box-shadow: 4px 4px 80px 24px rgba(16,4,44,0.5);
+      flex-shrink: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .pep-phone-video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Impact ── */
+    .cs-impact-subtitle {
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: #10042c;
+      margin-top: -32px;
+    }
+    .cs-impact-cards {
+      display: flex;
+      gap: 1px;
+      background: rgba(0,0,0,0.05);
+      border-radius: 32px;
+      overflow: hidden;
+    }
+    .cs-impact-card {
+      flex: 1;
+      background: white;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-height: 247px;
+    }
+    .cs-stat {
+      font-weight: 700; font-size: 64px; line-height: normal;
+      color: #ff476c;
+    }
+    .cs-card-title {
+      font-weight: 700; font-size: 22px; line-height: 1.5;
+      color: #10042c;
+    }
+    .cs-card-desc {
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: #776c92;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #10042c; width: 100%;
+      padding: 80px 128px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      overflow: hidden; position: relative;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .footer-headline {
+      font-weight: 300; font-size: 110px; line-height: 100px;
+      color: white; flex-shrink: 0; position: relative;
+    }
+    .footer-right {
+      width: 440px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+    }
+    .footer-desc {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.24) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-linkedin {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.05), 0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.18) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-scroll-top {
+      width: 56px; height: 56px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-scroll-top-arrow {
+      display: inline-block; transform: rotate(-90deg);
+      font-size: 20px; color: rgba(255,255,255,0.75);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .nav-inner { padding: 0 64px; }
+      .cs-hero { padding: 64px; }
+      .cs-hero-left { width: auto; }
+      .cs-hero-phones { width: 480px; height: 452px; margin-bottom: -64px; }
+      .cs-section { padding: 64px; }
+      .cs-step-left { padding: 64px; }
+      footer { padding: 64px; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner { padding: 0 40px; }
+      .cs-hero { padding: 40px 40px; min-height: auto; }
+      .cs-hero-left { width: 100%; gap: 32px; }
+      .cs-hero-phones { display: none; }
+      .cs-hero-title { font-size: 64px; line-height: 78px; }
+      .cs-meta { flex-wrap: wrap; gap: 20px; }
+      .cs-section { padding: 56px 40px; gap: 28px; }
+      .cs-problem-layout { flex-direction: column; gap: 40px; }
+      .cs-problem-stats { flex: none; width: 100%; flex-direction: row; }
+      .cs-stat-card { flex: 1; }
+      .cs-heading { font-size: 36px; }
+      .cs-body-bold { font-size: 20px; line-height: 32px; }
+      .cs-body { font-size: 20px; line-height: 32px; }
+      .cs-body-grey { font-size: 22px; line-height: 34px; }
+      .cs-list li { font-size: 18px; }
+      .cs-old-design-content { flex-direction: column; gap: 40px; }
+      .cs-screens { justify-content: center; }
+      .cs-screen-img { width: 200px; height: auto; }
+      .cs-centered { padding: 80px 40px; }
+      .cs-quote { font-size: 36px; }
+      .cs-principles-grid { flex-wrap: wrap; border-radius: 24px; }
+      .cs-principle { flex: 0 0 calc(50% - 0.5px); min-height: auto; }
+      .cs-flow-tag { font-size: 22px; }
+      .cs-step { flex-direction: column; }
+      .cs-step-left { width: 100%; padding: 48px 40px; }
+      .cs-step-right { flex: none; padding: 32px 40px; min-height: auto; }
+      .cs-step-right-flush { align-items: center; padding-bottom: 24px; }
+      .cs-step-title { font-size: 28px; line-height: 36px; }
+      .cs-step-body { font-size: 22px; line-height: 32px; }
+      .cs-step-list li { font-size: 18px; }
+      .cs-new-design { flex-direction: column; align-items: center; gap: 48px; padding: 60px 40px; min-height: auto; }
+      .cs-new-design-text { width: 100%; }
+      .cs-phone-frame { width: 330px; height: 717px; }
+      .pep-new-design { flex-direction: column; align-items: center; gap: 48px; padding: 60px 40px; min-height: auto; }
+      .pep-new-design-text { width: 100%; }
+      .pep-phone-frame { width: 330px; height: 717px; }
+      .cs-impact-cards { flex-direction: column; }
+      .cs-impact-card { min-height: auto; }
+      footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .footer-headline { font-size: 72px; line-height: 72px; }
+      .footer-right { width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .cs-hero { padding: 32px 20px; }
+      .cs-hero-left { gap: 24px; }
+      .cs-hero-title { font-size: 48px; line-height: 58px; }
+      .cs-hero-brand { gap: 12px; }
+      .cs-meta { gap: 16px; }
+      .cs-meta-value { font-size: 16px; }
+      .cs-section { padding: 48px 20px; gap: 24px; }
+      .cs-problem-stats { flex-direction: column; }
+      .cs-stat-value { font-size: 48px; }
+      .cs-heading { font-size: 26px; }
+      .cs-body-bold { font-size: 18px; line-height: 28px; }
+      .cs-body { font-size: 18px; line-height: 28px; }
+      .cs-body-grey { font-size: 18px; line-height: 28px; }
+      .cs-list li { font-size: 16px; }
+      .cs-screens-carousel { display: flex; align-items: center; gap: 12px; width: 100%; }
+      .cs-screens-btn { display: flex; }
+      .cs-screens { flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-direction: row; gap: 0; padding: 0; justify-content: flex-start; }
+      .cs-screens::-webkit-scrollbar { display: none; }
+      .cs-screen-slide { display: block; scroll-snap-align: start; flex-shrink: 0; width: 100%; border-radius: 32px; overflow: hidden; }
+      .cs-screen-img { width: 100%; height: auto; border-radius: 0; box-shadow: none; }
+      .cs-analysis-title { font-size: 20px; line-height: 32px; }
+      .cs-analysis-desc { font-size: 16px; }
+      .cs-centered { padding: 56px 20px; }
+      .cs-quote { font-size: 24px; }
+      .cs-principle { flex: 1 1 100%; }
+      .cs-principles-grid { border-radius: 20px; }
+      .cs-flow-tag { font-size: 18px; line-height: 32px; padding: 6px 16px; }
+      .cs-constraint-text { font-size: 18px; line-height: 28px; }
+      .cs-step-left { padding: 40px 20px; gap: 16px; }
+      .cs-step-right { padding: 24px 20px; }
+      .cs-step-title { font-size: 24px; line-height: 32px; }
+      .cs-step-body { font-size: 18px; line-height: 28px; }
+      .cs-step-list li { font-size: 16px; }
+      .cs-new-design { padding: 48px 20px; gap: 32px; }
+      .cs-new-design-heading { font-size: 32px; }
+      .cs-new-design-body { font-size: 18px; line-height: 28px; }
+      .cs-phone-frame { width: 260px; height: 566px; }
+      .pep-new-design { padding: 48px 20px; gap: 32px; }
+      .pep-new-design-heading { font-size: 32px; }
+      .pep-new-design-body { font-size: 18px; line-height: 28px; }
+      .pep-phone-frame { width: 286px; height: 623px; }
+      .cs-stat { font-size: 48px; }
+      .cs-card-title { font-size: 18px; }
+      footer { padding: 48px 20px; }
+      .footer-headline { font-size: 48px; line-height: 52px; }
+      .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a class="cs-nav-back" href="index.html" aria-label="Back to projects">←</a>
+        <span class="cs-nav-brand">PepTalk</span>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="cs-hero-left">
+        <div class="cs-hero-brand reveal">
+          <a class="cs-logo-link" href="https://apps.apple.com/fr/app/motivation-daily-peptalk/id976885594" target="_blank" rel="noopener">
+            <img class="cs-logo" src="https://www.figma.com/api/mcp/asset/579e86f2-3f67-4027-b39a-22e81cd818b0" alt="PepTalk logo">
+          </a>
+          <span class="cs-tag">Coaching App</span>
+        </div>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Turning AI Chat<br>into Meaningful<br>Coaching</h1>
+        <div class="cs-meta reveal reveal-delay-2">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">Product Designer</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Focus</span>
+            <span class="cs-meta-value">Feature Redesign</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Platform</span>
+            <span class="cs-meta-value">Android, iOS</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Year</span>
+            <span class="cs-meta-value">2026</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero phones — single composed image, absolutely positioned right side -->
+      <div class="cs-hero-phones reveal from-right reveal-delay-3">
+        <img class="cs-hero-phones-img"
+             src="https://www.figma.com/api/mcp/asset/02f0e33e-cfc9-497a-ade3-27196864346c"
+             alt="PepTalk app screens">
+      </div>
+    </section>
+
+    <!-- The Problem -->
+    <section class="cs-section cs-section-white cs-problem">
+      <div class="cs-problem-layout">
+        <div class="cs-problem-left">
+          <div class="cs-section-header reveal">
+            <span class="cs-label">The problem</span>
+            <h2 class="cs-heading">The main premium feature failed to deliver value.</h2>
+          </div>
+          <div class="cs-problem-content reveal reveal-delay-1">
+            <p class="cs-body-bold">In addition to providing daily motivational videos and audio clips, PepTalk has developed an AI feature that lets users chat with their favorite personalities: PepCoach.</p>
+            <p class="cs-body">If the PepCoach feature initially felt avant-garde, users quickly found it underwhelming compared to what they expected from an AI-powered coaching experience.</p>
+          </div>
+        </div>
+        <div class="cs-problem-stats reveal reveal-delay-2">
+          <div class="cs-stat-card">
+            <span class="cs-stat-value">−8%</span>
+            <span class="cs-stat-label">premium plan conversions compared to last year</span>
+          </div>
+          <div class="cs-stat-card">
+            <span class="cs-stat-value">−5%</span>
+            <span class="cs-stat-label">paid subscribers compared to last year</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Old Design -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Old Design</span>
+        <h2 class="cs-heading">UX/UI Analysis</h2>
+      </div>
+      <p class="cs-body reveal reveal-delay-1">When it was launched, the promise of chatting with a AI agent acting like your favorite celebrity was quite attractive. But the feature quickly revealed its limits: users were interacting with a standard, outdated AI agent overlaid with a language filter, unable to offer any valuable content... when the app is actually packed with rich content.</p>
+      <div class="cs-old-design-content">
+        <div class="cs-screens-carousel">
+          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide">←</button>
+          <div class="cs-screens reveal from-left reveal-delay-2">
+            <div class="cs-screen-slide"><img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/1de2d1b0-8f56-4294-a5d1-bf8a77a09861" alt="Old PepCoach design — screen 1"></div>
+            <div class="cs-screen-slide"><img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/ded8aad0-ae33-44e5-a434-2b72904b68e5" alt="Old PepCoach design — screen 2"></div>
+          </div>
+          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide">→</button>
+        </div>
+        <ul class="cs-analysis-list reveal from-right reveal-delay-3">
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Low added value</span>
+              <span class="cs-analysis-desc">The AI responses were generic and not insightful.</span>
+            </div>
+          </li>
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Disconnected from the product</span>
+              <span class="cs-analysis-desc">The feature didn't leverage the app's core content: audios, videos, and quotes.</span>
+            </div>
+          </li>
+          <li class="cs-analysis-item">
+            <div class="cs-analysis-dot"></div>
+            <div class="cs-analysis-text">
+              <span class="cs-analysis-title">Weak positioning</span>
+              <span class="cs-analysis-desc">The "celebrity coach" concept created expectations the product couldn't meet.</span>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Key Insight -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">Key Insight</span>
+      <p class="cs-quote reveal reveal-delay-1">The real value isn't the AI itself.<br>It's the <u>relevance</u> of the interactions it can bring up.</p>
+    </section>
+
+    <!-- Design Principles -->
+    <section class="cs-section cs-section-white">
+      <span class="cs-label reveal">Design principles</span>
+      <div class="cs-principles-grid reveal reveal-delay-1">
+        <div class="cs-principle">
+          <span class="cs-principle-num">01</span>
+          <span class="cs-principle-title">Frame conversations</span>
+          <p class="cs-principle-desc">Structure free input toward relevant themes.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">02</span>
+          <span class="cs-principle-title">Push the app's content</span>
+          <p class="cs-principle-desc">Ground every response in audios, videos, and quotes.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">03</span>
+          <span class="cs-principle-title">Personalities as bonus</span>
+          <p class="cs-principle-desc">Turn "Personalities" into an enhancement, not the core.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">04</span>
+          <span class="cs-principle-title">Modernize the UI</span>
+          <p class="cs-principle-desc">An outdated design doesn't do justice to a technically advanced feature.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">The solution</span>
+        <h2 class="cs-heading">Reframe Pep Coach as a guided, content-driven experience.</h2>
+      </div>
+      <div class="cs-flow-block reveal reveal-delay-1">
+        <p class="cs-constraint-label">New flow:</p>
+        <div class="cs-flow" style="margin-top:12px;">
+          <span class="cs-flow-tag">Guided conversation</span>
+          <span class="cs-flow-arrow">→</span>
+          <span class="cs-flow-tag">Content injection</span>
+          <span class="cs-flow-arrow">→</span>
+          <span class="cs-flow-tag">Personalized coaching</span>
+        </div>
+      </div>
+      <div class="cs-constraint-block reveal reveal-delay-2">
+        <p class="cs-constraint-label">Technical constraints</p>
+        <p class="cs-constraint-text">No certainty as to which AI model would ultimately be used.</p>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <div class="cs-steps">
+
+      <!-- Step 1 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 1</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Default to a generic coach</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Users now start with a neutral AI Coach.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Celebrities are optional, not the entry point.</li>
+            <li>This removes the pressure of choosing a personality before the experience begins.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right">
+          <!-- Coach selection UI mockup -->
+          <div class="pep-coach-select">
+            <div class="pep-coach-row pep-coach-row-selected">
+              <div class="pep-radio pep-radio-checked"></div>
+              <div class="pep-coach-avatar">
+                <img src="https://www.figma.com/api/mcp/asset/44ac90f2-6591-4a26-9243-5f3fb895ceb4" alt="AI Coach avatar">
+              </div>
+              <span class="pep-coach-name">AI Coach</span>
+            </div>
+            <div class="pep-coach-row pep-coach-row-dimmed">
+              <div class="pep-radio"></div>
+              <div class="pep-coach-avatar-placeholder">WS</div>
+              <span class="pep-coach-name">Will Smith</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 2</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Guide conversations with topics</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Instead of open-ended chat, users start from a predefined coaching topic.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Topics ground the conversation in the user's actual needs.</li>
+            <li>They help the AI provide more relevant and actionable responses.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt cs-step-right-phone reveal from-right">
+          <img class="pep-step-phone-img"
+               src="https://www.figma.com/api/mcp/asset/8ebb4d90-514d-4bba-82c5-2c6c68e1ff27"
+               alt="Guide conversations — topic selection screen">
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 3</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Structure free input subtly</h3>
+          <p class="cs-step-body reveal reveal-delay-2">When users type freely, the AI detects the underlying topic automatically.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Users feel free to express themselves naturally.</li>
+            <li>The system maps their input to the right coaching category.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right">
+          <!-- Topic detection UI mockup -->
+          <div class="pep-topic-detect">
+            <div class="pep-topic-row">
+              <span class="pep-topic-input">"I don't feel good in my body"</span>
+              <div class="pep-topic-badge">
+                <span class="pep-topic-badge-name">Fitness</span>
+                <span class="pep-topic-pct">92%</span>
+              </div>
+            </div>
+            <div class="pep-topic-row">
+              <span class="pep-topic-input">"Nothing feels worth it"</span>
+              <div class="pep-topic-badge">
+                <span class="pep-topic-badge-name">Motivation</span>
+                <span class="pep-topic-pct">87%</span>
+              </div>
+            </div>
+            <div class="pep-topic-row">
+              <span class="pep-topic-input">"I keep failing my goals"</span>
+              <div class="pep-topic-badge">
+                <span class="pep-topic-badge-name">Discipline</span>
+                <span class="pep-topic-pct">78%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 4</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Inject content into conversations</h3>
+          <p class="cs-step-body reveal reveal-delay-2">The AI surfaces relevant videos and audio from the app directly in chat.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Content recommendations feel organic and timely.</li>
+            <li>The feature finally connects the AI to the rest of the product.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt cs-step-right-phone reveal from-right">
+          <img class="pep-step-phone-img"
+               src="https://www.figma.com/api/mcp/asset/d6383714-a34c-4873-9ce6-7f9aa6ee16b6"
+               alt="Content injection — in-chat content card">
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="cs-step">
+        <div class="cs-step-left">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 5</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Introduce dynamic coaching</h3>
+          <p class="cs-step-body reveal reveal-delay-2">Coaching adapts in real time based on what the user shares.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>The AI adjusts its tone and suggestions based on the conversation.</li>
+            <li>Users feel heard and understood, not just answered.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right reveal from-right">
+          <img class="pep-step5-img"
+               src="https://www.figma.com/api/mcp/asset/bdf79e32-141e-42a0-9967-982e66b2c938"
+               alt="Dynamic coaching — adaptive response UI">
+        </div>
+      </div>
+
+      <!-- Step 6 -->
+      <div class="cs-step">
+        <div class="cs-step-left cs-step-left-alt">
+          <div class="cs-step-num-row reveal">
+            <span class="cs-step-num">Step 6</span>
+            <div class="cs-step-line"></div>
+          </div>
+          <h3 class="cs-step-title reveal reveal-delay-1">Make it look premium</h3>
+          <p class="cs-step-body reveal reveal-delay-2">A modernized UI that signals quality and justifies the premium tier.</p>
+          <ul class="cs-step-list reveal reveal-delay-3">
+            <li>Visual refinements elevate the perceived value of the feature.</li>
+            <li>The new design is consistent with the overall app aesthetic.</li>
+          </ul>
+        </div>
+        <div class="cs-step-right cs-step-right-alt reveal from-right">
+          <div class="pep-step6-stack">
+            <img class="pep-step6-img"
+                 style="width:418px;border-radius:40px;"
+                 src="https://www.figma.com/api/mcp/asset/22dfb817-7be7-4c1a-9392-ebafa6cddb54"
+                 alt="Premium UI — component 1">
+            <img class="pep-step6-img"
+                 style="width:420px;border-radius:24px;"
+                 src="https://www.figma.com/api/mcp/asset/58b991b1-0e50-48d0-bceb-9b39d830a7df"
+                 alt="Premium UI — component 2">
+            <img class="pep-step6-img"
+                 style="width:419px;border-radius:40px;"
+                 src="https://www.figma.com/api/mcp/asset/f222d3a1-6a6e-443d-bba2-023df0b859c8"
+                 alt="Premium UI — component 3">
+            <img class="pep-step6-img"
+                 style="width:418px;border-radius:40px;"
+                 src="https://www.figma.com/api/mcp/asset/0086002f-8af0-42c0-9382-cf929c71025f"
+                 alt="Premium UI — component 4">
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /cs-steps -->
+
+    <!-- New Design -->
+    <section class="pep-new-design">
+      <img class="pep-new-design-bg" src="https://www.figma.com/api/mcp/asset/94e06a33-fe94-4c70-ad0d-51873a0bacaf" alt="">
+      <div class="pep-new-design-text reveal">
+        <div>
+          <span class="pep-new-design-label">New design</span>
+          <h2 class="pep-new-design-heading">A content-driven coaching experience</h2>
+        </div>
+        <p class="pep-new-design-body">The new design reduces friction by guiding users toward specific, actionable conversations.<br>They are now encouraged to pick a topic, making it easier to get structured advice and relevant content right away.<br><br>This way, the feature becomes a practical daily coach, not just a chatbot.</p>
+      </div>
+      <div class="pep-phone-frame reveal from-right reveal-delay-2">
+        <video class="pep-phone-video" autoplay loop muted playsinline>
+          <source src="pep-showcase.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- Impact -->
+    <section class="cs-section cs-section-white">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Impact</span>
+        <h2 class="cs-heading">Major improvements</h2>
+      </div>
+      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">vs. prev. month</span>
+      <div class="cs-impact-cards reveal reveal-delay-1">
+        <div class="cs-impact-card">
+          <span class="cs-stat">+8%</span>
+          <span class="cs-card-title">Conversion to Premium</span>
+          <p class="cs-card-desc">The new AI feature significantly improved the upgrade rate.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">+17%</span>
+          <span class="cs-card-title">Return rate</span>
+          <p class="cs-card-desc">Users revisiting the section in subsequent sessions.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">+15%</span>
+          <span class="cs-card-title">FLTV</span>
+          <p class="cs-card-desc">Projected long-term value increased due to higher conversion and retention rates.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final Note -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">Final note</span>
+      <p class="cs-quote reveal reveal-delay-1">The goal wasn't to build a smarter AI.<br>It was to make the AI feel <u>useful</u>.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/be2b59bc-ad2d-4990-a1b1-ede2659e529d" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Let's work</p>
+        <p>together.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Always happy to hear about new design challenges!</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>Send an email</span>
+          </a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <span class="btn-scroll-top-arrow">→</span>
+      </button>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Old Design carousel ──
+  document.querySelectorAll('.cs-screens-carousel').forEach(wrapper => {
+    const track = wrapper.querySelector('.cs-screens');
+    const prev  = wrapper.querySelector('.cs-screens-prev');
+    const next  = wrapper.querySelector('.cs-screens-next');
+    if (!track || !prev || !next) return;
+    function step() { return track.clientWidth || 240; }
+    function updateBtns() {
+      prev.disabled = track.scrollLeft <= 0;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+    }
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left:  step(), behavior: 'smooth' }));
+    track.addEventListener('scroll', updateBtns, { passive: true });
+    prev.disabled = true;
+  });
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+</script>
+</body>
+</html>
