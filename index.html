@@ -20,7 +20,11 @@
 
     /* ── Nav ── */
     nav {
+<<<<<<< HEAD
+      position: relative; z-index: 100;
+=======
       position: sticky; top: 0; z-index: 100;
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       width: 100%;
       border-bottom: 1px solid rgba(255,255,255,0.2);
       transition: background 0.4s ease, backdrop-filter 0.4s ease, border-color 0.4s ease;
@@ -265,6 +269,15 @@
       padding: 1px;
       display: flex; flex-direction: column;
       cursor: pointer;
+<<<<<<< HEAD
+      position: relative; overflow: hidden;
+      transition: box-shadow 0.4s ease, border-color 0.35s ease;
+    }
+    .project-card:hover {
+      box-shadow: 0 20px 56px rgba(16, 4, 44, 0.16);
+      border-color: rgba(255,255,255,0.5);
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
     }
     .project-card-bar {
       height: 4px; width: 100%;
@@ -274,9 +287,16 @@
     }
     .project-card:hover .project-card-bar { opacity: 1; }
     .project-card-body {
+<<<<<<< HEAD
+      padding: 40px 80px;
+      display: flex; flex-direction: column; gap: 40px;
+      flex: 1;
+      position: relative; z-index: 1;
+=======
       padding: 80px;
       display: flex; flex-direction: column; gap: 40px;
       flex: 1;
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
     }
     .project-card-top {
       display: flex; flex-direction: column; gap: 36px;
@@ -308,7 +328,11 @@
       letter-spacing: 1.96px; text-transform: uppercase;
       white-space: nowrap;
     }
+<<<<<<< HEAD
+    .project-content { display: flex; flex-direction: column; gap: 16px; max-width: 400px; }
+=======
     .project-content { display: flex; flex-direction: column; gap: 16px; }
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
     .project-title {
       font-weight: 500; font-size: 36px; line-height: 45px; color: #10042c;
     }
@@ -337,6 +361,55 @@
     }
     .project-card:hover .project-btn span { transform: translateX(4px); }
 
+<<<<<<< HEAD
+    /* ── Project stat badge ── */
+    .project-stat {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+      padding: 8px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.28);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      flex-shrink: 0;
+    }
+    .project-stat-num {
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 1;
+    }
+    .project-stat-label {
+      font-weight: 400;
+      font-size: 10px;
+      line-height: 1;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      color: #776c92;
+    }
+
+    /* ── Card preview image ── */
+    .project-card-preview {
+      position: absolute;
+      left: 67%; bottom: 0;
+      width: 42%; height: auto;
+      display: block;
+      object-fit: contain;
+      object-position: bottom right;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+      transform-origin: bottom right;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .project-card:hover .project-card-preview {
+      transform: scale(1.05);
+    }
+
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
     /* ── About Stats ── */
     .about-stats {
       width: 100%;
@@ -437,7 +510,11 @@
       padding-top: 40px; width: 400px; flex-shrink: 0;
     }
     .tags-cloud {
+<<<<<<< HEAD
+      position: relative; height: 108px; width: 400px;
+=======
       position: relative; height: 174px; width: 400px;
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
     }
     .tag-pill {
       position: absolute;
@@ -449,10 +526,14 @@
       transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
                   background 0.25s ease;
     }
+<<<<<<< HEAD
+
+=======
     .tag-pill:hover {
       transform: scale(1.06) translateY(-3px);
       background: rgba(255,255,255,0.28);
     }
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
     .tag-pill-emoji { font-size: 18px; }
     .tag-pill-label {
       font-weight: 300; font-size: 18px; line-height: 28px;
@@ -572,6 +653,23 @@
     .btn-scroll-top {
       width: 56px; height: 56px;
       border-radius: 9999px;
+<<<<<<< HEAD
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+=======
       background: rgba(255,255,255,0.1);
       border: 0.8px solid rgba(255,255,255,0.25);
       display: flex; align-items: center; justify-content: center;
@@ -579,6 +677,7 @@
       transition: background 0.25s ease, transform 0.25s ease;
     }
     .btn-scroll-top:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
     .btn-scroll-top-arrow {
       display: inline-block; transform: rotate(-90deg);
       font-size: 20px; color: rgba(255,255,255,0.75);
@@ -586,13 +685,34 @@
     }
 
     /* ── Responsive ── */
+<<<<<<< HEAD
+    @media (max-width: 1399px) {
+      .personal { gap: 40px; flex-direction: column; align-items: flex-start; }
+      .personal-me { width: 100%; }
+      .personal-left { width: auto; flex: 1; min-width: 0; }
+      .personal-right { width: 100%; padding-top: 0; padding-left: 200px; }
+      .tags-cloud { width: 400px; max-width: 100%; }
+      .personal-location { width: 400px; max-width: 100%; }
+    }
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
     @media (max-width: 1200px) {
       .nav-inner { padding: 0 64px; }
       .hero { padding: 80px 64px 40px; }
       .section-divider { padding: 32px 64px; }
+<<<<<<< HEAD
+      .project-card-body { padding: 32px 56px; }
+      .project-content { max-width: 320px; }
+      .about-card { padding: 56px; }
+      .personal { padding: 64px; gap: 40px; flex-direction: column; align-items: flex-start; }
+      .personal-me { width: 100%; }
+      .personal-left { width: auto; flex: 1; min-width: 0; }
+      .personal-right { width: 100%; padding-top: 0; padding-left: 200px; }
+=======
       .project-card-body { padding: 56px; }
       .about-card { padding: 56px; }
       .personal { padding: 64px; gap: 56px; }
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       footer { padding: 64px; }
     }
 
@@ -609,6 +729,11 @@
       .section-divider { padding: 32px 40px; }
       .projects-grid { grid-template-columns: 1fr; }
       .project-card-body { padding: 48px 40px; }
+<<<<<<< HEAD
+      .project-card-preview { display: none; }
+      .project-content { max-width: none; }
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       .project-title { font-size: 30px; line-height: 40px; }
       .about-stats { flex-direction: column; }
       .about-card { padding: 48px 40px; }
@@ -616,7 +741,11 @@
       .personal { flex-direction: column; padding: 48px 40px; gap: 48px; align-items: flex-start; }
       .personal-me { width: 100%; }
       .personal-left { width: 100%; flex-shrink: 1; }
+<<<<<<< HEAD
+      .personal-right { width: 100%; padding-top: 0; padding-left: 0; }
+=======
       .personal-right { width: 100%; padding-top: 0; }
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       .personal-location { width: 100%; }
       footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
       .footer-headline { font-size: 72px; line-height: 72px; }
@@ -626,13 +755,21 @@
 
     @media (max-width: 600px) {
       .nav-inner { padding: 0 20px; height: 64px; }
+<<<<<<< HEAD
+      .hero { padding: 48px 28px 40px; gap: 36px; }
+=======
       .hero { padding: 48px 20px 40px; gap: 36px; }
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       .hero-ellipse { top: 180px; }
       .hero-name-first { font-size: 80px; margin-bottom: -28px; }
       .hero-name-last { font-size: 96px; margin-bottom: -28px; }
       .hero-sub { gap: 32px; }
       .hero-title { font-size: 20px; line-height: 32px; letter-spacing: 1.6px; }
+<<<<<<< HEAD
+      .hero-desc { font-size: 22px; line-height: 34px; }
+=======
       .hero-desc { font-size: 18px; line-height: 30px; }
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       .hero-tags { flex-wrap: wrap; gap: 12px; padding-top: 12px; }
       .hero-tag { font-size: 12px; letter-spacing: 1.4px; }
       .section-divider { padding: 24px 20px; }
@@ -643,6 +780,10 @@
       .project-btn span { font-size: 24px; line-height: 24px; }
       .project-title { font-size: 24px; line-height: 32px; }
       .project-desc { font-size: 18px; }
+<<<<<<< HEAD
+      .project-stat-num { font-size: 18px; }
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       .about-card { padding: 36px 20px; gap: 24px; }
       .about-heading { font-size: 28px; line-height: 36px; }
       .about-text { font-size: 18px; line-height: 28px; }
@@ -661,6 +802,10 @@
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 22px; line-height: 32px; }
     }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
   </style>
 </head>
 <body>
@@ -723,15 +868,29 @@
               <div class="project-logo">
                 <img src="https://www.figma.com/api/mcp/asset/5c6383df-50b1-4fbc-ad90-0669beaef42e" alt="ParrotPal">
               </div>
+<<<<<<< HEAD
+              <div class="project-stat">
+                <span class="project-stat-num" style="color:#68bea6;">+18%</span>
+                <span class="project-stat-label">return rate</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-title">Turning an unused section into a daily entry point</p>
+=======
               <div class="project-tag" style="border:1px solid rgba(146,200,185,0.15); color:#68bea6;">Case study</div>
             </div>
             <div class="project-content">
               <p class="project-title">ParrotPal — Turning an unused section into a daily entry point</p>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
               <p class="project-desc">Refocused the section around the main added value: help users cook according to their needs.</p>
             </div>
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
+<<<<<<< HEAD
+        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/5a1391f4-199e-44fd-a2fa-fb563d2eb7b0" alt="" aria-hidden="true">
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       </a>
 
       <!-- Grit -->
@@ -743,15 +902,29 @@
               <div class="project-logo">
                 <img src="https://www.figma.com/api/mcp/asset/9f44676d-ddbb-488c-89e1-e06e98d9234e" alt="Grit">
               </div>
+<<<<<<< HEAD
+              <div class="project-stat">
+                <span class="project-stat-num" style="color:#3b82f6;">+25%</span>
+                <span class="project-stat-label">habit completion</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-title">Redesigning task creation to feel effortless</p>
+=======
               <div class="project-tag" style="border:1px solid rgba(59,130,246,0.15); color:#3b82f6;">Case study</div>
             </div>
             <div class="project-content">
               <p class="project-title">Grit — Redesigning task creation to feel effortless</p>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
               <p class="project-desc">Limited manual actions through a smart text field that recognizes and pre-configures key settings.</p>
             </div>
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
+<<<<<<< HEAD
+        <img class="project-card-preview" src="grit-hero-phones.webp" alt="" aria-hidden="true">
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       </a>
 
       <!-- PepTalk -->
@@ -763,15 +936,29 @@
               <div class="project-logo">
                 <img src="https://www.figma.com/api/mcp/asset/651df854-6547-476b-93ea-1ffd1ade3882" alt="PepTalk">
               </div>
+<<<<<<< HEAD
+              <div class="project-stat">
+                <span class="project-stat-num" style="color:#ff476c;">+17%</span>
+                <span class="project-stat-label">return rate</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-title">Turning a generic chatbot into a content-driven coaching experience</p>
+=======
               <div class="project-tag" style="border:1px solid rgba(255,71,108,0.15); color:#ff476c;">Case study</div>
             </div>
             <div class="project-content">
               <p class="project-title">PepTalk — Turning a generic chatbot into a content-driven coaching experience</p>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
               <p class="project-desc">Reframed an outdated AI feature as a guided, content-driven experience.</p>
             </div>
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
+<<<<<<< HEAD
+        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/02f0e33e-cfc9-497a-ade3-27196864346c" alt="" aria-hidden="true">
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       </a>
 
       <!-- Couch to 5K -->
@@ -783,15 +970,29 @@
               <div class="project-logo-ctk">
                 <img src="https://www.figma.com/api/mcp/asset/2ee6f18a-dcd3-4453-8d23-62ce23cb53c4" alt="Couch to 5K">
               </div>
+<<<<<<< HEAD
+              <div class="project-stat">
+                <span class="project-stat-num" style="color:#a3bd7b;">+18%</span>
+                <span class="project-stat-label">onboarding completion</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <p class="project-title">Reimagining onboarding with adaptive flows &amp; liquid glass UI</p>
+=======
               <div class="project-tag" style="border:1px solid rgba(163,189,123,0.15); color:#a3bd7b;">Case study</div>
             </div>
             <div class="project-content">
               <p class="project-title">Couch to 5K — Reimagining onboarding with adaptive flows &amp; liquid glass UI</p>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
               <p class="project-desc">Shifted from a linear onboarding to adaptive flows</p>
             </div>
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
+<<<<<<< HEAD
+        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/42b8a332-c6f2-4b67-9032-d343d9b93ffe" alt="" aria-hidden="true">
+=======
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
       </a>
 
     </div><!-- /projects-grid -->
@@ -808,16 +1009,40 @@
         <div class="about-card-header">
           <span class="about-emoji">🚀</span>
           <div class="about-metric">
+<<<<<<< HEAD
+            <p class="about-metric-value">2026</p>
+=======
             <p class="about-metric-value">Now</p>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
             <p class="about-metric-label">mobile app publisher</p>
           </div>
         </div>
         <div class="about-body">
+<<<<<<< HEAD
+          <p class="about-heading">End-to-end design across a 5-app portfolio</p>
+=======
           <p class="about-heading">Currently leading design across 5 apps</p>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
           <p class="about-text">Responsible of a portfolio of 5 apps in Health and Productivity used by hundreds of thousands of people and generating +1M$ MRR.</p>
         </div>
         <div class="about-app-logos">
           <a href="https://apps.apple.com/fr/app/bend-etirements-et-souplesse/id1513988468" target="_blank" rel="noopener">
+<<<<<<< HEAD
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/d7145cd2-b4d3-4e78-97c8-22fa7eeb941c" alt="Bend logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/motivation-daily-peptalk/id976885594" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/c50c0654-4866-4c6e-bb63-39dc7344c465" alt="PepTalk logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/grit-habitudes-routines-tdah/id6446997766" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/ec5de540-d73c-4ef2-9f9e-55000d3d698b" alt="Grit logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/compteur-de-calorie-parrotpal/id6462694790" target="_blank" rel="noopener">
+            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/d07f0ea3-cbae-4221-8dfb-7dfaa2177c2f" alt="Parrot Pal logo">
+          </a>
+          <a href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
+            <div class="about-app-logo-ctk">
+              <img src="https://www.figma.com/api/mcp/asset/bcd83999-14cf-4747-b911-9dde9597a88c" alt="Couch to 5K logo">
+=======
             <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/c65f6931-1d28-4caa-835e-545792800ff5" alt="Bend logo">
           </a>
           <a href="https://apps.apple.com/fr/app/motivation-daily-peptalk/id976885594" target="_blank" rel="noopener">
@@ -832,6 +1057,7 @@
           <a href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
             <div class="about-app-logo-ctk">
               <img src="https://www.figma.com/api/mcp/asset/9fafd13e-22f9-496f-a089-9339a23a3177" alt="Couch to 5K logo">
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
             </div>
           </a>
         </div>
@@ -849,7 +1075,11 @@
             <p>Previously worked 4 years in web agencies,</p>
             <p>as PM and UX designer</p>
           </div>
+<<<<<<< HEAD
+          <p class="about-text">My experience as a PM taught me to think in constraints: balancing user needs, business goals, and what can realistically ship. Today, as a product designer, I bring that same mindset: designing beyond the screen, with a focus on impact, not just output.</p>
+=======
           <p class="about-text">My experience as a PM taught me to think in constraints — balancing user needs, business goals, and what can realistically ship. Today, as a product designer, I bring that same mindset: designing beyond the screen, with a focus on impact, not just output.</p>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
         </div>
       </div>
     </div>
@@ -858,7 +1088,11 @@
     <div class="personal">
       <div class="personal-me reveal from-left">
         <div class="personal-avatar">
+<<<<<<< HEAD
+          <img src="https://www.figma.com/api/mcp/asset/f4a6af29-f1ac-4260-b732-d6ae19c4595a" alt="Rémy Tartanac">
+=======
           <img src="https://www.figma.com/api/mcp/asset/ba4cad62-a344-4581-92e3-77c5dd8dd781" alt="Rémy Tartanac">
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
         </div>
         <div class="personal-left">
           <div class="personal-header">
@@ -881,6 +1115,19 @@
             <span class="tag-pill-label">Guitar</span>
           </div>
           <div class="tag-pill" style="left:265px; top:0;">
+<<<<<<< HEAD
+            <span class="tag-pill-emoji">🚞</span>
+            <span class="tag-pill-label">Travel</span>
+          </div>
+          <!-- Row 2 -->
+          <div class="tag-pill" style="left:0; top:58px;">
+            <span class="tag-pill-emoji">📸</span>
+            <span class="tag-pill-label">Photography</span>
+          </div>
+          <div class="tag-pill" style="left:162px; top:58px;">
+            <span class="tag-pill-emoji">🏔️</span>
+            <span class="tag-pill-label">Hiking</span>
+=======
             <span class="tag-pill-emoji">✈️</span>
             <span class="tag-pill-label">Travel</span>
           </div>
@@ -897,6 +1144,7 @@
           <div class="tag-pill" style="left:0; top:124px;">
             <span class="tag-pill-emoji">🍕</span>
             <span class="tag-pill-label">Good food</span>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
           </div>
         </div>
         <div class="personal-location">
@@ -913,7 +1161,11 @@
         <p>together.</p>
       </div>
       <div class="footer-right reveal from-right reveal-delay-2">
+<<<<<<< HEAD
+        <p class="footer-desc">Always happy to hear about new design challenges!</p>
+=======
         <p class="footer-desc">Available for new projects — let's build something together.</p>
+>>>>>>> 696dc0a017096bb2359e3593ba731acf835b1a6b
         <div class="footer-actions">
           <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
             <span>Send an email</span>
