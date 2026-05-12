@@ -85,73 +85,39 @@
       gap: 120px; position: relative; overflow-y: clip;
       background-image: linear-gradient(181deg, #e6e0f2 0.74%, rgba(197,189,218,0.75) 38.88%, #e6e0f2 98.32%);
     }
-    .hero-ellipse {
+    /* ── Hero Wave ── */
+    .hero-wave {
       position: absolute;
-      left: 50%; transform: translateX(-50%);
-      top: 411px;
-      width: 2600px; height: 1497px;
+      left: 0; right: 0; bottom: 0;
+      /* top is set by JS to bottom of .hero-name; fallback below */
+      top: 52%;
       pointer-events: none;
-      will-change: transform;
     }
-    .hero-ellipse img {
+    .wave-svg {
+      position: absolute;
+      top: 0; left: 0;
       width: 100%; height: 100%;
-      animation: orbBreath 7s ease-in-out infinite;
-      transform-origin: center center;
     }
-    @keyframes orbBreath {
-      0%, 100% { transform: scale(1);    filter: brightness(0.96) blur(0px); }
-      50%       { transform: scale(1.04); filter: brightness(1.04) blur(0px); }
-    }
+    .wave-back  { fill: rgba(255,255,255,0.05); }
+    .wave-mid   { fill: rgba(255,255,255,0.09); }
+    .wave-front { fill: rgba(255,255,255,0.15); }
 
-    /* ── Halo rings ── */
-    .halo {
+    .wave-halo {
       position: absolute;
-      left: 50%; top: 50%;
+      width: 520px; height: 520px;
       border-radius: 50%;
+      background: radial-gradient(circle at center,
+        rgba(255,255,255,0.56) 0%,
+        rgba(255,255,255,0.37) 10%,
+        rgba(255,255,255,0.17) 25%,
+        rgba(255,255,255,0.07) 45%,
+        transparent 65%
+      );
+      transform: translate(-50%, -50%);
       pointer-events: none;
-    }
-    .halo-inner {
-      width: 680px; height: 680px;
-      margin-left: -340px; margin-top: -340px;
-      border: 1px solid rgba(255,255,255,0.22);
-      box-shadow: 0 0 40px rgba(200,170,255,0.1), inset 0 0 20px rgba(200,170,255,0.05);
-      animation: haloSpin 13s linear infinite;
-    }
-    .halo-outer {
-      width: 960px; height: 960px;
-      margin-left: -480px; margin-top: -480px;
-      border: 1px solid rgba(255,255,255,0.09);
-      animation: haloSpinReverse 22s linear infinite;
-    }
-    @keyframes haloSpin {
-      from { transform: perspective(900px) rotateX(70deg) rotateZ(0deg); }
-      to   { transform: perspective(900px) rotateX(70deg) rotateZ(360deg); }
-    }
-    @keyframes haloSpinReverse {
-      from { transform: perspective(900px) rotateX(68deg) rotateZ(0deg); }
-      to   { transform: perspective(900px) rotateX(68deg) rotateZ(-360deg); }
-    }
-    /* Glowing dot riding on each ring */
-    .halo-dot {
-      position: absolute;
-      top: -5px; left: 50%;
-      transform: translateX(-50%);
-      width: 10px; height: 10px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.95);
-      box-shadow:
-        0 0 8px  4px  rgba(255,255,255,0.55),
-        0 0 28px 12px rgba(210,180,255,0.40),
-        0 0 70px 28px rgba(180,140,255,0.20);
-    }
-    .halo-dot-outer {
-      width: 6px; height: 6px;
-      top: -3px;
-      background: rgba(255,255,255,0.7);
-      box-shadow:
-        0 0 6px  3px  rgba(255,255,255,0.35),
-        0 0 20px 8px  rgba(210,180,255,0.25),
-        0 0 50px 20px rgba(180,140,255,0.12);
+      will-change: left, top;
+      filter: blur(7px);
+      left: 15%; top: 8%;
     }
     .hero-name {
       display: flex; flex-direction: column; align-items: center;
@@ -302,14 +268,10 @@
     .project-logo-ctk {
       width: 72px; height: 72px;
       border-radius: 16px; overflow: hidden; flex-shrink: 0;
-      background: #000; position: relative;
       transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
     .project-card:hover .project-logo-ctk { transform: scale(1.07) rotate(-2deg); }
-    .project-logo-ctk img {
-      position: absolute; left: 8.5px; top: 17px;
-      width: 55px; height: 38px; object-fit: cover;
-    }
+    .project-logo-ctk img { width: 100%; height: 100%; object-fit: cover; }
     .project-tag {
       border-radius: 160px; padding: 8px 16px; flex-shrink: 0;
       font-weight: 400; font-size: 14px; line-height: 20px;
@@ -435,9 +397,8 @@
     }
     .about-app-logo-ctk {
       width: 40px; height: 40px;
-      border-radius: 8.9px; background: #000;
+      border-radius: 8.9px;
       overflow: hidden; flex-shrink: 0;
-      position: relative;
     }
     .about-app-logos a {
       display: flex; flex-shrink: 0;
@@ -447,12 +408,7 @@
     }
     .about-app-logos a:nth-child(odd):hover  { transform: scale(1.3) translateY(-6px) rotate(-10deg); box-shadow: 0 8px 20px rgba(16,4,44,0.18); }
     .about-app-logos a:nth-child(even):hover { transform: scale(1.3) translateY(-6px) rotate(10deg);  box-shadow: 0 8px 20px rgba(16,4,44,0.18); }
-    .about-app-logo-ctk img {
-      position: absolute;
-      left: 4.7px; top: 9.4px;
-      width: 30.6px; height: 21.1px;
-      object-fit: cover;
-    }
+    .about-app-logo-ctk img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ── Personal Section ── */
     .personal {
@@ -700,12 +656,12 @@
     @media (max-width: 600px) {
       .nav-inner { padding: 0 20px; height: 64px; }
       .hero { padding: 48px 28px 40px; gap: 36px; }
-      .hero-ellipse { top: 180px; }
+      .wave-halo { width: 200px; height: 200px; }
       .hero-name-first { font-size: 80px; margin-bottom: -28px; }
       .hero-name-last { font-size: 96px; margin-bottom: -28px; }
       .hero-sub { gap: 32px; }
       .hero-title { font-size: 20px; line-height: 32px; letter-spacing: 1.6px; }
-      .hero-desc { font-size: 22px; line-height: 34px; }
+      .hero-desc { font-size: 18px; line-height: 28px; }
       .hero-tags { flex-wrap: wrap; gap: 12px; padding-top: 12px; }
       .hero-tag { font-size: 12px; letter-spacing: 1.4px; }
       .section-divider { padding: 24px 20px; }
@@ -756,10 +712,18 @@
 
     <!-- Hero -->
     <section class="hero">
-      <div class="hero-ellipse">
-        <img src="https://www.figma.com/api/mcp/asset/778ddd05-00b3-40bc-a62d-f9e9f47789de" alt="">
-        <div class="halo halo-inner"><div class="halo-dot"></div></div>
-        <div class="halo halo-outer"><div class="halo-dot halo-dot-outer"></div></div>
+      <div class="hero-wave" aria-hidden="true">
+        <svg class="wave-svg" preserveAspectRatio="none" viewBox="0 0 1440 500" xmlns="http://www.w3.org/2000/svg">
+          <!-- guide path: wave crest near top of container (y ≈ 14–48) -->
+          <path id="wave-guide" d="M0,48 C200,14 400,72 600,36 C800,8  1000,65 1200,30 C1320,12 1390,26 1440,20" fill="none"/>
+          <!-- back wave -->
+          <path class="wave-back"  d="M0,88 C360,58 720,108 1080,74 C1260,56 1390,80 1440,76 L1440,500 L0,500 Z"/>
+          <!-- mid wave -->
+          <path class="wave-mid"   d="M0,66 C240,38 480,84 720,54 C960,28 1200,80 1440,58 L1440,500 L0,500 Z"/>
+          <!-- front wave -->
+          <path class="wave-front" d="M0,48 C200,14 400,72 600,36 C800,8  1000,65 1200,30 C1320,12 1390,26 1440,20 L1440,500 L0,500 Z"/>
+        </svg>
+        <div class="wave-halo"></div>
       </div>
 
       <div class="hero-name">
@@ -782,7 +746,6 @@
 
     <!-- Projects divider -->
     <div id="projects" class="section-divider full-width">
-      <img class="section-divider-bg" src="https://www.figma.com/api/mcp/asset/f5a19ef4-009e-418b-aeaa-d9400bf2dd41" alt="">
       <p class="section-divider-title reveal from-left" style="position:relative;">Projects</p>
     </div>
 
@@ -796,7 +759,7 @@
           <div class="project-card-top">
             <div class="project-card-header">
               <div class="project-logo">
-                <img src="https://www.figma.com/api/mcp/asset/5c6383df-50b1-4fbc-ad90-0669beaef42e" alt="ParrotPal">
+                <img src="assets/logo-parrotpal.jpg" alt="ParrotPal">
               </div>
               <div class="project-stat">
                 <span class="project-stat-num" style="color:#68bea6;">+18%</span>
@@ -810,7 +773,7 @@
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
-        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/5a1391f4-199e-44fd-a2fa-fb563d2eb7b0" alt="" aria-hidden="true">
+        <img class="project-card-preview" src="assets/preview-parrotpal.png" alt="" aria-hidden="true">
       </a>
 
       <!-- Grit -->
@@ -820,7 +783,7 @@
           <div class="project-card-top">
             <div class="project-card-header">
               <div class="project-logo">
-                <img src="https://www.figma.com/api/mcp/asset/9f44676d-ddbb-488c-89e1-e06e98d9234e" alt="Grit">
+                <img src="assets/logo-grit.jpg" alt="Grit">
               </div>
               <div class="project-stat">
                 <span class="project-stat-num" style="color:#3b82f6;">+25%</span>
@@ -834,7 +797,7 @@
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
-        <img class="project-card-preview" src="grit-hero-phones.webp" alt="" aria-hidden="true">
+        <img class="project-card-preview" src="assets/grit-hero-phones.webp" alt="" aria-hidden="true">
       </a>
 
       <!-- PepTalk -->
@@ -844,7 +807,7 @@
           <div class="project-card-top">
             <div class="project-card-header">
               <div class="project-logo">
-                <img src="https://www.figma.com/api/mcp/asset/651df854-6547-476b-93ea-1ffd1ade3882" alt="PepTalk">
+                <img src="assets/logo-peptalk.jpg" alt="PepTalk">
               </div>
               <div class="project-stat">
                 <span class="project-stat-num" style="color:#ff476c;">+17%</span>
@@ -858,7 +821,7 @@
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
-        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/02f0e33e-cfc9-497a-ade3-27196864346c" alt="" aria-hidden="true">
+        <img class="project-card-preview" src="assets/preview-peptalk.png" alt="" aria-hidden="true">
       </a>
 
       <!-- Couch to 5K -->
@@ -868,7 +831,7 @@
           <div class="project-card-top">
             <div class="project-card-header">
               <div class="project-logo-ctk">
-                <img src="https://www.figma.com/api/mcp/asset/2ee6f18a-dcd3-4453-8d23-62ce23cb53c4" alt="Couch to 5K">
+                <img src="assets/logo-ctk.jpg" alt="Couch to 5K">
               </div>
               <div class="project-stat">
                 <span class="project-stat-num" style="color:#a3bd7b;">+18%</span>
@@ -882,14 +845,13 @@
           </div>
           <div class="project-btn"><span>→</span></div>
         </div>
-        <img class="project-card-preview" src="https://www.figma.com/api/mcp/asset/42b8a332-c6f2-4b67-9032-d343d9b93ffe" alt="" aria-hidden="true">
+        <img class="project-card-preview" src="assets/preview-ctk.png" alt="" aria-hidden="true">
       </a>
 
     </div><!-- /projects-grid -->
 
     <!-- About divider -->
     <div id="about" class="section-divider full-width">
-      <img class="section-divider-bg" src="https://www.figma.com/api/mcp/asset/f5a19ef4-009e-418b-aeaa-d9400bf2dd41" alt="">
       <p class="section-divider-title reveal from-left" style="position:relative;">About</p>
     </div>
 
@@ -909,20 +871,20 @@
         </div>
         <div class="about-app-logos">
           <a href="https://apps.apple.com/fr/app/bend-etirements-et-souplesse/id1513988468" target="_blank" rel="noopener">
-            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/d7145cd2-b4d3-4e78-97c8-22fa7eeb941c" alt="Bend logo">
+            <img class="about-app-logo" src="assets/logo-bend.jpg" alt="Bend logo">
           </a>
           <a href="https://apps.apple.com/fr/app/motivation-daily-peptalk/id976885594" target="_blank" rel="noopener">
-            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/c50c0654-4866-4c6e-bb63-39dc7344c465" alt="PepTalk logo">
+            <img class="about-app-logo" src="assets/logo-peptalk.jpg" alt="PepTalk logo">
           </a>
           <a href="https://apps.apple.com/fr/app/grit-habitudes-routines-tdah/id6446997766" target="_blank" rel="noopener">
-            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/ec5de540-d73c-4ef2-9f9e-55000d3d698b" alt="Grit logo">
+            <img class="about-app-logo" src="assets/logo-grit.jpg" alt="Grit logo">
           </a>
           <a href="https://apps.apple.com/fr/app/compteur-de-calorie-parrotpal/id6462694790" target="_blank" rel="noopener">
-            <img class="about-app-logo" src="https://www.figma.com/api/mcp/asset/d07f0ea3-cbae-4221-8dfb-7dfaa2177c2f" alt="Parrot Pal logo">
+            <img class="about-app-logo" src="assets/logo-parrotpal.jpg" alt="Parrot Pal logo">
           </a>
           <a href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
             <div class="about-app-logo-ctk">
-              <img src="https://www.figma.com/api/mcp/asset/bcd83999-14cf-4747-b911-9dde9597a88c" alt="Couch to 5K logo">
+              <img src="assets/logo-ctk.jpg" alt="Couch to 5K logo">
             </div>
           </a>
         </div>
@@ -949,7 +911,7 @@
     <div class="personal">
       <div class="personal-me reveal from-left">
         <div class="personal-avatar">
-          <img src="https://www.figma.com/api/mcp/asset/f4a6af29-f1ac-4260-b732-d6ae19c4595a" alt="Rémy Tartanac">
+          <img src="assets/photo-remy.png" alt="Rémy Tartanac">
         </div>
         <div class="personal-left">
           <div class="personal-header">
@@ -993,7 +955,7 @@
 
     <!-- Footer -->
     <footer id="contact">
-      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/be2b59bc-ad2d-4990-a1b1-ede2659e529d" alt="">
+      <!-- footer bg rendered via CSS -->
       <div class="footer-headline reveal from-left">
         <p>Let's work</p>
         <p>together.</p>
@@ -1030,18 +992,49 @@
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
   // ── Nav glass on scroll ──
-  const nav = document.querySelector('nav');
-  function onScroll() {
-    nav.classList.toggle('scrolled', window.scrollY > 40);
-    // Ellipse parallax — drifts upward slower than the page
-    const y = window.scrollY;
-    ellipse.style.transform = `translateX(-50%) translateY(${-y * 0.18}px)`;
-    // Hero name subtle parallax
-    heroName.style.transform = `translateY(${y * 0.08}px)`;
+  const nav       = document.querySelector('nav');
+  const heroEl    = document.querySelector('.hero');
+  const heroName  = document.querySelector('.hero-name');
+  const waveEl    = document.querySelector('.hero-wave');
+  const waveHalo  = document.querySelector('.wave-halo');
+  const waveGuide = document.getElementById('wave-guide');
+  let guideLen    = 0;
+
+  // Position wave container so its top aligns with the bottom of .hero-name
+  function positionWave() {
+    if (!waveEl || !heroEl || !heroName) return;
+    const heroTop  = heroEl.getBoundingClientRect().top + window.scrollY;
+    const nameBottom = heroName.getBoundingClientRect().bottom + window.scrollY;
+    waveEl.style.top = (nameBottom - heroTop) + 'px';
   }
 
-  const ellipse = document.querySelector('.hero-ellipse');
-  const heroName = document.querySelector('.hero-name');
+  function initWave() {
+    positionWave();
+    if (waveGuide) guideLen = waveGuide.getTotalLength();
+    // At rest (scrollY=0), start halo at 15% along wave so it's visible
+    const heroH = heroEl ? heroEl.offsetHeight : 800;
+    updateHalo(Math.min(1, heroH * 0.15 / heroH));
+  }
+
+  function updateHalo(progress) {
+    if (!waveGuide || !waveHalo || guideLen === 0) return;
+    const pt = waveGuide.getPointAtLength(progress * guideLen);
+    // SVG viewBox is 1440 × 500 → convert to %
+    waveHalo.style.left = (pt.x / 1440 * 100).toFixed(2) + '%';
+    waveHalo.style.top  = (pt.y / 500  * 100).toFixed(2) + '%';
+    // Fade out as it travels: full at start (progress≈0.15), gone by progress=0.95
+    waveHalo.style.opacity = Math.max(0, 1 - (progress - 0.15) / 0.80).toFixed(3);
+  }
+
+  function onScroll() {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 40);
+    heroName.style.transform = `translateY(${y * 0.08}px)`;
+    // Halo rides the crest as hero scrolls; offset start so it's visible at rest
+    const heroH    = heroEl ? heroEl.offsetHeight : 800;
+    const progress = Math.max(0, Math.min(1, (y * 0.5 + heroH * 0.15) / heroH));
+    updateHalo(progress);
+  }
 
   let ticking = false;
   window.addEventListener('scroll', () => {
@@ -1050,6 +1043,14 @@
       ticking = true;
     }
   }, { passive: true });
+
+  window.addEventListener('resize', positionWave, { passive: true });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initWave);
+  } else {
+    initWave();
+  }
 </script>
 </body>
 </html>

@@ -102,17 +102,11 @@
     }
     .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
 
-    /* CTK logo — black container */
-    .ctk-logo-wrapper {
+    .cs-logo {
       width: 72px; height: 72px;
       border-radius: 16px;
-      background: black;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .ctk-logo-wrapper img {
-      width: 100%; height: 100%;
       object-fit: cover;
+      flex-shrink: 0;
       display: block;
     }
     .cs-tag {
@@ -836,7 +830,7 @@
       <div class="cs-hero-left">
         <div class="cs-hero-brand reveal">
           <a class="cs-logo-link" href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
-            <img src="https://www.figma.com/api/mcp/asset/4db94722-9623-4a16-89dc-a2e86ba24736" alt="Couch To 5K logo" style="width:72px;height:72px;object-fit:cover;border-radius:16px;display:block;">
+            <img class="cs-logo" src="assets/logo-ctk.jpg" alt="Couch To 5K logo">
           </a>
           <span class="cs-tag">Running App</span>
         </div>
@@ -863,7 +857,7 @@
 
       <!-- Hero image — absolutely positioned -->
       <div class="cs-hero-phones reveal from-right reveal-delay-3">
-        <img src="https://www.figma.com/api/mcp/asset/42b8a332-c6f2-4b67-9032-d343d9b93ffe" alt="Couch To 5K app screens" class="cs-hero-phones-img">
+        <img src="assets/preview-ctk.png" alt="Couch To 5K app screens" class="cs-hero-phones-img">
       </div>
     </section>
 
@@ -904,8 +898,8 @@
         <div class="cs-screens-carousel">
           <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide">←</button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img class="ctk-screen-img" src="https://www.figma.com/api/mcp/asset/91f7a3b0-a4b6-405b-a68e-e1b71d75cc2e" alt="Old design — screen 1" style="width:299px; height:650px;"></div>
-            <div class="cs-screen-slide"><img class="ctk-screen-img" src="https://www.figma.com/api/mcp/asset/2b95c724-32a6-4df3-a1ab-97b2ca0321bd" alt="Old design — screen 2" style="width:297px; height:648px;"></div>
+            <div class="cs-screen-slide"><img class="ctk-screen-img" src="assets/ctk-old-screen1.png" alt="Old design — screen 1" style="width:299px; height:650px;"></div>
+            <div class="cs-screen-slide"><img class="ctk-screen-img" src="assets/ctk-old-screen2.png" alt="Old design — screen 2" style="width:297px; height:648px;"></div>
           </div>
           <button class="cs-screens-btn cs-screens-next" aria-label="Next slide">→</button>
         </div>
@@ -1049,7 +1043,7 @@
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-alt cs-step-right-flush">
-          <img src="https://www.figma.com/api/mcp/asset/fa641b77-a2a3-440a-95c9-918852a58cf0" alt="Personalized flows screen" style="width:340px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
+          <img src="assets/ctk-screen2.png" alt="Personalized flows screen" style="width:340px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
         </div>
       </div>
 
@@ -1068,7 +1062,7 @@
           </ul>
         </div>
         <div class="cs-step-right">
-          <img src="https://www.figma.com/api/mcp/asset/f8a836d4-1936-40df-8d7e-2d6b17c36294" alt="Dynamic content screenshot" style="width:100%; max-width:416px; height:auto; border-radius:32px; display:block;" class="reveal reveal-delay-2">
+          <img src="assets/ctk-screen3.png" alt="Dynamic content screenshot" style="width:100%; max-width:416px; height:auto; border-radius:32px; display:block;" class="reveal reveal-delay-2">
         </div>
       </div>
 
@@ -1087,7 +1081,7 @@
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-alt cs-step-right-flush">
-          <img src="https://www.figma.com/api/mcp/asset/5bb28d4e-dda0-481d-92bf-7c5128bfd365" alt="Safe Start Program screen" style="width:341px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
+          <img src="assets/ctk-screen1.png" alt="Safe Start Program screen" style="width:341px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
         </div>
       </div>
 
@@ -1095,7 +1089,7 @@
 
     <!-- New Design -->
     <section class="cs-new-design">
-      <img class="cs-new-design-bg" src="https://www.figma.com/api/mcp/asset/639920c8-3ed5-46a9-a946-18a08f7a0859" alt="">
+      <img class="cs-new-design-bg" src="assets/bg-dark-overlay.png" alt="">
       <div class="cs-new-design-text reveal">
         <div>
           <span class="cs-new-design-label">New design</span>
@@ -1105,7 +1099,7 @@
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-2">
         <video style="width:100%;height:100%;object-fit:cover;display:block;" autoplay loop muted playsinline>
-          <source src="ctk-showcase.mp4" type="video/mp4">
+          <source src="assets/ctk-showcase.mp4" type="video/mp4">
         </video>
       </div>
     </section>
@@ -1144,7 +1138,7 @@
 
     <!-- Footer -->
     <footer id="contact">
-      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/be2b59bc-ad2d-4990-a1b1-ede2659e529d" alt="">
+      <img class="footer-bg" src="assets/bg-dark-overlay.png" alt="">
       <div class="footer-headline reveal from-left">
         <p>Let's work</p>
         <p>together.</p>

@@ -305,6 +305,20 @@
     .cs-screens-btn:hover { background: rgba(0,0,0,0.04); transform: scale(1.06); }
     .cs-screens-btn:disabled { opacity: 0.25; pointer-events: none; }
     .cs-screen-slide { display: contents; }
+    .cs-screen-placeholder {
+      width: 295px; height: 640px;
+      border-radius: 32px;
+      background: #e6e0f2;
+      display: flex !important;
+      align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 4px 4px 40px -8px rgba(0,0,0,0.2);
+    }
+    .cs-screen-placeholder span {
+      font-size: 14px; color: #776c92;
+      font-weight: 400; letter-spacing: 0.5px;
+      text-align: center; padding: 16px;
+    }
     .cs-analysis-list {
       flex: 1;
       display: flex;
@@ -1045,7 +1059,7 @@
       <div class="cs-hero-left">
         <div class="cs-hero-brand reveal">
           <a class="cs-logo-link" href="https://apps.apple.com/fr/app/grit-habitudes-routines-tdah/id6446997766" target="_blank" rel="noopener">
-            <img class="cs-logo" src="https://www.figma.com/api/mcp/asset/8fd91758-11e8-4f74-a1f9-b4269171920d" alt="Grit logo">
+            <img class="cs-logo" src="assets/logo-grit.jpg" alt="Grit logo">
           </a>
           <span class="cs-tag">Habit-Tracking App</span>
         </div>
@@ -1072,7 +1086,7 @@
 
       <!-- Phone mockup image — absolutely positioned like in Figma -->
       <div class="cs-hero-phones reveal from-right reveal-delay-3">
-        <img src="grit-hero-phones.webp" alt="Grit app screens" class="cs-hero-phones-img">
+        <img src="assets/grit-hero-phones.webp" alt="Grit app screens" class="cs-hero-phones-img">
       </div>
     </section>
 
@@ -1113,8 +1127,8 @@
         <div class="cs-screens-carousel">
           <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide">←</button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/234ffc22-618a-4ded-94e5-a3638c67b14d" alt="Old design — Food Center screen"></div>
-            <div class="cs-screen-slide"><img class="cs-screen-img" src="https://www.figma.com/api/mcp/asset/550a7257-fb64-4cc3-a2f1-f53b4d1fd83e" alt="Old design — habit creation screen"></div>
+            <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/grit-old-screen1.png" alt="Old design — habit creation"></div>
+            <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/grit-old-screen2.png" alt="Old design — task settings"></div>
           </div>
           <button class="cs-screens-btn cs-screens-next" aria-label="Next slide">→</button>
         </div>
@@ -1427,7 +1441,7 @@
 
     <!-- New Design -->
     <section class="cs-new-design">
-      <img class="cs-new-design-bg" src="https://www.figma.com/api/mcp/asset/2e902f62-71ff-40fb-a0d8-b2ed1ae12daa" alt="">
+      <img class="cs-new-design-bg" src="assets/bg-dark-overlay.png" alt="">
       <div class="cs-new-design-text reveal">
         <div>
           <span class="cs-new-design-label">New design</span>
@@ -1437,7 +1451,7 @@
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-2">
         <video class="cs-phone-video" autoplay loop muted playsinline>
-          <source src="grit-showcase.mp4" type="video/mp4">
+          <source src="assets/grit-showcase.mp4" type="video/mp4">
         </video>
       </div>
     </section>
@@ -1476,7 +1490,7 @@
 
     <!-- Footer -->
     <footer id="contact">
-      <img class="footer-bg" src="https://www.figma.com/api/mcp/asset/be2b59bc-ad2d-4990-a1b1-ede2659e529d" alt="">
+      <img class="footer-bg" src="assets/bg-dark-overlay.png" alt="">
       <div class="footer-headline reveal from-left">
         <p>Let's work</p>
         <p>together.</p>
