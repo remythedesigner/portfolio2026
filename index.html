@@ -346,9 +346,8 @@
       width: 134px;
     }
     .project-btn span {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 36px; color: #050505; line-height: 36px;
-      display: inline-block; flex-shrink: 0;
+      color: #050505;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .project-card:hover .project-btn span { transform: translateX(4px); }
@@ -641,9 +640,8 @@
       transform: translateY(-2px);
     }
     .btn-scroll-top-arrow {
-      display: inline-block; transform: rotate(-90deg);
-      font-size: 20px; color: rgba(255,255,255,0.75);
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
     }
 
     /* ── Responsive ── */
@@ -715,7 +713,7 @@
       .project-card-body { padding: 32px 20px; gap: 28px; }
       .project-btn { width: 48px; height: 48px; }
       .project-card:hover .project-btn { width: 96px; }
-      .project-btn span { font-size: 24px; line-height: 24px; }
+      .project-btn span { color: #050505; }
       .project-title { font-size: 24px; line-height: 32px; }
       .project-desc { font-size: 18px; }
       .project-stat-num { font-size: 18px; }
@@ -827,7 +825,7 @@
               <p class="project-desc">Refocused the section around the main added value: help users cook according to their needs.</p>
             </div>
           </div>
-          <div class="project-btn"><span>→</span></div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
         <img class="project-card-preview" src="assets/preview-parrotpal.png" alt="" aria-hidden="true">
       </a>
@@ -851,7 +849,7 @@
               <p class="project-desc">Limited manual actions through a smart text field that recognizes and pre-configures key settings.</p>
             </div>
           </div>
-          <div class="project-btn"><span>→</span></div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
         <img class="project-card-preview" src="assets/grit-hero-phones.webp" alt="" aria-hidden="true">
       </a>
@@ -875,7 +873,7 @@
               <p class="project-desc">Reframed an outdated AI feature as a guided, content-driven experience.</p>
             </div>
           </div>
-          <div class="project-btn"><span>→</span></div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
         <img class="project-card-preview" src="assets/preview-peptalk.png" alt="" aria-hidden="true">
       </a>
@@ -899,7 +897,7 @@
               <p class="project-desc">Shifted from a linear onboarding to adaptive flows</p>
             </div>
           </div>
-          <div class="project-btn"><span>→</span></div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
         <img class="project-card-preview" src="assets/preview-ctk.png" alt="" aria-hidden="true">
       </a>
@@ -1028,7 +1026,7 @@
         </div>
       </div>
       <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-        <span class="btn-scroll-top-arrow">→</span>
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
     </footer>
 

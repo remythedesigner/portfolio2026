@@ -41,7 +41,6 @@
       border: 0.8px solid rgba(255,255,255,0.25);
       display: flex; align-items: center; justify-content: center;
       color: #050505;
-      font-size: 22px;
       text-decoration: none;
       flex-shrink: 0;
       transition: background 0.2s ease;
@@ -705,9 +704,8 @@
       transform: translateY(-2px);
     }
     .btn-scroll-top-arrow {
-      display: inline-block; transform: rotate(-90deg);
-      font-size: 20px; color: rgba(255,255,255,0.75);
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif; line-height: 1;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
     }
 
     /* ── Responsive ── */
@@ -835,7 +833,7 @@
     <!-- Navigation -->
     <nav>
       <div class="nav-inner">
-        <a class="cs-nav-back" href="index.html" aria-label="Back to projects">←</a>
+        <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <span class="cs-nav-brand">Couch To 5K</span>
       </div>
     </nav>
@@ -1175,7 +1173,7 @@
         </div>
       </div>
       <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-        <span class="btn-scroll-top-arrow">→</span>
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
     </footer>
 
