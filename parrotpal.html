@@ -296,7 +296,7 @@
       flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
       background: white; border: 1px solid rgba(0,0,0,0.1);
       align-items: center; justify-content: center;
-      cursor: pointer; font-size: 18px; color: #10042c; line-height: 1;
+      cursor: pointer; color: #10042c;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -823,7 +823,7 @@
       width: 40px; height: 40px; border-radius: 50%;
       background: white; border: 1px solid rgba(0,0,0,0.1);
       align-items: center; justify-content: center;
-      cursor: pointer; font-size: 18px; color: #10042c; line-height: 1;
+      cursor: pointer; color: #10042c;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -1037,9 +1037,10 @@
       .cs-step-title { font-size: 24px; line-height: 32px; }
       .cs-step-body { font-size: 18px; line-height: 28px; }
       .cs-step-list li { font-size: 16px; }
-      .cs-new-design { padding: 48px 20px; gap: 32px; }
+      .cs-new-design { padding: 48px 20px; gap: 52px; }
       .cs-new-design-heading { font-size: 32px; }
       .cs-new-design-body { font-size: 18px; line-height: 28px; }
+      .cs-new-design-highlights { margin-top: -16px; }
       .cs-phone-frame { width: 286px; height: 623px; }
       .cs-stat { font-size: 48px; }
       .cs-card-title { font-size: 18px; }
@@ -1072,6 +1073,20 @@
       footer { padding: 48px 20px; }
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+    /* ── New design highlights ── */
+    .cs-new-design-highlights {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .cs-new-design-highlights li {
+      font-size: 16px; font-weight: 300; line-height: 24px;
+      color: rgba(255,255,255,0.65);
+      padding-left: 20px; position: relative;
+    }
+    .cs-new-design-highlights li::before {
+      content: '—'; position: absolute; left: 0;
+      color: rgba(255,255,255,0.30);
     }
   </style>
 </head>
@@ -1159,12 +1174,12 @@
       <p class="cs-body reveal reveal-delay-1">The Food Center was a catch-all section mixing custom food creation actions with a food log summary, a recommended meal plan for the day, and uncontextualized recipe suggestions. Users had no clear idea what the section was actually for.</p>
       <div class="cs-old-design-content">
         <div class="cs-screens-carousel">
-          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide">←</button>
+          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
             <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/pal-old-screen1.png" alt="Old design — Food Center screen 1"></div>
             <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/pal-old-screen2.png" alt="Old design — Food Center screen 2"></div>
           </div>
-          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide">→</button>
+          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <ul class="cs-analysis-list reveal from-right reveal-delay-2">
           <li class="cs-analysis-item">
@@ -1457,6 +1472,11 @@
           <h2 class="cs-new-design-heading">A focused entry point for daily meal decisions</h2>
         </div>
         <p class="cs-new-design-body">The Food Center now opens with the user's remaining calories and proteins for the day. They can create a personalized meal plan based on these metrics, create their own meals or let themselves be tempted by delicious recipes, all tailored to their needs.</p>
+        <ul class="cs-new-design-highlights">
+          <li>Calories &amp; proteins remaining for the day, shown upfront</li>
+          <li>Personalized meal plans built from daily goals</li>
+          <li>Recipes and custom meals tailored to individual needs</li>
+        </ul>
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-2">
         <video class="cs-phone-video" autoplay loop muted playsinline>
@@ -1499,7 +1519,7 @@
       </div>
       <p class="cs-body-grey reveal reveal-delay-1">Following the Food Center success, I worked on a new onboarding tutorial to better explain the structure of the app and drive users toward the section. The main goal was to capitalize on the positive metrics generated by the new Food Center by increasing its visibility, while improving onboarding clarity for first-time users.</p>
       <div class="cs-carousel-wrapper">
-        <button class="cs-carousel-btn cs-carousel-prev" aria-label="Previous slide">←</button>
+        <button class="cs-carousel-btn cs-carousel-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="cs-extending-phones reveal reveal-delay-2" id="extending-carousel">
           <div class="cs-ext-phone">
             <img src="assets/pal-onboard-1.webp" alt="Onboarding — Welcome">
@@ -1514,7 +1534,7 @@
             <img src="assets/pal-onboard-4.webp" alt="Onboarding — Food Center">
           </div>
         </div>
-        <button class="cs-carousel-btn cs-carousel-next" aria-label="Next slide">→</button>
+        <button class="cs-carousel-btn cs-carousel-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
       <div class="cs-extending-stat reveal reveal-delay-3">
         <div class="cs-extending-stat-card">

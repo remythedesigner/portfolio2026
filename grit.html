@@ -297,7 +297,7 @@
       flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
       background: white; border: 1px solid rgba(0,0,0,0.1);
       align-items: center; justify-content: center;
-      cursor: pointer; font-size: 18px; color: #10042c; line-height: 1;
+      cursor: pointer; color: #10042c;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -1029,15 +1029,30 @@
       .cs-step-title { font-size: 24px; line-height: 32px; }
       .cs-step-body { font-size: 18px; line-height: 28px; }
       .cs-step-list li { font-size: 16px; }
-      .cs-new-design { padding: 48px 20px; gap: 32px; }
+      .cs-new-design { padding: 48px 20px; gap: 52px; }
       .cs-new-design-heading { font-size: 32px; }
       .cs-new-design-body { font-size: 18px; line-height: 28px; }
+      .cs-new-design-highlights { margin-top: -16px; }
       .cs-phone-frame { width: 286px; height: 623px; }
       .cs-stat { font-size: 48px; }
       .cs-card-title { font-size: 18px; }
       footer { padding: 48px 20px; }
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+    /* ── New design highlights ── */
+    .cs-new-design-highlights {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .cs-new-design-highlights li {
+      font-size: 16px; font-weight: 300; line-height: 24px;
+      color: rgba(255,255,255,0.65);
+      padding-left: 20px; position: relative;
+    }
+    .cs-new-design-highlights li::before {
+      content: '—'; position: absolute; left: 0;
+      color: rgba(255,255,255,0.30);
     }
   </style>
 </head>
@@ -1125,12 +1140,12 @@
       <p class="cs-body reveal reveal-delay-1">Users were confronted with a list of 13 settings options all before a single action was done. While core users appreciated the level of customization, new users felt overwhelmed by the number of options. The app's UI was satisfying and was not considered a priority.</p>
       <div class="cs-old-design-content">
         <div class="cs-screens-carousel">
-          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide">←</button>
+          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
             <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/grit-old-screen1.png" alt="Old design — habit creation"></div>
             <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/grit-old-screen2.png" alt="Old design — task settings"></div>
           </div>
-          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide">→</button>
+          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <ul class="cs-analysis-list reveal from-right reveal-delay-3">
           <li class="cs-analysis-item">
@@ -1448,6 +1463,12 @@
           <h2 class="cs-new-design-heading">One field to rule them all</h2>
         </div>
         <p class="cs-new-design-body">With a single action, users can set up their core settings in a smooth, progressive and natural way.<br>By minimizing friction, the new design allows users to focus on what matters most: improving their habits.</p>
+        <ul class="cs-new-design-highlights">
+          <li>Single text input for instant habit creation</li>
+          <li>Smart recognition auto-fills type, icon and frequency</li>
+          <li>Live preview reflects every setting change in real time</li>
+          <li>Advanced options revealed progressively, nothing removed</li>
+        </ul>
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-2">
         <video class="cs-phone-video" autoplay loop muted playsinline>

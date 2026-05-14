@@ -299,7 +299,7 @@
       flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
       background: white; border: 1px solid rgba(0,0,0,0.1);
       align-items: center; justify-content: center;
-      cursor: pointer; font-size: 18px; color: #10042c; line-height: 1;
+      cursor: pointer; color: #10042c;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -800,15 +800,30 @@
       .cs-step-list li { font-size: 16px; }
       .ctk-persona-card { width: 100%; }
       .ctk-persona-cards { width: 100%; }
-      .cs-new-design { padding: 48px 20px; gap: 32px; }
+      .cs-new-design { padding: 48px 20px; gap: 52px; }
       .cs-new-design-heading { font-size: 32px; }
       .cs-new-design-body { font-size: 18px; line-height: 28px; }
+      .cs-new-design-highlights { margin-top: -16px; }
       .cs-phone-frame { width: 286px; height: 623px; }
       .cs-stat { font-size: 48px; }
       .cs-card-title { font-size: 18px; }
       footer { padding: 48px 20px; }
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+    /* ── New design highlights ── */
+    .cs-new-design-highlights {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .cs-new-design-highlights li {
+      font-size: 16px; font-weight: 300; line-height: 24px;
+      color: rgba(255,255,255,0.65);
+      padding-left: 20px; position: relative;
+    }
+    .cs-new-design-highlights li::before {
+      content: '—'; position: absolute; left: 0;
+      color: rgba(255,255,255,0.30);
     }
   </style>
 </head>
@@ -896,12 +911,12 @@
       <p class="cs-body reveal reveal-delay-1">The onboarding collected basic user data, but that was not enough to identify the user's profile and adapt the experience. Almost every user landed on the same beginner plan, regardless of why they were there or how fit they were.</p>
       <div class="cs-old-design-content">
         <div class="cs-screens-carousel">
-          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide">←</button>
+          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
             <div class="cs-screen-slide"><img class="ctk-screen-img" src="assets/ctk-old-screen1.png" alt="Old design — screen 1" style="width:299px; height:650px;"></div>
             <div class="cs-screen-slide"><img class="ctk-screen-img" src="assets/ctk-old-screen2.png" alt="Old design — screen 2" style="width:297px; height:648px;"></div>
           </div>
-          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide">→</button>
+          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <ul class="cs-analysis-list reveal from-right reveal-delay-3">
           <li class="cs-analysis-item">
@@ -1096,6 +1111,11 @@
           <h2 class="cs-new-design-heading">An onboarding experience tailored to users</h2>
         </div>
         <p class="cs-new-design-body">Based on user responses, the flow now branches into tailored paths, allowing us to ask more relevant questions, provide more personalized content and generate a plan that better fits each individual's needs, which is especially important for beginners with specific health or fitness concerns.</p>
+        <ul class="cs-new-design-highlights">
+          <li>Flow branches based on stated goals, no generic path</li>
+          <li>Dynamic content and UX writing personalized per user</li>
+          <li>Safe Start Program for users with health constraints</li>
+        </ul>
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-2">
         <video style="width:100%;height:100%;object-fit:cover;display:block;" autoplay loop muted playsinline>
