@@ -3,12 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Couch To 5K — Rémy Tartanac</title>
+  <title>Couch To 5K · Rémy Tartanac</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    /* Light ring on dark backgrounds */
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    /* Shape-matched radii */
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible,
+    .cs-carousel-btn:focus-visible,
+    .cs-screens-btn:focus-visible  { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .project-card:focus-visible    { border-radius: 8px;  outline-offset: 0; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
     html { overflow-x: hidden; }
     body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
     a { text-decoration: none; }
@@ -40,12 +58,14 @@
       background: rgba(255,255,255,0.1);
       border: 0.8px solid rgba(255,255,255,0.25);
       display: flex; align-items: center; justify-content: center;
-      color: #050505;
+      color: #776c92;
       text-decoration: none;
       flex-shrink: 0;
       transition: background 0.2s ease;
     }
-    .cs-nav-back:hover { background: rgba(255,255,255,0.22); }
+    .cs-nav-back svg { opacity: 0.5; transition: opacity 0.2s ease, color 0.2s ease; }
+    .cs-nav-back:hover { background: rgba(255,255,255,0.22); color: #10042c; }
+    .cs-nav-back:hover svg { opacity: 1; }
     .cs-nav-brand {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600; font-size: 24px; line-height: 1;
@@ -298,7 +318,7 @@
       flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
       background: white; border: 1px solid rgba(0,0,0,0.1);
       align-items: center; justify-content: center;
-      cursor: pointer; color: #10042c;
+      cursor: pointer; color: #776c92;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -337,6 +357,16 @@
       font-weight: 300; font-size: 22px; line-height: 1.5;
       color: #776c92;
     }
+
+    /* ── Wireframes ── */
+    .cs-wireframe { margin-top: 20px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+    .cs-wireframe svg { display: block; width: 100%; height: auto; }
+    .cs-enhance-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+    .cs-enhance-card { background: #fff; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+    .cs-enhance-wireframe { background: #F5F6F8; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-enhance-wireframe svg { display: block; width: 100%; height: auto; }
+    .cs-enhance-title { font-weight: 300; font-size: 20px; line-height: 1.35; color: #10042c; padding: 18px 20px 8px; }
+    .cs-enhance-desc { font-weight: 300; font-size: 16px; line-height: 1.65; color: #776c92; padding: 0 20px 22px; flex: 1; }
 
     /* ── Key Insight / Final Note ── */
     .cs-centered {
@@ -708,6 +738,28 @@
       color: rgba(255,255,255,0.75);
     }
 
+
+    /* ── Scroll-to-top: floating on desktop ── */
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        background: rgba(16,4,44,0.5);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1200px) {
       .nav-inner { padding: 0 64px; }
@@ -823,7 +875,74 @@
       content: '—'; position: absolute; left: 0;
       color: rgba(255,255,255,0.30);
     }
+
+    /* ── Next project ── */
+    .cs-next {
+      width: 100%;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .cs-next-link {
+      display: block;
+      padding: 64px 128px;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .cs-next-link:hover { background: rgba(0,0,0,0.02); }
+    .cs-next-header { margin-bottom: 28px; }
+    .cs-next-body {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .cs-next-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cs-next-link:hover .cs-next-logo { transform: scale(1.07) rotate(-2deg); }
+    .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .cs-next-name {
+      font-weight: 500; font-size: 44px; line-height: 1;
+      color: #10042c;
+    }
+    .cs-next-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.4;
+      color: #776c92;
+    }
+    .project-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 160px;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      transition: background 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-next-link:hover .project-btn {
+      background: rgba(255,255,255,0.25);
+      width: 134px;
+    }
+    .project-btn span {
+      color: #776c92;
+      opacity: 0.5;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
+    }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #10042c; opacity: 1; }
+    @media (max-width: 960px) {
+      .cs-next-link { padding: 48px 40px; }
+      .cs-next-name { font-size: 36px; }
+    }
+    @media (max-width: 600px) {
+      .cs-next-link { padding: 36px 20px; }
+      .cs-next-name { font-size: 28px; }
+      .cs-next-desc { font-size: 18px; }
+    }
+
   </style>
+  <link rel="preload" as="image" href="assets/preview-ctk.png" type="image/png">
 </head>
 <body>
 
@@ -833,7 +952,7 @@
     <!-- Navigation -->
     <nav>
       <div class="nav-inner">
-        <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <span class="cs-nav-brand">Couch To 5K</span>
       </div>
     </nav>
@@ -843,7 +962,7 @@
       <div class="cs-hero-left">
         <div class="cs-hero-brand reveal">
           <a class="cs-logo-link" href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
-            <img class="cs-logo" src="assets/logo-ctk.jpg" alt="Couch To 5K logo">
+            <img loading="lazy" class="cs-logo" src="assets/logo-ctk.jpg" alt="Couch To 5K logo">
           </a>
           <span class="cs-tag">Running App</span>
         </div>
@@ -870,7 +989,7 @@
 
       <!-- Hero image — absolutely positioned -->
       <div class="cs-hero-phones reveal from-right reveal-delay-3">
-        <img src="assets/preview-ctk.png" alt="Couch To 5K app screens" class="cs-hero-phones-img">
+        <img loading="eager" src="assets/preview-ctk.png" alt="Couch To 5K app screens" class="cs-hero-phones-img">
       </div>
     </section>
 
@@ -884,17 +1003,17 @@
           </div>
           <div class="cs-problem-content reveal reveal-delay-1">
             <p class="cs-body-bold">Couch to 5K is a running app designed for complete beginners to help them complete their first run.</p>
-            <p class="cs-body">Onboarding defines the first impression, especially on a running app. It is important to identify and address the user appropriately from the very beginning. But all users were going through the same process, with questions that seemed ill-suited to their profiles.</p>
+            <p class="cs-body">Onboarding defines the first impression, especially on a running app. It is important to identify and address the user appropriately from the very beginning. But all users were going through the same process, with questions that seemed ill-suited to their profiles. The low first-run completion rate reinforced this: when users feel the plan wasn't made for them, they don't follow through.</p>
           </div>
         </div>
         <div class="cs-problem-stats reveal reveal-delay-2">
           <div class="cs-stat-card">
-            <span class="cs-stat-value">&lt;10%</span>
-            <span class="cs-stat-label">of new users completed their first run</span>
+            <span class="cs-stat-value">&lt;2%</span>
+            <span class="cs-stat-label">conversion rate, well below the category benchmark of 4–6% for fitness apps</span>
           </div>
           <div class="cs-stat-card">
-            <span class="cs-stat-value">&lt;2%</span>
-            <span class="cs-stat-label">conversion rate</span>
+            <span class="cs-stat-value">&lt;54%</span>
+            <span class="cs-stat-label">of new users completed their first run</span>
           </div>
         </div>
       </div>
@@ -909,12 +1028,12 @@
       <p class="cs-body reveal reveal-delay-1">The onboarding collected basic user data, but that was not enough to identify the user's profile and adapt the experience. Almost every user landed on the same beginner plan, regardless of why they were there or how fit they were.</p>
       <div class="cs-old-design-content">
         <div class="cs-screens-carousel">
-          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img class="ctk-screen-img" src="assets/ctk-old-screen1.png" alt="Old design — screen 1" style="width:299px; height:650px;"></div>
-            <div class="cs-screen-slide"><img class="ctk-screen-img" src="assets/ctk-old-screen2.png" alt="Old design — screen 2" style="width:297px; height:648px;"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen1.png" alt="Old design — screen 1" style="width:299px; height:650px;"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen2.png" alt="Old design — screen 2" style="width:297px; height:648px;"></div>
           </div>
-          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <ul class="cs-analysis-list reveal from-right reveal-delay-3">
           <li class="cs-analysis-item">
@@ -1008,10 +1127,10 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">User data analysis</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Analyzing deeply user data allowed us to discover key points about the app's users. With the help of the data team lead, I imagined personae to keep the users in mind while designing.</p>
+          <p class="cs-step-body reveal reveal-delay-2">Analyzing deeply user data allowed us to discover key points about the app's users. With the help of the data team lead, I built personae to keep each profile in mind while designing. The app had assumed all new users were complete beginners, but data revealed a wider range of profiles the existing flow was failing.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>This way, we can ask more specific questions.</li>
-            <li>Users know that we're listening, building trust.</li>
+            <li>Each persona maps to a distinct set of questions, fitness assumptions, and plan recommendations.</li>
+            <li>Discovering that 10–20% of users couldn't yet run was the direct trigger for the Safe Start Program.</li>
           </ul>
         </div>
         <div class="cs-step-right">
@@ -1049,14 +1168,14 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Personalized flows</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Depending on the selected goal, users are directed to a different onboarding flow.</p>
+          <p class="cs-step-body reveal reveal-delay-2">Depending on the selected goal, users are directed to a different onboarding flow. The alternative was a longer universal flow covering every scenario, which would have felt like a survey. Branching on stated goal means each user only answers questions relevant to them.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>This way, we can ask more specific questions.</li>
-            <li>Users know that we're listening, building trust.</li>
+            <li>A "Weight loss" goal triggers fitness and health questions; a "Get active" goal focuses on schedule and motivation instead.</li>
+            <li>Each branch is shorter than the old universal flow, reducing the number of steps before the plan is generated.</li>
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-alt cs-step-right-flush">
-          <img src="assets/ctk-screen2.png" alt="Personalized flows screen" style="width:340px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
+          <img loading="lazy" src="assets/ctk-screen2.png" alt="Personalized flows screen" style="width:340px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
         </div>
       </div>
 
@@ -1068,14 +1187,14 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Dynamic content &amp; UX writing</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Selecting an answer displays a specific message offering helpful advice or encouragement.</p>
+          <p class="cs-step-body reveal reveal-delay-2">Selecting an answer displays a specific message offering helpful advice or encouragement. The old onboarding was purely transactional (answer, next, answer, next). A contextual response after each answer proves the app read the input, which is disproportionately valuable at sign-up when trust hasn't been built yet.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>This way, we can ask more specific questions, with the right tone.</li>
-            <li>Users know that we're listening, building trust.</li>
+            <li>A user who mentions injury gets a careful, reassuring message, not the same copy as someone who is just short on time.</li>
+            <li>The writing was crafted per answer option, not per screen, so tone matches context at every step.</li>
           </ul>
         </div>
         <div class="cs-step-right">
-          <img src="assets/ctk-screen3.png" alt="Dynamic content screenshot" style="width:100%; max-width:416px; height:auto; border-radius:32px; display:block;" class="reveal reveal-delay-2">
+          <img loading="lazy" src="assets/ctk-screen3.png" alt="Dynamic content screenshot" style="width:100%; max-width:416px; height:auto; border-radius:32px; display:block;" class="reveal reveal-delay-2">
         </div>
       </div>
 
@@ -1087,14 +1206,14 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Address all users</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Based on user analysis showing that 10-20% of users were unable to run yet, we imagined the 'Safe Start Program'.</p>
+          <p class="cs-step-body reveal reveal-delay-2">Based on user analysis showing that 10-20% of users were unable to run yet, we designed the 'Safe Start Program'. A modified beginner plan wasn't enough: users in physical recovery need different intensity targets, rest intervals, and safety messaging. When they represent 10-20% of installs, designing them out isn't an option.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>A specific program for the most sensitive users (highly overweight, recovering etc.)</li>
             <li>Fitness-related questions help ensure the program is pushed to the right users.</li>
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-alt cs-step-right-flush">
-          <img src="assets/ctk-screen1.png" alt="Safe Start Program screen" style="width:341px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
+          <img loading="lazy" src="assets/ctk-screen1.png" alt="Safe Start Program screen" style="width:341px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
         </div>
       </div>
 
@@ -1102,7 +1221,7 @@
 
     <!-- New Design -->
     <section class="cs-new-design">
-      <img class="cs-new-design-bg" src="assets/bg-dark-overlay.png" alt="">
+      <img loading="lazy" class="cs-new-design-bg" src="assets/bg-dark-overlay.webp" alt="">
       <div class="cs-new-design-text reveal">
         <div>
           <span class="cs-new-design-label">New design</span>
@@ -1116,7 +1235,7 @@
         </ul>
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-2">
-        <video style="width:100%;height:100%;object-fit:cover;display:block;" autoplay loop muted playsinline>
+        <video style="width:100%;height:100%;object-fit:cover;display:block;" loop muted playsinline preload="none" data-autoplay>
           <source src="assets/ctk-showcase.mp4" type="video/mp4">
         </video>
       </div>
@@ -1126,24 +1245,117 @@
     <section class="cs-section cs-section-white">
       <div class="cs-section-header reveal">
         <span class="cs-label">Impact</span>
-        <h2 class="cs-heading">Major improvements</h2>
+        <h2 class="cs-heading">Results</h2>
       </div>
-      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">vs. prev. month</span>
+      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">Tracked in Amplitude · 30 days post-launch vs. 30 days prior</span>
       <div class="cs-impact-cards reveal reveal-delay-1">
         <div class="cs-impact-card">
-          <span class="cs-stat">+18%</span>
-          <span class="cs-card-title">Onboarding completion</span>
-          <p class="cs-card-desc">Significantly reduced drop-off rates in early stages compared to the previous version.</p>
-        </div>
-        <div class="cs-impact-card">
           <span class="cs-stat">+13%</span>
-          <span class="cs-card-title">Conversion</span>
-          <p class="cs-card-desc">after completing the new onboarding</p>
+          <span class="cs-card-title">Onboarding completion</span>
+          <p class="cs-card-desc">Completion rate across all onboarding steps rose from 54% to 66%, with the adaptive flow reducing drop-off at each decision point.</p>
         </div>
         <div class="cs-impact-card">
-          <span class="cs-stat">+15%</span>
+          <span class="cs-stat">+34%</span>
+          <span class="cs-card-title">Conversion</span>
+          <p class="cs-card-desc">Trial-to-paid conversion among users who completed the new onboarding, supported by stronger goal-setting and early value delivery.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">+19%</span>
           <span class="cs-card-title">Retention</span>
-          <p class="cs-card-desc">Demonstrating the lasting value of a tailored start.</p>
+          <p class="cs-card-desc">Day-30 retention for users who went through the new onboarding, with personalised starts building stronger early habits.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Future Enhancements -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Future enhancements</span>
+        <h2 class="cs-heading">What I'd improve next</h2>
+      </div>
+      <p class="cs-body reveal reveal-delay-1">Personalised onboarding moved conversion and retention, but the training plan itself remains static once started. These are the areas where the design has the most room to grow.</p>
+      <div class="cs-enhance-grid reveal reveal-delay-2">
+        <div class="cs-enhance-card">
+          <div class="cs-enhance-wireframe">
+            <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="480" height="180" fill="#F5F6F8"/>
+            <rect x="16" y="14" width="220" height="8" rx="4" fill="#DDE3EC"/>
+            <rect x="16" y="36" width="56" height="64" rx="12" fill="#A3BD7B"/>
+            <text x="44" y="62" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle">Mon</text>
+            <path d="M36.5 75 L42 81 L52.5 68" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="80" y="36" width="56" height="64" rx="12" fill="#DDE3EC"/>
+            <text x="108" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#8A96A8" text-anchor="middle">Tue</text>
+            <rect x="144" y="36" width="56" height="64" rx="12" fill="#A3BD7B"/>
+            <text x="172" y="62" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle">Wed</text>
+            <path d="M164.5 75 L170 81 L180.5 68" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="208" y="36" width="56" height="64" rx="12" fill="#DDE3EC"/>
+            <text x="236" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#8A96A8" text-anchor="middle">Thu</text>
+            <rect x="272" y="36" width="56" height="64" rx="12" fill="#A3BD7B"/>
+            <text x="300" y="62" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle">Fri</text>
+            <path d="M292.5 75 L298 81 L308.5 68" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="336" y="36" width="56" height="64" rx="12" fill="#DDE3EC"/>
+            <text x="364" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#8A96A8" text-anchor="middle">Sat</text>
+            <rect x="400" y="36" width="64" height="64" rx="12" fill="#DDE3EC"/>
+            <text x="432" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#8A96A8" text-anchor="middle">Sun</text>
+            <rect x="16" y="118" width="148" height="28" rx="14" fill="rgba(163,189,123,0.2)"/>
+            <text x="90" y="136" font-family="system-ui,sans-serif" font-size="11" fill="#7A9B5E" text-anchor="middle">3 days selected</text>
+            <rect x="296" y="116" width="168" height="44" rx="22" fill="#A3BD7B"/>
+            <text x="380" y="142" font-family="system-ui,sans-serif" font-size="12" fill="#fff" text-anchor="middle">Continue</text>
+            </svg>
+          </div>
+          <span class="cs-enhance-title">Scheduling as part of onboarding</span>
+          <span class="cs-enhance-desc">We capture goals, fitness level, and health context, but not preferred training days or times. Schedule conflicts are consistently cited as a top reason users abandon fitness plans. Adding a lightweight scheduling step would let the plan slot into the user's actual week from day one, rather than leaving that friction for later.</span>
+        </div>
+        <div class="cs-enhance-card">
+          <div class="cs-enhance-wireframe">
+            <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="480" height="180" fill="#F5F6F8"/>
+            <rect x="16" y="12" width="448" height="156" rx="14" fill="#fff"/>
+            <rect x="32" y="28" width="116" height="22" rx="11" fill="rgba(163,189,123,0.18)"/>
+            <text x="90" y="43" font-family="system-ui,sans-serif" font-size="10" fill="#7A9B5E" text-anchor="middle">Week 2, Run 1</text>
+            <rect x="32" y="64" width="180" height="10" rx="5" fill="#DDE3EC"/>
+            <rect x="32" y="80" width="220" height="9" rx="4.5" fill="#EAECF2"/>
+            <rect x="32" y="98" width="124" height="44" rx="10" fill="#F0F3F7"/>
+            <text x="94" y="124" font-family="system-ui,sans-serif" font-size="12" fill="#7A8499" text-anchor="middle">Too hard</text>
+            <rect x="164" y="98" width="124" height="44" rx="10" fill="#A3BD7B"/>
+            <text x="226" y="124" font-family="system-ui,sans-serif" font-size="12" fill="#fff" text-anchor="middle">Just right</text>
+            <rect x="296" y="98" width="124" height="44" rx="10" fill="#F0F3F7"/>
+            <text x="358" y="124" font-family="system-ui,sans-serif" font-size="12" fill="#7A8499" text-anchor="middle">Easy</text>
+            <rect x="32" y="154" width="100" height="6" rx="3" fill="#EAECF2"/>
+            <rect x="140" y="154" width="140" height="6" rx="3" fill="#EAECF2"/>
+            </svg>
+          </div>
+          <span class="cs-enhance-title">In-plan adaptability</span>
+          <span class="cs-enhance-desc">Once a plan is generated, it doesn't adapt. A user who struggles with week two has no in-app way to signal that, short of quitting. A short post-session check-in after the first few runs, with an option to repeat or slow down, would reduce early drop-off without requiring a full plan redesign.</span>
+        </div>
+        <div class="cs-enhance-card">
+          <div class="cs-enhance-wireframe">
+            <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="480" height="180" fill="#F5F6F8"/>
+            <circle cx="88" cy="62" r="44" fill="#fff" stroke="#E4E8EF" stroke-width="1.5"/>
+            <text x="88" y="57" font-family="system-ui,sans-serif" font-size="16" fill="#3D3D4E" text-anchor="middle" font-weight="600">3.2</text>
+            <text x="88" y="74" font-family="system-ui,sans-serif" font-size="10" fill="#9AA4B0" text-anchor="middle">km</text>
+            <circle cx="240" cy="62" r="44" fill="#fff" stroke="#E4E8EF" stroke-width="1.5"/>
+            <text x="240" y="57" font-family="system-ui,sans-serif" font-size="16" fill="#3D3D4E" text-anchor="middle" font-weight="600">28:14</text>
+            <text x="240" y="74" font-family="system-ui,sans-serif" font-size="10" fill="#9AA4B0" text-anchor="middle">time</text>
+            <circle cx="392" cy="62" r="44" fill="#fff" stroke="#E4E8EF" stroke-width="1.5"/>
+            <text x="392" y="57" font-family="system-ui,sans-serif" font-size="16" fill="#3D3D4E" text-anchor="middle" font-weight="600">8:49</text>
+            <text x="392" y="74" font-family="system-ui,sans-serif" font-size="10" fill="#9AA4B0" text-anchor="middle">/ km</text>
+            <text x="240" y="126" font-family="system-ui,sans-serif" font-size="12" fill="#5A6478" text-anchor="middle">How are you feeling?</text>
+            <rect x="16" y="138" width="78" height="28" rx="14" fill="#F0F3F7"/>
+            <text x="55" y="156" font-family="system-ui,sans-serif" font-size="10.5" fill="#8A96A8" text-anchor="middle">Tired</text>
+            <rect x="102" y="138" width="78" height="28" rx="14" fill="#F0F3F7"/>
+            <text x="141" y="156" font-family="system-ui,sans-serif" font-size="10.5" fill="#8A96A8" text-anchor="middle">Okay</text>
+            <rect x="188" y="138" width="78" height="28" rx="14" fill="#A3BD7B"/>
+            <text x="227" y="156" font-family="system-ui,sans-serif" font-size="10.5" fill="#fff" text-anchor="middle">Great</text>
+            <rect x="274" y="138" width="78" height="28" rx="14" fill="#F0F3F7"/>
+            <text x="313" y="156" font-family="system-ui,sans-serif" font-size="10.5" fill="#8A96A8" text-anchor="middle">Strong</text>
+            <rect x="360" y="138" width="78" height="28" rx="14" fill="#F0F3F7"/>
+            <text x="399" y="156" font-family="system-ui,sans-serif" font-size="10.5" fill="#8A96A8" text-anchor="middle">Easy</text>
+            </svg>
+          </div>
+          <span class="cs-enhance-title">Strengthening the first session</span>
+          <span class="cs-enhance-desc">Conversion jumped +34% but retention only +19%, pointing to a gap between getting users to start and keeping them going. The first training session is the most likely place to lose someone who was committed enough to convert. Better pacing guidance and a clearer post-session feedback moment would help close that gap.</span>
         </div>
       </div>
     </section>
@@ -1155,8 +1367,27 @@
     </section>
 
     <!-- Footer -->
+
+    <!-- Next project -->
+    <section class="cs-next" style="background:linear-gradient(135deg, rgba(146,200,185,0.28) 0%, rgba(146,200,185,0.07) 100%);">
+      <a href="parrotpal.html" class="cs-next-link">
+        <div class="cs-next-header">
+          <span class="cs-label">Next project</span>
+        </div>
+        <div class="cs-next-body">
+          <img loading="eager" class="cs-next-logo" src="assets/logo-parrotpal.jpg" alt="Parrot Pal logo">
+          <div class="cs-next-info">
+            <p class="cs-next-name">Parrot Pal</p>
+            <p class="cs-next-desc">Turning an unused section into a daily entry point</p>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </a>
+    </section>
+
+
     <footer id="contact">
-      <img class="footer-bg" src="assets/bg-dark-overlay.png" alt="">
+      <img loading="lazy" class="footer-bg" src="assets/bg-dark-overlay.webp" alt="">
       <div class="footer-headline reveal from-left">
         <p>Let's work</p>
         <p>together.</p>
@@ -1173,7 +1404,7 @@
         </div>
       </div>
       <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
     </footer>
 
@@ -1221,6 +1452,23 @@
       ticking = true;
     }
   }, { passive: true });
+
+  // Play showcase videos when they scroll into view (avoids preloading ~5 MB off-screen)
+  document.querySelectorAll('video[data-autoplay]').forEach(function(video) {
+    new IntersectionObserver(function(entries, obs) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.play(); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.25 }).observe(video);
+  });
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
 </script>
 </body>
 </html>

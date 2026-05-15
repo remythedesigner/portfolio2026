@@ -3,12 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rémy Tartanac — Product Designer</title>
+  <title>Rémy Tartanac · Product Designer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    /* Light ring on dark backgrounds */
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    /* Shape-matched radii */
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible,
+    .cs-carousel-btn:focus-visible,
+    .cs-screens-btn:focus-visible  { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .project-card:focus-visible    { border-radius: 8px;  outline-offset: 0; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
     html { overflow-x: hidden; }
     body { font-family: 'Cormorant Garamond', Georgia, serif; background: #e6e0f2; overflow-x: hidden; }
     a { text-decoration: none; }
@@ -346,11 +364,12 @@
       width: 134px;
     }
     .project-btn span {
-      color: #050505;
+      color: #776c92;
+      opacity: 0.5;
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
     }
-    .project-card:hover .project-btn span { transform: translateX(4px); }
+    .project-card:hover .project-btn span { transform: translateX(4px); color: #10042c; opacity: 1; }
 
     /* ── Project stat badge ── */
     .project-stat {
@@ -368,7 +387,7 @@
     }
     .project-stat-num {
       font-weight: 600;
-      font-size: 20px;
+      font-size: 26px;
       line-height: 1;
     }
     .project-stat-label {
@@ -378,6 +397,15 @@
       letter-spacing: 1.2px;
       text-transform: uppercase;
       color: #776c92;
+    }
+    .project-stat-context {
+      font-weight: 400;
+      font-size: 9px;
+      line-height: 1;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      color: rgba(119,108,146,0.55);
+      margin-top: 1px;
     }
 
     /* ── Card preview image ── */
@@ -644,6 +672,28 @@
       color: rgba(255,255,255,0.75);
     }
 
+
+    /* ── Scroll-to-top: floating on desktop ── */
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        background: rgba(16,4,44,0.5);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1399px) {
       .personal { gap: 40px; flex-direction: column; align-items: flex-start; }
@@ -713,7 +763,7 @@
       .project-card-body { padding: 32px 20px; gap: 28px; }
       .project-btn { width: 48px; height: 48px; }
       .project-card:hover .project-btn { width: 96px; }
-      .project-btn span { color: #050505; }
+      .project-btn span { color: #776c92; }
       .project-title { font-size: 24px; line-height: 32px; }
       .project-desc { font-size: 18px; }
       .project-stat-num { font-size: 18px; }
@@ -813,11 +863,12 @@
           <div class="project-card-top">
             <div class="project-card-header">
               <div class="project-logo">
-                <img src="assets/logo-parrotpal.jpg" alt="ParrotPal">
+                <img loading="lazy" src="assets/logo-parrotpal.jpg" alt="ParrotPal">
               </div>
               <div class="project-stat">
-                <span class="project-stat-num" style="color:#68bea6;">+18%</span>
+                <span class="project-stat-num" style="color:#68bea6;">+22%</span>
                 <span class="project-stat-label">return rate</span>
+                <span class="project-stat-context">after redesign</span>
               </div>
             </div>
             <div class="project-content">
@@ -825,9 +876,9 @@
               <p class="project-desc">Refocused the section around the main added value: help users cook according to their needs.</p>
             </div>
           </div>
-          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img class="project-card-preview" src="assets/preview-parrotpal.png" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview" src="assets/preview-parrotpal.png" alt="" aria-hidden="true">
       </a>
 
       <!-- Grit -->
@@ -837,11 +888,12 @@
           <div class="project-card-top">
             <div class="project-card-header">
               <div class="project-logo">
-                <img src="assets/logo-grit.jpg" alt="Grit">
+                <img loading="lazy" src="assets/logo-grit.jpg" alt="Grit">
               </div>
               <div class="project-stat">
                 <span class="project-stat-num" style="color:#3b82f6;">+25%</span>
                 <span class="project-stat-label">habit completion</span>
+                <span class="project-stat-context">after redesign</span>
               </div>
             </div>
             <div class="project-content">
@@ -849,9 +901,9 @@
               <p class="project-desc">Limited manual actions through a smart text field that recognizes and pre-configures key settings.</p>
             </div>
           </div>
-          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img class="project-card-preview" src="assets/grit-hero-phones.webp" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview" src="assets/grit-hero-phones.webp" alt="" aria-hidden="true">
       </a>
 
       <!-- PepTalk -->
@@ -861,11 +913,12 @@
           <div class="project-card-top">
             <div class="project-card-header">
               <div class="project-logo">
-                <img src="assets/logo-peptalk.jpg" alt="PepTalk">
+                <img loading="lazy" src="assets/logo-peptalk.jpg" alt="PepTalk">
               </div>
               <div class="project-stat">
-                <span class="project-stat-num" style="color:#ff476c;">+17%</span>
-                <span class="project-stat-label">return rate</span>
+                <span class="project-stat-num" style="color:#ff476c;">+16%</span>
+                <span class="project-stat-label">conversion to premium</span>
+                <span class="project-stat-context">after redesign</span>
               </div>
             </div>
             <div class="project-content">
@@ -873,9 +926,9 @@
               <p class="project-desc">Reframed an outdated AI feature as a guided, content-driven experience.</p>
             </div>
           </div>
-          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img class="project-card-preview" src="assets/preview-peptalk.png" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview" src="assets/preview-peptalk.png" alt="" aria-hidden="true">
       </a>
 
       <!-- Couch to 5K -->
@@ -885,11 +938,12 @@
           <div class="project-card-top">
             <div class="project-card-header">
               <div class="project-logo-ctk">
-                <img src="assets/logo-ctk.jpg" alt="Couch to 5K">
+                <img loading="lazy" src="assets/logo-ctk.jpg" alt="Couch to 5K">
               </div>
               <div class="project-stat">
-                <span class="project-stat-num" style="color:#a3bd7b;">+18%</span>
+                <span class="project-stat-num" style="color:#a3bd7b;">+13%</span>
                 <span class="project-stat-label">onboarding completion</span>
+                <span class="project-stat-context">after redesign</span>
               </div>
             </div>
             <div class="project-content">
@@ -897,9 +951,9 @@
               <p class="project-desc">Shifted from a linear onboarding to adaptive flows</p>
             </div>
           </div>
-          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img class="project-card-preview" src="assets/preview-ctk.png" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview" src="assets/preview-ctk.png" alt="" aria-hidden="true">
       </a>
 
     </div><!-- /projects-grid -->
@@ -925,20 +979,20 @@
         </div>
         <div class="about-app-logos">
           <a href="https://apps.apple.com/fr/app/bend-etirements-et-souplesse/id1513988468" target="_blank" rel="noopener">
-            <img class="about-app-logo" src="assets/logo-bend.jpg" alt="Bend logo">
+            <img loading="lazy" class="about-app-logo" src="assets/logo-bend.jpg" alt="Bend logo">
           </a>
           <a href="https://apps.apple.com/fr/app/motivation-daily-peptalk/id976885594" target="_blank" rel="noopener">
-            <img class="about-app-logo" src="assets/logo-peptalk.jpg" alt="PepTalk logo">
+            <img loading="lazy" class="about-app-logo" src="assets/logo-peptalk.jpg" alt="PepTalk logo">
           </a>
           <a href="https://apps.apple.com/fr/app/grit-habitudes-routines-tdah/id6446997766" target="_blank" rel="noopener">
-            <img class="about-app-logo" src="assets/logo-grit.jpg" alt="Grit logo">
+            <img loading="lazy" class="about-app-logo" src="assets/logo-grit.jpg" alt="Grit logo">
           </a>
           <a href="https://apps.apple.com/fr/app/compteur-de-calorie-parrotpal/id6462694790" target="_blank" rel="noopener">
-            <img class="about-app-logo" src="assets/logo-parrotpal.jpg" alt="Parrot Pal logo">
+            <img loading="lazy" class="about-app-logo" src="assets/logo-parrotpal.jpg" alt="Parrot Pal logo">
           </a>
           <a href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
             <div class="about-app-logo-ctk">
-              <img src="assets/logo-ctk.jpg" alt="Couch to 5K logo">
+              <img loading="lazy" src="assets/logo-ctk.jpg" alt="Couch to 5K logo">
             </div>
           </a>
         </div>
@@ -965,7 +1019,7 @@
     <div class="personal">
       <div class="personal-me reveal from-left">
         <div class="personal-avatar">
-          <img src="assets/photo-remy.png" alt="Rémy Tartanac">
+          <img loading="lazy" src="assets/photo-remy.png" alt="Rémy Tartanac">
         </div>
         <div class="personal-left">
           <div class="personal-header">
@@ -1026,7 +1080,7 @@
         </div>
       </div>
       <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
     </footer>
 
@@ -1104,6 +1158,14 @@
     document.addEventListener('DOMContentLoaded', initWave);
   } else {
     initWave();
+  }
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
   }
 </script>
 </body>

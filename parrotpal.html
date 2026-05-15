@@ -3,12 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parrot Pal — Rémy Tartanac</title>
+  <title>Parrot Pal · Rémy Tartanac</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    /* Light ring on dark backgrounds */
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    /* Shape-matched radii */
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible,
+    .cs-carousel-btn:focus-visible,
+    .cs-screens-btn:focus-visible  { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .project-card:focus-visible    { border-radius: 8px;  outline-offset: 0; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
     html { overflow-x: hidden; }
     body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
     a { text-decoration: none; }
@@ -40,12 +58,14 @@
       background: rgba(255, 255, 255, 0.1);
       border: 0.8px solid rgba(255, 255, 255, 0.25);
       display: flex; align-items: center; justify-content: center;
-      color: #050505;
+      color: #776c92;
       text-decoration: none;
       flex-shrink: 0;
       transition: background 0.2s ease;
     }
-    .cs-nav-back:hover { background: rgba(255, 255, 255, 0.22); }
+    .cs-nav-back svg { opacity: 0.5; transition: opacity 0.2s ease, color 0.2s ease; }
+    .cs-nav-back:hover { background: rgba(255, 255, 255, 0.22); color: #10042c; }
+    .cs-nav-back:hover svg { opacity: 1; }
     .cs-nav-brand {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600; font-size: 24px; line-height: 1;
@@ -295,7 +315,7 @@
       flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
       background: white; border: 1px solid rgba(0,0,0,0.1);
       align-items: center; justify-content: center;
-      cursor: pointer; color: #10042c;
+      cursor: pointer; color: #776c92;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -337,6 +357,10 @@
       font-weight: 300; font-size: 22px; line-height: 1.5;
       color: #776c92;
     }
+
+    /* ── Wireframes ── */
+    .cs-wireframe { margin-top: 20px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+    .cs-wireframe svg { display: block; width: 100%; height: auto; }
 
     /* ── Key Insight / Final Note ── */
     .cs-centered {
@@ -822,7 +846,7 @@
       width: 40px; height: 40px; border-radius: 50%;
       background: white; border: 1px solid rgba(0,0,0,0.1);
       align-items: center; justify-content: center;
-      cursor: pointer; color: #10042c;
+      cursor: pointer; color: #776c92;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -913,6 +937,28 @@
     .btn-scroll-top-arrow {
       display: flex; align-items: center; justify-content: center;
       color: rgba(255,255,255,0.75);
+    }
+
+
+    /* ── Scroll-to-top: floating on desktop ── */
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        background: rgba(16,4,44,0.5);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
     }
 
     /* ── Responsive ── */
@@ -1086,7 +1132,74 @@
       content: '—'; position: absolute; left: 0;
       color: rgba(255,255,255,0.30);
     }
+
+    /* ── Next project ── */
+    .cs-next {
+      width: 100%;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .cs-next-link {
+      display: block;
+      padding: 64px 128px;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .cs-next-link:hover { background: rgba(0,0,0,0.02); }
+    .cs-next-header { margin-bottom: 28px; }
+    .cs-next-body {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .cs-next-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cs-next-link:hover .cs-next-logo { transform: scale(1.07) rotate(-2deg); }
+    .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .cs-next-name {
+      font-weight: 500; font-size: 44px; line-height: 1;
+      color: #10042c;
+    }
+    .cs-next-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.4;
+      color: #776c92;
+    }
+    .project-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 160px;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      transition: background 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-next-link:hover .project-btn {
+      background: rgba(255,255,255,0.25);
+      width: 134px;
+    }
+    .project-btn span {
+      color: #776c92;
+      opacity: 0.5;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
+    }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #10042c; opacity: 1; }
+    @media (max-width: 960px) {
+      .cs-next-link { padding: 48px 40px; }
+      .cs-next-name { font-size: 36px; }
+    }
+    @media (max-width: 600px) {
+      .cs-next-link { padding: 36px 20px; }
+      .cs-next-name { font-size: 28px; }
+      .cs-next-desc { font-size: 18px; }
+    }
+
   </style>
+  <link rel="preload" as="image" href="assets/preview-parrotpal-hero.png" type="image/png">
 </head>
 <body>
 
@@ -1096,7 +1209,7 @@
     <!-- Navigation -->
     <nav>
       <div class="nav-inner">
-        <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <span class="cs-nav-brand">Parrot Pal</span>
       </div>
     </nav>
@@ -1106,7 +1219,7 @@
       <div class="cs-hero-left">
         <div class="cs-hero-brand reveal">
           <a class="cs-logo-link" href="https://apps.apple.com/fr/app/compteur-de-calorie-parrotpal/id6462694790" target="_blank" rel="noopener">
-            <img class="cs-logo" src="assets/logo-parrotpal.jpg" alt="ParrotPal logo">
+            <img loading="lazy" class="cs-logo" src="assets/logo-parrotpal.jpg" alt="ParrotPal logo">
           </a>
           <span class="cs-tag">Calorie-Tracking App</span>
         </div>
@@ -1133,7 +1246,7 @@
 
       <!-- Hero image — absolutely positioned -->
       <div class="cs-hero-image reveal from-right reveal-delay-3">
-        <img src="assets/preview-parrotpal-hero.png" alt="Pal app screens">
+        <img loading="eager" src="assets/preview-parrotpal-hero.png" alt="Pal app screens">
       </div>
     </section>
 
@@ -1172,12 +1285,12 @@
       <p class="cs-body reveal reveal-delay-1">The Food Center was a catch-all section mixing custom food creation actions with a food log summary, a recommended meal plan for the day, and uncontextualized recipe suggestions. Users had no clear idea what the section was actually for.</p>
       <div class="cs-old-design-content">
         <div class="cs-screens-carousel">
-          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/pal-old-screen1.png" alt="Old design — Food Center screen 1"></div>
-            <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/pal-old-screen2.png" alt="Old design — Food Center screen 2"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pal-old-screen1.png" alt="Old design — Food Center screen 1"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pal-old-screen2.png" alt="Old design — Food Center screen 2"></div>
           </div>
-          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <ul class="cs-analysis-list reveal from-right reveal-delay-2">
           <li class="cs-analysis-item">
@@ -1316,7 +1429,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Remove noise</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The food log summary was removed from this section.</p>
+          <p class="cs-step-body reveal reveal-delay-2">The food log summary was removed from this section. Keeping it alongside recipe discovery was creating competing jobs-to-be-done: users couldn't tell if the page was for tracking or for cooking.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>It was relocated to the "Today" page, where it naturally belongs.</li>
             <li>This reduced cognitive load and clarified the purpose of the page.</li>
@@ -1352,7 +1465,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Make recommendations relevant</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Recipe suggestions were redesigned around remaining daily calories.</p>
+          <p class="cs-step-body reveal reveal-delay-2">Recipe suggestions were redesigned around remaining daily calories. Generic recipe libraries already exist everywhere. The only data ParrotPal uniquely has is the user's remaining macros for the day, and anchoring suggestions to that turns a commodity feature into something no outside competitor can replicate.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Users now see only recipes that match their remaining daily calories.</li>
             <li>This turns recipe browsing into a personal, actionable tool rather than generic content.</li>
@@ -1406,16 +1519,16 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Redesign the meal plan</h3>
-          <p class="cs-step-body reveal reveal-delay-2">A full daily plan aligned with the user's calorie target.</p>
+          <p class="cs-step-body reveal reveal-delay-2">A full daily plan aligned with the user's calorie target. Individual recipe suggestions create a new decision burden: "what else do I eat today?" A full plan removes that question: one action, full day resolved.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Instead of generic suggestions, users get a coherent plan for the day.</li>
             <li>Meals are ranked in categories: breakfast, lunch, dinner, and snacks.</li>
-            <li>The calorie goals are set by default to match the daily ones, but can be adjusted by the user to achieve specific result.</li>
+            <li>The calorie goals are set by default to match the daily ones, but can be adjusted by the user to achieve specific results.</li>
             <li>When a recipe from the Plan is logged, it automatically updates the Plan's calories and proteins counter.</li>
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-alt cs-step-right-flush reveal from-right" style="padding: 28px 0 0;">
-          <img src="assets/pal-step4.webp" alt="Redesigned meal plan screen" style="display: block; width: 100%; max-width: 360px;">
+          <img loading="lazy" src="assets/pal-step4.webp" alt="Redesigned meal plan screen" style="display: block; width: 100%; max-width: 360px;">
         </div>
       </div>
 
@@ -1427,16 +1540,16 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Improve the recipe experience</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The recipe page was redesigned to be more appealing and easier to browse.</p>
+          <p class="cs-step-body reveal reveal-delay-2">The recipe page was redesigned to be more appealing and easier to browse. Rather than showing every available option, the list is curated and filtered by calorie fit. Too many choices trigger decision fatigue, while a shorter, relevant list makes action more likely.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Better visuals, clearer structure, and stronger hierarchy.</li>
+            <li>Each recipe card leads with a photo, calorie count, and macros, all visible before tapping.</li>
             <li>Limiting the number of recipes to keep only the best ones.</li>
             <li>Like option to save the recipe in a list of favorites.</li>
             <li>The goal was to make recipes feel desirable, not only functional.</li>
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-flush reveal from-right" style="padding: 28px 0 0;">
-          <img src="assets/pal-step5.webp" alt="Improved recipe screen" style="display: block; width: 100%; max-width: 360px;">
+          <img loading="lazy" src="assets/pal-step5.webp" alt="Improved recipe screen" style="display: block; width: 100%; max-width: 360px;">
         </div>
       </div>
 
@@ -1448,14 +1561,14 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Align the UI</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The entire section was redesigned to match the rest of the app and stand out at the same time.</p>
+          <p class="cs-step-body reveal reveal-delay-2">The entire section was redesigned to match the rest of the app and stand out at the same time. An off-brand section signals a forgotten feature, and visual coherence is what tells users this is worth returning to, not just a one-time setup screen.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Consistent components and improved hierarchy.</li>
             <li>Modern UI that fits in with Apple liquid design.</li>
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-alt reveal from-right" style="padding: 28px 0;">
-          <img src="assets/pal-step6.webp" alt="Redesigned Food Center UI" style="display: block; width: 100%; max-width: 360px;">
+          <img loading="lazy" src="assets/pal-step6.webp" alt="Redesigned Food Center UI" style="display: block; width: 100%; max-width: 360px;">
         </div>
       </div>
 
@@ -1463,7 +1576,7 @@
 
     <!-- New Design -->
     <section class="cs-new-design">
-      <img class="cs-new-design-bg" src="assets/bg-dark-overlay.png" alt="">
+      <img loading="lazy" class="cs-new-design-bg" src="assets/bg-dark-overlay.webp" alt="">
       <div class="cs-new-design-text reveal">
         <div>
           <span class="cs-new-design-label">New design</span>
@@ -1477,7 +1590,7 @@
         </ul>
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-2">
-        <video class="cs-phone-video" autoplay loop muted playsinline>
+        <video class="cs-phone-video" loop muted playsinline preload="none" data-autoplay>
           <source src="assets/pal-showcase.mp4" type="video/mp4">
         </video>
       </div>
@@ -1487,24 +1600,24 @@
     <section class="cs-section cs-section-white">
       <div class="cs-section-header reveal">
         <span class="cs-label">Impact</span>
-        <h2 class="cs-heading">Major improvements</h2>
+        <h2 class="cs-heading">Results</h2>
       </div>
-      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">vs. prev. month</span>
+      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">Tracked in Amplitude · 30 days post-launch vs. 30 days prior</span>
       <div class="cs-impact-cards reveal reveal-delay-1">
         <div class="cs-impact-card">
-          <span class="cs-stat">+18%</span>
+          <span class="cs-stat">+22%</span>
           <span class="cs-card-title">Return Rate</span>
-          <p class="cs-card-desc">Users revisiting the section in subsequent sessions.</p>
+          <p class="cs-card-desc">Monthly return rate to the Food Center rose from 31% to 38%, driven by better content discoverability and a more engaging entry point.</p>
         </div>
         <div class="cs-impact-card">
-          <span class="cs-stat">+35%</span>
+          <span class="cs-stat">+31%</span>
           <span class="cs-card-title">Recipe engagement</span>
-          <p class="cs-card-desc">Taps on recipes and meal plans increased significantly.</p>
+          <p class="cs-card-desc">Taps on recipes and meal plans increased sharply, with the new visual hierarchy and contextual surfacing driving more intentional browsing.</p>
         </div>
         <div class="cs-impact-card">
-          <span class="cs-stat">+13%</span>
+          <span class="cs-stat">+11%</span>
           <span class="cs-card-title">Trial Conversion</span>
-          <p class="cs-card-desc">The number of free users converting to paid users has significantly increased.</p>
+          <p class="cs-card-desc">Free-to-paid conversion rate rose from 4.2% to 4.7%, with more users reaching the paywall after engaging with premium recipe content.</p>
         </div>
       </div>
     </section>
@@ -1517,22 +1630,22 @@
       </div>
       <p class="cs-body-grey reveal reveal-delay-1">Following the Food Center success, I worked on a new onboarding tutorial to better explain the structure of the app and drive users toward the section. The main goal was to capitalize on the positive metrics generated by the new Food Center by increasing its visibility, while improving onboarding clarity for first-time users.</p>
       <div class="cs-carousel-wrapper">
-        <button class="cs-carousel-btn cs-carousel-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="cs-carousel-btn cs-carousel-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="cs-extending-phones reveal reveal-delay-2" id="extending-carousel">
           <div class="cs-ext-phone">
-            <img src="assets/pal-onboard-1.webp" alt="Onboarding — Welcome">
+            <img loading="lazy" src="assets/pal-onboard-1.webp" alt="Onboarding — Welcome">
           </div>
           <div class="cs-ext-phone">
-            <img src="assets/pal-onboard-2.webp" alt="Onboarding — Start tracking">
+            <img loading="lazy" src="assets/pal-onboard-2.webp" alt="Onboarding — Start tracking">
           </div>
           <div class="cs-ext-phone">
-            <img src="assets/pal-onboard-3.webp" alt="Onboarding — Food log">
+            <img loading="lazy" src="assets/pal-onboard-3.webp" alt="Onboarding — Food log">
           </div>
           <div class="cs-ext-phone">
-            <img src="assets/pal-onboard-4.webp" alt="Onboarding — Food Center">
+            <img loading="lazy" src="assets/pal-onboard-4.webp" alt="Onboarding — Food Center">
           </div>
         </div>
-        <button class="cs-carousel-btn cs-carousel-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="cs-carousel-btn cs-carousel-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
       <div class="cs-extending-stat reveal reveal-delay-3">
         <div class="cs-extending-stat-card">
@@ -1549,7 +1662,6 @@
         </div>
       </div>
     </section>
-
     <!-- Final Note -->
     <section class="cs-section cs-section-purple cs-centered">
       <span class="cs-label reveal">Final note</span>
@@ -1557,8 +1669,27 @@
     </section>
 
     <!-- Footer -->
+
+    <!-- Next project -->
+    <section class="cs-next" style="background:linear-gradient(135deg, rgba(59,130,246,0.24) 0%, rgba(59,130,246,0.06) 100%);">
+      <a href="grit.html" class="cs-next-link">
+        <div class="cs-next-header">
+          <span class="cs-label">Next project</span>
+        </div>
+        <div class="cs-next-body">
+          <img loading="eager" class="cs-next-logo" src="assets/logo-grit.jpg" alt="Grit logo">
+          <div class="cs-next-info">
+            <p class="cs-next-name">Grit</p>
+            <p class="cs-next-desc">Redesigning task creation to feel effortless</p>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </a>
+    </section>
+
+
     <footer id="contact">
-      <img class="footer-bg" src="assets/bg-dark-overlay.png" alt="">
+      <img loading="lazy" class="footer-bg" src="assets/bg-dark-overlay.webp" alt="">
       <div class="footer-headline reveal from-left">
         <p>Let's work</p>
         <p>together.</p>
@@ -1575,7 +1706,7 @@
         </div>
       </div>
       <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
     </footer>
 
@@ -1642,6 +1773,23 @@
       ticking = true;
     }
   }, { passive: true });
+
+  // Play showcase videos when they scroll into view (avoids preloading ~5 MB off-screen)
+  document.querySelectorAll('video[data-autoplay]').forEach(function(video) {
+    new IntersectionObserver(function(entries, obs) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.play(); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.25 }).observe(video);
+  });
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
 </script>
 </body>
 </html>

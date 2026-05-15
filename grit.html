@@ -3,12 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Grit — Rémy Tartanac</title>
+  <title>Grit · Rémy Tartanac</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    /* Light ring on dark backgrounds */
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    /* Shape-matched radii */
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible,
+    .cs-carousel-btn:focus-visible,
+    .cs-screens-btn:focus-visible  { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .project-card:focus-visible    { border-radius: 8px;  outline-offset: 0; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
     html { overflow-x: hidden; }
     body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
     a { text-decoration: none; }
@@ -40,12 +58,14 @@
       background: rgba(255, 255, 255, 0.1);
       border: 0.8px solid rgba(255, 255, 255, 0.25);
       display: flex; align-items: center; justify-content: center;
-      color: #050505;
+      color: #776c92;
       text-decoration: none;
       flex-shrink: 0;
       transition: background 0.2s ease;
     }
-    .cs-nav-back:hover { background: rgba(255, 255, 255, 0.22); }
+    .cs-nav-back svg { opacity: 0.5; transition: opacity 0.2s ease, color 0.2s ease; }
+    .cs-nav-back:hover { background: rgba(255, 255, 255, 0.22); color: #10042c; }
+    .cs-nav-back:hover svg { opacity: 1; }
     .cs-nav-brand {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600; font-size: 24px; line-height: 1;
@@ -296,7 +316,7 @@
       flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
       background: white; border: 1px solid rgba(0,0,0,0.1);
       align-items: center; justify-content: center;
-      cursor: pointer; color: #10042c;
+      cursor: pointer; color: #776c92;
       box-shadow: 0 2px 8px rgba(0,0,0,0.08);
       font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       transition: background 0.2s ease, transform 0.2s ease;
@@ -304,20 +324,7 @@
     .cs-screens-btn:hover { background: rgba(0,0,0,0.04); transform: scale(1.06); }
     .cs-screens-btn:disabled { opacity: 0.25; pointer-events: none; }
     .cs-screen-slide { display: contents; }
-    .cs-screen-placeholder {
-      width: 295px; height: 640px;
-      border-radius: 32px;
-      background: #e6e0f2;
-      display: flex !important;
-      align-items: center; justify-content: center;
-      flex-shrink: 0;
-      box-shadow: 4px 4px 40px -8px rgba(0,0,0,0.2);
-    }
-    .cs-screen-placeholder span {
-      font-size: 14px; color: #776c92;
-      font-weight: 400; letter-spacing: 0.5px;
-      text-align: center; padding: 16px;
-    }
+
     .cs-analysis-list {
       flex: 1;
       display: flex;
@@ -352,6 +359,16 @@
       font-weight: 300; font-size: 22px; line-height: 1.5;
       color: #776c92;
     }
+
+    /* ── Wireframes ── */
+    .cs-wireframe { margin-top: 20px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+    .cs-wireframe svg { display: block; width: 100%; height: auto; }
+    .cs-enhance-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+    .cs-enhance-card { background: #fff; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
+    .cs-enhance-wireframe { background: #F5F6F8; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-enhance-wireframe svg { display: block; width: 100%; height: auto; }
+    .cs-enhance-title { font-weight: 300; font-size: 20px; line-height: 1.35; color: #10042c; padding: 18px 20px 8px; }
+    .cs-enhance-desc { font-weight: 300; font-size: 16px; line-height: 1.65; color: #776c92; padding: 0 20px 22px; flex: 1; }
 
     /* ── Key Insight / Final Note ── */
     .cs-centered {
@@ -738,88 +755,6 @@
       display: block;
     }
 
-    /* Hero phone */
-    .cs-hero-phone {
-      width: 320px; height: 580px;
-      border: 3px solid #000;
-      border-radius: 40px;
-      background: #0d0d0d;
-      box-shadow: 8px 16px 60px rgba(16,4,44,0.3);
-      flex-shrink: 0;
-      position: relative;
-      overflow: hidden;
-      margin-bottom: -4px;
-    }
-    .cs-hero-phone-notch {
-      position: absolute;
-      top: 0; left: 50%; transform: translateX(-50%);
-      width: 100px; height: 28px;
-      background: #000; border-radius: 0 0 16px 16px;
-      z-index: 2;
-    }
-    .cs-hero-phone-inner {
-      position: absolute; inset: 0;
-      padding-top: 38px;
-      display: flex; flex-direction: column;
-    }
-    .cs-hero-phone-bar {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 4px 18px 12px;
-    }
-    .cs-hero-phone-time {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 14px; font-weight: 600; color: white;
-    }
-    .cs-hero-phone-icons {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 11px; color: white; letter-spacing: 1px;
-    }
-    .cs-hero-phone-nav {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 16px 12px;
-    }
-    .cs-hero-phone-back {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 15px; color: rgba(255,255,255,0.55);
-    }
-    .cs-hero-phone-title {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 15px; font-weight: 600; color: white;
-    }
-    .cs-hero-phone-check {
-      width: 28px; height: 28px;
-      background: #3b82f6;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 13px; color: white;
-    }
-    .cs-hero-phone-body {
-      flex: 1; padding: 4px 14px;
-      display: flex; flex-direction: column; gap: 6px;
-    }
-    .cs-hero-phone-row {
-      background: #2b2b2d;
-      border-radius: 28px; height: 46px;
-      display: flex; align-items: center; padding: 0 14px; gap: 10px;
-    }
-    .cs-hero-phone-row-text {
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 14px; color: rgba(255,255,255,0.4);
-    }
-    .cs-hero-phone-kbd {
-      background: #1c1c1e; padding: 8px 6px;
-    }
-    .cs-hero-phone-kbd-row {
-      display: flex; gap: 5px; margin-bottom: 5px; justify-content: center;
-    }
-    .cs-hero-phone-key {
-      background: #3a3a3c;
-      border-radius: 4px; flex: 1; height: 36px;
-      display: flex; align-items: center; justify-content: center;
-      font-family: -apple-system, system-ui, sans-serif;
-      font-size: 14px; color: white; max-width: 28px;
-    }
-
     /* ── Impact ── */
     .cs-impact-subtitle {
       font-weight: 300; font-size: 18px; line-height: 24px;
@@ -940,6 +875,28 @@
       color: rgba(255,255,255,0.75);
     }
 
+
+    /* ── Scroll-to-top: floating on desktop ── */
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        background: rgba(16,4,44,0.5);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1200px) {
       .nav-inner { padding: 0 64px; }
@@ -1052,7 +1009,74 @@
       content: '—'; position: absolute; left: 0;
       color: rgba(255,255,255,0.30);
     }
+
+    /* ── Next project ── */
+    .cs-next {
+      width: 100%;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .cs-next-link {
+      display: block;
+      padding: 64px 128px;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .cs-next-link:hover { background: rgba(0,0,0,0.02); }
+    .cs-next-header { margin-bottom: 28px; }
+    .cs-next-body {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .cs-next-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cs-next-link:hover .cs-next-logo { transform: scale(1.07) rotate(-2deg); }
+    .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .cs-next-name {
+      font-weight: 500; font-size: 44px; line-height: 1;
+      color: #10042c;
+    }
+    .cs-next-desc {
+      font-weight: 300; font-size: 22px; line-height: 1.4;
+      color: #776c92;
+    }
+    .project-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 160px;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      transition: background 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-next-link:hover .project-btn {
+      background: rgba(255,255,255,0.25);
+      width: 134px;
+    }
+    .project-btn span {
+      color: #776c92;
+      opacity: 0.5;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
+    }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #10042c; opacity: 1; }
+    @media (max-width: 960px) {
+      .cs-next-link { padding: 48px 40px; }
+      .cs-next-name { font-size: 36px; }
+    }
+    @media (max-width: 600px) {
+      .cs-next-link { padding: 36px 20px; }
+      .cs-next-name { font-size: 28px; }
+      .cs-next-desc { font-size: 18px; }
+    }
+
   </style>
+  <link rel="preload" as="image" href="assets/grit-hero-phones.webp" type="image/webp">
 </head>
 <body>
 
@@ -1062,7 +1086,7 @@
     <!-- Navigation -->
     <nav>
       <div class="nav-inner">
-        <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
         <span class="cs-nav-brand">Grit</span>
       </div>
     </nav>
@@ -1072,7 +1096,7 @@
       <div class="cs-hero-left">
         <div class="cs-hero-brand reveal">
           <a class="cs-logo-link" href="https://apps.apple.com/fr/app/grit-habitudes-routines-tdah/id6446997766" target="_blank" rel="noopener">
-            <img class="cs-logo" src="assets/logo-grit.jpg" alt="Grit logo">
+            <img loading="lazy" class="cs-logo" src="assets/logo-grit.jpg" alt="Grit logo">
           </a>
           <span class="cs-tag">Habit-Tracking App</span>
         </div>
@@ -1099,7 +1123,7 @@
 
       <!-- Phone mockup image — absolutely positioned like in Figma -->
       <div class="cs-hero-phones reveal from-right reveal-delay-3">
-        <img src="assets/grit-hero-phones.webp" alt="Grit app screens" class="cs-hero-phones-img">
+        <img loading="eager" src="assets/grit-hero-phones.webp" alt="Grit app screens" class="cs-hero-phones-img">
       </div>
     </section>
 
@@ -1138,12 +1162,12 @@
       <p class="cs-body reveal reveal-delay-1">Users were confronted with a list of 13 settings options all before a single action was done. While core users appreciated the level of customization, new users felt overwhelmed by the number of options. The app's UI was satisfying and was not considered a priority.</p>
       <div class="cs-old-design-content">
         <div class="cs-screens-carousel">
-          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/grit-old-screen1.png" alt="Old design — habit creation"></div>
-            <div class="cs-screen-slide"><img class="cs-screen-img" src="assets/grit-old-screen2.png" alt="Old design — task settings"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/grit-old-screen1.png" alt="Old design — habit creation"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/grit-old-screen2.png" alt="Old design — task settings"></div>
           </div>
-          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
         <ul class="cs-analysis-list reveal from-right reveal-delay-3">
           <li class="cs-analysis-item">
@@ -1222,7 +1246,7 @@
       </div>
       <div class="cs-constraint-block reveal reveal-delay-2">
         <p class="cs-constraint-label">Technical constraints</p>
-        <p class="cs-constraint-text">Due to ressource constraints, the proposed solution should preserve as much of the current UI as possible.</p>
+        <p class="cs-constraint-text">Due to resource constraints, the proposed solution should preserve as much of the current UI as possible.</p>
       </div>
     </section>
 
@@ -1237,7 +1261,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Instant creation</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Creation is reduced to a single text input.</p>
+          <p class="cs-step-body reveal reveal-delay-2">Creation is reduced to a single text input. The previous flow required 7+ steps before a habit was saved. Drop-off data showed most users abandoned during configuration, not because they didn't want the feature, they just didn't want the work.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Users type the habit name and press enter.</li>
             <li>They can save. The new habit is created.</li>
@@ -1262,7 +1286,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Smart recognition</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The system pre-fills common values based on the name.</p>
+          <p class="cs-step-body reveal reveal-delay-2">The system pre-fills common values based on the name. Pre-filling avoids the blank-form anxiety without removing control. Users override only when needed, which happens less often than expected.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>An icon is automatically suggested based on the habit's name.</li>
             <li>By default, the "Habit type" is set on "good" (green color). If the negative form ("Stop", "Do not"…) is used in the name, the habit transforms into a "bad" one (red).</li>
@@ -1307,7 +1331,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Make the experience lively and dynamic</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The changes are immediately visible in the preview.</p>
+          <p class="cs-step-body reveal reveal-delay-2">The changes are immediately visible in the preview. A live preview closes the feedback loop between input and output. Without it, users have to mentally simulate the result, which increases abandonment. Seeing it in real time also confirms the system understood their intent.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Users see the impact of their settings right away.</li>
             <li>In this way, they directly identify how the system works.</li>
@@ -1335,7 +1359,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Interconnected options</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Advanced options are displayed based on their relevance in the user's context.</p>
+          <p class="cs-step-body reveal reveal-delay-2">Advanced options are displayed based on their relevance in the user's context. Showing everything at once overwhelms casual users; hiding everything frustrates power users. Context-sensitive revealing serves both without compromising either.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>By default, the frequency is set to "Daily." If the user changes this setting, they are offered to set a start date.</li>
             <li>If the user adds a start date, then we offer them to set an "End date", etc.</li>
@@ -1374,7 +1398,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Reveal complexity progressively</h3>
-          <p class="cs-step-body reveal reveal-delay-2">All advanced options are moved into a secondary screen.</p>
+          <p class="cs-step-body reveal reveal-delay-2">All advanced options are moved into a secondary screen. Early testing showed that removing options entirely triggered pushback from power users. Moving them behind "Show more options" preserves full control while keeping the entry point clean. Nothing removed, everything deferred.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Not used options are hidden by default in a "More options" section.</li>
             <li>When enabled, they are automatically displayed so that the user can have a clear overview of their actions.</li>
@@ -1454,7 +1478,7 @@
 
     <!-- New Design -->
     <section class="cs-new-design">
-      <img class="cs-new-design-bg" src="assets/bg-dark-overlay.png" alt="">
+      <img loading="lazy" class="cs-new-design-bg" src="assets/bg-dark-overlay.webp" alt="">
       <div class="cs-new-design-text reveal">
         <div>
           <span class="cs-new-design-label">New design</span>
@@ -1469,7 +1493,7 @@
         </ul>
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-2">
-        <video class="cs-phone-video" autoplay loop muted playsinline>
+        <video class="cs-phone-video" loop muted playsinline preload="none" data-autoplay>
           <source src="assets/grit-showcase.mp4" type="video/mp4">
         </video>
       </div>
@@ -1479,25 +1503,85 @@
     <section class="cs-section cs-section-white">
       <div class="cs-section-header reveal">
         <span class="cs-label">Impact</span>
-        <h2 class="cs-heading">Major improvements</h2>
+        <h2 class="cs-heading">Results</h2>
       </div>
-      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">vs. prev. month</span>
+      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">Tracked in Amplitude · 30 days post-launch vs. 30 days prior</span>
       <div class="cs-impact-cards reveal reveal-delay-1">
         <div class="cs-impact-card">
           <span class="cs-stat">+25%</span>
           <span class="cs-card-title">First completion rate</span>
-          <p class="cs-card-desc">Significant increase in new users completing their first habit creation passing from 32% to 40%.</p>
+          <p class="cs-card-desc">New users completing their first habit creation rose from 32% to 40%, driven by reduced friction in the redesigned task flow.</p>
         </div>
         <div class="cs-impact-card">
           <span class="cs-stat">+27%</span>
           <span class="cs-card-title">Task Creation Speed</span>
-          <p class="cs-card-desc">Average time to create a new habit decreased from 49s to 36s.</p>
+          <p class="cs-card-desc">Median time to create a habit dropped from 49s to 36s, as the new flow eliminated redundant steps and surfaced key options earlier.</p>
         </div>
         <div class="cs-impact-card">
-          <span class="cs-stat">+11%</span>
+          <span class="cs-stat">+9%</span>
           <span class="cs-card-title">FLTV</span>
-          <p class="cs-card-desc">Projected long-term value increased.</p>
+          <p class="cs-card-desc">Projected increase in long-term value, modelled from improved retention and task completion rates post-launch.</p>
         </div>
+      </div>
+    </section>
+
+    <!-- Future Enhancements -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Future enhancements</span>
+        <h2 class="cs-heading">What I'd improve next</h2>
+      </div>
+      <p class="cs-body reveal reveal-delay-1">The redesign improved first task completion and habit retention, but the recognition system still relies on rule-based matching. Here's where I'd invest next.</p>
+      <div class="cs-enhance-grid reveal reveal-delay-2">
+        <div class="cs-enhance-card">
+          <div class="cs-enhance-wireframe">
+            <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="480" height="180" fill="#F5F6F8"/>
+            <rect x="16" y="24" width="448" height="44" rx="10" fill="#fff" stroke="#DDE3EC" stroke-width="1.5"/>
+            <text x="32" y="51" font-family="system-ui,sans-serif" font-size="14" fill="#3D3D4E">30 min run</text>
+            <rect x="118" y="34" width="2" height="22" fill="#3B82F6"/>
+            <path d="M238 82 L238 96 M232 90 L238 96 L244 90" stroke="#C5CBD8" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            <rect x="84" y="108" width="312" height="52" rx="12" fill="#fff" stroke="rgba(59,130,246,0.22)" stroke-width="1.5"/>
+            <circle cx="108" cy="134" r="5" fill="#3B82F6"/>
+            <text x="122" y="127" font-family="system-ui,sans-serif" font-size="10" fill="#8A96A8">Matched to</text>
+            <text x="122" y="143" font-family="system-ui,sans-serif" font-size="13" fill="#3D3D4E">Running 30mn · Daily</text>
+            <rect x="294" y="126" width="78" height="6" rx="3" fill="#EAECF2"/>
+            <rect x="294" y="126" width="62" height="6" rx="3" fill="#3B82F6" opacity="0.65"/>
+            <text x="294" y="148" font-family="system-ui,sans-serif" font-size="9" fill="#9AA4B0">Confidence</text>
+            </svg>
+          </div>
+          <span class="cs-enhance-title">Improving smart recognition accuracy</span>
+          <span class="cs-enhance-desc">The current habit-matching system uses rule-based pattern recognition, which works for common inputs but struggles with phrasing variations. Training a lightweight model on real user inputs would reduce mismatches and shorten the time between typing a habit and having it correctly categorised.</span>
+        </div>
+        <div class="cs-enhance-card">
+          <div class="cs-enhance-wireframe">
+            <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
+            <rect width="480" height="180" fill="#F5F6F8"/>
+            <rect x="16" y="16" width="448" height="44" rx="10" fill="#fff" stroke="#3B82F6" stroke-width="1.5"/>
+            <text x="32" y="43" font-family="system-ui,sans-serif" font-size="14" fill="#3D3D4E">30 min...</text>
+            <rect x="113" y="26" width="2" height="22" fill="#3B82F6"/>
+            <rect x="16" y="68" width="448" height="104" rx="10" fill="#fff" stroke="#DDE3EC" stroke-width="1"/>
+            <rect x="17" y="69" width="446" height="34" rx="9" fill="rgba(59,130,246,0.08)"/>
+            <circle cx="38" cy="86" r="4" fill="#3B82F6"/>
+            <text x="52" y="91" font-family="system-ui,sans-serif" font-size="13" fill="#3D3D4E">30 min run</text>
+            <rect x="358" y="77" width="90" height="18" rx="9" fill="rgba(59,130,246,0.12)"/>
+            <text x="403" y="90" font-family="system-ui,sans-serif" font-size="10" fill="#3B82F6" text-anchor="middle">Running</text>
+            <line x1="32" y1="103" x2="448" y2="103" stroke="#F0F2F5" stroke-width="1"/>
+            <circle cx="38" cy="120" r="4" fill="#DDE3EC"/>
+            <text x="52" y="125" font-family="system-ui,sans-serif" font-size="13" fill="#7A8499">30 min yoga</text>
+            <rect x="358" y="111" width="90" height="18" rx="9" fill="#F0F3F7"/>
+            <text x="403" y="124" font-family="system-ui,sans-serif" font-size="10" fill="#8A96A8" text-anchor="middle">Wellness</text>
+            <line x1="32" y1="137" x2="448" y2="137" stroke="#F0F2F5" stroke-width="1"/>
+            <circle cx="38" cy="154" r="4" fill="#DDE3EC"/>
+            <text x="52" y="159" font-family="system-ui,sans-serif" font-size="13" fill="#7A8499">30 min walk</text>
+            <rect x="358" y="145" width="90" height="18" rx="9" fill="#F0F3F7"/>
+            <text x="403" y="158" font-family="system-ui,sans-serif" font-size="10" fill="#8A96A8" text-anchor="middle">Exercise</text>
+            </svg>
+          </div>
+          <span class="cs-enhance-title">Autocomplete in the habit input</span>
+          <span class="cs-enhance-desc">Users who drop off at the blank input don't need a static list of suggestions. They need help completing what they're already typing. An autocomplete surfacing matches as the user types stays invisible until needed: it nudges undecided users without adding noise for those who already know what they want.</span>
+        </div>
+
       </div>
     </section>
 
@@ -1508,8 +1592,27 @@
     </section>
 
     <!-- Footer -->
+
+    <!-- Next project -->
+    <section class="cs-next" style="background:linear-gradient(135deg, rgba(255,71,108,0.24) 0%, rgba(255,71,108,0.06) 100%);">
+      <a href="peptalk.html" class="cs-next-link">
+        <div class="cs-next-header">
+          <span class="cs-label">Next project</span>
+        </div>
+        <div class="cs-next-body">
+          <img loading="eager" class="cs-next-logo" src="assets/logo-peptalk.jpg" alt="PepTalk logo">
+          <div class="cs-next-info">
+            <p class="cs-next-name">PepTalk</p>
+            <p class="cs-next-desc">Turning a generic chatbot into a content-driven coaching experience</p>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </a>
+    </section>
+
+
     <footer id="contact">
-      <img class="footer-bg" src="assets/bg-dark-overlay.png" alt="">
+      <img loading="lazy" class="footer-bg" src="assets/bg-dark-overlay.webp" alt="">
       <div class="footer-headline reveal from-left">
         <p>Let's work</p>
         <p>together.</p>
@@ -1526,7 +1629,7 @@
         </div>
       </div>
       <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
-        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
       </button>
     </footer>
 
@@ -1574,6 +1677,23 @@
       ticking = true;
     }
   }, { passive: true });
+
+  // Play showcase videos when they scroll into view (avoids preloading ~5 MB off-screen)
+  document.querySelectorAll('video[data-autoplay]').forEach(function(video) {
+    new IntersectionObserver(function(entries, obs) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.play(); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.25 }).observe(video);
+  });
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
 </script>
 </body>
 </html>
