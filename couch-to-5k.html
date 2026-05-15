@@ -460,6 +460,10 @@
       border-radius: 16px;
       padding: 28px 32px;
     }
+    .cs-constraint-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .cs-constraint-item { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .cs-constraint-tag { font-weight: 500; font-size: 13px; line-height: 20px; color: #7A9E56; background: rgba(163,189,123,0.12); border-radius: 6px; padding: 2px 10px; white-space: nowrap; flex-shrink: 0; }
+    .cs-constraint-implication { font-weight: 300; font-size: 16px; line-height: 1.6; color: #776c92; }
 
     /* ── Steps ── */
     .cs-steps { width: 100%; }
@@ -939,6 +943,11 @@
       .cs-next-link { padding: 36px 20px; }
       .cs-next-name { font-size: 28px; }
       .cs-next-desc { font-size: 18px; }
+      .cs-enhance-grid { grid-template-columns: 1fr; }
+      .cs-enhance-card { flex-direction: row; }
+      .cs-enhance-wireframe { width: 140px; flex-shrink: 0; border-bottom: none; border-right: 1px solid rgba(0,0,0,0.05); }
+      .cs-enhance-title { font-size: 17px; padding: 16px 16px 6px; }
+      .cs-enhance-desc { font-size: 14px; padding: 0 16px 16px; }
     }
 
   </style>
@@ -1111,8 +1120,13 @@
         </div>
       </div>
       <div class="cs-constraint-block reveal reveal-delay-2">
-        <p class="cs-constraint-label">Technical constraints</p>
-        <p class="cs-constraint-text">Necessity to stay as close as possible to the app's new design system, while creating new components.</p>
+        <p class="cs-constraint-label">Constraints & design implications</p>
+        <ul class="cs-constraint-list">
+          <li class="cs-constraint-item">
+            <span class="cs-constraint-tag">Design system</span>
+            <span class="cs-constraint-implication">The new onboarding's design must fit the app's V2 design system already used everywhere else in the app, including when creating new components.</span>
+          </li>
+        </ul>
       </div>
     </section>
 
@@ -1275,37 +1289,6 @@
       </div>
       <p class="cs-body reveal reveal-delay-1">Personalised onboarding moved conversion and retention, but the training plan itself remains static once started. These are the areas where the design has the most room to grow.</p>
       <div class="cs-enhance-grid reveal reveal-delay-2">
-        <div class="cs-enhance-card">
-          <div class="cs-enhance-wireframe">
-            <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">
-            <rect width="480" height="180" fill="#F5F6F8"/>
-            <rect x="16" y="14" width="220" height="8" rx="4" fill="#DDE3EC"/>
-            <rect x="16" y="36" width="56" height="64" rx="12" fill="#A3BD7B"/>
-            <text x="44" y="62" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle">Mon</text>
-            <path d="M36.5 75 L42 81 L52.5 68" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="80" y="36" width="56" height="64" rx="12" fill="#DDE3EC"/>
-            <text x="108" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#8A96A8" text-anchor="middle">Tue</text>
-            <rect x="144" y="36" width="56" height="64" rx="12" fill="#A3BD7B"/>
-            <text x="172" y="62" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle">Wed</text>
-            <path d="M164.5 75 L170 81 L180.5 68" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="208" y="36" width="56" height="64" rx="12" fill="#DDE3EC"/>
-            <text x="236" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#8A96A8" text-anchor="middle">Thu</text>
-            <rect x="272" y="36" width="56" height="64" rx="12" fill="#A3BD7B"/>
-            <text x="300" y="62" font-family="system-ui,sans-serif" font-size="11" fill="#fff" text-anchor="middle">Fri</text>
-            <path d="M292.5 75 L298 81 L308.5 68" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-            <rect x="336" y="36" width="56" height="64" rx="12" fill="#DDE3EC"/>
-            <text x="364" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#8A96A8" text-anchor="middle">Sat</text>
-            <rect x="400" y="36" width="64" height="64" rx="12" fill="#DDE3EC"/>
-            <text x="432" y="68" font-family="system-ui,sans-serif" font-size="11" fill="#8A96A8" text-anchor="middle">Sun</text>
-            <rect x="16" y="118" width="148" height="28" rx="14" fill="rgba(163,189,123,0.2)"/>
-            <text x="90" y="136" font-family="system-ui,sans-serif" font-size="11" fill="#7A9B5E" text-anchor="middle">3 days selected</text>
-            <rect x="296" y="116" width="168" height="44" rx="22" fill="#A3BD7B"/>
-            <text x="380" y="142" font-family="system-ui,sans-serif" font-size="12" fill="#fff" text-anchor="middle">Continue</text>
-            </svg>
-          </div>
-          <span class="cs-enhance-title">Scheduling as part of onboarding</span>
-          <span class="cs-enhance-desc">We capture goals, fitness level, and health context, but not preferred training days or times. Schedule conflicts are consistently cited as a top reason users abandon fitness plans. Adding a lightweight scheduling step would let the plan slot into the user's actual week from day one, rather than leaving that friction for later.</span>
-        </div>
         <div class="cs-enhance-card">
           <div class="cs-enhance-wireframe">
             <svg viewBox="0 0 480 180" xmlns="http://www.w3.org/2000/svg">

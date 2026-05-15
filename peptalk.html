@@ -460,6 +460,10 @@
       border-radius: 16px;
       padding: 28px 32px;
     }
+    .cs-constraint-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .cs-constraint-item { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .cs-constraint-tag { font-weight: 500; font-size: 13px; line-height: 20px; color: #FF476C; background: rgba(255,71,108,0.08); border-radius: 6px; padding: 2px 10px; white-space: nowrap; flex-shrink: 0; }
+    .cs-constraint-implication { font-weight: 300; font-size: 16px; line-height: 1.6; color: #776c92; }
     .cs-flow-block { display: flex; flex-direction: column; gap: 0; }
 
     /* ── Steps ── */
@@ -1065,6 +1069,11 @@
       .cs-next-link { padding: 36px 20px; }
       .cs-next-name { font-size: 28px; }
       .cs-next-desc { font-size: 18px; }
+      .cs-enhance-grid { grid-template-columns: 1fr; }
+      .cs-enhance-card { flex-direction: row; }
+      .cs-enhance-wireframe { width: 140px; flex-shrink: 0; border-bottom: none; border-right: 1px solid rgba(0,0,0,0.05); }
+      .cs-enhance-title { font-size: 17px; padding: 16px 16px 6px; }
+      .cs-enhance-desc { font-size: 14px; padding: 0 16px 16px; }
     }
 
   </style>
@@ -1239,8 +1248,17 @@
         </div>
       </div>
       <div class="cs-constraint-block reveal reveal-delay-2">
-        <p class="cs-constraint-label">Technical constraints</p>
-        <p class="cs-constraint-text">No certainty as to which AI model would ultimately be used.</p>
+        <p class="cs-constraint-label">Constraints & design implications</p>
+        <ul class="cs-constraint-list">
+          <li class="cs-constraint-item">
+            <span class="cs-constraint-tag">AI model undecided</span>
+            <span class="cs-constraint-implication">The UI abstracts the API call entirely. Content triggers work regardless of which model ships.</span>
+          </li>
+          <li class="cs-constraint-item">
+            <span class="cs-constraint-tag">No streaming in v1</span>
+            <span class="cs-constraint-implication">Coaching responses are pre-authored scripts injected at defined conversation triggers, not raw model output.</span>
+          </li>
+        </ul>
       </div>
     </section>
 
