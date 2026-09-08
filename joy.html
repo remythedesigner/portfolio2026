@@ -1205,8 +1205,9 @@
     .cs-next {
       width: 100%;
       background: #403462;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
     }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
     .cs-next-link {
       display: block;
       padding: 64px 128px;
@@ -1234,8 +1235,8 @@
       color: #ffffff;
     }
     .cs-next-desc {
-      font-weight: 300; font-size: 22px; line-height: 1.4;
-      color: #776c92;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: rgba(255,255,255,0.85);
     }
     .project-btn {
       background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
@@ -1596,12 +1597,12 @@
           <span class="cs-label">User research</span>
           <h2 class="cs-heading">A starting hypothesis</h2>
         </div>
-        <p class="cs-body reveal reveal-delay-1">First interviews revealed something more precise. For most of the respondents, looking for weekend activities is often a source of stress because major events sell out quickly.</p>
+        <p class="cs-body reveal reveal-delay-1">The first interviews proved me half wrong. For most respondents, looking for weekend activities is a source of stress, not indecision, because the good events sell out fast.</p>
       </div>
       <div class="cs-quote-card">
         <div class="cs-centered reveal reveal-delay-1" style="padding:0; gap:24px;">
           <span class="cs-label">The problem</span>
-          <p class="cs-quote-light">We assumed the main problem was choice overload in a buzzing city: smaller events struggle to find their audiences, and vice versa.</p>
+          <p class="cs-quote-light">I'd assumed the main problem was choice overload in a buzzing city, smaller events struggling to find their audience, and vice versa.</p>
         </div>
       </div>
     </section>
@@ -1752,7 +1753,7 @@
         <span class="cs-feature-label">Discovery</span>
         <h3 class="cs-feature-title">A home that curates, not just lists</h3>
         <div class="cs-feature-desc">
-          <p>A first-name greeting, the city weather, a curated featured activity with a live scarcity badge. Then several sections: team picks, personalised recommendations, and a geolocation radius.</p>
+          <p>The home opens with your name, the day's weather, and one activity singled out with a live scarcity badge. Team picks. Personal recommendations. What's happening nearby. Three sections, three different reasons to open the app.</p>
           <p>No generic feed. Every section has a reason to be there and a reason to be different tomorrow.</p>
         </div>
       </div>
@@ -1769,7 +1770,7 @@
         <h3 class="cs-feature-title">Explore the city, your way</h3>
         <div class="cs-feature-desc">
           <p>Every category gets its own emoji pin on the map. A 🧘 for wellness, a 🎭 for culture, a 🍽 for food. The city becomes readable and diverse at a glance. A list toggle lets users compare activities side by side without losing the spatial context.</p>
-          <p>Filters were designed around real usage patterns from research: a rolling 7-day date strip (not just "tonight" or "this weekend")*, a category picker, a price range slider, a headcount picker, and a promo toggle. Every filter answers a question users actually asked.</p>
+          <p>I built the filters around real usage patterns from research, not around what I assumed people wanted: a rolling 7-day date strip (not just "tonight" or "this weekend")*, a category picker, a price range slider, a headcount picker, and a promo toggle. Every filter answers a question users actually asked.</p>
         </div>
         <div class="cs-feature-sep"></div>
         <div class="cs-feature-callout">
@@ -1789,7 +1790,7 @@
         <h3 class="cs-feature-title">The page where the decision happens</h3>
         <div class="cs-feature-desc">
           <p>A swipeable photo gallery sets the scene before anything else. Below it: a rating, a metro stop, a duration, a cancellation policy, and a live scarcity count. The included/not-included and "Good to know" sections remove the last source of ambiguity before payment.</p>
-          <p>Reviews were intentionally not displayed at first but were gradually added to the app based on user feedback*.</p>
+          <p>I deliberately left reviews out of V1. That call turned out to be wrong, or at least incomplete, and I added them back in gradually based on user feedback*.</p>
         </div>
         <div class="cs-feature-sep"></div>
         <div class="cs-feature-callout">
@@ -1809,7 +1810,7 @@
         <span class="cs-feature-label">Confirmation</span>
         <h3 class="cs-feature-title">A code or QR?</h3>
         <div class="cs-feature-desc">
-          <p>Venue professionals are diverse. Not all have a scanner. A 6-character code works with a tablet, a printed list, or just a pair of eyes. No equipment required, no friction at the door!</p>
+          <p>Venue professionals are diverse. Not all have a scanner. I chose a 6-character code over a QR: it works with a tablet, a printed list, or just a pair of eyes. No equipment required, no friction at the door!</p>
         </div>
         <div class="cs-feature-sep"></div>
         <div class="cs-feature-callout">
@@ -1831,7 +1832,7 @@
           <div class="cs-testing-lede reveal reveal-delay-1">
             <p>Working alongside the founder, I ran two rounds of user testing across the project. We were not looking to confirm what we already thought but for where we were wrong.</p>
             <p>One finding came up in nearly every session: users could not commit to a booking without reviews. The aggregate score told them how many people had gone. It told them nothing about whether they should.</p>
-            <p>In V2, we introduced the &amp;joy team's own recommendations — written with conviction, the way a bookseller recommends a book. But testers explained they couldn't trust a review written by the people selling the experience…</p>
+            <p>In V2, we introduced the &amp;joy team's own recommendations, written with conviction, the way a bookseller recommends a book. But testers explained they couldn't trust a review written by the people selling the experience…</p>
           </div>
         </div>
         <div class="cs-testing-cards reveal reveal-delay-2">
@@ -1860,8 +1861,8 @@
         <span class="cs-feature-label">Community</span>
         <h3 class="cs-feature-title">Trusted by the community, approved by the city</h3>
         <div class="cs-feature-desc">
-          <p>Ambassadors are not hired reviewers but selected users based on how well they know the city and their online reputation. The app gives them early access to new activities for free. In return, they write a detailed, signed review. The review is attached to their name and their reputation — that is what makes it readable, where the team's own voice was not.</p>
-          <p>In terms of pure design, ambassador reviews are visually highlighted and appear alongside standard user reviews, without replacing them. The mechanism goes further than just reviews: an activity that does not earn ambassador approval does not enter the catalogue. Ambassadors are not just the voice of the app. They are its quality filter.</p>
+          <p>Ambassadors are not hired reviewers but selected users based on how well they know the city and their online reputation. The app gives them early access to new activities for free. In return, they write a detailed, signed review, attached to their name and their reputation. That's what makes it readable, where the team's own voice wasn't.</p>
+          <p>Ambassador reviews are visually highlighted and appear alongside standard user reviews, without replacing them. The mechanism goes further than just reviews: an activity that does not earn ambassador approval does not enter the catalogue. Ambassadors are not just the voice of the app. They are its quality filter.</p>
         </div>
       </div>
     </div>
@@ -1874,7 +1875,7 @@
           <span class="cs-new-design-label">Project recap</span>
           <h2 class="cs-new-design-heading">From concept to final prototype in less than 1 month</h2>
         </div>
-        <p class="cs-new-design-body reveal reveal-delay-2">I joined the &amp;joy project to help with positioning. Seventeen interviews and dozens of iterations later, the final prototype was handed off to developers. I was glad to bring my expertise across the whole chain: product strategy, user research, visual identity, and interface design.</p>
+        <p class="cs-new-design-body reveal reveal-delay-2">I joined the &amp;joy project to help with positioning. Seventeen interviews and dozens of iterations later, the final prototype was handed off to developers. I ended up touching most of the chain along the way: product strategy, user research, visual identity, interface design.</p>
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-3">
         <video class="cs-phone-video" loop muted playsinline preload="none" data-autoplay>

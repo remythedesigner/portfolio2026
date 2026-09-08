@@ -189,7 +189,7 @@
       color: white;
     }
 
-    /* Hero image — in-flow flex sibling */
+    /* Hero image, in-flow flex sibling */
     .cs-hero-phones {
       position: relative;
       flex-shrink: 0;
@@ -937,8 +937,9 @@
     .cs-next {
       width: 100%;
       background: #403462;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
     }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
     .cs-next-link {
       display: block;
       padding: 64px 128px;
@@ -966,8 +967,8 @@
       color: #ffffff;
     }
     .cs-next-desc {
-      font-weight: 300; font-size: 22px; line-height: 1.4;
-      color: #776c92;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: rgba(255,255,255,0.85);
     }
     .project-btn {
       background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
@@ -1054,7 +1055,7 @@
         </div>
       </div>
 
-      <!-- Hero image — absolutely positioned -->
+      <!-- Hero image, absolutely positioned -->
       <div class="cs-hero-phones reveal from-right reveal-delay-3">
         <img loading="eager" src="assets/preview-ctk.webp" alt="Couch To 5K app screens" class="cs-hero-phones-img">
       </div>
@@ -1070,7 +1071,7 @@
           </div>
           <div class="cs-problem-content reveal reveal-delay-1">
             <p class="cs-body-bold">Couch to 5K is a running app designed for complete beginners to help them complete their first run.</p>
-            <p class="cs-body">Onboarding defines the first impression, especially on a running app. It is important to identify and address the user appropriately from the very beginning. But all users were going through the same process, with questions that seemed ill-suited to their profiles. The low first-run completion rate reinforced this: when users feel the plan wasn't made for them, they don't follow through.</p>
+            <p class="cs-body">Onboarding defines the first impression, especially on a running app, and I knew we needed to identify and address each user from the very start. But all users were going through the same process, with questions that seemed ill-suited to their profiles. The low first-run completion rate confirmed it: when users feel the plan wasn't made for them, they don't follow through.</p>
           </div>
         </div>
         <div class="cs-problem-stats reveal reveal-delay-2">
@@ -1100,8 +1101,8 @@
         <div class="cs-screens-carousel">
           <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen1.webp" alt="Old design — screen 1" style="width:299px; height:650px;"></div>
-            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen2.webp" alt="Old design — screen 2" style="width:297px; height:648px;"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen1.webp" alt="Old design, screen 1" style="width:299px; height:650px;"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen2.webp" alt="Old design, screen 2" style="width:297px; height:648px;"></div>
           </div>
           <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
@@ -1117,7 +1118,7 @@
             <div class="cs-analysis-dot"></div>
             <div class="cs-analysis-text">
               <span class="cs-analysis-title">One-size-fits-all</span>
-              <span class="cs-analysis-desc">The same plan was recommended to almost all users, suggesting that the questions (or/and plans) were not appropriate to the target.</span>
+              <span class="cs-analysis-desc">The same plan was recommended to almost all users, suggesting the questions, or the plans themselves, weren't matched to who was actually asking.</span>
             </div>
           </li>
           <li class="cs-analysis-item">
@@ -1147,7 +1148,7 @@
       <div class="cs-principles-grid reveal reveal-delay-1">
         <div class="cs-principle">
           <span class="cs-principle-num">01</span>
-          <span class="cs-principle-title">Users data analysis</span>
+          <span class="cs-principle-title">User data analysis</span>
           <p class="cs-principle-desc">Get to know the users better before anything else.</p>
         </div>
         <div class="cs-principle">
@@ -1181,7 +1182,7 @@
           <span class="cs-flow-arrow">→</span>
           <span class="cs-flow-tag">Adapt the flow</span>
           <span class="cs-flow-arrow">→</span>
-          <span class="cs-flow-tag">Recommand the right plan</span>
+          <span class="cs-flow-tag">Recommend the right plan</span>
         </div>
       </div>
       <div class="cs-constraint-block reveal reveal-delay-2">
@@ -1198,7 +1199,7 @@
     <!-- Steps -->
     <div class="cs-steps">
 
-      <!-- Step 1 — User data analysis -->
+      <!-- Step 1, User data analysis -->
       <div class="cs-step">
         <div class="cs-step-left">
           <div class="cs-step-num-row reveal">
@@ -1206,7 +1207,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">User data analysis</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Analyzing deeply user data allowed us to discover key points about the app's users. With the help of the data team lead, I built personae to keep each profile in mind while designing. The app had assumed all new users were complete beginners, but data revealed a wider range of profiles the existing flow was failing.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I dug into the user data with the data team lead and built personae to keep each profile in mind while designing. The app had assumed every new user was a complete beginner. The data said otherwise, a wider range of profiles than the existing flow was built for.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Each persona maps to a distinct set of questions, fitness assumptions, and plan recommendations.</li>
             <li>Discovering that 10–20% of users couldn't yet run was the direct trigger for the Safe Start Program.</li>
@@ -1239,7 +1240,7 @@
         </div>
       </div>
 
-      <!-- Step 2 — Personalized flows (phone flush bottom) -->
+      <!-- Step 2, Personalized flows (phone flush bottom) -->
       <div class="cs-step">
         <div class="cs-step-left cs-step-left-alt">
           <div class="cs-step-num-row reveal">
@@ -1247,7 +1248,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Personalized flows</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Depending on the selected goal, users are directed to a different onboarding flow. The alternative was a longer universal flow covering every scenario, which would have felt like a survey. Branching on stated goal means each user only answers questions relevant to them.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I branched the onboarding flow based on the user's selected goal. The alternative was one longer, universal flow covering every scenario, and I was worried that would just feel like a survey. Branching on stated goal means each user only answers questions relevant to them.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>A "Weight loss" goal triggers fitness and health questions; a "Get active" goal focuses on schedule and motivation instead.</li>
             <li>Each branch is shorter than the old universal flow, reducing the number of steps before the plan is generated.</li>
@@ -1258,7 +1259,7 @@
         </div>
       </div>
 
-      <!-- Step 3 — Dynamic content & UX writing -->
+      <!-- Step 3, Dynamic content & UX writing -->
       <div class="cs-step">
         <div class="cs-step-left">
           <div class="cs-step-num-row reveal">
@@ -1266,7 +1267,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Dynamic content &amp; UX writing</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Selecting an answer displays a specific message offering helpful advice or encouragement. The old onboarding was purely transactional (answer, next, answer, next). A contextual response after each answer proves the app read the input, which is disproportionately valuable at sign-up when trust hasn't been built yet.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I had each answer trigger a specific message with helpful advice or encouragement. The old onboarding was purely transactional: answer, next, answer, next. A contextual response proves the app actually read the input, which matters disproportionately at sign-up, before any trust has been built.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>A user who mentions injury gets a careful, reassuring message, not the same copy as someone who is just short on time.</li>
             <li>The writing was crafted per answer option, not per screen, so tone matches context at every step.</li>
@@ -1277,7 +1278,7 @@
         </div>
       </div>
 
-      <!-- Step 4 — Address all users (phone flush bottom) -->
+      <!-- Step 4, Address all users (phone flush bottom) -->
       <div class="cs-step">
         <div class="cs-step-left cs-step-left-alt">
           <div class="cs-step-num-row reveal">
@@ -1285,7 +1286,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Address all users</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Based on user analysis showing that 10-20% of users were unable to run yet, we designed the 'Safe Start Program'. A modified beginner plan wasn't enough: users in physical recovery need different intensity targets, rest intervals, and safety messaging. When they represent 10-20% of installs, designing them out isn't an option.</p>
+          <p class="cs-step-body reveal reveal-delay-2">User analysis showed that 10-20% of users weren't ready to run yet, so I designed the "Safe Start Program." A modified beginner plan wasn't enough. People in physical recovery need different intensity targets, rest intervals, and safety messaging, and at that share of installs, I couldn't justify designing them out.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>A specific program for the most sensitive users (highly overweight, recovering etc.)</li>
             <li>Fitness-related questions help ensure the program is pushed to the right users.</li>
@@ -1411,7 +1412,7 @@
     <!-- Final Note -->
     <section class="cs-section cs-section-purple cs-centered">
       <span class="cs-label reveal">Final note</span>
-      <p class="cs-quote reveal reveal-delay-1">Personalization isn't just about better outcomes.<br>It's about building <u>trust</u> early.</p>
+      <p class="cs-quote reveal reveal-delay-1">The onboarding got longer for some users.<br>They didn't seem to mind, once it had a reason to <u>ask</u>.</p>
     </section>
 
     <!-- Footer -->

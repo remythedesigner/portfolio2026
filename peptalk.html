@@ -187,7 +187,7 @@
       color: white;
     }
 
-    /* Hero phones — in-flow flex sibling */
+    /* Hero phones, in-flow flex sibling */
     .cs-hero-phones {
       position: relative;
       flex-shrink: 0;
@@ -544,7 +544,7 @@
     }
     .cs-step-right-alt { background: rgba(252, 231, 234, 0.55); }
 
-    /* Phone image variant — flush bottom */
+    /* Phone image variant, flush bottom */
     .cs-step-right-phone {
       align-items: flex-end;
       padding: 40px 40px 0;
@@ -1062,8 +1062,9 @@
     .cs-next {
       width: 100%;
       background: #403462;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
     }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
     .cs-next-link {
       display: block;
       padding: 64px 128px;
@@ -1091,8 +1092,8 @@
       color: #ffffff;
     }
     .cs-next-desc {
-      font-weight: 300; font-size: 22px; line-height: 1.4;
-      color: #776c92;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: rgba(255,255,255,0.85);
     }
     .project-btn {
       background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
@@ -1179,7 +1180,7 @@
         </div>
       </div>
 
-      <!-- Hero phones — single composed image, absolutely positioned right side -->
+      <!-- Hero phones, single composed image, absolutely positioned right side -->
       <div class="cs-hero-phones reveal from-right reveal-delay-3">
         <img loading="lazy" class="cs-hero-phones-img"
              src="assets/preview-peptalk.webp"
@@ -1197,7 +1198,7 @@
           </div>
           <div class="cs-problem-content reveal reveal-delay-1">
             <p class="cs-body-bold">In addition to providing daily motivational videos and audio clips, PepTalk has developed an AI feature that lets users chat with their favorite personalities: PepCoach.</p>
-            <p class="cs-body">If the PepCoach feature initially felt avant-garde, users quickly found it underwhelming compared to what they expected from an AI-powered coaching experience.</p>
+            <p class="cs-body">I'll admit PepCoach felt genuinely avant-garde when it launched. Users quickly found it underwhelming compared to what they expected from an AI-powered coaching experience.</p>
           </div>
         </div>
         <div class="cs-problem-stats reveal reveal-delay-2">
@@ -1222,13 +1223,13 @@
         <span class="cs-label">Old Design</span>
         <h2 class="cs-heading">UX/UI Analysis</h2>
       </div>
-      <p class="cs-body reveal reveal-delay-1">When it was launched, the promise of chatting with a AI agent acting like your favorite celebrity was quite attractive. But the feature quickly revealed its limits: users were interacting with a standard, outdated AI agent overlaid with a language filter, unable to offer any valuable content... when the app is actually packed with rich content.</p>
+      <p class="cs-body reveal reveal-delay-1">When it launched, the promise of chatting with an AI agent acting like your favorite celebrity was genuinely attractive. I underestimated how fast the feature would reveal its limits. Users were interacting with a standard, outdated AI agent wearing a language filter, unable to offer anything the app's own content already did better.</p>
       <div class="cs-old-design-content">
         <div class="cs-screens-carousel">
           <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pep-old-screen1.webp" alt="Old PepCoach design — screen 1"></div>
-            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pep-old-screen2.webp" alt="Old PepCoach design — screen 2"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pep-old-screen1.webp" alt="Old PepCoach design, screen 1"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pep-old-screen2.webp" alt="Old PepCoach design, screen 2"></div>
           </div>
           <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
@@ -1244,7 +1245,7 @@
             <div class="cs-analysis-dot"></div>
             <div class="cs-analysis-text">
               <span class="cs-analysis-title">Disconnected from the product</span>
-              <span class="cs-analysis-desc">The feature didn't leverage the app's core content: audios, videos, and quotes.</span>
+              <span class="cs-analysis-desc">The feature ignored the app's core content, its audios, videos, and quotes.</span>
             </div>
           </li>
           <li class="cs-analysis-item">
@@ -1261,7 +1262,7 @@
     <!-- Key Insight -->
     <section class="cs-section cs-section-purple cs-centered">
       <span class="cs-label reveal">Key Insight</span>
-      <p class="cs-quote reveal reveal-delay-1">The real value isn't the AI itself.<br>It's the <u>relevance</u> of the interactions it can bring up.</p>
+      <p class="cs-quote reveal reveal-delay-1">Nobody opens a chat to talk to an AI.<br>They open it hoping something <u>relevant</u> comes back.</p>
     </section>
 
     <!-- Design Principles -->
@@ -1337,7 +1338,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Default to a generic coach</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Users now start with a neutral AI Coach. The celebrity framing was over-promising. Users expected a real personality, not a renamed model. Making the AI Coach the default removes that mismatch and lets content quality carry the experience.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I made the AI Coach the default instead of a celebrity, which felt like a step back at first. But the celebrity framing had over-promised: people expected an actual personality and got a renamed model instead. Defaulting to something plainer removes that letdown and lets the content do the work.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Celebrities are optional, not the entry point.</li>
             <li>This removes the pressure of choosing a personality before the experience begins.</li>
@@ -1370,7 +1371,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Guide conversations with topics</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Instead of open-ended chat, users start from a predefined coaching topic. A blank input works for curiosity-driven users, but PepTalk's audience often comes with an emotional need they can't easily articulate. Topics give them a starting point and reduce the gap between "I feel stuck" and actually receiving useful coaching.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I moved users away from open-ended chat and into a predefined coaching topic first. A blank input works for curiosity-driven users, but PepTalk's audience often comes with an emotional need they can't easily articulate. Topics give them a starting point and close the gap between "I feel stuck" and actually receiving useful coaching.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Topics ground the conversation in the user's actual needs.</li>
             <li>They help the AI provide more relevant and actionable responses.</li>
@@ -1379,7 +1380,7 @@
         <div class="cs-step-right cs-step-right-alt cs-step-right-phone reveal from-right">
           <img loading="lazy" class="pep-step-phone-img"
                src="assets/pep-screen1.webp"
-               alt="Guide conversations — topic selection screen">
+               alt="Guide conversations, topic selection screen">
         </div>
       </div>
 
@@ -1391,7 +1392,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Structure free input subtly</h3>
-          <p class="cs-step-body reveal reveal-delay-2">When users type freely, the AI detects the underlying topic automatically. Forcing everyone through topic selection would have felt patronizing for returning users. Keeping free input but classifying it silently gives both segments what they need without branching the flow.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I let users keep typing freely and had the AI detect the underlying topic automatically instead. Forcing everyone through topic selection would have felt patronizing to returning users, so I classified free input silently rather than branching the whole flow. Both segments get what they need without knowing the other path exists.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Users feel free to express themselves naturally.</li>
             <li>The system maps their input to the right coaching category.</li>
@@ -1433,7 +1434,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Inject content into conversations</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The AI surfaces relevant videos and audio from the app directly in chat. PepTalk's real competitive advantage is its content library, not its AI model. Keeping content and chat separate meant users engaged with one or the other. Injecting content into responses is what makes the AI feel distinctly PepTalk rather than a generic chatbot.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I had the AI surface relevant videos and audio from the app straight in chat. PepTalk's edge was always the content library, not the model behind the chat, and keeping the two apart meant users picked one or the other. Weaving content into the responses is what makes this feel like PepTalk, not a chatbot wearing its logo.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Content recommendations feel organic and timely.</li>
             <li>The feature finally connects the AI to the rest of the product.</li>
@@ -1442,7 +1443,7 @@
         <div class="cs-step-right cs-step-right-alt cs-step-right-phone reveal from-right">
           <img loading="lazy" class="pep-step-phone-img"
                src="assets/pep-screen4.webp"
-               alt="Content injection — in-chat content card">
+               alt="Content injection, in-chat content card">
         </div>
       </div>
 
@@ -1454,7 +1455,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Introduce dynamic coaching</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Coaching adapts in real time based on what the user shares. Static responses train users not to engage deeply, as they quickly learn the system doesn't respond to nuance. Adaptive tone is what creates the "this actually listens" feeling that drives return sessions.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I made coaching adapt in real time to what the user shares. Static responses train people not to engage deeply, once they learn the system won't respond to nuance, they stop bothering. Adaptive tone is what creates that "this actually listens" feeling that brings people back.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>The AI adjusts its tone and suggestions based on the conversation.</li>
             <li>Users feel heard and understood, not just answered.</li>
@@ -1463,7 +1464,7 @@
         <div class="cs-step-right reveal from-right">
           <img loading="lazy" class="pep-step5-img"
                src="assets/pep-screen3.webp"
-               alt="Dynamic coaching — adaptive response UI">
+               alt="Dynamic coaching, adaptive response UI">
         </div>
       </div>
 
@@ -1475,9 +1476,9 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Make it look premium</h3>
-          <p class="cs-step-body reveal reveal-delay-2">A modernized UI that signals quality and justifies the premium tier. The old design looked like a side project, creating a mismatch between the perceived value of "personal AI coach" and the visual quality users associate with that price point.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I modernized the UI to signal quality and justify the premium tier. The old design looked like a side project, and that mismatch, between the promise of a "personal AI coach" and the visual quality people associate with that price, was working against us.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Visual refinements elevate the perceived value of the feature.</li>
+            <li>Visual refinements make the feature look and feel more premium.</li>
             <li>The new design is consistent with the overall app aesthetic.</li>
           </ul>
         </div>
@@ -1486,19 +1487,19 @@
             <img loading="lazy" class="pep-step6-img"
                  style="width:418px;border-radius:40px;"
                  src="assets/pep-design1.webp"
-                 alt="Premium UI — component 1">
+                 alt="Premium UI, component 1">
             <img loading="lazy" class="pep-step6-img"
                  style="width:420px;border-radius:24px;"
                  src="assets/pep-screen2.webp"
-                 alt="Premium UI — component 2">
+                 alt="Premium UI, component 2">
             <img loading="lazy" class="pep-step6-img"
                  style="width:419px;border-radius:40px;"
                  src="assets/pep-screen5.webp"
-                 alt="Premium UI — component 3">
+                 alt="Premium UI, component 3">
             <img loading="lazy" class="pep-step6-img"
                  style="width:418px;border-radius:40px;"
                  src="assets/pep-screen6.webp"
-                 alt="Premium UI — component 4">
+                 alt="Premium UI, component 4">
           </div>
         </div>
       </div>

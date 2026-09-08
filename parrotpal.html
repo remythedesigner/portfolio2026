@@ -187,7 +187,7 @@
       color: white;
     }
 
-    /* Hero image — in-flow flex sibling */
+    /* Hero image, in-flow flex sibling */
     .cs-hero-image {
       position: relative;
       flex-shrink: 0;
@@ -1035,7 +1035,7 @@
       .cs-problem-left { padding: 64px; }
       .cs-step-left { padding: 64px; }
       footer { padding: 64px; }
-      /* Extending impact — carousel (2 phones at a time) */
+      /* Extending impact, carousel (2 phones at a time) */
       .cs-carousel-wrapper { display: flex; align-items: center; gap: 12px; width: 100%; }
       .cs-carousel-btn { display: flex; }
       .cs-extending-phones { flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 16px; padding: 0; margin: 0; justify-content: flex-start; }
@@ -1085,7 +1085,7 @@
       .cs-new-design-text { width: 100%; }
       .cs-phone-frame { width: 330px; height: 717px; }
       .cs-impact-cards { flex-direction: column; }
-      /* Extending impact — carousel at tablet (2 phones at a time) */
+      /* Extending impact, carousel at tablet (2 phones at a time) */
       .cs-carousel-wrapper { display: flex; align-items: center; gap: 12px; width: 100%; }
       .cs-carousel-btn { display: flex; }
       .cs-extending-phones { flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 16px; padding: 0; margin: 0; justify-content: flex-start; }
@@ -1144,7 +1144,7 @@
       .cs-phone-frame { width: 286px; height: 623px; }
       .cs-stat { font-size: 40px; }
       .cs-card-title { font-size: 22px; }
-      /* Extending impact — carousel */
+      /* Extending impact, carousel */
       .cs-carousel-wrapper {
         display: flex; align-items: center; gap: 12px; width: 100%;
       }
@@ -1193,8 +1193,9 @@
     .cs-next {
       width: 100%;
       background: #403462;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
     }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
     .cs-next-link {
       display: block;
       padding: 64px 128px;
@@ -1222,8 +1223,8 @@
       color: #ffffff;
     }
     .cs-next-desc {
-      font-weight: 300; font-size: 22px; line-height: 1.4;
-      color: #776c92;
+      font-weight: 300; font-size: 22px; line-height: 1.5;
+      color: rgba(255,255,255,0.85);
     }
     .project-btn {
       background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
@@ -1307,7 +1308,7 @@
         </div>
       </div>
 
-      <!-- Hero image — absolutely positioned -->
+      <!-- Hero image, absolutely positioned -->
       <div class="cs-hero-image reveal from-right reveal-delay-3">
         <img loading="lazy" src="assets/preview-parrotpal.webp" alt="Pal app screens">
       </div>
@@ -1323,7 +1324,7 @@
           </div>
           <div class="cs-problem-content reveal reveal-delay-1">
             <p class="cs-body-bold">Parrot Pal's Food Center section was initially created to enhance the user experience once they have entered their meals in the log section.</p>
-            <p class="cs-body">Yet data analysis showed that most users would visit the Food Center section once and never come back, although it is accessible directly through the app's tapbar.</p>
+            <p class="cs-body">But when I looked at the data, most users visited the Food Center once and never came back, even though it's accessible directly from the app's tapbar.</p>
           </div>
         </div>
         <div class="cs-problem-stats reveal reveal-delay-2">
@@ -1353,8 +1354,8 @@
         <div class="cs-screens-carousel">
           <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pal-old-screen1.webp" alt="Old design — Food Center screen 1"></div>
-            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pal-old-screen2.webp" alt="Old design — Food Center screen 2"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pal-old-screen1.webp" alt="Old design, Food Center screen 1"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pal-old-screen2.webp" alt="Old design, Food Center screen 2"></div>
           </div>
           <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
@@ -1408,7 +1409,7 @@
         <div class="cs-principle">
           <span class="cs-principle-num">01</span>
           <span class="cs-principle-title">Focus on high-value features</span>
-          <p class="cs-principle-desc">Elevate what users actually need.</p>
+          <p class="cs-principle-desc">Show users what they actually need.</p>
         </div>
         <div class="cs-principle">
           <span class="cs-principle-num">02</span>
@@ -1474,7 +1475,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Identify what matters</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Through user workshops, two features stood out.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I expected food creation to come out on top in the workshops. It didn't. Two other features kept coming up instead.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Meal plan: users wanted a coherent daily plan</li>
             <li>Recipe browsing: users wanted relevant inspiration</li>
@@ -1510,7 +1511,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Remove noise</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The food log summary was removed from this section. Keeping it alongside recipe discovery was creating competing jobs-to-be-done: users couldn't tell if the page was for tracking or for cooking.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I pulled the food log summary out of this section entirely. Keeping it next to recipe discovery was creating two competing jobs-to-be-done: users couldn't tell if the page was for tracking or for cooking.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>It was relocated to the "Today" page, where it naturally belongs.</li>
             <li>This reduced cognitive load and clarified the purpose of the page.</li>
@@ -1546,7 +1547,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Make recommendations relevant</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Recipe suggestions were redesigned around remaining daily calories. Generic recipe libraries already exist everywhere. The only data ParrotPal uniquely has is the user's remaining macros for the day, and anchoring suggestions to that turns a commodity feature into something no outside competitor can replicate.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I redesigned recipe suggestions around remaining daily calories. I didn't want to build another generic recipe library, that fight is already lost. The one thing ParrotPal actually has that no competitor does is the user's remaining macros for the day, so I anchored everything to that instead.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Users now see only recipes that match their remaining daily calories.</li>
             <li>This turns recipe browsing into a personal, actionable tool rather than generic content.</li>
@@ -1600,7 +1601,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Redesign the meal plan</h3>
-          <p class="cs-step-body reveal reveal-delay-2">A full daily plan aligned with the user's calorie target. Individual recipe suggestions create a new decision burden: "what else do I eat today?" A full plan removes that question: one action, full day resolved.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I built a full daily plan aligned with the user's calorie target, instead of one-off suggestions. One recipe at a time still leaves the question hanging: what else do I eat today? A full plan closes it. One action, the whole day handled.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Instead of generic suggestions, users get a coherent plan for the day.</li>
             <li>Meals are ranked in categories: breakfast, lunch, dinner, and snacks.</li>
@@ -1621,7 +1622,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Improve the recipe experience</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The recipe page was redesigned to be more appealing and easier to browse. Rather than showing every available option, the list is curated and filtered by calorie fit. Too many choices trigger decision fatigue, while a shorter, relevant list makes action more likely.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I redesigned the recipe page to be more appealing and easier to browse. I was tempted to just show everything and let users filter it themselves, but too many choices trigger decision fatigue. I curated the list and filtered it by calorie fit instead, a shorter list makes people more likely to actually act.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Each recipe card leads with a photo, calorie count, and macros, all visible before tapping.</li>
             <li>Limiting the number of recipes to keep only the best ones.</li>
@@ -1642,7 +1643,7 @@
             <div class="cs-step-line"></div>
           </div>
           <h3 class="cs-step-title reveal reveal-delay-1">Align the UI</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The entire section was redesigned to match the rest of the app and stand out at the same time. An off-brand section signals a forgotten feature, and visual coherence is what tells users this is worth returning to, not just a one-time setup screen.</p>
+          <p class="cs-step-body reveal reveal-delay-2">I redesigned the entire section to match the rest of the app, while making sure it could still stand out on its own. A section that looks off-brand reads as forgotten, and I wanted consistency to be what tells a user this is worth a second visit.</p>
           <ul class="cs-step-list reveal reveal-delay-3">
             <li>Consistent components and improved hierarchy.</li>
             <li>Modern UI that fits in with Apple liquid design.</li>
@@ -1714,16 +1715,16 @@
         <button class="cs-carousel-btn cs-carousel-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <div class="cs-extending-phones reveal reveal-delay-2" id="extending-carousel">
           <div class="cs-ext-phone">
-            <img loading="lazy" src="assets/pal-onboard-1.webp" alt="Onboarding — Welcome">
+            <img loading="lazy" src="assets/pal-onboard-1.webp" alt="Onboarding, Welcome">
           </div>
           <div class="cs-ext-phone">
-            <img loading="lazy" src="assets/pal-onboard-2.webp" alt="Onboarding — Start tracking">
+            <img loading="lazy" src="assets/pal-onboard-2.webp" alt="Onboarding, Start tracking">
           </div>
           <div class="cs-ext-phone">
-            <img loading="lazy" src="assets/pal-onboard-3.webp" alt="Onboarding — Food log">
+            <img loading="lazy" src="assets/pal-onboard-3.webp" alt="Onboarding, Food log">
           </div>
           <div class="cs-ext-phone">
-            <img loading="lazy" src="assets/pal-onboard-4.webp" alt="Onboarding — Food Center">
+            <img loading="lazy" src="assets/pal-onboard-4.webp" alt="Onboarding, Food Center">
           </div>
         </div>
         <button class="cs-carousel-btn cs-carousel-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -1746,7 +1747,7 @@
     <!-- Final Note -->
     <section class="cs-section cs-section-purple cs-centered">
       <span class="cs-label reveal">Final note</span>
-      <p class="cs-quote reveal reveal-delay-1">Good UX doesn't stop at the feature.<br>It fits <u>seamlessly</u> into an existing context.</p>
+      <p class="cs-quote reveal reveal-delay-1">The Food Center redesign is small in scope.<br>The habit it changes is <u>not</u>.</p>
     </section>
 
     <!-- Footer -->
