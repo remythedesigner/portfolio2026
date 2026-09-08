@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://remythedesigner.github.io/portfolio2026/sitemap.xml
+Sitemap: https://remytartanac.com/sitemap.xml
