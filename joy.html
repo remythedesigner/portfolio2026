@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parrot Pal · Rémy Tartanac</title>
+  <title>&amp;Joy · Rémy Tartanac</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
@@ -41,7 +41,6 @@
       position: sticky; top: 0; z-index: 100;
       width: 100%;
       background: #403462;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
@@ -70,7 +69,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600; font-size: 24px; line-height: 1;
       letter-spacing: 1.96px; text-transform: uppercase;
-      color: #68bea6;
+      color: #3b82f6;
     }
 
     /* ── Scroll Reveal ── */
@@ -104,7 +103,7 @@
     }
     .cs-hero-tint {
       position: absolute; inset: 0;
-      background-image: linear-gradient(22deg, rgba(104,190,166,0.24) 29%, rgba(104,190,166,0.06) 71%);
+      background-image: linear-gradient(21deg, rgba(78,90,242,0.24) 29%, rgba(78,90,242,0.06) 71%);
       pointer-events: none;
     }
     .cs-hero-bg {
@@ -137,10 +136,23 @@
       transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
     }
     .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
+    .cs-logo-mark {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      background: #e6e0f2;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700; font-size: 44px;
+      color: #3b82f6;
+      text-shadow: 0 4px 4px rgba(0,0,0,0.25);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+    .cs-logo-mark:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
     .cs-tag {
       font-weight: 400; font-size: 14px; line-height: 20px;
       letter-spacing: 1.96px; text-transform: uppercase;
-      color: #68bea6;
+      color: #3b82f6;
       border: 1px solid rgba(255,255,255,0.45);
       padding: 8px 16px;
       border-radius: 160px;
@@ -168,7 +180,7 @@
     .cs-meta-label {
       font-weight: 400; font-size: 14px; line-height: 20px;
       letter-spacing: 1.96px; text-transform: uppercase;
-      color: #68bea6;
+      color: #3b82f6;
     }
     .cs-meta-value {
       font-weight: 500; font-size: 20px; line-height: 28px;
@@ -253,7 +265,7 @@
       content: '';
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #68bea6;
+      background: #3b82f6;
       flex-shrink: 0;
     }
 
@@ -369,7 +381,7 @@
     .cs-analysis-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #68bea6;
+      background: #3b82f6;
       flex-shrink: 0;
       margin-top: 18px;
     }
@@ -467,16 +479,16 @@
       flex-wrap: wrap;
     }
     .cs-flow-tag {
-      background: rgba(104, 190, 166, 0.1);
-      border: 1px solid rgba(104, 190, 166, 0.2);
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
       padding: 10px 28px;
       border-radius: 9999px;
       font-weight: 400; font-size: 24px; line-height: 36px;
-      color: #3a9e87;
+      color: #2f5fd6;
     }
     .cs-flow-arrow {
       font-weight: 300; font-size: 24px; line-height: 32px;
-      color: rgba(104, 190, 166, 0.5);
+      color: rgba(59, 130, 246, 0.5);
     }
     .cs-constraint-label {
       font-weight: 400; font-size: 14px; line-height: 20px;
@@ -496,7 +508,7 @@
     }
     .cs-constraint-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
     .cs-constraint-item { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-    .cs-constraint-tag { font-weight: 500; font-size: 13px; line-height: 20px; color: #3D9E87; background: rgba(104,190,166,0.1); border-radius: 6px; padding: 2px 10px; white-space: nowrap; flex-shrink: 0; }
+    .cs-constraint-tag { font-weight: 500; font-size: 13px; line-height: 20px; color: #2f5fd6; background: rgba(59,130,246,0.1); border-radius: 6px; padding: 2px 10px; white-space: nowrap; flex-shrink: 0; }
     .cs-constraint-implication { font-weight: 300; font-size: 16px; line-height: 1.6; color: #776c92; }
     .cs-flow-block { display: flex; flex-direction: column; gap: 0; }
 
@@ -569,7 +581,7 @@
       content: '';
       width: 6px; height: 6px;
       border-radius: 50%;
-      background: #68bea6;
+      background: #3b82f6;
       flex-shrink: 0;
       margin-top: 10px;
     }
@@ -709,11 +721,11 @@
       font-size: 12px; color: #6baa80;
     }
     .ui-recipe-tag {
-      background: rgba(104,190,166,0.12);
+      background: rgba(59,130,246,0.12);
       border-radius: 9999px;
       padding: 4px 10px;
       font-family: -apple-system, system-ui, sans-serif;
-      font-size: 11px; color: #68bea6;
+      font-size: 11px; color: #3b82f6;
       flex-shrink: 0;
     }
     .ui-calorie-bar {
@@ -742,7 +754,7 @@
     }
     .ui-progress-fill {
       height: 100%; border-radius: 2px;
-      background: #68bea6;
+      background: #3b82f6;
     }
 
     /* ── New Design ── */
@@ -821,7 +833,7 @@
     .cs-impact-card.faded .cs-stat { opacity: 0.5; }
     .cs-stat {
       font-weight: 700; font-size: 52px; line-height: normal;
-      color: #68bea6;
+      color: #3b82f6;
     }
     .cs-card-title {
       font-weight: 600; font-size: 28px; line-height: normal;
@@ -1246,9 +1258,221 @@
       .cs-next-desc { font-size: 18px; }
     }
 
+    /* ── Intro (Context + Scope) ── */
+    .cs-intro { display: flex; align-items: stretch; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-scope-card {
+      flex: 0 0 480px;
+      display: flex; flex-direction: column; gap: 32px;
+      align-items: flex-start; justify-content: center;
+      padding: 40px;
+      background: #403462;
+    }
+    .cs-scope-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phases { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+    .cs-scope-phase { display: flex; flex-direction: column; width: 100%; }
+    .cs-scope-phase-row { display: flex; gap: 16px; align-items: center; color: #ffffff; }
+    .cs-scope-phase-num {
+      font-weight: 400; font-size: 14px; letter-spacing: 1.96px;
+      color: #ffffff;
+    }
+    .cs-scope-phase-title {
+      flex: 1; font-weight: 600; font-size: 24px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phase-desc {
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: rgba(255,255,255,0.75);
+    }
+    .cs-scope-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 24px; }
+
+    /* ── Hypothesis + Quote row ── */
+    .cs-hypothesis-row { display: flex; align-items: stretch; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-hypothesis-col {
+      flex: 1; min-width: 0;
+      padding: 80px 128px;
+      display: flex; flex-direction: column; gap: 40px;
+      background: #faf4f1;
+    }
+    .cs-quote-card {
+      flex: 1; min-width: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px;
+      background: #e6e0f2;
+    }
+    .cs-quote-light {
+      font-weight: 300; font-size: 48px; line-height: normal;
+      color: #10042c;
+      text-align: center;
+    }
+
+    /* ── Artistic Direction ── */
+    .cs-art-section { background: #faf4f1; }
+    .cs-art-heading { color: #22222e; }
+    .cs-art-label { color: #776c92; }
+    .cs-art-row { display: flex; gap: 22px; width: 100%; flex-wrap: wrap; }
+    .cs-art-tile {
+      flex: 1 1 340px; min-width: 300px;
+      display: flex; flex-direction: column; gap: 20px;
+      padding: 28px;
+      border-radius: 16px;
+      background: #fcfbfe;
+      border: 1px solid rgba(34,34,46,0.1);
+    }
+    .cs-art-tile-tag {
+      font-weight: 600; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #4e5af2;
+    }
+    /* Palette tile */
+    .cs-art-tile-palette { background: #efeffe; border: none; }
+    .cs-art-swatch-grid { display: flex; flex-direction: column; gap: 12px; }
+    .cs-art-swatch-row { display: flex; gap: 16px; }
+    .cs-art-swatch { width: 69px; height: 69px; border-radius: 50%; flex-shrink: 0; }
+    /* Type tile */
+    .cs-art-specimen { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 300; font-size: 96px; color: #22222e; line-height: 1; }
+    .cs-art-type-note { font-weight: 300; font-size: 14px; color: #78788c; }
+    .cs-art-type-note-strong { font-weight: 600; font-size: 14px; color: #78788c; }
+    .cs-art-rule { height: 1px; background: rgba(34,34,46,0.15); width: 100%; }
+    .cs-art-type-line {
+      font-weight: 400; font-size: 16px; letter-spacing: 2.4px; text-transform: uppercase;
+      color: #22222e;
+    }
+    /* Shapes tile */
+    .cs-art-tile-shapes { background: #eff0ff; border: none; }
+    .ui-mock { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; }
+    .ui-mock-btn {
+      background: #5170ff; color: #fff; font-weight: 700; font-size: 16px;
+      height: 54px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .ui-mock-row { display: flex; gap: 8px; }
+    .ui-mock-cat {
+      flex: 1; display: flex; align-items: center; gap: 10px;
+      background: #fff; border-radius: 16px; padding: 12px;
+      font-weight: 600; font-size: 13px; color: #1a1a24;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .ui-mock-cat-active { background: #eef1ff; border: 2px solid #5170ff; color: #5170ff; }
+    .ui-mock-cat-icon { width: 34px; height: 34px; border-radius: 10px; background: #fff0f5; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .ui-mock-pill { background: #fff; border-radius: 9999px; padding: 8px 14px; font-weight: 700; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; color: #1a1a24; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+    .ui-mock-pill-active { background: #5170ff; color: #fff; }
+    .ui-mock-slider { position: relative; height: 4px; border-radius: 999px; background: #e2deda; }
+    .ui-mock-slider-fill { position: absolute; left: 0; top: 0; height: 4px; border-radius: 999px; background: #5170ff; width: 66%; }
+    .ui-mock-slider-thumb { position: absolute; top: 50%; left: 66%; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 4px solid #5170ff; transform: translate(-50%,-50%); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+    /* Voice tile */
+    .cs-art-voice-greeting { font-family: Georgia, serif; font-weight: 600; font-size: 32px; }
+    .cs-art-voice-greeting span { color: #5170ff; }
+    .cs-art-voice-sub { font-weight: 500; font-size: 22px; color: #22222e; }
+    .cs-art-voice-tip { background: #efeffe; border-radius: 12px; padding: 14px 16px; font-weight: 300; font-size: 17px; color: #4e5af2; }
+    .cs-art-voice-cta { font-weight: 500; font-size: 22px; color: #22222e; }
+    /* Emoji tile */
+    .cs-art-emoji-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cs-art-emoji-chip { background: #ededf5; color: #22222e; font-weight: 300; font-size: 15px; padding: 9px 14px; border-radius: 9999px; }
+    .cs-art-emoji-chip-active { background: #4e5af2; color: #fff; font-weight: 600; }
+    /* Mood tile */
+    .cs-art-tile-mood { position: relative; padding: 28px; overflow: hidden; min-height: 278px; justify-content: flex-end; }
+    .cs-art-mood-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .cs-art-mood-badge { position: relative; align-self: flex-start; background: #f5c842; color: #261a00; font-weight: 600; font-size: 15px; padding: 7px 16px; border-radius: 9999px; }
+    .cs-art-mood-title { position: relative; font-weight: 500; font-size: 26px; color: #fff; margin-top: 44px; }
+    .cs-art-mood-price { position: relative; align-self: flex-start; background: rgba(255,255,255,0.9); color: #22222e; font-weight: 600; font-size: 17px; padding: 7px 14px; border-radius: 9999px; margin-top: 90px; }
+    .cs-art-mood-tag { position: relative; text-align: center; width: 100%; margin-top: 16px; }
+
+    /* ── Features (5 key moments) ── */
+    .cs-feature {
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 120px;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: linear-gradient(90deg, #efeffa 0%, #ffffff 65%);
+      position: relative; overflow: hidden;
+    }
+    .cs-feature-reverse { flex-direction: row-reverse; background: linear-gradient(270deg, #efeffa 0%, #ffffff 65%); }
+    .cs-feature-img { flex-shrink: 0; width: 360px; border-radius: 36px; overflow: hidden; box-shadow: 4px 4px 32px -8px rgba(0,0,0,0.25); }
+    .cs-feature-img img { width: 100%; display: block; }
+    .cs-feature-phones { flex-shrink: 0; display: flex; align-items: flex-start; }
+    .cs-feature-phones img { width: 300px; aspect-ratio: 390 / 844; object-fit: cover; border-radius: 32px; box-shadow: 4px 4px 32px -8px rgba(0,0,0,0.25); }
+    .cs-feature-phones img:last-child { margin-left: -24px; margin-top: 104px; }
+    .cs-feature-content { flex: 0 0 400px; width: 400px; display: flex; flex-direction: column; gap: 20px; position: relative; }
+    .cs-feature-num-bg {
+      position: absolute; top: -70px; left: -8px;
+      font-weight: 500; font-size: 260px; line-height: 1;
+      color: #776c92; opacity: 0.06;
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+    .cs-feature-label, .cs-feature-title, .cs-feature-desc, .cs-feature-callout { position: relative; z-index: 1; }
+    .cs-feature-label {
+      font-weight: 400; font-size: 14px; letter-spacing: 1.96px; text-transform: uppercase;
+      color: #10042c;
+    }
+    .cs-feature-title { font-weight: 500; font-size: 44px; line-height: 44px; color: #10042c; }
+    .cs-feature-desc { font-weight: 300; font-size: 22px; line-height: 1.5; color: #776c92; display: flex; flex-direction: column; gap: 16px; }
+    .cs-feature-sep { width: 64px; height: 1px; background: rgba(78,90,242,0.35); border: none; }
+    .cs-feature-callout {
+      background: #e6e0f2;
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex; flex-direction: column; gap: 8px;
+      width: 100%;
+    }
+    .cs-feature-callout-label { font-weight: 600; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #776c92; }
+    .cs-feature-callout-text { font-weight: 500; font-size: 20px; line-height: normal; color: #22222e; }
+
+    /* ── User Tests ── */
+    .cs-testing-row { display: flex; gap: 80px; align-items: center; justify-content: center; width: 100%; }
+    .cs-testing-left { display: flex; flex-direction: column; gap: 48px; flex: 1 1 600px; min-width: 0; max-width: 600px; }
+    .cs-testing-meta {
+      font-weight: 600; font-size: 18px; line-height: normal;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #3b82f6;
+    }
+    .cs-testing-lede { display: flex; flex-direction: column; gap: 16px; font-weight: 300; font-size: 22px; line-height: 1.5; color: #10042c; }
+    .cs-testing-cards { display: flex; flex-direction: column; gap: 24px; flex: 1 1 400px; min-width: 0; max-width: 400px; }
+    .cs-testing-card { background: #fcfbfe; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .cs-testing-num { font-weight: 700; font-size: 32px; line-height: 48px; letter-spacing: 2.4px; color: #3b82f6; }
+    .cs-testing-title { font-weight: 600; font-size: 26px; line-height: normal; color: #10042c; }
+    .cs-testing-desc { font-weight: 300; font-size: 18px; line-height: 24px; color: #10042c; }
+
+    /* ── Community ── */
+
+    @media (max-width: 960px) {
+      .cs-intro { flex-direction: column; }
+      .cs-scope-card { flex: none; width: 100%; padding: 40px; }
+      .cs-hypothesis-row { flex-direction: column; }
+      .cs-hypothesis-col { padding: 56px 40px; }
+      .cs-quote-card { padding: 56px 40px; }
+      .cs-quote-light { font-size: 32px; }
+      .cs-art-row { flex-wrap: wrap; }
+      .cs-feature { flex-direction: column !important; gap: 40px; padding: 56px 40px; background: #efeffa !important; }
+      .cs-feature-content { width: 100%; flex: 1 1 auto; }
+      .cs-feature-img { width: 100%; max-width: 320px; }
+      .cs-feature-phones { max-width: 100%; }
+      .cs-feature-phones img { width: 45%; }
+      .cs-feature-title { font-size: 32px; }
+      .cs-feature-desc { font-size: 18px; }
+      .cs-feature-num-bg { font-size: 160px; top: -40px; }
+      .cs-testing-row { flex-direction: column; gap: 40px; }
+      .cs-testing-left { width: 100%; flex: 1 1 auto; max-width: none; }
+      .cs-testing-cards { width: 100%; flex: 1 1 auto; max-width: none; }
+      .cs-testing-meta { font-size: 18px; }
+    }
+    @media (max-width: 600px) {
+      .cs-scope-card { padding: 32px 20px; }
+      .cs-hypothesis-col { padding: 48px 20px; }
+      .cs-quote-card { padding: 48px 20px; }
+      .cs-quote-light { font-size: 26px; }
+      .cs-feature { padding: 48px 20px; }
+      .cs-feature-title { font-size: 26px; }
+      .cs-testing-lede { font-size: 18px; }
+      .cs-testing-title { font-size: 22px; }
+    }
+
   </style>
-  <link rel="preload" as="image" href="assets/preview-parrotpal.webp" type="image/webp">
-<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
+  <link rel="preload" as="image" href="assets/joy-hero-phones.webp" type="image/webp">
 </head>
 <body>
 
@@ -1259,7 +1483,7 @@
     <nav>
       <div class="nav-inner">
         <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <span class="cs-nav-brand">Parrot Pal</span>
+        <span class="cs-nav-brand">&amp;Joy</span>
       </div>
     </nav>
 
@@ -1269,120 +1493,105 @@
       <img class="cs-hero-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
       <div class="cs-hero-left">
         <div class="cs-hero-brand reveal">
-          <a class="cs-logo-link" href="https://apps.apple.com/fr/app/compteur-de-calorie-parrotpal/id6462694790" target="_blank" rel="noopener">
-            <img loading="lazy" class="cs-logo" src="assets/logo-parrotpal.jpg" alt="ParrotPal logo">
-          </a>
-          <span class="cs-tag">Calorie-Tracking App</span>
+          <div class="cs-logo-mark" aria-hidden="true">&amp;</div>
+          <span class="cs-tag">Activity Booking App</span>
         </div>
-        <h1 class="cs-hero-title reveal reveal-delay-1">Turning an unused<br>section into a<br>daily entry point</h1>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Designing<br>the activity app<br>Paris was missing</h1>
         <div class="cs-meta reveal reveal-delay-2">
           <div class="cs-meta-item">
             <span class="cs-meta-label">Role</span>
-            <span class="cs-meta-value">Product Designer</span>
-          </div>
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Focus</span>
-            <span class="cs-meta-value">Feature Redesign</span>
-          </div>
-          <div class="cs-meta-item">
-            <span class="cs-meta-label">Platform</span>
-            <span class="cs-meta-value">iOS</span>
+            <span class="cs-meta-value">Product Design, Product Strategy</span>
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Year</span>
             <span class="cs-meta-value">2026</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Status</span>
+            <span class="cs-meta-value">In development</span>
           </div>
         </div>
       </div>
 
       <!-- Hero image — absolutely positioned -->
       <div class="cs-hero-image reveal from-right reveal-delay-3">
-        <img loading="lazy" src="assets/preview-parrotpal.webp" alt="Pal app screens">
+        <img loading="lazy" src="assets/joy-hero-phones.webp" alt="&amp;joy app screens">
       </div>
     </section>
 
-    <!-- The Problem -->
-    <section class="cs-section cs-section-white cs-problem">
-      <div class="cs-problem-layout">
-        <div class="cs-problem-left">
-          <div class="cs-section-header reveal">
-            <span class="cs-label">The problem</span>
-            <h2 class="cs-heading">Users weren't using an entire section of the app.</h2>
-          </div>
-          <div class="cs-problem-content reveal reveal-delay-1">
-            <p class="cs-body-bold">Parrot Pal's Food Center section was initially created to enhance the user experience once they have entered their meals in the log section.</p>
-            <p class="cs-body">Yet data analysis showed that most users would visit the Food Center section once and never come back, although it is accessible directly through the app's tapbar.</p>
-          </div>
+    <!-- Intro / Context + Scope -->
+    <section class="cs-intro">
+      <div class="cs-problem-left">
+        <div class="cs-section-header reveal">
+          <span class="cs-label">Context</span>
+          <h2 class="cs-heading">The "Too Good To Go" of Parisian leisure.</h2>
         </div>
-        <div class="cs-problem-stats reveal reveal-delay-2">
-          <div class="cs-problem-stats-inner">
-            <div class="cs-stat-card">
-              <span class="cs-stat-value">&lt;5%</span>
-              <span class="cs-stat-label">visited the Food Center during their first session</span>
+        <div class="cs-problem-content reveal reveal-delay-1">
+          <p class="cs-body">I joined the &amp;joy project when it was still a concept. Few screens made with Lovable, but mostly a great idea: what if someone turned last-minute unsold spots into spontaneous Parisian experiences, the way Too Good To Go turned unsold food into a market?</p>
+          <p class="cs-body">Before any real design work began, I helped shape the app's positioning and identity: what &amp;joy should stand for, and what voice it should carry.</p>
+        </div>
+      </div>
+      <div class="cs-scope-card reveal reveal-delay-2">
+        <span class="cs-scope-label">My scope</span>
+        <div class="cs-scope-phases">
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">01</span>
+              <span class="cs-scope-phase-title">Positioning &amp; Identity</span>
             </div>
-            <div class="cs-stat-divider"></div>
-            <div class="cs-stat-card">
-              <span class="cs-stat-value">−6%</span>
-              <span class="cs-stat-label">conversion rate among users who visited the section VS users who skipped</span>
+            <p class="cs-scope-phase-desc">Brand strategy, voice, market framing</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">02</span>
+              <span class="cs-scope-phase-title">User Research</span>
             </div>
+            <p class="cs-scope-phase-desc">Analysis of interviews conducted by the founder</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">03</span>
+              <span class="cs-scope-phase-title">Product Strategy</span>
+            </div>
+            <p class="cs-scope-phase-desc">17 participants · 2 waves · semi-structured interviews</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">04</span>
+              <span class="cs-scope-phase-title">UI Design</span>
+            </div>
+            <p class="cs-scope-phase-desc">Full interface design, component system, V1 → V2</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">05</span>
+              <span class="cs-scope-phase-title">Testing</span>
+            </div>
+            <p class="cs-scope-phase-desc">17 participants · 2 waves · semi-structured interviews</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Old Design -->
-    <section class="cs-section cs-section-light">
-      <div class="cs-section-header reveal">
-        <span class="cs-label">Old Design</span>
-        <h2 class="cs-heading">UX/UI Analysis</h2>
-      </div>
-      <p class="cs-body reveal reveal-delay-1">The Food Center was a catch-all section mixing custom food creation actions with a food log summary, a recommended meal plan for the day, and uncontextualized recipe suggestions. Users had no clear idea what the section was actually for.</p>
-      <div class="cs-old-design-content">
-        <div class="cs-screens-carousel">
-          <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pal-old-screen1.webp" alt="Old design — Food Center screen 1"></div>
-            <div class="cs-screen-slide"><img loading="lazy" class="cs-screen-img" src="assets/pal-old-screen2.webp" alt="Old design — Food Center screen 2"></div>
-          </div>
-          <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <!-- User Research hypothesis + Quote -->
+    <section class="cs-hypothesis-row">
+      <div class="cs-hypothesis-col">
+        <div class="cs-section-header reveal">
+          <span class="cs-label">User research</span>
+          <h2 class="cs-heading">A starting hypothesis</h2>
         </div>
-        <ul class="cs-analysis-list reveal from-right reveal-delay-2">
-          <li class="cs-analysis-item">
-            <div class="cs-analysis-dot"></div>
-            <div class="cs-analysis-text">
-              <span class="cs-analysis-title">Unclear purpose</span>
-              <span class="cs-analysis-desc">Users didn't understand what the page was for or what actions to take.</span>
-            </div>
-          </li>
-          <li class="cs-analysis-item">
-            <div class="cs-analysis-dot"></div>
-            <div class="cs-analysis-text">
-              <span class="cs-analysis-title">Low perceived value</span>
-              <span class="cs-analysis-desc">The benefits of each feature were unclear or not immediate.</span>
-            </div>
-          </li>
-          <li class="cs-analysis-item">
-            <div class="cs-analysis-dot"></div>
-            <div class="cs-analysis-text">
-              <span class="cs-analysis-title">UI inconsistency</span>
-              <span class="cs-analysis-desc">The design didn't match the rest of the app, reducing trust and coherence.</span>
-            </div>
-          </li>
-          <li class="cs-analysis-item" style="border-bottom:none;">
-            <div class="cs-analysis-dot"></div>
-            <div class="cs-analysis-text">
-              <span class="cs-analysis-title">Misplaced content</span>
-              <span class="cs-analysis-desc">The food log summary added noise and didn't belong in this section.</span>
-            </div>
-          </li>
-        </ul>
+        <p class="cs-body reveal reveal-delay-1">First interviews revealed something more precise. For most of the respondents, looking for weekend activities is often a source of stress because major events sell out quickly.</p>
       </div>
-    </section>
-
-    <!-- Key Insight -->
-    <section class="cs-section cs-section-purple cs-centered">
-      <span class="cs-label reveal">Key insight</span>
-      <p class="cs-quote reveal reveal-delay-1">Users don't explore features. They respond to clear, immediate <u>value</u>.</p>
+      <div class="cs-quote-card">
+        <div class="cs-centered reveal reveal-delay-1" style="padding:0; gap:24px;">
+          <span class="cs-label">The problem</span>
+          <p class="cs-quote-light">We assumed the main problem was choice overload in a buzzing city: smaller events struggle to find their audiences, and vice versa.</p>
+        </div>
+      </div>
     </section>
 
     <!-- Design Principles -->
@@ -1390,366 +1599,297 @@
       <img class="cs-principles-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
       <div class="cs-section-header reveal">
         <span class="cs-label">Design principles</span>
-        <h2 class="cs-heading">Four decisions that shape the experience</h2>
+        <h2 class="cs-heading">Three decisions that shape the experience</h2>
       </div>
       <div class="cs-principles-grid reveal reveal-delay-1">
         <div class="cs-principle">
           <span class="cs-principle-num">01</span>
-          <span class="cs-principle-title">Focus on high-value features</span>
-          <p class="cs-principle-desc">Elevate what users actually need.</p>
+          <span class="cs-principle-title">Curation over volume</span>
+          <p class="cs-principle-desc">30 hand-picked, verified activities beat 300 unfiltered listings. The catalogue should be a quality promise, not just a suggestion.</p>
         </div>
         <div class="cs-principle">
           <span class="cs-principle-num">02</span>
-          <span class="cs-principle-title">Make benefits obvious</span>
-          <p class="cs-principle-desc">Show value immediately, not after exploration.</p>
+          <span class="cs-principle-title">Spontaneity first</span>
+          <p class="cs-principle-desc">Onboarding to booking confirmed should be under 2 minutes. Every tap that can be removed should be.</p>
         </div>
         <div class="cs-principle">
           <span class="cs-principle-num">03</span>
-          <span class="cs-principle-title">Remove irrelevant content</span>
-          <p class="cs-principle-desc">Noise reduces trust and clarity.</p>
-        </div>
-        <div class="cs-principle">
-          <span class="cs-principle-num">04</span>
-          <span class="cs-principle-title">Align with the rest of the app</span>
-          <p class="cs-principle-desc">Consistency builds confidence.</p>
+          <span class="cs-principle-title">Human by design</span>
+          <p class="cs-principle-desc">From "Salut Jane 👋" to human-written activity descriptions, the app speaks with warmth and a real voice. In a category of generic platforms, tone of voice is the brand.</p>
         </div>
       </div>
     </section>
 
-    <!-- The Solution -->
-    <section class="cs-section cs-section-light">
+    <!-- Artistic Direction -->
+    <section class="cs-section cs-art-section">
       <div class="cs-section-header reveal">
-        <span class="cs-label">The solution</span>
-        <h2 class="cs-heading">Refocus the section around the main added value: help users cook according to their needs</h2>
+        <span class="cs-label cs-art-label">Artistic direction</span>
+        <h2 class="cs-heading cs-art-heading">Warm, human, and deliberately un-corporate</h2>
       </div>
-      <div class="cs-flow-block reveal reveal-delay-1">
-        <p class="cs-constraint-label">New flow:</p>
-        <div class="cs-flow" style="margin-top:12px;">
-          <span class="cs-flow-tag">Retrieving users' logs</span>
-          <span class="cs-flow-arrow">→</span>
-          <span class="cs-flow-tag">Customization options</span>
-          <span class="cs-flow-arrow">→</span>
-          <span class="cs-flow-tag">Meal inspiration</span>
+      <div class="cs-art-row reveal reveal-delay-1">
+        <div class="cs-art-tile cs-art-tile-palette">
+          <div class="cs-art-swatch-grid">
+            <div class="cs-art-swatch-row">
+              <span class="cs-art-swatch" style="background:#1E2130;"></span>
+              <span class="cs-art-swatch" style="background:#4E5AF2;"></span>
+              <span class="cs-art-swatch" style="background:#8080A0;"></span>
+              <span class="cs-art-swatch" style="background:#E0E0FA;"></span>
+            </div>
+            <div class="cs-art-swatch-row">
+              <span class="cs-art-swatch" style="background:#8866EE;"></span>
+              <span class="cs-art-swatch" style="background:#F45C5C;"></span>
+              <span class="cs-art-swatch" style="background:#F5A020;"></span>
+              <span class="cs-art-swatch" style="background:#F5C842;"></span>
+            </div>
+            <div class="cs-art-swatch-row">
+              <span class="cs-art-swatch" style="background:#2DD55B;"></span>
+              <span class="cs-art-swatch" style="background:#E06080;"></span>
+              <span class="cs-art-swatch" style="background:#E54040;"></span>
+              <span class="cs-art-swatch" style="background:#FAF6F1; border:1px solid rgba(0,0,0,0.08);"></span>
+            </div>
+          </div>
+          <span class="cs-art-tile-tag">Make it Colorful · 12 tokens</span>
+        </div>
+        <div class="cs-art-tile">
+          <p class="cs-art-specimen">Aa</p>
+          <p class="cs-art-type-note">Cormorant Garamond · Editorial serif</p>
+          <div class="cs-art-rule"></div>
+          <p class="cs-art-type-note-strong">Rounded sans-serif · All UI text</p>
+          <p class="cs-art-type-line">Two voices. One for curation, one for clarity.</p>
+          <span class="cs-art-tile-tag">Typography · Dual type system</span>
+        </div>
+        <div class="cs-art-tile cs-art-tile-shapes">
+          <div class="ui-mock" style="display:flex; flex-direction:column; gap:16px; width:100%;">
+            <div class="ui-mock-btn">Continuer</div>
+            <div class="ui-mock-row">
+              <div class="ui-mock-cat"><span class="ui-mock-cat-icon">🎵</span>Musique</div>
+              <div class="ui-mock-cat ui-mock-cat-active"><span class="ui-mock-cat-icon">🎵</span>Musique</div>
+            </div>
+            <div class="ui-mock-row">
+              <span class="ui-mock-pill">🎨 Atelier &amp; initiation</span>
+              <span class="ui-mock-pill ui-mock-pill-active">🎭 Spectacle</span>
+            </div>
+            <div class="ui-mock-slider"><span class="ui-mock-slider-fill"></span><span class="ui-mock-slider-thumb"></span></div>
+          </div>
+          <span class="cs-art-tile-tag">Shape language · Round everything</span>
         </div>
       </div>
-      <div class="cs-constraint-block reveal reveal-delay-2">
-        <p class="cs-constraint-label">Constraints & design implications</p>
-        <ul class="cs-constraint-list">
-          <li class="cs-constraint-item">
-            <span class="cs-constraint-tag">Navigation locked</span>
-            <span class="cs-constraint-implication">Redesign stays within the existing tab layout.</span>
-          </li>
-          <li class="cs-constraint-item">
-            <span class="cs-constraint-tag">Shared component library</span>
-            <span class="cs-constraint-implication">New patterns documented and contributed for reuse across the full app, not built in isolation.</span>
-          </li>
-          <li class="cs-constraint-item">
-            <span class="cs-constraint-tag">API shape unchanged</span>
-            <span class="cs-constraint-implication">All improvements are render-layer only. Data fetching and recipe model stay untouched.</span>
-          </li>
-        </ul>
+      <div class="cs-art-row reveal reveal-delay-2">
+        <div class="cs-art-tile">
+          <div class="cs-art-voice-greeting">Salut <span>Jane</span> 👋</div>
+          <p class="cs-art-voice-sub">What are we doing today?</p>
+          <p class="cs-art-voice-tip">💡 Your code is your ticket. Just show it at the entrance.</p>
+          <p class="cs-art-voice-cta">Only 4 spots left!</p>
+          <span class="cs-art-tile-tag">UX writing · Friendly &amp; warm</span>
+        </div>
+        <div class="cs-art-tile">
+          <div class="cs-art-emoji-row">
+            <span class="cs-art-emoji-chip">🎨 Atelier</span>
+            <span class="cs-art-emoji-chip cs-art-emoji-chip-active">🎭 Spectacle</span>
+          </div>
+          <div class="cs-art-emoji-row">
+            <span class="cs-art-emoji-chip">🍴 Gastronomie</span>
+            <span class="cs-art-emoji-chip">🏃 Sport</span>
+            <span class="cs-art-emoji-chip cs-art-emoji-chip-active">🎵 Musique</span>
+          </div>
+          <div class="cs-art-emoji-row">
+            <span class="cs-art-emoji-chip">🌿 Plein air</span>
+            <span class="cs-art-emoji-chip">🎲 Jeu</span>
+          </div>
+          <span class="cs-art-tile-tag">Emoji and colors system for clearly recognisable landmarks</span>
+        </div>
+        <div class="cs-art-tile cs-art-tile-mood">
+          <img loading="lazy" class="cs-art-mood-bg" src="assets/joy-mood-tile.jpg" alt="">
+          <span class="cs-art-mood-badge">Only 4 spots left</span>
+          <p class="cs-art-mood-title">Rooftop Yoga at Sunset</p>
+          <span class="cs-art-mood-price">18 €</span>
+          <span class="cs-art-tile-tag cs-art-mood-tag">Clarity first</span>
+        </div>
       </div>
     </section>
 
-    <!-- Steps -->
-    <div class="cs-steps">
+    <!-- Features: The app in 5 key moments -->
+    <section class="cs-section" style="padding:80px 128px 48px; background:linear-gradient(90deg, #efeffa 0%, #ffffff 65%);">
+      <div class="cs-section-header reveal" style="gap:16px;">
+        <span class="cs-label">Features</span>
+        <h2 class="cs-heading">The app in 5 key moments</h2>
+      </div>
+    </section>
 
-      <!-- Step 1 -->
-      <div class="cs-step">
-        <div class="cs-step-left">
-          <div class="cs-step-num-row reveal">
-            <span class="cs-step-num">Step 1</span>
-            <div class="cs-step-line"></div>
-          </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Identify what matters</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Through user workshops, two features stood out.</p>
-          <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Meal plan: users wanted a coherent daily plan</li>
-            <li>Recipe browsing: users wanted relevant inspiration</li>
-          </ul>
+    <div class="cs-feature reveal">
+      <div class="cs-feature-img">
+        <img loading="lazy" src="assets/joy-feat1-onboarding.webp" alt="Onboarding preferences screen">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">1</span>
+        <span class="cs-feature-label">Personalisation</span>
+        <h3 class="cs-feature-title">An onboarding flow that gets straight to the point</h3>
+        <div class="cs-feature-desc">
+          <p>Users reach a personalised home without a lengthy setup. They are mainly asked about their preferences, so that the activities suggested on the homepage suit them.</p>
+          <p>No blank slate, no friction before the first discovery.</p>
         </div>
-        <div class="cs-step-right reveal from-right">
-          <div class="ui-priority-list">
-            <div class="ui-priority-card">
-              <span class="ui-priority-name">Meal plan</span>
-              <span class="ui-priority-badge ui-priority-high">High</span>
-            </div>
-            <div class="ui-priority-card">
-              <span class="ui-priority-name">Recipe browsing</span>
-              <span class="ui-priority-badge ui-priority-high">High</span>
-            </div>
-            <div class="ui-priority-card">
-              <span class="ui-priority-name">Food creation</span>
-              <span class="ui-priority-badge ui-priority-medium">Medium</span>
-            </div>
-            <div class="ui-priority-card">
-              <span class="ui-priority-name">Logs history</span>
-              <span class="ui-priority-badge ui-priority-low">Low</span>
-            </div>
+      </div>
+    </div>
+
+    <div class="cs-feature cs-feature-reverse reveal">
+      <div class="cs-feature-img">
+        <img loading="lazy" src="assets/joy-feat2-discovery.webp" alt="Home feed screen">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">2</span>
+        <span class="cs-feature-label">Discovery</span>
+        <h3 class="cs-feature-title">A home that curates, not just lists</h3>
+        <div class="cs-feature-desc">
+          <p>A first-name greeting, the city weather, a curated featured activity with a live scarcity badge. Then several sections: team picks, personalised recommendations, and a geolocation radius.</p>
+          <p>No generic feed. Every section has a reason to be there and a reason to be different tomorrow.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-feature reveal">
+      <div class="cs-feature-phones">
+        <img loading="lazy" src="assets/joy-feat3-map.webp" alt="Map screen">
+        <img loading="lazy" src="assets/joy-feat3-filters.webp" alt="Filters screen">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">3</span>
+        <span class="cs-feature-label">Exploration</span>
+        <h3 class="cs-feature-title">Explore the city, your way</h3>
+        <div class="cs-feature-desc">
+          <p>Every category gets its own emoji pin on the map. A 🧘 for wellness, a 🎭 for culture, a 🍽 for food. The city becomes readable and diverse at a glance. A list toggle lets users compare activities side by side without losing the spatial context.</p>
+          <p>Filters were designed around real usage patterns from research: a rolling 7-day date strip (not just "tonight" or "this weekend")*, a category picker, a price range slider, a headcount picker, and a promo toggle. Every filter answers a question users actually asked.</p>
+        </div>
+        <div class="cs-feature-sep"></div>
+        <div class="cs-feature-callout">
+          <span class="cs-feature-callout-label">Research insight</span>
+          <p class="cs-feature-callout-text">*13 / 17 participants needed date-specific filters.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-feature cs-feature-reverse reveal">
+      <div class="cs-feature-img">
+        <img loading="lazy" src="assets/joy-feat4-detail.webp" alt="Activity detail screen">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">4</span>
+        <span class="cs-feature-label">Trust</span>
+        <h3 class="cs-feature-title">The page where the decision happens</h3>
+        <div class="cs-feature-desc">
+          <p>A swipeable photo gallery sets the scene before anything else. Below it: a rating, a metro stop, a duration, a cancellation policy, and a live scarcity count. The included/not-included and "Good to know" sections remove the last source of ambiguity before payment.</p>
+          <p>Reviews were intentionally not displayed at first but were gradually added to the app based on user feedback*.</p>
+        </div>
+        <div class="cs-feature-sep"></div>
+        <div class="cs-feature-callout">
+          <span class="cs-feature-callout-label">Research insight</span>
+          <p class="cs-feature-callout-text">*14 / 17 cited missing reviews as their top friction.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-feature reveal" style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+      <div class="cs-feature-phones">
+        <img loading="lazy" src="assets/joy-feat5-tickets.webp" alt="My tickets screen">
+        <img loading="lazy" src="assets/joy-feat5-ticket.webp" alt="Ticket detail screen">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">5</span>
+        <span class="cs-feature-label">Confirmation</span>
+        <h3 class="cs-feature-title">A code or QR?</h3>
+        <div class="cs-feature-desc">
+          <p>Venue professionals are diverse. Not all have a scanner. A 6-character code works with a tablet, a printed list, or just a pair of eyes. No equipment required, no friction at the door!</p>
+        </div>
+        <div class="cs-feature-sep"></div>
+        <div class="cs-feature-callout">
+          <span class="cs-feature-callout-label">Research insight</span>
+          <p class="cs-feature-callout-text">Almost all users said they expected a QR code here, but none asked for one back after seeing the code and reading the note below.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- User Tests -->
+    <section class="cs-section cs-section-purple">
+      <div class="cs-testing-row">
+        <div class="cs-testing-left">
+          <div class="cs-section-header reveal" style="gap:16px;">
+            <span class="cs-label">User tests</span>
+            <h2 class="cs-heading">Testing the prototypes</h2>
+            <p class="cs-testing-meta">17 participants · 2 waves of 45-minute semi-structured interviews</p>
+          </div>
+          <div class="cs-testing-lede reveal reveal-delay-1">
+            <p>Working alongside the founder, I ran two rounds of user testing across the project. We were not looking to confirm what we already thought but for where we were wrong.</p>
+            <p>One finding came up in nearly every session: users could not commit to a booking without reviews. The aggregate score told them how many people had gone. It told them nothing about whether they should.</p>
+            <p>In V2, we introduced the &amp;joy team's own recommendations — written with conviction, the way a bookseller recommends a book. But testers explained they couldn't trust a review written by the people selling the experience…</p>
+          </div>
+        </div>
+        <div class="cs-testing-cards reveal reveal-delay-2">
+          <div class="cs-testing-card">
+            <span class="cs-testing-num">14 / 17</span>
+            <span class="cs-testing-title">Missing reviews (testing V1)</span>
+            <p class="cs-testing-desc">A score without comments was seen as invented. "21 reviews and I can't read them." The trust gap on the activity page was the sharpest finding of the study.</p>
+          </div>
+          <div class="cs-testing-card">
+            <span class="cs-testing-num">9 / 17</span>
+            <span class="cs-testing-title">Biased editorial (testing V2)</span>
+            <p class="cs-testing-desc">"It's the &amp;joy team saying it's good... Obviously, they won't say it's bad." Team reviews were read but not trusted.</p>
           </div>
         </div>
       </div>
+    </section>
 
-      <!-- Step 2 -->
-      <div class="cs-step">
-        <div class="cs-step-left cs-step-left-alt">
-          <div class="cs-step-num-row reveal">
-            <span class="cs-step-num">Step 2</span>
-            <div class="cs-step-line"></div>
-          </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Remove noise</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The food log summary was removed from this section. Keeping it alongside recipe discovery was creating competing jobs-to-be-done: users couldn't tell if the page was for tracking or for cooking.</p>
-          <ul class="cs-step-list reveal reveal-delay-3">
-            <li>It was relocated to the "Today" page, where it naturally belongs.</li>
-            <li>This reduced cognitive load and clarified the purpose of the page.</li>
-          </ul>
-        </div>
-        <div class="cs-step-right cs-step-right-alt reveal from-right">
-          <div class="ui-move-diagram">
-            <span class="ui-move-label">Removed from Food Center</span>
-            <div class="ui-move-item ui-move-item-removed">
-              <span class="ui-move-item-icon">📊</span>
-              <span class="ui-move-item-text strikethrough">Daily food log summary</span>
-            </div>
-            <div class="ui-move-divider">
-              <div class="ui-move-divider-line"></div>
-              <span class="ui-move-divider-text">moved to</span>
-              <div class="ui-move-divider-line"></div>
-            </div>
-            <span class="ui-move-label">Now lives in Today</span>
-            <div class="ui-move-item">
-              <span class="ui-move-item-icon">📊</span>
-              <span class="ui-move-item-text">Daily food log summary</span>
-              <div class="ui-move-badge">✓</div>
-            </div>
-          </div>
+    <!-- Community (feature 6) -->
+    <div class="cs-feature cs-feature-reverse reveal" style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+      <div class="cs-feature-phones">
+        <img loading="lazy" src="assets/joy-community-ambassador.webp" alt="Ambassador profile screen">
+        <img loading="lazy" src="assets/joy-community-reviews.webp" alt="Reviews screen">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">6</span>
+        <span class="cs-feature-label">Community</span>
+        <h3 class="cs-feature-title">Trusted by the community, approved by the city</h3>
+        <div class="cs-feature-desc">
+          <p>Ambassadors are not hired reviewers but selected users based on how well they know the city and their online reputation. The app gives them early access to new activities for free. In return, they write a detailed, signed review. The review is attached to their name and their reputation — that is what makes it readable, where the team's own voice was not.</p>
+          <p>In terms of pure design, ambassador reviews are visually highlighted and appear alongside standard user reviews, without replacing them. The mechanism goes further than just reviews: an activity that does not earn ambassador approval does not enter the catalogue. Ambassadors are not just the voice of the app. They are its quality filter.</p>
         </div>
       </div>
+    </div>
 
-      <!-- Step 3 -->
-      <div class="cs-step">
-        <div class="cs-step-left">
-          <div class="cs-step-num-row reveal">
-            <span class="cs-step-num">Step 3</span>
-            <div class="cs-step-line"></div>
-          </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Make recommendations relevant</h3>
-          <p class="cs-step-body reveal reveal-delay-2">Recipe suggestions were redesigned around remaining daily calories. Generic recipe libraries already exist everywhere. The only data ParrotPal uniquely has is the user's remaining macros for the day, and anchoring suggestions to that turns a commodity feature into something no outside competitor can replicate.</p>
-          <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Users now see only recipes that match their remaining daily calories.</li>
-            <li>This turns recipe browsing into a personal, actionable tool rather than generic content.</li>
-          </ul>
-        </div>
-        <div class="cs-step-right reveal from-right">
-          <div class="ui-recipe-section">
-            <div class="ui-calorie-bar">
-              <div class="ui-calorie-row">
-                <span class="ui-calorie-label">Calories left today</span>
-                <span class="ui-calorie-val">1163 kcal</span>
-              </div>
-              <div class="ui-progress-track">
-                <div class="ui-progress-fill" style="width: 45%;"></div>
-              </div>
-            </div>
-            <div class="ui-recipe-header">
-              <span class="ui-recipe-title">Smart Suggestions</span>
-              <span class="ui-recipe-sub">Based on your remaining calories</span>
-            </div>
-            <div class="ui-recipe-card">
-              <div class="ui-recipe-info">
-                <span class="ui-recipe-name">Grilled Salmon Bowl</span>
-                <span class="ui-recipe-cal">480 kcal · 42g protein</span>
-              </div>
-              <span class="ui-recipe-tag">Fits your goal</span>
-            </div>
-            <div class="ui-recipe-card">
-              <div class="ui-recipe-info">
-                <span class="ui-recipe-name">Avocado Chicken Wrap</span>
-                <span class="ui-recipe-cal">520 kcal · 38g protein</span>
-              </div>
-              <span class="ui-recipe-tag">Fits your goal</span>
-            </div>
-            <div class="ui-recipe-card">
-              <div class="ui-recipe-info">
-                <span class="ui-recipe-name">Greek Yogurt Parfait</span>
-                <span class="ui-recipe-cal">310 kcal · 22g protein</span>
-              </div>
-              <span class="ui-recipe-tag">Fits your goal</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 4 -->
-      <div class="cs-step">
-        <div class="cs-step-left cs-step-left-alt">
-          <div class="cs-step-num-row reveal">
-            <span class="cs-step-num">Step 4</span>
-            <div class="cs-step-line"></div>
-          </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Redesign the meal plan</h3>
-          <p class="cs-step-body reveal reveal-delay-2">A full daily plan aligned with the user's calorie target. Individual recipe suggestions create a new decision burden: "what else do I eat today?" A full plan removes that question: one action, full day resolved.</p>
-          <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Instead of generic suggestions, users get a coherent plan for the day.</li>
-            <li>Meals are ranked in categories: breakfast, lunch, dinner, and snacks.</li>
-            <li>The calorie goals are set by default to match the daily ones, but can be adjusted by the user to achieve specific results.</li>
-            <li>When a recipe from the Plan is logged, it automatically updates the Plan's calories and proteins counter.</li>
-          </ul>
-        </div>
-        <div class="cs-step-right cs-step-right-alt cs-step-right-flush reveal from-right" style="padding: 28px 0 0;">
-          <img loading="lazy" src="assets/pal-step4.webp" alt="Redesigned meal plan screen" style="display: block; width: 100%; max-width: 360px;">
-        </div>
-      </div>
-
-      <!-- Step 5 -->
-      <div class="cs-step">
-        <div class="cs-step-left">
-          <div class="cs-step-num-row reveal">
-            <span class="cs-step-num">Step 5</span>
-            <div class="cs-step-line"></div>
-          </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Improve the recipe experience</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The recipe page was redesigned to be more appealing and easier to browse. Rather than showing every available option, the list is curated and filtered by calorie fit. Too many choices trigger decision fatigue, while a shorter, relevant list makes action more likely.</p>
-          <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Each recipe card leads with a photo, calorie count, and macros, all visible before tapping.</li>
-            <li>Limiting the number of recipes to keep only the best ones.</li>
-            <li>Like option to save the recipe in a list of favorites.</li>
-            <li>The goal was to make recipes feel desirable, not only functional.</li>
-          </ul>
-        </div>
-        <div class="cs-step-right cs-step-right-flush reveal from-right" style="padding: 28px 0 0;">
-          <img loading="lazy" src="assets/pal-step5.webp" alt="Improved recipe screen" style="display: block; width: 100%; max-width: 360px;">
-        </div>
-      </div>
-
-      <!-- Step 6 -->
-      <div class="cs-step">
-        <div class="cs-step-left cs-step-left-alt">
-          <div class="cs-step-num-row reveal">
-            <span class="cs-step-num">Step 6</span>
-            <div class="cs-step-line"></div>
-          </div>
-          <h3 class="cs-step-title reveal reveal-delay-1">Align the UI</h3>
-          <p class="cs-step-body reveal reveal-delay-2">The entire section was redesigned to match the rest of the app and stand out at the same time. An off-brand section signals a forgotten feature, and visual coherence is what tells users this is worth returning to, not just a one-time setup screen.</p>
-          <ul class="cs-step-list reveal reveal-delay-3">
-            <li>Consistent components and improved hierarchy.</li>
-            <li>Modern UI that fits in with Apple liquid design.</li>
-          </ul>
-        </div>
-        <div class="cs-step-right cs-step-right-alt reveal from-right" style="padding: 28px 0;">
-          <img loading="lazy" src="assets/pal-step6.webp" alt="Redesigned Food Center UI" style="display: block; width: 100%; max-width: 360px;">
-        </div>
-      </div>
-
-    </div><!-- /cs-steps -->
-
-    <!-- New Design -->
+    <!-- Project Recap -->
     <section class="cs-new-design">
       <img loading="lazy" class="cs-new-design-bg" src="assets/bg-dark-overlay.webp" alt="">
-      <div class="cs-new-design-text reveal">
-        <div>
-          <span class="cs-new-design-label">New design</span>
-          <h2 class="cs-new-design-heading">A focused entry point for daily meal decisions</h2>
+      <div class="cs-new-design-text">
+        <div class="reveal">
+          <span class="cs-new-design-label">Project recap</span>
+          <h2 class="cs-new-design-heading">From concept to final prototype in less than 1 month</h2>
         </div>
-        <p class="cs-new-design-body">The Food Center now opens with the user's remaining calories and proteins for the day. They can create a personalized meal plan based on these metrics, create their own meals or let themselves be tempted by delicious recipes, all tailored to their needs.</p>
-        <ul class="cs-new-design-highlights">
-          <li>Calories &amp; proteins remaining for the day, shown upfront</li>
-          <li>Personalized meal plans built from daily goals</li>
-          <li>Recipes and custom meals tailored to individual needs</li>
-        </ul>
+        <p class="cs-new-design-body reveal reveal-delay-2">I joined the &amp;joy project to help with positioning. Seventeen interviews and dozens of iterations later, the final prototype was handed off to developers. I was glad to bring my expertise across the whole chain: product strategy, user research, visual identity, and interface design.</p>
       </div>
-      <div class="cs-phone-frame reveal from-right reveal-delay-2">
+      <div class="cs-phone-frame reveal from-right reveal-delay-3">
         <video class="cs-phone-video" loop muted playsinline preload="none" data-autoplay>
-          <source src="assets/pal-showcase.mp4" type="video/mp4">
+          <source src="assets/joy-showcase.mp4" type="video/mp4">
         </video>
       </div>
     </section>
 
-    <!-- Impact -->
-    <section class="cs-section cs-section-purple cs-impact-section">
-      <div class="cs-section-header reveal">
-        <span class="cs-label">Impact</span>
-        <h2 class="cs-heading">Results</h2>
-      </div>
-      <span class="cs-impact-subtitle reveal">Tracked in Amplitude · 30 days post-launch vs. 30 days prior</span>
-      <div class="cs-impact-cards reveal reveal-delay-1">
-        <div class="cs-impact-card">
-          <span class="cs-stat">+22%</span>
-          <span class="cs-card-title">Return Rate</span>
-          <p class="cs-card-desc">Monthly return rate to the Food Center rose from 31% to 38%, driven by better content discoverability and a more engaging entry point.</p>
-        </div>
-        <div class="cs-impact-card">
-          <span class="cs-stat">+31%</span>
-          <span class="cs-card-title">Recipe engagement</span>
-          <p class="cs-card-desc">Taps on recipes and meal plans increased sharply, with the new visual hierarchy and contextual surfacing driving more intentional browsing.</p>
-        </div>
-        <div class="cs-impact-card">
-          <span class="cs-stat">+11%</span>
-          <span class="cs-card-title">Trial Conversion</span>
-          <p class="cs-card-desc">Free-to-paid conversion rate rose from 4.2% to 4.7%, with more users reaching the paywall after engaging with premium recipe content.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Extending the Impact -->
-    <section class="cs-section cs-section-light">
-      <div class="cs-section-header reveal">
-        <span class="cs-label">Extending the impact</span>
-        <h2 class="cs-heading">Boost Food Center usage by increasing its visibility</h2>
-      </div>
-      <p class="cs-body-grey reveal reveal-delay-1">Following the Food Center success, I worked on a new onboarding tutorial to better explain the structure of the app and drive users toward the section. The main goal was to capitalize on the positive metrics generated by the new Food Center by increasing its visibility, while improving onboarding clarity for first-time users.</p>
-      <div class="cs-carousel-wrapper">
-        <button class="cs-carousel-btn cs-carousel-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <div class="cs-extending-phones reveal reveal-delay-2" id="extending-carousel">
-          <div class="cs-ext-phone">
-            <img loading="lazy" src="assets/pal-onboard-1.webp" alt="Onboarding — Welcome">
-          </div>
-          <div class="cs-ext-phone">
-            <img loading="lazy" src="assets/pal-onboard-2.webp" alt="Onboarding — Start tracking">
-          </div>
-          <div class="cs-ext-phone">
-            <img loading="lazy" src="assets/pal-onboard-3.webp" alt="Onboarding — Food log">
-          </div>
-          <div class="cs-ext-phone">
-            <img loading="lazy" src="assets/pal-onboard-4.webp" alt="Onboarding — Food Center">
-          </div>
-        </div>
-        <button class="cs-carousel-btn cs-carousel-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-      <div class="cs-extending-stat reveal reveal-delay-3">
-        <div class="cs-extending-stat-card">
-          <div class="cs-extending-stat-inner">
-            <span class="cs-stat">+9%</span>
-            <span class="cs-card-title">Food Center visits</span>
-            <p class="cs-card-desc">The new onboarding drove a good increase in Food Center visits among first-time users.</p>
-          </div>
-          <div class="cs-extending-stat-inner">
-            <span class="cs-stat">+7%</span>
-            <span class="cs-card-title">Trial Conversion</span>
-            <p class="cs-card-desc">This led to a further increase in the trial conversion.</p>
-          </div>
-        </div>
-      </div>
-    </section>
     <!-- Final Note -->
     <section class="cs-section cs-section-purple cs-centered">
-      <span class="cs-label reveal">Final note</span>
-      <p class="cs-quote reveal reveal-delay-1">Good UX doesn't stop at the feature.<br>It fits <u>seamlessly</u> into an existing context.</p>
+      <span class="cs-label reveal">Now in development</span>
+      <p class="cs-quote-light reveal reveal-delay-1">The V2 prototype has been handed off to developers.<br>The app is scheduled for release in the fall of 2026.</p>
     </section>
 
     <!-- Footer -->
 
     <!-- Next project -->
     <section class="cs-next">
-      <a href="grit.html" class="cs-next-link">
+      <a href="parrotpal.html" class="cs-next-link">
         <div class="cs-next-header">
           <span class="cs-label">Next project</span>
         </div>
         <div class="cs-next-body">
-          <img loading="lazy" class="cs-next-logo" src="assets/logo-grit.jpg" alt="Grit logo">
+          <img loading="lazy" class="cs-next-logo" src="assets/logo-parrotpal.jpg" alt="ParrotPal logo">
           <div class="cs-next-info">
-            <p class="cs-next-name">Grit</p>
-            <p class="cs-next-desc">Redesigning task creation to feel effortless</p>
+            <p class="cs-next-name">Parrot Pal</p>
+            <p class="cs-next-desc">Turning an unused section into a daily entry point</p>
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>

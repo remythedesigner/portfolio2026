@@ -40,13 +40,8 @@
     nav {
       position: sticky; top: 0; z-index: 100;
       width: 100%;
-      background: rgba(163,189,123,0.15);
-      border-bottom: 1px solid rgba(163,189,123,0.15);
-      transition: backdrop-filter 0.4s ease;
-    }
-    nav.scrolled {
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: #403462;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
     }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
@@ -55,17 +50,22 @@
     .cs-nav-back {
       width: 56px; height: 56px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.1);
-      border: 0.8px solid rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 0.8px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
       display: flex; align-items: center; justify-content: center;
-      color: #776c92;
+      color: rgba(255,255,255,0.75);
       text-decoration: none;
       flex-shrink: 0;
-      transition: background 0.2s ease;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.2s ease, transform 0.25s ease;
     }
-    .cs-nav-back svg { opacity: 0.5; transition: opacity 0.2s ease, color 0.2s ease; }
-    .cs-nav-back:hover { background: rgba(255,255,255,0.22); color: #10042c; }
-    .cs-nav-back:hover svg { opacity: 1; }
+    .cs-nav-back:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      color: #fff;
+      transform: translateY(-2px);
+    }
     .cs-nav-brand {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600; font-size: 24px; line-height: 1;
@@ -91,8 +91,8 @@
     /* ── Hero ── */
     .cs-hero {
       width: 100%;
-      background: linear-gradient(135deg, rgba(163,189,123,0.28) 0%, rgba(163,189,123,0.07) 100%);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       display: flex;
       flex-direction: row;
       align-items: flex-end;
@@ -101,6 +101,17 @@
       overflow: hidden;
       min-height: 752px;
       position: relative;
+    }
+    .cs-hero-tint {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(22deg, rgba(163,189,123,0.24) 29%, rgba(163,189,123,0.06) 71%);
+      pointer-events: none;
+    }
+    .cs-hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
     }
     .cs-hero-left {
       flex: 1;
@@ -142,10 +153,10 @@
     }
     .cs-hero-title {
       font-weight: 500; font-size: 80px; line-height: 100px;
-      color: #10042c;
+      color: white;
     }
     .cs-meta {
-      border-top: 1px solid rgba(163,189,123,0.3);
+      border-top: 1px solid rgba(255,255,255,0.25);
       padding-top: 20px;
       display: flex;
       gap: 40px;
@@ -163,7 +174,7 @@
     }
     .cs-meta-value {
       font-weight: 500; font-size: 20px; line-height: 28px;
-      color: #10042c;
+      color: white;
     }
 
     /* Hero image — in-flow flex sibling */
@@ -250,16 +261,22 @@
     }
 
     /* ── Problem ── */
+    .cs-section.cs-problem {
+      padding: 0;
+      gap: 0;
+    }
     .cs-problem-layout {
       display: flex;
-      gap: 80px;
-      align-items: flex-start;
+      align-items: stretch;
     }
     .cs-problem-left {
       flex: 1;
+      min-width: 0;
       display: flex;
       flex-direction: column;
       gap: 40px;
+      padding: 80px 128px;
+      background: #ffffff;
     }
     .cs-problem-content {
       display: flex;
@@ -267,31 +284,42 @@
       gap: 16px;
     }
     .cs-problem-stats {
-      flex: 0 0 300px;
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: #403462;
+    }
+    .cs-problem-stats-inner {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      width: 300px;
     }
     .cs-stat-card {
-      background: #f7f6f8;
-      border-radius: 24px;
-      padding: 32px 28px;
+      padding: 32px 40px;
       display: flex;
       flex-direction: column;
       gap: 8px;
     }
+    .cs-stat-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
     .cs-stat-value {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 64px;
-      line-height: 1;
+      font-size: 52px;
+      line-height: normal;
       font-weight: 700;
-      color: #e06060;
+      color: #ffffff;
     }
     .cs-stat-label {
       font-weight: 300;
-      font-size: 18px;
-      line-height: 28px;
-      color: rgba(16, 4, 44, 0.65);
+      font-size: 22px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.85);
     }
 
     /* ── Old Design ── */
@@ -384,21 +412,33 @@
     .cs-quote u { text-underline-offset: 5px; }
 
     /* ── Design Principles ── */
+    .cs-principles-section {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+    }
+    .cs-principles-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-principles-section .cs-section-header { gap: 16px; }
+    .cs-principles-section .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-principles-section .cs-heading { color: #ffffff; }
     .cs-principles-grid {
       display: flex;
-      gap: 1px;
-      background: rgba(0,0,0,0.05);
-      border-radius: 32px;
-      overflow: hidden;
+      gap: 40px;
+      width: 100%;
+      position: relative;
     }
     .cs-principle {
       flex: 1;
-      background: white;
-      padding: 32px;
+      min-width: 0;
+      padding: 64px 32px;
       display: flex;
       flex-direction: column;
       gap: 12px;
-      min-height: 240px;
       position: relative;
       overflow: hidden;
     }
@@ -410,18 +450,17 @@
       font-size: 112px;
       line-height: 1;
       letter-spacing: -4px;
-      color: rgba(163, 189, 123, 0.1);
+      color: rgba(255,255,255,0.18);
       pointer-events: none;
       user-select: none;
     }
     .cs-principle-title {
-      font-weight: 700; font-size: 22px; line-height: 1.5;
-      color: #10042c;
-      margin-top: 32px;
+      font-weight: 600; font-size: 26px; line-height: normal;
+      color: #ffffff;
     }
     .cs-principle-desc {
-      font-weight: 300; font-size: 20px; line-height: 1.6;
-      color: #776c92;
+      font-weight: 300; font-size: 20px; line-height: normal;
+      color: #ffffff;
     }
 
     /* ── Solution ── */
@@ -624,6 +663,7 @@
     }
 
     /* ── Impact ── */
+    .cs-impact-section { gap: 24px; }
     .cs-impact-subtitle {
       font-weight: 300; font-size: 18px; line-height: 24px;
       color: #10042c;
@@ -631,29 +671,24 @@
     .cs-impact-cards {
       display: flex;
       gap: 1px;
-      background: rgba(0,0,0,0.05);
-      border-radius: 32px;
-      overflow: hidden;
     }
     .cs-impact-card {
       flex: 1;
-      background: white;
       padding: 40px;
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      min-height: 271px;
+      gap: 12px;
     }
     .cs-stat {
-      font-weight: 700; font-size: 64px; line-height: normal;
+      font-weight: 700; font-size: 52px; line-height: normal;
       color: #a3bd7b;
     }
     .cs-card-title {
-      font-weight: 700; font-size: 22px; line-height: 1.5;
+      font-weight: 600; font-size: 28px; line-height: normal;
       color: #10042c;
     }
     .cs-card-desc {
-      font-weight: 300; font-size: 18px; line-height: 24px;
+      font-weight: 300; font-size: 20px; line-height: normal;
       color: #776c92;
     }
 
@@ -771,6 +806,7 @@
       .cs-hero-left { width: auto; }
       .cs-hero-phones { width: 480px; height: 452px; margin-bottom: -64px; }
       .cs-section { padding: 64px; }
+      .cs-problem-left { padding: 64px; }
       .cs-step-left { padding: 64px; }
       footer { padding: 64px; }
     }
@@ -783,9 +819,12 @@
       .cs-hero-title { font-size: 64px; line-height: 78px; }
       .cs-meta { flex-wrap: wrap; gap: 20px; }
       .cs-section { padding: 56px 40px; gap: 28px; }
-      .cs-problem-layout { flex-direction: column; gap: 40px; }
-      .cs-problem-stats { flex: none; width: 100%; flex-direction: row; }
-      .cs-stat-card { flex: 1; }
+      .cs-problem-layout { flex-direction: column; }
+      .cs-problem-left { padding: 56px 40px; }
+      .cs-problem-stats { flex: none; width: 100%; padding: 40px; }
+      .cs-problem-stats-inner { flex-direction: row; width: 100%; gap: 24px; }
+      .cs-stat-card { flex: 1; padding: 0; }
+      .cs-stat-divider { width: 1px; height: auto; align-self: stretch; }
       .cs-heading { font-size: 36px; }
       .cs-body-bold { font-size: 20px; line-height: 32px; }
       .cs-body { font-size: 20px; line-height: 32px; }
@@ -796,8 +835,8 @@
       .ctk-screen-img { width: 180px !important; height: auto !important; }
       .cs-centered { padding: 80px 40px; }
       .cs-quote { font-size: 36px; }
-      .cs-principles-grid { flex-wrap: wrap; border-radius: 24px; }
-      .cs-principle { flex: 0 0 calc(50% - 0.5px); min-height: auto; }
+      .cs-principles-grid { flex-wrap: wrap; }
+      .cs-principle { flex: 0 0 calc(50% - 20px); }
       .cs-flow-tag { font-size: 22px; }
       .cs-step { flex-direction: column; }
       .cs-step-left { width: 100%; padding: 48px 40px; }
@@ -811,7 +850,6 @@
       .cs-new-design-text { width: 100%; }
       .cs-phone-frame { width: 330px; height: 717px; }
       .cs-impact-cards { flex-direction: column; }
-      .cs-impact-card { min-height: auto; }
       footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
       .footer-headline { font-size: 72px; line-height: 72px; }
       .footer-right { width: 100%; }
@@ -826,8 +864,11 @@
       .cs-meta { gap: 16px; }
       .cs-meta-value { font-size: 16px; }
       .cs-section { padding: 48px 20px; gap: 24px; }
-      .cs-problem-stats { flex-direction: column; }
-      .cs-stat-value { font-size: 48px; }
+      .cs-problem-left { padding: 48px 20px; }
+      .cs-problem-stats { padding: 32px 20px; }
+      .cs-problem-stats-inner { flex-direction: column; width: 100%; gap: 16px; }
+      .cs-stat-divider { width: 100%; height: 1px; align-self: auto; }
+      .cs-stat-value { font-size: 40px; }
       .cs-heading { font-size: 26px; }
       .cs-body-bold { font-size: 18px; line-height: 28px; }
       .cs-body { font-size: 18px; line-height: 28px; }
@@ -843,8 +884,8 @@
       .cs-analysis-desc { font-size: 16px; }
       .cs-centered { padding: 56px 20px; }
       .cs-quote { font-size: 24px; }
-      .cs-principle { flex: 1 1 100%; }
-      .cs-principles-grid { border-radius: 20px; }
+      .cs-principle { flex: 1 1 100%; padding: 32px 24px; }
+      .cs-principles-grid { flex-direction: column; gap: 8px; }
       .cs-flow-tag { font-size: 18px; line-height: 32px; padding: 6px 16px; }
       .cs-constraint-text { font-size: 18px; line-height: 28px; }
       .cs-step-left { padding: 40px 20px; gap: 16px; }
@@ -859,8 +900,8 @@
       .cs-new-design-body { font-size: 18px; line-height: 28px; }
       .cs-new-design-highlights { margin-top: -16px; }
       .cs-phone-frame { width: 286px; height: 623px; }
-      .cs-stat { font-size: 48px; }
-      .cs-card-title { font-size: 18px; }
+      .cs-stat { font-size: 40px; }
+      .cs-card-title { font-size: 22px; }
       footer { padding: 48px 20px; }
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 24px; line-height: 34px; }
@@ -883,6 +924,7 @@
     /* ── Next project ── */
     .cs-next {
       width: 100%;
+      background: #403462;
       border-bottom: 1px solid rgba(0,0,0,0.05);
     }
     .cs-next-link {
@@ -891,7 +933,7 @@
       text-decoration: none;
       transition: background 0.25s ease;
     }
-    .cs-next-link:hover { background: rgba(0,0,0,0.02); }
+    .cs-next-link:hover { background: rgba(255,255,255,0.04); }
     .cs-next-header { margin-bottom: 28px; }
     .cs-next-body {
       display: flex;
@@ -909,49 +951,51 @@
     .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
     .cs-next-name {
       font-weight: 500; font-size: 44px; line-height: 1;
-      color: #10042c;
+      color: #ffffff;
     }
     .cs-next-desc {
       font-weight: 300; font-size: 22px; line-height: 1.4;
       color: #776c92;
     }
     .project-btn {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
       border-radius: 160px;
       width: 70px; height: 70px;
       display: flex; align-items: center; justify-content: center;
       flex-shrink: 0; overflow: hidden;
-      transition: background 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .cs-next-link:hover .project-btn {
-      background: rgba(255,255,255,0.25);
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
       width: 134px;
     }
     .project-btn span {
-      color: #776c92;
-      opacity: 0.5;
+      color: rgba(255,255,255,0.75);
       display: flex; align-items: center; justify-content: center; flex-shrink: 0;
       transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
     }
-    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #10042c; opacity: 1; }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #fff; }
     @media (max-width: 960px) {
       .cs-next-link { padding: 48px 40px; }
       .cs-next-name { font-size: 36px; }
+      .cs-next-link:hover .project-btn { width: 70px; }
     }
     @media (max-width: 600px) {
       .cs-next-link { padding: 36px 20px; }
       .cs-next-name { font-size: 28px; }
       .cs-next-desc { font-size: 18px; }
       .cs-enhance-grid { grid-template-columns: 1fr; }
-      .cs-enhance-card { flex-direction: row; }
-      .cs-enhance-wireframe { width: 140px; flex-shrink: 0; border-bottom: none; border-right: 1px solid rgba(0,0,0,0.05); }
       .cs-enhance-title { font-size: 17px; padding: 16px 16px 6px; }
       .cs-enhance-desc { font-size: 14px; padding: 0 16px 16px; }
     }
 
   </style>
-  <link rel="preload" as="image" href="assets/preview-ctk.png" type="image/png">
+  <link rel="preload" as="image" href="assets/preview-ctk.webp" type="image/webp">
+<script src="https://mcp.figma.com/mcp/html-to-design/capture.js" async></script>
 </head>
 <body>
 
@@ -968,6 +1012,8 @@
 
     <!-- Hero -->
     <section class="cs-hero">
+      <div class="cs-hero-tint" aria-hidden="true"></div>
+      <img class="cs-hero-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
       <div class="cs-hero-left">
         <div class="cs-hero-brand reveal">
           <a class="cs-logo-link" href="https://apps.apple.com/fr/app/irun-couch-to-5k-running/id1584672096" target="_blank" rel="noopener">
@@ -998,7 +1044,7 @@
 
       <!-- Hero image — absolutely positioned -->
       <div class="cs-hero-phones reveal from-right reveal-delay-3">
-        <img loading="eager" src="assets/preview-ctk.png" alt="Couch To 5K app screens" class="cs-hero-phones-img">
+        <img loading="eager" src="assets/preview-ctk.webp" alt="Couch To 5K app screens" class="cs-hero-phones-img">
       </div>
     </section>
 
@@ -1016,13 +1062,16 @@
           </div>
         </div>
         <div class="cs-problem-stats reveal reveal-delay-2">
-          <div class="cs-stat-card">
-            <span class="cs-stat-value">&lt;2%</span>
-            <span class="cs-stat-label">conversion rate, well below the category benchmark of 4–6% for fitness apps</span>
-          </div>
-          <div class="cs-stat-card">
-            <span class="cs-stat-value">&lt;54%</span>
-            <span class="cs-stat-label">of new users completed their first run</span>
+          <div class="cs-problem-stats-inner">
+            <div class="cs-stat-card">
+              <span class="cs-stat-value">&lt;2%</span>
+              <span class="cs-stat-label">conversion rate, well below the category benchmark of 4–6% for fitness apps</span>
+            </div>
+            <div class="cs-stat-divider"></div>
+            <div class="cs-stat-card">
+              <span class="cs-stat-value">&lt;54%</span>
+              <span class="cs-stat-label">of new users completed their first run</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1039,8 +1088,8 @@
         <div class="cs-screens-carousel">
           <button class="cs-screens-btn cs-screens-prev" aria-label="Previous slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
           <div class="cs-screens reveal from-left reveal-delay-2">
-            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen1.png" alt="Old design — screen 1" style="width:299px; height:650px;"></div>
-            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen2.png" alt="Old design — screen 2" style="width:297px; height:648px;"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen1.webp" alt="Old design — screen 1" style="width:299px; height:650px;"></div>
+            <div class="cs-screen-slide"><img loading="lazy" class="ctk-screen-img" src="assets/ctk-old-screen2.webp" alt="Old design — screen 2" style="width:297px; height:648px;"></div>
           </div>
           <button class="cs-screens-btn cs-screens-next" aria-label="Next slide"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         </div>
@@ -1077,8 +1126,12 @@
     </section>
 
     <!-- Design Principles -->
-    <section class="cs-section cs-section-white">
-      <span class="cs-label reveal">Design principles</span>
+    <section class="cs-section cs-principles-section">
+      <img class="cs-principles-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Design principles</span>
+        <h2 class="cs-heading">Four decisions that shape the experience</h2>
+      </div>
       <div class="cs-principles-grid reveal reveal-delay-1">
         <div class="cs-principle">
           <span class="cs-principle-num">01</span>
@@ -1189,7 +1242,7 @@
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-alt cs-step-right-flush">
-          <img loading="lazy" src="assets/ctk-screen2.png" alt="Personalized flows screen" style="width:340px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
+          <img loading="lazy" src="assets/ctk-screen2.webp" alt="Personalized flows screen" style="width:340px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
         </div>
       </div>
 
@@ -1208,7 +1261,7 @@
           </ul>
         </div>
         <div class="cs-step-right">
-          <img loading="lazy" src="assets/ctk-screen3.png" alt="Dynamic content screenshot" style="width:100%; max-width:416px; height:auto; border-radius:32px; display:block;" class="reveal reveal-delay-2">
+          <img loading="lazy" src="assets/ctk-screen3.webp" alt="Dynamic content screenshot" style="width:100%; max-width:416px; height:auto; border-radius:32px; display:block;" class="reveal reveal-delay-2">
         </div>
       </div>
 
@@ -1227,7 +1280,7 @@
           </ul>
         </div>
         <div class="cs-step-right cs-step-right-alt cs-step-right-flush">
-          <img loading="lazy" src="assets/ctk-screen1.png" alt="Safe Start Program screen" style="width:341px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
+          <img loading="lazy" src="assets/ctk-screen1.webp" alt="Safe Start Program screen" style="width:341px; height:auto; display:block;" class="reveal from-right reveal-delay-2">
         </div>
       </div>
 
@@ -1256,12 +1309,12 @@
     </section>
 
     <!-- Impact -->
-    <section class="cs-section cs-section-white">
+    <section class="cs-section cs-section-purple cs-impact-section">
       <div class="cs-section-header reveal">
         <span class="cs-label">Impact</span>
         <h2 class="cs-heading">Results</h2>
       </div>
-      <span class="cs-impact-subtitle reveal" style="margin-top:-32px;">Tracked in Amplitude · 30 days post-launch vs. 30 days prior</span>
+      <span class="cs-impact-subtitle reveal">Tracked in Amplitude · 30 days post-launch vs. 30 days prior</span>
       <div class="cs-impact-cards reveal reveal-delay-1">
         <div class="cs-impact-card">
           <span class="cs-stat">+13%</span>
@@ -1352,16 +1405,16 @@
     <!-- Footer -->
 
     <!-- Next project -->
-    <section class="cs-next" style="background:linear-gradient(135deg, rgba(146,200,185,0.28) 0%, rgba(146,200,185,0.07) 100%);">
-      <a href="parrotpal.html" class="cs-next-link">
+    <section class="cs-next">
+      <a href="joy.html" class="cs-next-link">
         <div class="cs-next-header">
           <span class="cs-label">Next project</span>
         </div>
         <div class="cs-next-body">
-          <img loading="eager" class="cs-next-logo" src="assets/logo-parrotpal.jpg" alt="Parrot Pal logo">
+          <img loading="eager" class="cs-next-logo" src="assets/logo-joy.svg" alt="&amp;Joy logo">
           <div class="cs-next-info">
-            <p class="cs-next-name">Parrot Pal</p>
-            <p class="cs-next-desc">Turning an unused section into a daily entry point</p>
+            <p class="cs-next-name">&amp;Joy</p>
+            <p class="cs-next-desc">Designing the activity app Paris was missing</p>
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
