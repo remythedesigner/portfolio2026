@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terroo · Rémy Tartanac</title>
+  <meta name="description" content="Case study: building Terroo's visual identity and website from a founder's vision, a travel platform for meeting locals, not booking tours.">
+  <link rel="canonical" href="https://remytartanac.com/terroo.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rémy Tartanac">
+  <meta property="og:title" content="Terroo · Rémy Tartanac">
+  <meta property="og:description" content="Case study: building Terroo's visual identity and website from a founder's vision, a travel platform for meeting locals, not booking tours.">
+  <meta property="og:url" content="https://remytartanac.com/terroo.html">
+  <meta property="og:image" content="https://remytartanac.com/assets/terroo-shot-hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Terroo · Rémy Tartanac">
+  <meta name="twitter:description" content="Case study: building Terroo's visual identity and website from a founder's vision, a travel platform for meeting locals, not booking tours.">
+  <meta name="twitter:image" content="https://remytartanac.com/assets/terroo-shot-hero.jpg">
+  <meta property="og:locale" content="en_US">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Rémy Tartanac", "item": "https://remytartanac.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Terroo", "item": "https://remytartanac.com/terroo.html" }
+        ]
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Terroo — Travel Brand & Website Case Study",
+        "headline": "Building a travel brand from a blank page",
+        "description": "Case study: building Terroo's visual identity and website from a founder's vision, a travel platform for meeting locals, not booking tours.",
+        "url": "https://remytartanac.com/terroo.html",
+        "image": "https://remytartanac.com/assets/terroo-shot-hero.jpg",
+        "datePublished": "2026",
+        "author": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
+        "creator": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
+        "about": "UX/UI design case study covering brand identity and website design for a travel community platform"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter+Tight:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter+Tight:wght@400;500;600&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible     { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
+    html { overflow-x: hidden; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      width: 100%;
+      background: #403462;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px; padding: 0 128px;
+    }
+    .cs-nav-back {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 0.8px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.2s ease, transform 0.25s ease;
+    }
+    .cs-nav-back:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .cs-nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 24px; line-height: 1;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #d68a6c;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 40px;
+      padding: 80px 128px;
+      overflow: hidden;
+      min-height: 752px;
+      position: relative;
+    }
+    .cs-hero-tint {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(22deg, rgba(184,76,50,0.26) 29%, rgba(184,76,50,0.06) 71%);
+      pointer-events: none;
+    }
+    .cs-hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-hero-left {
+      flex: 0 0 640px;
+      min-width: 0;
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+    .cs-hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cs-logo-link {
+      display: block; flex-shrink: 0; border-radius: 16px;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+    .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
+    .cs-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: contain;
+      flex-shrink: 0;
+      display: block;
+      background: #f5f0e8;
+      padding: 12px;
+    }
+    .cs-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #e8a37f;
+      border: 1px solid rgba(255,255,255,0.45);
+      padding: 8px 16px;
+      border-radius: 160px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+    .cs-hero-title {
+      font-weight: 500; font-size: 80px; line-height: 100px;
+      color: white;
+    }
+    .cs-meta {
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 20px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .cs-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cs-meta-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #e8a37f;
+    }
+    .cs-meta-value {
+      font-weight: 500; font-size: 20px; line-height: 28px;
+      color: white;
+    }
+    .cs-meta-link {
+      color: white;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+    .cs-meta-link:hover { border-color: #fff; color: #e8a37f; }
+
+    /* Hero visual: two layered browser-window cards, anchored to the hero's right edge */
+    .cs-hero-devices {
+      position: relative;
+      flex-shrink: 0;
+      width: 640px;
+      height: 537px;
+      margin-left: auto;
+      margin-bottom: -80px;
+    }
+    .cs-hero-device { position: absolute; }
+    .cs-hero-device-back {
+      left: 27px; bottom: 0;
+      width: 613px;
+      z-index: 1;
+    }
+    .cs-hero-device-front {
+      left: 0; top: 0;
+      width: 275px; height: 537px;
+      z-index: 2;
+    }
+    .cs-hero-device-front .cs-browser-frame {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-browser-frame {
+      width: 100%;
+      position: relative;
+      border-radius: 14px 14px 0 0;
+      overflow: hidden;
+      background: #f5f0e8;
+      box-shadow: 4px 4px 80px 12px rgba(16,4,44,0.45);
+    }
+    .cs-hero-device-front .cs-browser-img {
+      flex: 1;
+      min-height: 0;
+      height: auto;
+      object-fit: cover;
+      object-position: top;
+    }
+    .cs-browser-bar {
+      height: 34px;
+      background: #eee3d3;
+      display: flex; align-items: center; gap: 6px;
+      padding: 0 14px;
+      flex-shrink: 0;
+    }
+    .cs-browser-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(43,33,24,0.18); }
+    .cs-browser-img { width: 100%; height: auto; display: block; }
+
+    /* ── Common Section ── */
+    .cs-section {
+      width: 100%;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      overflow-x: clip;
+    }
+    .cs-section-white { background: #ffffff; }
+    .cs-section-light { background: #f7f6f8; }
+    .cs-section-purple { background: #e6e0f2; }
+
+    .cs-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+    }
+
+    /* ── Body text ── */
+    .cs-body-bold {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body-grey {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #776c92;
+    }
+
+    /* ── Intro (Brief + Scope) ── */
+    .cs-intro { display: flex; align-items: stretch; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-brief-left {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column; gap: 40px;
+      padding: 80px 128px;
+      background: #ffffff;
+    }
+    .cs-problem-content { display: flex; flex-direction: column; gap: 16px; }
+    .cs-scope-card {
+      flex: 0 0 480px;
+      display: flex; flex-direction: column; gap: 32px;
+      align-items: flex-start; justify-content: center;
+      padding: 40px;
+      background: #403462;
+    }
+    .cs-scope-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phases { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+    .cs-scope-phase { display: flex; flex-direction: column; width: 100%; }
+    .cs-scope-phase-row { display: flex; gap: 16px; align-items: center; color: #ffffff; }
+    .cs-scope-phase-num {
+      font-weight: 400; font-size: 14px; letter-spacing: 1.96px;
+      color: #ffffff;
+    }
+    .cs-scope-phase-title {
+      flex: 1; font-weight: 600; font-size: 24px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phase-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: rgba(255,255,255,0.75);
+    }
+    .cs-scope-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 24px; }
+
+    /* ── Design decisions (dark) ── */
+    .cs-principles-section {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+    }
+    .cs-principles-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-principles-section .cs-section-header { gap: 16px; }
+    .cs-principles-section .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-principles-section .cs-heading { color: #ffffff; }
+    .cs-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      width: 100%;
+      position: relative;
+      background: rgba(255,255,255,0.08);
+    }
+    .cs-principle {
+      background: #16102e;
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-principle-num {
+      position: absolute;
+      top: -4px;
+      right: 20px;
+      font-weight: 700;
+      font-size: 96px;
+      line-height: 1;
+      letter-spacing: -4px;
+      color: rgba(255,255,255,0.1);
+      pointer-events: none;
+      user-select: none;
+    }
+    .cs-principle-title {
+      font-weight: 600; font-size: 26px; line-height: normal;
+      color: #ffffff;
+      position: relative;
+    }
+    .cs-principle-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 19px; line-height: 30px;
+      color: rgba(255,255,255,0.78);
+      position: relative;
+    }
+    .cs-swatches { display: flex; gap: 10px; margin-top: 4px; position: relative; }
+    .cs-swatch { width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); flex-shrink: 0; }
+    .cs-font-sample {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 34px; color: #fff; margin-top: 4px; position: relative;
+    }
+    .cs-font-sample em { color: #d68a6c; font-style: italic; }
+    .cs-font-sample-sub {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 15px; color: rgba(255,255,255,0.6); margin-top: 6px; position: relative;
+    }
+
+    /* ── Behind the scenes (Figma / AI process) ── */
+    .cs-figma-frame {
+      border-radius: 14px 14px 0 0;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 20px 48px rgba(16,4,44,0.1);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .cs-figma-bar {
+      height: 36px;
+      background: #2c2c34;
+      display: flex; align-items: center; gap: 7px;
+      padding: 0 14px;
+      flex-shrink: 0;
+    }
+    .cs-figma-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .cs-figma-bar-label {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-left: 6px;
+    }
+    .cs-figma-img { width: 100%; height: auto; display: block; }
+    .cs-figma-img-tall { max-height: 620px; object-fit: cover; object-position: top; }
+    .cs-figma-caption {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #776c92;
+      text-align: center;
+      max-width: 560px;
+      margin: 20px auto 0;
+    }
+    .cs-figma-lead {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 15px; letter-spacing: 1.6px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .cs-principles-section .cs-figma-caption { color: rgba(255,255,255,0.65); }
+
+    /* ── Visual showcase gallery ── */
+    .cs-gallery {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+    }
+    .cs-gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: #f5f0e8;
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-gallery-item img { width: 100%; height: auto; display: block; }
+    .cs-gallery-item-tall { grid-row: span 2; }
+    .cs-gallery-item-tall img { flex: 1; min-height: 0; height: 100%; object-fit: cover; }
+    .cs-gallery-caption {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #776c92;
+      padding: 16px 20px;
+    }
+
+    /* ── Manifesto quote ── */
+    .cs-centered {
+      align-items: center;
+      justify-content: center;
+      padding: 120px 80px;
+      gap: 24px;
+      text-align: center;
+    }
+    .cs-quote {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 500; font-size: 46px; line-height: 1.35;
+      color: #10042c;
+      text-align: center;
+      max-width: 880px;
+    }
+    .cs-quote-attr {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 14px; letter-spacing: 1.4px; text-transform: uppercase;
+      color: #776c92;
+    }
+
+    /* ── Outcome cards ── */
+    .cs-impact-section { gap: 24px; }
+    .cs-impact-subtitle {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: #10042c;
+    }
+    .cs-impact-cards {
+      display: flex;
+      gap: 1px;
+      flex-wrap: wrap;
+    }
+    .cs-impact-card {
+      flex: 1;
+      min-width: 200px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cs-stat {
+      font-weight: 700; font-size: 44px; line-height: normal;
+      color: #b84c32;
+    }
+    .cs-card-title {
+      font-weight: 600; font-size: 24px; line-height: normal;
+      color: #10042c;
+    }
+    .cs-card-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: #776c92;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: #10042c; width: 100%;
+      padding: 80px 128px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      overflow: hidden; position: relative;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .footer-headline {
+      font-weight: 300; font-size: 110px; line-height: 100px;
+      color: white; flex-shrink: 0; position: relative;
+    }
+    .footer-right {
+      width: 440px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+    }
+    .footer-desc {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.24) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-linkedin {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.05), 0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.18) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-scroll-top {
+      width: 56px; height: 56px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-scroll-top-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+    }
+
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        background: rgba(16,4,44,0.5);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
+    }
+
+    /* ── Next project ── */
+    .cs-next { width: 100%; background: #403462; border-bottom: 1px solid rgba(255,255,255,0.25); }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-next-link { display: block; padding: 64px 128px; text-decoration: none; transition: background 0.25s ease; }
+    .cs-next-link:hover { background: rgba(255,255,255,0.04); }
+    .cs-next-header { margin-bottom: 28px; }
+    .cs-next-body { display: flex; align-items: center; gap: 28px; }
+    .cs-next-logo {
+      width: 72px; height: 72px; border-radius: 16px; object-fit: cover; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: #fff8ec; padding: 12px;
+    }
+    .cs-next-link:hover .cs-next-logo { transform: scale(1.07) rotate(-2deg); }
+    .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .cs-next-name { font-weight: 500; font-size: 44px; line-height: 1; color: #ffffff; }
+    .cs-next-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: rgba(255,255,255,0.85);
+    }
+    .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      border-radius: 160px;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-next-link:hover .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      width: 134px;
+    }
+    .project-btn span {
+      color: rgba(255,255,255,0.75);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
+    }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #fff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .nav-inner { padding: 0 64px; }
+      .cs-hero { padding: 64px; }
+      .cs-hero-left { flex: 0 1 480px; }
+      .cs-hero-devices { transform: scale(0.72); transform-origin: bottom right; }
+      .cs-hero-title { font-size: 60px; line-height: 74px; }
+      .cs-section { padding: 64px; }
+      .cs-brief-left { padding: 64px; }
+      .cs-figma-img-tall { max-height: 440px; }
+      .cs-gallery { grid-template-columns: 1fr; }
+      .cs-gallery-item-tall { grid-row: auto; }
+      footer { padding: 64px; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner { padding: 0 40px; }
+      .cs-hero { padding: 40px 40px; min-height: auto; flex-direction: column; align-items: flex-start; }
+      .cs-hero-left { flex: 0 0 100%; width: 100%; gap: 32px; }
+      .cs-hero-devices { display: none; }
+      .cs-hero-title { font-size: 48px; line-height: 58px; }
+      .cs-meta { flex-wrap: wrap; gap: 20px; }
+      .cs-section { padding: 56px 40px; gap: 28px; }
+      .cs-intro { flex-direction: column; }
+      .cs-brief-left { padding: 56px 40px; }
+      .cs-scope-card { flex: none; width: 100%; padding: 40px; }
+      .cs-heading { font-size: 36px; }
+      .cs-body-bold, .cs-body, .cs-body-grey { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
+      .cs-principles-grid { grid-template-columns: 1fr; }
+      .cs-principle { padding: 40px; }
+      .cs-font-sample { font-size: 28px; }
+      .cs-centered { padding: 80px 40px; }
+      .cs-quote { font-size: 30px; }
+      .cs-impact-cards { flex-direction: column; }
+      .cs-next-link { padding: 48px 40px; }
+      .cs-next-name { font-size: 36px; }
+      .cs-next-link:hover .project-btn { width: 70px; }
+      footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .footer-headline { font-size: 72px; line-height: 72px; }
+      .footer-right { width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .cs-hero { padding: 32px 20px; }
+      .cs-hero-left { gap: 24px; }
+      .cs-hero-title { font-size: 38px; line-height: 46px; }
+      .cs-hero-brand { gap: 12px; }
+      .cs-meta { gap: 16px; }
+      .cs-meta-value { font-size: 16px; }
+      .cs-section { padding: 48px 20px; gap: 24px; }
+      .cs-brief-left { padding: 48px 20px; gap: 24px; }
+      .cs-scope-card { padding: 32px 20px; }
+      .cs-heading { font-size: 26px; }
+      .cs-body-bold, .cs-body, .cs-body-grey { font-size: 18px; line-height: 28px; }
+      .cs-principle { padding: 32px 24px; }
+      .cs-centered { padding: 56px 20px; }
+      .cs-quote { font-size: 24px; }
+      .cs-stat { font-size: 36px; }
+      .cs-next-link { padding: 36px 20px; }
+      .cs-next-name { font-size: 28px; }
+      .cs-next-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+      footer { padding: 48px 20px; }
+      .footer-headline { font-size: 48px; line-height: 52px; }
+      .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+  </style>
+  <link rel="preload" as="image" href="assets/terroo-shot-hero-tall.jpg" type="image/jpeg">
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a class="cs-nav-back" href="index.html" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <span class="cs-nav-brand">Terroo</span>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="cs-hero-tint" aria-hidden="true"></div>
+      <img class="cs-hero-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-hero-left">
+        <div class="cs-hero-brand reveal">
+          <a class="cs-logo-link" href="https://terroo.world/" target="_blank" rel="noopener">
+            <img loading="lazy" class="cs-logo" src="assets/logo-terroo.png" alt="Terroo logo">
+          </a>
+          <span class="cs-tag">Travel Platform · Website</span>
+        </div>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Building a travel<br>brand from a<br>blank page</h1>
+        <div class="cs-meta reveal reveal-delay-2">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Role</span>
+            <span class="cs-meta-value">UX/UI &amp; Art Direction</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Focus</span>
+            <span class="cs-meta-value">Brand Identity &amp; Website</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Platform</span>
+            <span class="cs-meta-value">Website</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-hero-devices">
+        <div class="cs-hero-device cs-hero-device-back reveal from-right reveal-delay-3">
+          <div class="cs-browser-frame">
+            <div class="cs-browser-bar">
+              <span class="cs-browser-dot"></span><span class="cs-browser-dot"></span><span class="cs-browser-dot"></span>
+            </div>
+            <img loading="eager" src="assets/terroo-shot-hero-tall.jpg" alt="Terroo homepage hero" class="cs-browser-img">
+          </div>
+        </div>
+
+        <div class="cs-hero-device cs-hero-device-front reveal from-right reveal-delay-4">
+          <div class="cs-browser-frame">
+            <div class="cs-browser-bar">
+              <span class="cs-browser-dot"></span><span class="cs-browser-dot"></span><span class="cs-browser-dot"></span>
+            </div>
+            <img loading="eager" src="assets/terroo-shot-mobile.jpg" alt="Terroo homepage on mobile" class="cs-browser-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Intro / Brief + Scope -->
+    <section class="cs-intro">
+      <div class="cs-brief-left">
+        <div class="cs-section-header reveal">
+          <span class="cs-label">The brief</span>
+          <h2 class="cs-heading">A founder with a clear idea, and nothing built yet</h2>
+        </div>
+        <div class="cs-problem-content reveal reveal-delay-1">
+          <p class="cs-body-bold">Terroo is a free platform where travelers meet locals for real encounters: a shared meal, a neighbourhood walk, an evening out. No listings, no fees, no guided tour.</p>
+          <p class="cs-body">I came onto the project before there was a single screen designed. The founder had the concept, the name, and a strong instinct for what Terroo shouldn't feel like: not Couchsurfing's dated forum aesthetic, not Airbnb Experiences' transactional listings page. My job was to give the idea a face it didn't have yet, working directly from the founder's vision rather than an existing brand to extend. Everything from the type pairing to the button shadows came out of that blank-page conversation.</p>
+        </div>
+      </div>
+      <div class="cs-scope-card reveal reveal-delay-2">
+        <span class="cs-scope-label">My scope</span>
+        <div class="cs-scope-phases">
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">01</span>
+              <span class="cs-scope-phase-title">Brand Identity</span>
+            </div>
+            <p class="cs-scope-phase-desc">Logo mark, palette, type system</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">02</span>
+              <span class="cs-scope-phase-title">Website Design</span>
+            </div>
+            <p class="cs-scope-phase-desc">Homepage through legal pages</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">03</span>
+              <span class="cs-scope-phase-title">WordPress Build</span>
+            </div>
+            <p class="cs-scope-phase-desc">Built and styled in Elementor</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">04</span>
+              <span class="cs-scope-phase-title">Copywriting</span>
+            </div>
+            <p class="cs-scope-phase-desc">English, French, Spanish</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Art direction -->
+    <section class="cs-section cs-principles-section">
+      <img class="cs-principles-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Art direction</span>
+        <h2 class="cs-heading">Four decisions that built the brand</h2>
+      </div>
+      <div class="cs-principles-grid reveal reveal-delay-1">
+        <div class="cs-principle">
+          <span class="cs-principle-num">01</span>
+          <span class="cs-principle-title">A serif with some grit</span>
+          <p class="cs-principle-desc">Most travel startups reach for a clean grotesque and call it done. I paired Fraunces, a serif with a slightly rough, hand-set quality, against Inter Tight for body copy. The serif carries the brand's voice; the sans keeps everything else legible.</p>
+          <p class="cs-font-sample">Travel through <em>people</em>.</p>
+          <p class="cs-font-sample-sub">Fraunces / Inter Tight</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">02</span>
+          <span class="cs-principle-title">Rust, not travel-app blue</span>
+          <p class="cs-principle-desc">Every booking app defaults to blue. I built the palette around a sun-baked rust on a paper-like cream, closer to a passport stamp than a SaaS dashboard. It reads as warm and analog before a single word is read.</p>
+          <div class="cs-swatches">
+            <span class="cs-swatch" style="background:#B84C32;"></span>
+            <span class="cs-swatch" style="background:#F5F0E8;"></span>
+            <span class="cs-swatch" style="background:#2B2118;"></span>
+          </div>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">03</span>
+          <span class="cs-principle-title">Photos pinned like postcards</span>
+          <p class="cs-principle-desc">I was tempted to lay the experience photos out in a clean, even grid, the way every other travel site does. That felt like it belonged to the same category of app Terroo is trying not to be. Pinning each photo like a postcard, tape and all, makes the encounters feel handed to you, not served by an algorithm.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">04</span>
+          <span class="cs-principle-title">Stamped, not flat, buttons</span>
+          <p class="cs-principle-desc">Every pill button carries a second, darker shape offset behind it, like a stamp pressed slightly off-register. It's a small detail that shows up on every CTA on the site, and it's the detail that made the whole brand feel tactile instead of templated.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="cs-figma-lead">The result: a real component library</p>
+        <div class="cs-figma-frame">
+          <div class="cs-figma-bar">
+            <span class="cs-figma-dot" style="background:#F24E1E;"></span>
+            <span class="cs-figma-dot" style="background:#A259FF;"></span>
+            <span class="cs-figma-dot" style="background:#1ABCFE;"></span>
+            <span class="cs-figma-dot" style="background:#0ACF83;"></span>
+            <span class="cs-figma-bar-label">Figma · Components</span>
+          </div>
+          <img loading="lazy" class="cs-figma-img" src="assets/terroo-figma-components.png" alt="Terroo's Figma component library: buttons, cards and footer, organized and generated with Claude">
+        </div>
+        <p class="cs-figma-caption">Buttons, cards, form fields, footer, all named and organized the way you'd actually hand it to a developer.</p>
+      </div>
+    </section>
+
+    <!-- Outcome -->
+    <section class="cs-section cs-section-purple cs-impact-section">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Outcome</span>
+        <h2 class="cs-heading">Where the project stands today</h2>
+      </div>
+      <div class="cs-impact-cards reveal reveal-delay-1">
+        <div class="cs-impact-card">
+          <span class="cs-stat">Live</span>
+          <span class="cs-card-title">terroo.world</span>
+          <p class="cs-card-desc">The full site is live and open to the public, ahead of the community launch itself.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">3</span>
+          <span class="cs-card-title">Languages</span>
+          <p class="cs-card-desc">English, French and Spanish, each translated and kept in sync page by page.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">6+</span>
+          <span class="cs-card-title">Pages shipped</span>
+          <p class="cs-card-desc">Home, manifesto, safety, for travelers, for locals, and the legal pages, all on the same system.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manifesto quote -->
+    <section class="cs-section cs-section-white cs-centered">
+      <span class="cs-label reveal">From the manifesto</span>
+      <p class="cs-quote reveal reveal-delay-1">"We are starting small. With the conviction that if the first five encounters exist, the rest will follow."</p>
+      <span class="cs-quote-attr reveal reveal-delay-2">— The Terroo Manifesto, 2026</span>
+    </section>
+
+    <!-- Next project -->
+    <section class="cs-next">
+      <a href="yogspace.html" class="cs-next-link">
+        <div class="cs-next-header">
+          <span class="cs-label">Next project</span>
+        </div>
+        <div class="cs-next-body">
+          <img loading="eager" class="cs-next-logo" src="assets/logo-yogspace.png" alt="Yogspace logo">
+          <div class="cs-next-info">
+            <p class="cs-next-name">Yogspace</p>
+            <p class="cs-next-desc">Redesigning a yoga platform to feel as considered as the teaching it sells</p>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </a>
+    </section>
+
+    <footer id="contact">
+      <img loading="lazy" class="footer-bg" src="assets/bg-dark-overlay.webp" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Let's work</p>
+        <p>together.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Always happy to hear about new design challenges!</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>Send an email</span>
+          </a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
+</script>
+</body>
+</html>
