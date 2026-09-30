@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terroo · Rémy Tartanac</title>
-  <meta name="description" content="Case study: building Terroo's visual identity and website from a founder's vision, a travel platform for meeting locals, not booking tours.">
+  <meta name="description" content="Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.">
   <link rel="canonical" href="https://remytartanac.com/terroo.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rémy Tartanac">
   <meta property="og:title" content="Terroo · Rémy Tartanac">
-  <meta property="og:description" content="Case study: building Terroo's visual identity and website from a founder's vision, a travel platform for meeting locals, not booking tours.">
+  <meta property="og:description" content="Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.">
   <meta property="og:url" content="https://remytartanac.com/terroo.html">
   <meta property="og:image" content="https://remytartanac.com/assets/terroo-shot-hero.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Terroo · Rémy Tartanac">
-  <meta name="twitter:description" content="Case study: building Terroo's visual identity and website from a founder's vision, a travel platform for meeting locals, not booking tours.">
+  <meta name="twitter:description" content="Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.">
   <meta name="twitter:image" content="https://remytartanac.com/assets/terroo-shot-hero.jpg">
   <meta property="og:locale" content="en_US">
   <script type="application/ld+json">
@@ -31,14 +31,14 @@
       {
         "@type": "CreativeWork",
         "name": "Terroo — Travel Brand & Website Case Study",
-        "headline": "Building a travel brand from a blank page",
-        "description": "Case study: building Terroo's visual identity and website from a founder's vision, a travel platform for meeting locals, not booking tours.",
+        "headline": "A landing page designed to make people want in",
+        "description": "Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.",
         "url": "https://remytartanac.com/terroo.html",
         "image": "https://remytartanac.com/assets/terroo-shot-hero.jpg",
         "datePublished": "2026",
         "author": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
         "creator": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
-        "about": "UX/UI design case study covering brand identity and website design for a travel community platform"
+        "about": "UX/UI design and WordPress development case study covering landing page and screen design, delivered as a custom-built back office for a travel community platform"
       }
     ]
   }
@@ -147,12 +147,27 @@
       opacity: 0.6;
     }
     .cs-hero-left {
-      flex: 0 0 640px;
-      min-width: 0;
+      flex: 1;
+      min-width: 480px;
       align-self: flex-start;
       display: flex;
       flex-direction: column;
-      gap: 64px;
+      gap: 80px;
+    }
+    /* Hero image, in-flow flex sibling */
+    .cs-hero-image {
+      position: relative;
+      flex-shrink: 0;
+      margin-bottom: -80px;
+      margin-right: -128px;
+      width: 830px;
+      height: 614px;
+    }
+    .cs-hero-image img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
     }
     .cs-hero-brand {
       display: flex;
@@ -217,56 +232,6 @@
       transition: border-color 0.25s ease, color 0.25s ease;
     }
     .cs-meta-link:hover { border-color: #fff; color: #e8a37f; }
-
-    /* Hero visual: two layered browser-window cards, anchored to the hero's right edge */
-    .cs-hero-devices {
-      position: relative;
-      flex-shrink: 0;
-      width: 640px;
-      height: 537px;
-      margin-left: auto;
-      margin-bottom: -80px;
-    }
-    .cs-hero-device { position: absolute; }
-    .cs-hero-device-back {
-      left: 27px; bottom: 0;
-      width: 613px;
-      z-index: 1;
-    }
-    .cs-hero-device-front {
-      left: 0; top: 0;
-      width: 275px; height: 537px;
-      z-index: 2;
-    }
-    .cs-hero-device-front .cs-browser-frame {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .cs-browser-frame {
-      width: 100%;
-      position: relative;
-      border-radius: 14px 14px 0 0;
-      overflow: hidden;
-      background: #f5f0e8;
-      box-shadow: 4px 4px 80px 12px rgba(16,4,44,0.45);
-    }
-    .cs-hero-device-front .cs-browser-img {
-      flex: 1;
-      min-height: 0;
-      height: auto;
-      object-fit: cover;
-      object-position: top;
-    }
-    .cs-browser-bar {
-      height: 34px;
-      background: #eee3d3;
-      display: flex; align-items: center; gap: 6px;
-      padding: 0 14px;
-      flex-shrink: 0;
-    }
-    .cs-browser-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(43,33,24,0.18); }
-    .cs-browser-img { width: 100%; height: auto; display: block; }
 
     /* ── Common Section ── */
     .cs-section {
@@ -420,10 +385,36 @@
       font-family: 'Inter Tight', sans-serif;
       font-size: 15px; color: rgba(255,255,255,0.6); margin-top: 6px; position: relative;
     }
+    .cs-stamp-demo { margin-top: 20px; position: relative; }
+    .cs-stamp-wrap { position: relative; display: inline-block; }
+    .cs-stamp-shadow {
+      position: absolute;
+      top: 6px; left: 6px; right: -6px; bottom: -6px;
+      background: #6b2216;
+      border-radius: 160px;
+      z-index: 0;
+    }
+    .cs-stamp-btn {
+      position: relative; z-index: 1; display: inline-block;
+      background: #b84c32; color: #fff;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 700; font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 160px;
+      cursor: pointer; user-select: none;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cs-stamp-wrap:hover .cs-stamp-btn { transform: translate(6px, 6px); }
+    .cs-stamp-hint {
+      display: block; margin-top: 12px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
 
     /* ── Behind the scenes (Figma / AI process) ── */
     .cs-figma-frame {
-      border-radius: 14px 14px 0 0;
+      border-radius: 14px;
       overflow: hidden;
       background: #ffffff;
       border: 1px solid rgba(0,0,0,0.06);
@@ -464,7 +455,15 @@
     }
     .cs-principles-section .cs-figma-caption { color: rgba(255,255,255,0.65); }
 
+    /* ── Outcome card linking to the live site ── */
+    .cs-impact-card-link { text-decoration: none; color: inherit; cursor: pointer; }
+    .cs-impact-card-link .cs-card-title { display: inline-flex; align-items: center; gap: 8px; transition: color 0.25s ease; }
+    .cs-impact-card-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
+    .cs-impact-card-link:hover .cs-card-title { color: #b84c32; }
+    .cs-impact-card-link:hover svg { transform: translate(2px, -2px); }
+
     /* ── Visual showcase gallery ── */
+    .cs-gallery-container { width: 100%; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
     .cs-gallery {
       display: grid;
       grid-template-columns: 1.4fr 1fr;
@@ -497,18 +496,11 @@
       text-align: center;
     }
     .cs-quote {
-      font-family: 'Fraunces', Georgia, serif;
-      font-style: italic;
-      font-weight: 500; font-size: 46px; line-height: 1.35;
+      font-weight: 500; font-size: 52px; line-height: normal;
       color: #10042c;
       text-align: center;
-      max-width: 880px;
     }
-    .cs-quote-attr {
-      font-family: 'Lato', Helvetica, Arial, sans-serif;
-      font-weight: 400; font-size: 14px; letter-spacing: 1.4px; text-transform: uppercase;
-      color: #776c92;
-    }
+    .cs-quote u { text-underline-offset: 5px; }
 
     /* ── Outcome cards ── */
     .cs-impact-section { gap: 24px; }
@@ -692,8 +684,8 @@
     @media (max-width: 1200px) {
       .nav-inner { padding: 0 64px; }
       .cs-hero { padding: 64px; }
-      .cs-hero-left { flex: 0 1 480px; }
-      .cs-hero-devices { transform: scale(0.72); transform-origin: bottom right; }
+      .cs-hero-left { width: auto; }
+      .cs-hero-image { width: 613px; height: 454px; margin-bottom: -64px; }
       .cs-hero-title { font-size: 60px; line-height: 74px; }
       .cs-section { padding: 64px; }
       .cs-brief-left { padding: 64px; }
@@ -706,8 +698,8 @@
     @media (max-width: 960px) {
       .nav-inner { padding: 0 40px; }
       .cs-hero { padding: 40px 40px; min-height: auto; flex-direction: column; align-items: flex-start; }
-      .cs-hero-left { flex: 0 0 100%; width: 100%; gap: 32px; }
-      .cs-hero-devices { display: none; }
+      .cs-hero-left { flex: 0 0 100%; width: 100%; min-width: 0; gap: 32px; }
+      .cs-hero-image { display: none; }
       .cs-hero-title { font-size: 48px; line-height: 58px; }
       .cs-meta { flex-wrap: wrap; gap: 20px; }
       .cs-section { padding: 56px 40px; gap: 28px; }
@@ -781,41 +773,30 @@
           </a>
           <span class="cs-tag">Travel Platform · Website</span>
         </div>
-        <h1 class="cs-hero-title reveal reveal-delay-1">Building a travel<br>brand from a<br>blank page</h1>
+        <h1 class="cs-hero-title reveal reveal-delay-1">A landing page<br>designed to make<br>people want in</h1>
         <div class="cs-meta reveal reveal-delay-2">
           <div class="cs-meta-item">
             <span class="cs-meta-label">Role</span>
-            <span class="cs-meta-value">UX/UI &amp; Art Direction</span>
+            <span class="cs-meta-value">UX/UI</span>
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Focus</span>
-            <span class="cs-meta-value">Brand Identity &amp; Website</span>
+            <span class="cs-meta-value">Brand &amp; Site building</span>
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Platform</span>
-            <span class="cs-meta-value">Website</span>
+            <span class="cs-meta-value">WordPress</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Year</span>
+            <span class="cs-meta-value">2026</span>
           </div>
         </div>
       </div>
 
-      <div class="cs-hero-devices">
-        <div class="cs-hero-device cs-hero-device-back reveal from-right reveal-delay-3">
-          <div class="cs-browser-frame">
-            <div class="cs-browser-bar">
-              <span class="cs-browser-dot"></span><span class="cs-browser-dot"></span><span class="cs-browser-dot"></span>
-            </div>
-            <img loading="eager" src="assets/terroo-shot-hero-tall.jpg" alt="Terroo homepage hero" class="cs-browser-img">
-          </div>
-        </div>
-
-        <div class="cs-hero-device cs-hero-device-front reveal from-right reveal-delay-4">
-          <div class="cs-browser-frame">
-            <div class="cs-browser-bar">
-              <span class="cs-browser-dot"></span><span class="cs-browser-dot"></span><span class="cs-browser-dot"></span>
-            </div>
-            <img loading="eager" src="assets/terroo-shot-mobile.jpg" alt="Terroo homepage on mobile" class="cs-browser-img">
-          </div>
-        </div>
+      <!-- Hero image, absolutely positioned -->
+      <div class="cs-hero-image reveal from-right reveal-delay-3">
+        <img loading="lazy" src="assets/preview-terroo.webp" alt="Terroo app screens">
       </div>
     </section>
 
@@ -827,8 +808,8 @@
           <h2 class="cs-heading">A founder with a clear idea, and nothing built yet</h2>
         </div>
         <div class="cs-problem-content reveal reveal-delay-1">
-          <p class="cs-body-bold">Terroo is a free platform where travelers meet locals for real encounters: a shared meal, a neighbourhood walk, an evening out. No listings, no fees, no guided tour.</p>
-          <p class="cs-body">I came onto the project before there was a single screen designed. The founder had the concept, the name, and a strong instinct for what Terroo shouldn't feel like: not Couchsurfing's dated forum aesthetic, not Airbnb Experiences' transactional listings page. My job was to give the idea a face it didn't have yet, working directly from the founder's vision rather than an existing brand to extend. Everything from the type pairing to the button shadows came out of that blank-page conversation.</p>
+          <p class="cs-body-bold">Terroo is a free platform where travelers meet locals for real encounters: a shared meal, a neighbourhood walk, an evening out. There's nothing to book and no guide standing between you and the person you're meeting.</p>
+          <p class="cs-body">The brief was to build a website anchored by a landing page strong enough to make people want to join a platform that didn't exist yet. I came on before a single screen existed, starting with an art direction that translated the founder's concept into something visual. From there I designed the full set of screens and built them into a WordPress site the founder could administer herself, with SEO research shaping the structure and copy from the first wireframe rather than bolted on at the end.</p>
         </div>
       </div>
       <div class="cs-scope-card reveal reveal-delay-2">
@@ -855,7 +836,7 @@
               <span class="cs-scope-phase-num">03</span>
               <span class="cs-scope-phase-title">WordPress Build</span>
             </div>
-            <p class="cs-scope-phase-desc">Built and styled in Elementor</p>
+            <p class="cs-scope-phase-desc">Custom theme, editable from the back office</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
@@ -864,6 +845,14 @@
               <span class="cs-scope-phase-title">Copywriting</span>
             </div>
             <p class="cs-scope-phase-desc">English, French, Spanish</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">05</span>
+              <span class="cs-scope-phase-title">SEO Foundations</span>
+            </div>
+            <p class="cs-scope-phase-desc">Keyword research, on-page structure</p>
           </div>
         </div>
       </div>
@@ -897,12 +886,19 @@
         <div class="cs-principle">
           <span class="cs-principle-num">03</span>
           <span class="cs-principle-title">Photos pinned like postcards</span>
-          <p class="cs-principle-desc">I was tempted to lay the experience photos out in a clean, even grid, the way every other travel site does. That felt like it belonged to the same category of app Terroo is trying not to be. Pinning each photo like a postcard, tape and all, makes the encounters feel handed to you, not served by an algorithm.</p>
+          <p class="cs-principle-desc">I was tempted to lay the experience photos out in a clean, even grid, the way every other travel site does. That felt like it belonged to the same category of app Terroo is trying not to be. Pinning each photo like a postcard, tape and all, makes the encounters feel handed to you personally.</p>
         </div>
         <div class="cs-principle">
           <span class="cs-principle-num">04</span>
           <span class="cs-principle-title">Stamped, not flat, buttons</span>
           <p class="cs-principle-desc">Every pill button carries a second, darker shape offset behind it, like a stamp pressed slightly off-register. It's a small detail that shows up on every CTA on the site, and it's the detail that made the whole brand feel tactile instead of templated.</p>
+          <div class="cs-stamp-demo">
+            <div class="cs-stamp-wrap">
+              <span class="cs-stamp-shadow" aria-hidden="true"></span>
+              <span class="cs-stamp-btn">Join Terroo</span>
+            </div>
+            <span class="cs-stamp-hint">Hover to feel it</span>
+          </div>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
@@ -921,36 +917,83 @@
       </div>
     </section>
 
-    <!-- Outcome -->
-    <section class="cs-section cs-section-purple cs-impact-section">
+    <!-- Final design showcase -->
+    <section class="cs-section cs-section-white">
+      <div class="cs-gallery-container">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Outcome</span>
-        <h2 class="cs-heading">Where the project stands today</h2>
+        <span class="cs-label">The final design</span>
+        <h2 class="cs-heading">A brand that holds up page after page</h2>
       </div>
-      <div class="cs-impact-cards reveal reveal-delay-1">
-        <div class="cs-impact-card">
-          <span class="cs-stat">Live</span>
-          <span class="cs-card-title">terroo.world</span>
-          <p class="cs-card-desc">The full site is live and open to the public, ahead of the community launch itself.</p>
+      <div class="cs-gallery reveal reveal-delay-1">
+        <div class="cs-gallery-item" style="grid-column: 1 / -1;">
+          <img loading="lazy" src="assets/terroo-final-hero.jpg" alt="Terroo homepage hero: 'Travel through people, not places,' with a photo of a traveler meeting locals and a language switcher">
+          <p class="cs-gallery-caption">The homepage hero, translated into English, French and Spanish.</p>
         </div>
-        <div class="cs-impact-card">
-          <span class="cs-stat">3</span>
-          <span class="cs-card-title">Languages</span>
-          <p class="cs-card-desc">English, French and Spanish, each translated and kept in sync page by page.</p>
+        <div class="cs-gallery-item cs-gallery-item-tall">
+          <img loading="lazy" src="assets/terroo-final-cards.jpg" alt="Terroo homepage: pinned-postcard cards showing what a local can offer and what a traveler can experience">
+          <p class="cs-gallery-caption">The postcard treatment from the Figma library, shipped exactly as designed.</p>
         </div>
-        <div class="cs-impact-card">
-          <span class="cs-stat">6+</span>
-          <span class="cs-card-title">Pages shipped</span>
-          <p class="cs-card-desc">Home, manifesto, safety, for travelers, for locals, and the legal pages, all on the same system.</p>
+        <div class="cs-gallery-item">
+          <img loading="lazy" src="assets/terroo-final-safety.jpg" alt="Terroo homepage safety section: reference system, consequence ladder and community transparency">
+          <p class="cs-gallery-caption">Safety first, explained before a single encounter happens.</p>
         </div>
+        <div class="cs-gallery-item">
+          <img loading="lazy" src="assets/terroo-final-quote.jpg" alt="Rust-colored manifesto quote block, followed by the 'Terroir' definition, on the Terroo homepage">
+          <p class="cs-gallery-caption">The manifesto voice shows up section after section, well past the homepage.</p>
+        </div>
+        <div class="cs-gallery-item" style="grid-column: 1 / -1;">
+          <img loading="lazy" src="assets/terroo-final-contact.jpg" alt="Terroo contact section: 'Not a form. A message.'">
+          <p class="cs-gallery-caption">Even the contact page sounds like Terroo instead of a generic ticket form.</p>
+        </div>
+      </div>
       </div>
     </section>
 
-    <!-- Manifesto quote -->
-    <section class="cs-section cs-section-white cs-centered">
-      <span class="cs-label reveal">From the manifesto</span>
-      <p class="cs-quote reveal reveal-delay-1">"We are starting small. With the conviction that if the first five encounters exist, the rest will follow."</p>
-      <span class="cs-quote-attr reveal reveal-delay-2">— The Terroo Manifesto, 2026</span>
+    <!-- The Build (WordPress) -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">The build</span>
+        <h2 class="cs-heading">A WordPress theme the founder can run without me</h2>
+      </div>
+      <div class="cs-brief reveal reveal-delay-1">
+        <p class="cs-body">Design and brand were only half the brief. The founder needed to edit the site herself, down to a single typo, without opening a ticket with a developer every time. I built Terroo as a custom WordPress theme on Elementor, with every block wired to the same colors and type styles as the Figma library, so the back office looks and behaves like an extension of the brand rather than a generic admin panel bolted on top of it.</p>
+      </div>
+      <div class="cs-impact-cards reveal reveal-delay-2">
+        <div class="cs-impact-card">
+          <span class="cs-stat">No code</span>
+          <span class="cs-card-title">Self-serve editing</span>
+          <p class="cs-card-desc">The founder makes changes straight from the WordPress back office, no pull request required.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">40%+</span>
+          <span class="cs-card-title">Of the web</span>
+          <p class="cs-card-desc">WordPress runs a huge share of the internet, so any future developer can open the project and understand it immediately, no proprietary platform to relearn.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">1:1</span>
+          <span class="cs-card-title">Design fidelity</span>
+          <p class="cs-card-desc">Every block is a custom Elementor widget bound to the same design tokens as the Figma library, so new pages stay on-brand even when someone else is editing them.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <p class="cs-figma-lead" style="color:#776c92;">Editing a page, live</p>
+        <div class="cs-figma-frame">
+          <div class="cs-figma-bar">
+            <span class="cs-figma-dot" style="background:#ff5f57;"></span>
+            <span class="cs-figma-dot" style="background:#febc2e;"></span>
+            <span class="cs-figma-dot" style="background:#28c840;"></span>
+            <span class="cs-figma-bar-label">Elementor · Editor</span>
+          </div>
+          <img loading="lazy" class="cs-figma-img" src="assets/terroo-elementor-editor.png" alt="Editing the Terroo 'For locals' page in the Elementor back office, with the founder's own text editable in place">
+        </div>
+        <p class="cs-figma-caption">The founder edits this text herself, no developer required.</p>
+      </div>
+    </section>
+
+    <!-- Final note -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">Final note</span>
+      <p class="cs-quote reveal reveal-delay-1">The site went live before the community did.<br>Because a product that people <u>trust</u> is the starting point for bringing people together.</p>
     </section>
 
     <!-- Next project -->

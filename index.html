@@ -435,23 +435,14 @@
       transform: scale(1.05);
     }
 
-    /* ── Card preview: mini browser window (website projects) ── */
-    .project-browser-preview {
-      position: absolute;
-      left: 62%; bottom: 0;
-      width: 46%;
-      border-radius: 10px 10px 0 0;
-      overflow: hidden;
-      box-shadow: 0 20px 50px rgba(16,4,44,0.16);
-      pointer-events: none; user-select: none;
-      z-index: 0;
-      transform-origin: bottom right;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    /* ── Card preview: wide device composite (website projects), fixed height to match the phone-mockup cards, cropped on the right if needed ── */
+    .project-card-preview-wide {
+      left: 62%;
+      width: 57.5%;
+      height: 358px;
+      object-fit: cover;
+      object-position: left bottom;
     }
-    .project-card:hover .project-browser-preview { transform: scale(1.05); }
-    .project-browser-bar { height: 18px; display: flex; align-items: center; gap: 4px; padding: 0 9px; flex-shrink: 0; }
-    .project-browser-dot { width: 5px; height: 5px; border-radius: 50%; }
-    .project-browser-preview img { width: 100%; display: block; }
 
     /* ── Featured project card (&Joy) ── */
     .project-card-featured { grid-column: 1 / -1; }
@@ -786,7 +777,7 @@
       .projects-grid { grid-template-columns: 1fr; }
       .project-card-body { padding: 48px 40px; }
       .project-card-preview { display: none; }
-      .project-browser-preview { display: none; }
+      .project-card-preview-wide { display: none; }
       .project-content { max-width: none; }
       .project-title { font-size: 30px; line-height: 40px; }
       .about-stats { flex-direction: column; }
@@ -915,8 +906,48 @@
     <!-- Projects grid -->
     <div class="projects-grid">
 
+      <!-- Terroo -->
+      <a href="terroo.html" class="project-card reveal">
+        <div class="project-card-bar" style="background:#b84c32;"></div>
+        <div class="project-card-body">
+          <div class="project-card-top">
+            <div class="project-card-header">
+              <div class="project-logo" style="background:#f5f0e8;">
+                <img loading="lazy" src="assets/logo-terroo.png" alt="Terroo" style="object-fit:contain; padding:12px;">
+              </div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Building a travel brand from a blank page</h3>
+              <p class="project-desc">Designed the visual identity and website from the founder's vision, now live to the public.</p>
+            </div>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <img loading="lazy" class="project-card-preview project-card-preview-wide" src="assets/preview-terroo.webp" alt="" aria-hidden="true">
+      </a>
+
+      <!-- Yogspace -->
+      <a href="yogspace.html" class="project-card reveal reveal-delay-1">
+        <div class="project-card-bar" style="background:#e89059;"></div>
+        <div class="project-card-body">
+          <div class="project-card-top">
+            <div class="project-card-header">
+              <div class="project-logo" style="background:#fff8ec;">
+                <img loading="lazy" src="assets/logo-yogspace.png" alt="Yogspace" style="object-fit:contain; padding:16px;">
+              </div>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Redesigning a wellness platform to earn its trust visually</h3>
+              <p class="project-desc">Took a live product from chunky and generic to editorial and credible, launching soon.</p>
+            </div>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <img loading="lazy" class="project-card-preview project-card-preview-wide" src="assets/preview-yogspace.webp" alt="" aria-hidden="true">
+      </a>
+
       <!-- &Joy (featured) -->
-      <a href="joy.html" class="project-card project-card-featured reveal">
+      <a href="joy.html" class="project-card project-card-featured reveal reveal-delay-2">
         <div class="project-card-bar" style="background:#3b82f6;"></div>
         <div class="project-card-body project-card-body-featured">
           <div class="project-card-top">
@@ -1013,60 +1044,6 @@
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
         <img loading="lazy" class="project-card-preview" src="assets/preview-ctk.webp" alt="" aria-hidden="true">
-      </a>
-
-      <!-- Terroo -->
-      <a href="terroo.html" class="project-card reveal reveal-delay-3">
-        <div class="project-card-bar" style="background:#b84c32;"></div>
-        <div class="project-card-body">
-          <div class="project-card-top">
-            <div class="project-card-header">
-              <div class="project-logo" style="background:#f5f0e8;">
-                <img loading="lazy" src="assets/logo-terroo.png" alt="Terroo" style="object-fit:contain; padding:12px;">
-              </div>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Building a travel brand from a blank page</h3>
-              <p class="project-desc">Designed the visual identity and website from the founder's vision, now live to the public.</p>
-            </div>
-          </div>
-          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-        </div>
-        <div class="project-browser-preview" aria-hidden="true">
-          <div class="project-browser-bar" style="background:#eee3d3;">
-            <span class="project-browser-dot" style="background:rgba(43,33,24,0.2);"></span>
-            <span class="project-browser-dot" style="background:rgba(43,33,24,0.2);"></span>
-            <span class="project-browser-dot" style="background:rgba(43,33,24,0.2);"></span>
-          </div>
-          <img loading="lazy" src="assets/terroo-shot-hero.jpg" alt="">
-        </div>
-      </a>
-
-      <!-- Yogspace -->
-      <a href="yogspace.html" class="project-card reveal reveal-delay-4">
-        <div class="project-card-bar" style="background:#e89059;"></div>
-        <div class="project-card-body">
-          <div class="project-card-top">
-            <div class="project-card-header">
-              <div class="project-logo" style="background:#fff8ec;">
-                <img loading="lazy" src="assets/logo-yogspace.png" alt="Yogspace" style="object-fit:contain; padding:16px;">
-              </div>
-            </div>
-            <div class="project-content">
-              <h3 class="project-title">Redesigning a wellness platform to earn its trust visually</h3>
-              <p class="project-desc">Took a live product from chunky and generic to editorial and credible, launching soon.</p>
-            </div>
-          </div>
-          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
-        </div>
-        <div class="project-browser-preview" aria-hidden="true">
-          <div class="project-browser-bar" style="background:#f2e2c9;">
-            <span class="project-browser-dot" style="background:rgba(35,32,28,0.2);"></span>
-            <span class="project-browser-dot" style="background:rgba(35,32,28,0.2);"></span>
-            <span class="project-browser-dot" style="background:rgba(35,32,28,0.2);"></span>
-          </div>
-          <img loading="lazy" src="assets/yog-shot-hero.png" alt="">
-        </div>
       </a>
 
     </div><!-- /projects-grid -->

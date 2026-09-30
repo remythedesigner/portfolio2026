@@ -123,7 +123,22 @@
       pointer-events: none;
     }
     .cs-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; opacity: 0.6; }
-    .cs-hero-left { flex: 0 0 640px; min-width: 0; align-self: flex-start; display: flex; flex-direction: column; gap: 64px; }
+    .cs-hero-left { flex: 1; min-width: 480px; align-self: flex-start; display: flex; flex-direction: column; gap: 80px; }
+    /* Hero image, in-flow flex sibling */
+    .cs-hero-image {
+      position: relative;
+      flex-shrink: 0;
+      margin-bottom: -80px;
+      margin-right: -128px;
+      width: 830px;
+      height: 614px;
+    }
+    .cs-hero-image img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
     .cs-hero-brand { display: flex; align-items: center; gap: 16px; }
     .cs-logo-link { display: block; flex-shrink: 0; border-radius: 16px; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
     .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
@@ -152,36 +167,6 @@
     }
     .cs-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #e89059; box-shadow: 0 0 0 4px rgba(232,144,89,0.25); }
 
-    /* Hero visual: two layered browser-window cards, anchored to the hero's right edge */
-    .cs-hero-devices {
-      position: relative;
-      flex-shrink: 0;
-      width: 640px;
-      height: 537px;
-      margin-left: auto;
-      margin-bottom: -80px;
-    }
-    .cs-hero-device { position: absolute; }
-    .cs-hero-device-back {
-      left: 27px; bottom: 0;
-      width: 613px;
-      z-index: 1;
-    }
-    .cs-hero-device-front {
-      left: 0; top: 0;
-      width: 275px; height: 537px;
-      z-index: 2;
-    }
-    .cs-hero-device-front .cs-browser-frame {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-    .cs-browser-frame { width: 100%; position: relative; border-radius: 14px 14px 0 0; overflow: hidden; background: #fff8ec; box-shadow: 4px 4px 80px 12px rgba(16,4,44,0.45); }
-    .cs-browser-bar { height: 34px; background: #f2e2c9; display: flex; align-items: center; gap: 6px; padding: 0 14px; flex-shrink: 0; }
-    .cs-browser-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(35,32,28,0.18); }
-    .cs-browser-img { width: 100%; height: auto; display: block; }
-    .cs-hero-device-front .cs-browser-img { flex: 1; min-height: 0; height: auto; object-fit: cover; object-position: top; }
 
     /* ── Common Section ── */
     .cs-section { width: 100%; padding: 80px 128px; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 40px; overflow-x: clip; }
@@ -236,7 +221,8 @@
     .cs-scope-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 24px; }
 
     /* ── Before / after ── */
-    .cs-compare { display: flex; flex-direction: column; gap: 40px; }
+    .cs-compare { display: flex; flex-direction: column; gap: 56px; }
+    .cs-compare-group { display: flex; flex-direction: column; gap: 32px; }
     .cs-compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
     .cs-compare-col { display: flex; flex-direction: column; gap: 14px; }
     .cs-compare-label {
@@ -246,8 +232,9 @@
     }
     .cs-compare-label-before { color: #8a8478; background: rgba(0,0,0,0.05); }
     .cs-compare-label-after { color: #b5622a; background: rgba(232,144,89,0.14); }
-    .cs-compare-img-wrap { border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 12px 32px rgba(16,4,44,0.08); }
+    .cs-compare-img-wrap { border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 12px 32px rgba(16,4,44,0.08); max-height: 1200px; }
     .cs-compare-img-wrap img { width: 100%; height: auto; display: block; }
+    .cs-section-intro { max-width: 760px; }
 
     /* ── Design decisions (dark) ── */
     .cs-principles-section { position: relative; overflow: hidden; background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%); }
@@ -276,15 +263,16 @@
       display: flex; align-items: center; justify-content: center;
       font-size: 20px;
     }
+    .cs-icon-chip img { width: 28px; height: 28px; object-fit: contain; display: block; }
 
     /* ── Behind the scenes (Figma / AI process) ── */
     .cs-figma-frame {
-      border-radius: 14px 14px 0 0;
+      border-radius: 14px;
       overflow: hidden;
       background: #ffffff;
       border: 1px solid rgba(0,0,0,0.06);
       box-shadow: 0 20px 48px rgba(16,4,44,0.1);
-      max-width: 420px;
+      max-width: 788px;
       margin: 0 auto;
     }
     .cs-figma-bar {
@@ -302,7 +290,7 @@
       margin-left: 6px;
     }
     .cs-figma-img { width: 100%; height: auto; display: block; }
-    .cs-figma-img-tall { max-height: 620px; object-fit: cover; object-position: top; }
+    .cs-figma-img-tall { max-height: 1163px; object-fit: cover; object-position: top; }
     .cs-figma-caption {
       font-family: 'Lato', Helvetica, Arial, sans-serif;
       font-weight: 300; font-size: 16px; line-height: 24px;
@@ -326,9 +314,8 @@
 
     /* ── Quote ── */
     .cs-centered { align-items: center; justify-content: center; padding: 120px 80px; gap: 24px; text-align: center; }
-    .cs-quote { font-family: 'EB Garamond', Georgia, serif; font-style: italic; font-weight: 500; font-size: 46px; line-height: 1.35; color: #10042c; text-align: center; max-width: 880px; }
-    .cs-quote em { color: #e89059; font-style: italic; }
-    .cs-quote-attr { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 1.4px; text-transform: uppercase; color: #776c92; }
+    .cs-quote { font-weight: 500; font-size: 52px; line-height: normal; color: #10042c; text-align: center; }
+    .cs-quote u { text-underline-offset: 5px; }
 
     /* ── Outcome cards ── */
     .cs-impact-section { gap: 24px; }
@@ -448,8 +435,8 @@
     @media (max-width: 1200px) {
       .nav-inner { padding: 0 64px; }
       .cs-hero { padding: 64px; }
-      .cs-hero-left { flex: 0 1 480px; }
-      .cs-hero-devices { transform: scale(0.72); transform-origin: bottom right; }
+      .cs-hero-left { width: auto; }
+      .cs-hero-image { width: 613px; height: 454px; margin-bottom: -64px; }
       .cs-hero-title { font-size: 56px; line-height: 70px; }
       .cs-section { padding: 64px; }
       .cs-brief-left { padding: 64px; }
@@ -459,8 +446,8 @@
     @media (max-width: 960px) {
       .nav-inner { padding: 0 40px; }
       .cs-hero { padding: 40px 40px; min-height: auto; flex-direction: column; align-items: flex-start; }
-      .cs-hero-left { flex: 0 0 100%; width: 100%; gap: 32px; }
-      .cs-hero-devices { display: none; }
+      .cs-hero-left { flex: 0 0 100%; width: 100%; min-width: 0; gap: 32px; }
+      .cs-hero-image { display: none; }
       .cs-hero-title { font-size: 44px; line-height: 54px; }
       .cs-meta { flex-wrap: wrap; gap: 20px; }
       .cs-section { padding: 56px 40px; gap: 28px; }
@@ -470,7 +457,7 @@
       .cs-heading { font-size: 36px; }
       .cs-body-bold, .cs-body, .cs-body-grey { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
       .cs-compare-row { grid-template-columns: 1fr; }
-      .cs-figma-img-tall { max-height: 440px; }
+      .cs-figma-img-tall { max-height: 825px; }
       .cs-principles-grid { grid-template-columns: 1fr; }
       .cs-principle { padding: 40px; }
       .cs-font-sample { font-size: 28px; }
@@ -536,11 +523,11 @@
           </div>
           <span class="cs-tag">Wellness Platform · Website</span>
         </div>
-        <h1 class="cs-hero-title reveal reveal-delay-1">Redesigning a<br>platform to earn<br>its trust visually</h1>
+        <h1 class="cs-hero-title reveal reveal-delay-1">A yoga platform<br>redesigned to<br>look trustworthy</h1>
         <div class="cs-meta reveal reveal-delay-2">
           <div class="cs-meta-item">
             <span class="cs-meta-label">Role</span>
-            <span class="cs-meta-value">UX/UI &amp; Art Direction</span>
+            <span class="cs-meta-value">UX/UI</span>
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Focus</span>
@@ -551,30 +538,15 @@
             <span class="cs-meta-value">Website</span>
           </div>
           <div class="cs-meta-item">
-            <span class="cs-meta-label">Status</span>
-            <span class="cs-meta-value cs-status-pill"><span class="cs-status-dot"></span>Launching soon</span>
+            <span class="cs-meta-label">Year</span>
+            <span class="cs-meta-value">Ongoing</span>
           </div>
         </div>
       </div>
 
-      <div class="cs-hero-devices">
-        <div class="cs-hero-device cs-hero-device-back reveal from-right reveal-delay-3">
-          <div class="cs-browser-frame">
-            <div class="cs-browser-bar">
-              <span class="cs-browser-dot"></span><span class="cs-browser-dot"></span><span class="cs-browser-dot"></span>
-            </div>
-            <img loading="eager" src="assets/yog-shot-hero-tall.jpg" alt="Yogspace homepage hero" class="cs-browser-img">
-          </div>
-        </div>
-
-        <div class="cs-hero-device cs-hero-device-front reveal from-right reveal-delay-4">
-          <div class="cs-browser-frame">
-            <div class="cs-browser-bar">
-              <span class="cs-browser-dot"></span><span class="cs-browser-dot"></span><span class="cs-browser-dot"></span>
-            </div>
-            <img loading="eager" src="assets/yog-shot-mobile.jpg" alt="Yogspace homepage on mobile" class="cs-browser-img">
-          </div>
-        </div>
+      <!-- Hero image, absolutely positioned -->
+      <div class="cs-hero-image reveal from-right reveal-delay-3">
+        <img loading="lazy" src="assets/preview-yogspace.webp" alt="Yogspace app screens">
       </div>
     </section>
 
@@ -586,7 +558,7 @@
           <h2 class="cs-heading">A working product that didn't yet look trustworthy</h2>
         </div>
         <div class="cs-problem-content reveal reveal-delay-1">
-          <p class="cs-body-bold">Yogspace connects students with certified yoga teachers for live, 1:1 classes taught in or inspired by traditional Indian lineages. Unlike Terroo, this wasn't a blank page: the founder had already built and shipped it.</p>
+          <p class="cs-body-bold">Yogspace connects students with certified yoga teachers for live, 1:1 classes taught in or inspired by traditional Indian lineages. This wasn't a blank page: the founder had already built and shipped it.</p>
           <p class="cs-body">What Yogspace was selling was credibility: a verified certificate, a real lineage, a teacher worth paying for over a free YouTube video. The site didn't say any of that visually. Rounded pill shapes, a chunky display font, flat cream blocks with no depth, it read closer to a kids' app than a platform asking people to trust a stranger with their practice. I wasn't inventing a brand from nothing here. I was closing the gap between what the product actually did and what it looked like it did.</p>
         </div>
       </div>
@@ -646,7 +618,7 @@
         <div class="cs-principle">
           <span class="cs-principle-num">02</span>
           <span class="cs-principle-title">Away from the wellness-teal cliché</span>
-          <p class="cs-principle-desc">Every yoga app reaches for the same sage green or spa teal. I kept a warm terracotta as the single accent against cream and a near-black navy for UI weight, so it reads closer to a considered travel or hospitality brand than a template.</p>
+          <p class="cs-principle-desc">Every yoga app reaches for the same sage green or spa teal. I chose a warm terracotta instead, closer to saffron, a quiet nod to the Indian flag and the lineage these teachers actually trained in. Set against cream and a near-black navy for UI weight, it reads closer to a considered travel or hospitality brand than a template.</p>
           <div class="cs-swatches">
             <span class="cs-swatch" style="background:#E89059;"></span>
             <span class="cs-swatch" style="background:#FFF8EC;"></span>
@@ -656,17 +628,17 @@
         <div class="cs-principle">
           <span class="cs-principle-num">03</span>
           <span class="cs-principle-title">Trust made visible, not just stated</span>
-          <p class="cs-principle-desc">"Certified" meant nothing as a plain word in a paragraph. I designed a small set of custom badge icons (top rated, certified, specialist) and turned each teacher's certification history into an actual timeline, so the credential is something you see, not something you take on faith.</p>
+          <p class="cs-principle-desc">"Certified" meant nothing as a plain word in a paragraph. I designed a small set of custom badge icons (top rated, certified, specialist) and turned each teacher's certification history into an actual timeline, so the credential is something you can actually see.</p>
           <div class="cs-icon-row">
-            <span class="cs-icon-chip">⭐</span>
-            <span class="cs-icon-chip">🏅</span>
-            <span class="cs-icon-chip">🕐</span>
+            <span class="cs-icon-chip"><img loading="lazy" src="assets/yog-icon-toprated.png" alt="Top rated badge icon"></span>
+            <span class="cs-icon-chip"><img loading="lazy" src="assets/yog-icon-certified.png" alt="Certified badge icon"></span>
+            <span class="cs-icon-chip"><img loading="lazy" src="assets/yog-icon-specialist.png" alt="Specialist badge icon"></span>
           </div>
         </div>
         <div class="cs-principle">
           <span class="cs-principle-num">04</span>
           <span class="cs-principle-title">Fewer pills, more air</span>
-          <p class="cs-principle-desc">The original leaned on pill shapes for nearly every container, with almost no shadow or depth to separate them. Reintroducing soft, warm-toned shadows and letting some sections go full ink gives the page rhythm instead of one continuous cream block.</p>
+          <p class="cs-principle-desc">I wanted these pages to feel soft and to breathe, the same two things a yoga teacher asks of you on the mat. Soft meant dropping hard borders in favor of warm-toned shadows that separate containers without a hard edge. Breathing meant fewer, larger blocks and wide open spacing instead of the original's dense run of identical pill shapes. Both exist to reassure more than to decorate: a calmer surface is easier to trust.</p>
         </div>
       </div>
       <div class="reveal reveal-delay-2">
@@ -692,60 +664,60 @@
         <h2 class="cs-heading">Two pages, before the redesign and after</h2>
       </div>
       <div class="cs-compare reveal reveal-delay-1">
-        <div class="cs-compare-row">
-          <div class="cs-compare-col">
-            <span class="cs-compare-label cs-compare-label-before">Before</span>
-            <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-before-home.webp" alt="Yogspace homepage, before redesign"></div>
-          </div>
-          <div class="cs-compare-col">
-            <span class="cs-compare-label cs-compare-label-after">After</span>
-            <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-shot-home-after.jpg" alt="Yogspace homepage, after redesign, full page"></div>
+        <div class="cs-compare-group">
+          <p class="cs-body-grey">The homepage went from a dense green wall with no visual hierarchy to sections that actually breathe: a confident search moment up top, then trust and teachers given room to be read on their own.</p>
+          <div class="cs-compare-row">
+            <div class="cs-compare-col">
+              <span class="cs-compare-label cs-compare-label-before">Before</span>
+              <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-before-home.webp" alt="Yogspace homepage, before redesign"></div>
+            </div>
+            <div class="cs-compare-col">
+              <span class="cs-compare-label cs-compare-label-after">After</span>
+              <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-shot-home-after.jpg" alt="Yogspace homepage, after redesign, full page"></div>
+            </div>
           </div>
         </div>
-        <div class="cs-compare-row">
-          <div class="cs-compare-col">
-            <span class="cs-compare-label cs-compare-label-before">Before</span>
-            <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-before-profile.webp" alt="Teacher profile page, before redesign"></div>
-          </div>
-          <div class="cs-compare-col">
-            <span class="cs-compare-label cs-compare-label-after">After</span>
-            <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-shot-profile-after.jpg" alt="Teacher profile page, after redesign, with trust badges and a certification timeline"></div>
+        <div class="cs-compare-group">
+          <p class="cs-body-grey">On the teacher profile, the plain session-rate list is now backed by three trust badges I hand-drew (top rated, certified, specialist) and an actual certification timeline instead of a bullet list, so the credential the whole platform depends on is the thing your eye lands on first.</p>
+          <div class="cs-compare-row">
+            <div class="cs-compare-col">
+              <span class="cs-compare-label cs-compare-label-before">Before</span>
+              <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-before-profile.webp" alt="Teacher profile page, before redesign"></div>
+            </div>
+            <div class="cs-compare-col">
+              <span class="cs-compare-label cs-compare-label-after">After</span>
+              <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-shot-profile-after.jpg" alt="Teacher profile page, after redesign, with trust badges and a certification timeline"></div>
+            </div>
           </div>
         </div>
       </div>
-      <p class="cs-body-grey reveal reveal-delay-2">The homepage went from a dense green wall with no visual hierarchy to sections that actually breathe, a confident search moment up top, then trust and teachers given room to be read on their own. On the teacher profile, the plain session-rate list is now backed by three trust badges I hand-drew (top rated, certified, specialist) and an actual certification timeline instead of a bullet list, so the credential the whole platform depends on is the thing your eye lands on first.</p>
     </section>
 
-    <!-- Outcome -->
-    <section class="cs-section cs-section-purple cs-impact-section">
+    <!-- New teacher onboarding -->
+    <section class="cs-section cs-section-white">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Outcome</span>
-        <h2 class="cs-heading">Where the project stands today</h2>
+        <span class="cs-label">New teacher onboarding</span>
+        <h2 class="cs-heading">Turning a six-step signup into something teachers actually finish</h2>
       </div>
-      <div class="cs-impact-cards reveal reveal-delay-1">
-        <div class="cs-impact-card">
-          <span class="cs-stat">Soon</span>
-          <span class="cs-card-title">Launching soon</span>
-          <p class="cs-card-desc">The redesign is being rebuilt into production code page by page, ahead of public launch.</p>
+      <div class="cs-section-intro reveal reveal-delay-1">
+        <p class="cs-body">Getting a teacher from sign-up to a bookable profile meant asking for a lot: certifications, rates, a weekly schedule, a video. I broke it into six short steps with one clear question each and a progress bar that never lies, so an instructor always knows how much is left instead of guessing.</p>
+      </div>
+      <div class="cs-compare-row reveal reveal-delay-2">
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Step 1 · Identity</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-onboarding-identity.webp" alt="Yogspace teacher onboarding, Identity step: profile photo, name, short title and introduction"></div>
         </div>
-        <div class="cs-impact-card">
-          <span class="cs-stat">30+</span>
-          <span class="cs-card-title">Screens redesigned</span>
-          <p class="cs-card-desc">Marketing pages, teacher profiles, the booking flow, and the full instructor onboarding wizard.</p>
-        </div>
-        <div class="cs-impact-card">
-          <span class="cs-stat">2nd</span>
-          <span class="cs-card-title">Art direction pass</span>
-          <p class="cs-card-desc">The palette and type system went through a full iteration with the founder before landing here.</p>
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Step 5 · Schedule</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="assets/yog-onboarding-schedule.png" alt="Yogspace teacher onboarding, Schedule step: weekly availability toggles with start and end times"></div>
         </div>
       </div>
     </section>
 
-    <!-- Quote -->
-    <section class="cs-section cs-section-white cs-centered">
-      <span class="cs-label reveal">The line that set the tone</span>
-      <p class="cs-quote reveal reveal-delay-1">"Learn yoga from its <em>source.</em>"</p>
-      <span class="cs-quote-attr reveal reveal-delay-2">— Yogspace homepage</span>
+    <!-- Final note -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">Final note</span>
+      <p class="cs-quote reveal reveal-delay-1">The teachers and the lineages were always real.<br>The design just needed to <u>show</u> it.</p>
     </section>
 
     <!-- Next project -->
