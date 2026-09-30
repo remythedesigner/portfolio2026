@@ -103,7 +103,7 @@
       font-family: 'Cormorant Garamond', serif;
       font-weight: 600; font-size: 14px;
       letter-spacing: 1.96px; text-transform: uppercase;
-      color: #776c92;
+      color: #544869;
       position: relative;
       transition: color 0.25s ease;
     }
@@ -279,7 +279,7 @@
     .hero-desc {
       font-family: 'Lato', Helvetica, Arial, sans-serif;
       font-weight: 300; font-size: 24px; line-height: 40px;
-      color: #776c92; width: 540px;
+      color: #544869; width: 540px;
     }
     .hero-tags {
       border-top: 1px solid rgba(255,255,255,0.25);
@@ -387,13 +387,14 @@
       letter-spacing: 1.96px; text-transform: uppercase;
       white-space: nowrap;
     }
-    .project-content { display: flex; flex-direction: column; gap: 16px; max-width: 400px; }
+    .project-content { display: flex; flex-direction: column; gap: 16px; max-width: min(400px, 62%); }
+    .project-card-featured .project-content { max-width: min(400px, 40%); }
     .project-title {
       font-weight: 500; font-size: 36px; line-height: 45px; color: #10042c;
     }
     .project-desc {
       font-family: 'Lato', Helvetica, Arial, sans-serif;
-      font-weight: 300; font-size: 20px; line-height: 30px; color: #776c92;
+      font-weight: 300; font-size: 20px; line-height: 32px; color: #544869;
     }
     .project-btn {
       background: rgba(255,255,255,0.1);
@@ -494,7 +495,7 @@
     .about-metric-label {
       font-weight: 400; font-size: 14px; line-height: 20px;
       letter-spacing: 1.96px; text-transform: uppercase;
-      color: #776c92; white-space: nowrap;
+      color: #544869; white-space: nowrap;
     }
     .about-body { display: flex; flex-direction: column; gap: 16px; }
     .about-heading {
@@ -502,7 +503,7 @@
     }
     .about-text {
       font-family: 'Lato', Helvetica, Arial, sans-serif;
-      font-weight: 300; font-size: 20px; line-height: 30px; color: #776c92;
+      font-weight: 300; font-size: 20px; line-height: 32px; color: #544869;
     }
     .about-app-logos {
       display: flex; gap: 11px; align-items: center;
@@ -545,20 +546,20 @@
     }
     .personal-avatar img { width: 100%; height: 100%; object-fit: cover; }
     .personal-left {
-      display: flex; flex-direction: column; gap: 40px;
+      display: flex; flex-direction: column; gap: 24px;
       width: 560px; flex-shrink: 0;
     }
     .personal-header { display: flex; flex-direction: column; gap: 8px; }
     .personal-label {
       font-weight: 400; font-size: 16px; line-height: 24px;
-      letter-spacing: 2.4px; text-transform: uppercase; color: #776c92;
+      letter-spacing: 2.4px; text-transform: uppercase; color: #544869;
     }
     .personal-heading {
       font-weight: 500; font-size: 52px; color: #10042c;
     }
     .personal-body {
       font-family: 'Lato', Helvetica, Arial, sans-serif;
-      font-weight: 300; font-size: 20px; line-height: 30px; color: #776c92;
+      font-weight: 300; font-size: 20px; line-height: 32px; color: #544869;
     }
     .personal-right {
       display: flex; flex-direction: column; gap: 40px;
@@ -589,7 +590,7 @@
     }
     .personal-location p {
       font-weight: 300; font-size: 16px; line-height: 26px;
-      color: #776c92; white-space: nowrap;
+      color: #544869; white-space: nowrap;
     }
 
     /* ── Footer ── */
@@ -753,7 +754,6 @@
       .hero { padding: 80px 64px 40px; }
       .section-divider { padding: 32px 64px; }
       .project-card-body { padding: 32px 56px; }
-      .project-content { max-width: 320px; }
       .about-card { padding: 56px; }
       .personal { padding: 64px; gap: 40px; flex-direction: column; align-items: flex-start; }
       .personal-me { width: 100%; }
@@ -778,6 +778,16 @@
       .project-card-body { padding: 48px 40px; }
       .project-card-preview { display: none; }
       .project-card-preview-wide { display: none; }
+      /* Scroll-activated hover state (mobile/tablet only — no real hover on touch) */
+      .project-card.in-view {
+        box-shadow: 0 20px 56px rgba(16, 4, 44, 0.16);
+        border-color: rgba(255,255,255,0.5);
+      }
+      .project-card.in-view .project-card-bar { opacity: 1; }
+      .project-card.in-view .project-logo,
+      .project-card.in-view .project-logo-ctk { transform: scale(1.07) rotate(-2deg); }
+      .project-card.in-view .project-btn { background: rgba(255,255,255,0.25); width: 134px; }
+      .project-card.in-view .project-btn span { transform: translateX(4px); color: #10042c; opacity: 1; }
       .project-content { max-width: none; }
       .project-title { font-size: 30px; line-height: 40px; }
       .about-stats { flex-direction: column; }
@@ -810,7 +820,7 @@
       .section-divider-title { font-size: 24px; letter-spacing: 1.6px; }
       .project-card-body { padding: 32px 20px; gap: 28px; }
       .project-btn { width: 48px; height: 48px; }
-      .project-card:hover .project-btn { width: 96px; }
+      .project-card:hover .project-btn, .project-card.in-view .project-btn { width: 96px; }
       .project-btn span { color: #776c92; }
       .project-title { font-size: 24px; line-height: 32px; }
       .project-desc {
@@ -818,7 +828,7 @@
       .about-card { padding: 36px 20px; gap: 24px; }
       .about-heading { font-size: 28px; line-height: 36px; }
       .about-text {
-      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 28px; }
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 30px; }
       .about-emoji { font-size: 36px; }
       .about-metric-value { font-size: 32px; }
       .personal { padding: 40px 20px; gap: 36px; }
@@ -826,7 +836,7 @@
       .personal-avatar { width: 80px; height: 80px; }
       .personal-heading { font-size: 36px; line-height: 1.2; }
       .personal-body {
-      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 34px; }
       .personal-left { gap: 24px; }
       .tags-cloud { position: static; height: auto; width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
       .tag-pill { position: static; }
@@ -917,7 +927,7 @@
               </div>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Building a travel brand from a blank page</h3>
+              <h3 class="project-title">A landing page designed to make people want in</h3>
               <p class="project-desc">Designed the visual identity and website from the founder's vision, now live to the public.</p>
             </div>
           </div>
@@ -1185,6 +1195,12 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Activate project card hover state when it crosses mid-screen on scroll ──
+  const cardMidObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => e.target.classList.toggle('in-view', e.isIntersecting));
+  }, { rootMargin: '-50% 0px -50% 0px' });
+  document.querySelectorAll('.project-card').forEach(el => cardMidObserver.observe(el));
 
   // ── Nav glass on scroll ──
   const nav       = document.querySelector('nav');
