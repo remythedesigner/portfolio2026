@@ -227,11 +227,16 @@
       color: white;
     }
     .cs-meta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       color: white;
-      border-bottom: 1px solid rgba(255,255,255,0.4);
-      transition: border-color 0.25s ease, color 0.25s ease;
+      transition: color 0.25s ease;
     }
-    .cs-meta-link:hover { border-color: #fff; color: #e8a37f; }
+    .cs-meta-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
+    .cs-meta-link-text { text-decoration: underline; text-underline-offset: 3px; }
+    .cs-meta-link:hover { color: #e8a37f; }
+    .cs-meta-link:hover svg { transform: translateX(2px); }
 
     /* ── Common Section ── */
     .cs-section {
@@ -790,6 +795,10 @@
           <div class="cs-meta-item">
             <span class="cs-meta-label">Year</span>
             <span class="cs-meta-value">2026</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Status</span>
+            <a class="cs-meta-value cs-meta-link" href="https://terroo.world/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="cs-meta-link-text">Live</span></a>
           </div>
         </div>
       </div>
