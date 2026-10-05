@@ -438,8 +438,8 @@
     .cs-enhance-card { background: #fff; border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
     .cs-enhance-wireframe { background: #F5F6F8; border-bottom: 1px solid rgba(0,0,0,0.05); }
     .cs-enhance-wireframe svg { display: block; width: 100%; height: auto; }
-    .cs-enhance-title { font-weight: 300; font-size: 20px; line-height: 1.35; color: #10042c; padding: 18px 20px 8px; }
-    .cs-enhance-desc { font-weight: 300; font-size: 16px; line-height: 1.65; color: #776c92; padding: 0 20px 22px; flex: 1; }
+    .cs-enhance-title { font-weight: 600; font-size: 28px; line-height: normal; color: #10042c; padding: 18px 20px 8px; }
+    .cs-enhance-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 18px; line-height: 28px; color: #10042c; padding: 0 20px 22px; flex: 1; }
 
     /* ── Key Insight / Final Note ── */
     .cs-centered {
@@ -516,6 +516,20 @@
       gap: 16px;
       flex-wrap: wrap;
     }
+    /* Flow pills appear one after the other */
+    .cs-flow.reveal { opacity: 1; transform: none; }
+    .cs-flow.reveal > * {
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-flow.reveal.visible > * { opacity: 1; transform: none; }
+    .cs-flow.reveal.visible > :nth-child(2) { transition-delay: 0.2s; }
+    .cs-flow.reveal.visible > :nth-child(3) { transition-delay: 0.4s; }
+    .cs-flow.reveal.visible > :nth-child(4) { transition-delay: 0.6s; }
+    .cs-flow.reveal.visible > :nth-child(5) { transition-delay: 0.8s; }
+    @media (prefers-reduced-motion: reduce) {
+      .cs-flow.reveal > * { opacity: 1; transform: none; transition: none; }
+    }
     .cs-flow-tag {
       background: rgba(255, 71, 108, 0.08);
       border: 1px solid rgba(255, 71, 108, 0.15);
@@ -549,7 +563,7 @@
     .cs-constraint-item { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
     .cs-constraint-tag { font-weight: 500; font-size: 13px; line-height: 20px; color: #FF476C; background: rgba(255,71,108,0.08); border-radius: 6px; padding: 2px 10px; white-space: nowrap; flex-shrink: 0; }
     .cs-constraint-implication {
-      font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 16px; line-height: 24px; color: #776c92; }
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 18px; line-height: 28px; color: #10042c; }
     .cs-flow-block { display: flex; flex-direction: column; gap: 0; }
 
     /* ── Steps ── */
@@ -607,8 +621,9 @@
       color: #10042c;
     }
     .cs-step-body {
-      font-weight: 300; font-size: 28px; line-height: 40px;
-      color: #776c92;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #10042c;
     }
     .cs-step-list {
       display: flex;
@@ -858,12 +873,6 @@
       font-weight: 600; font-size: 28px; line-height: normal;
       color: #10042c;
     }
-    .cs-card-desc {
-      font-family: 'Lato', Helvetica, Arial, sans-serif;
-      font-weight: 300; font-size: 20px; line-height: 30px;
-      color: #776c92;
-    }
-
     /* ── Footer ── */
     footer {
       background: #10042c; width: 100%;
@@ -1020,7 +1029,7 @@
       .cs-step-right-flush { align-items: center; padding-bottom: 24px; }
       .cs-step-title { font-size: 28px; line-height: 36px; }
       .cs-step-body {
-      font-size: 22px; line-height: 32px; }
+      font-size: 20px; line-height: 32px; }
       .cs-step-list li {
       font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
       .cs-new-design { flex-direction: column; align-items: center; gap: 48px; padding: 60px 40px; min-height: auto; }
@@ -1101,17 +1110,24 @@
     /* ── New design highlights ── */
     .cs-new-design-highlights {
       list-style: none; padding: 0; margin: 0;
-      display: flex; flex-direction: column; gap: 10px;
+      display: flex; flex-direction: column; gap: 4px;
     }
     .cs-new-design-highlights li {
-      font-size: 16px; font-weight: 300; line-height: 24px;
-      color: rgba(255,255,255,0.65);
-      padding-left: 20px; position: relative;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      display: flex; align-items: flex-start; gap: 16px;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #ffffff;
     }
     .cs-new-design-highlights li::before {
-      content: '—'; position: absolute; left: 0;
-      color: rgba(255,255,255,0.30);
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #ff476c;
+      flex-shrink: 0;
+      margin-top: 10px;
     }
+    @media (max-width: 960px) { .cs-new-design-highlights li { font-size: 18px; } }
+    @media (max-width: 600px) { .cs-new-design-highlights li { font-size: 16px; } }
 
     /* ── Next project ── */
     .cs-next {
@@ -1184,8 +1200,8 @@
       .cs-next-desc {
       font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
       .cs-enhance-grid { grid-template-columns: 1fr; }
-      .cs-enhance-title { font-size: 17px; padding: 16px 16px 6px; }
-      .cs-enhance-desc { font-size: 14px; padding: 0 16px 16px; }
+      .cs-enhance-title { font-size: 22px; padding: 16px 16px 6px; }
+      .cs-enhance-desc { padding: 0 16px 16px; }
     }
 
   </style>
@@ -1361,7 +1377,7 @@
       </div>
       <div class="cs-flow-block reveal reveal-delay-1">
         <p class="cs-constraint-label">New flow:</p>
-        <div class="cs-flow" style="margin-top:12px;">
+        <div class="cs-flow reveal" style="margin-top:12px;">
           <span class="cs-flow-tag">Guided conversation</span>
           <span class="cs-flow-arrow">→</span>
           <span class="cs-flow-tag">Content injection</span>
@@ -1596,17 +1612,17 @@
         <div class="cs-impact-card">
           <span class="cs-stat">+16%</span>
           <span class="cs-card-title">Conversion to Premium</span>
-          <p class="cs-card-desc">Upgrade rate among active users improved as the AI-powered suggestions surfaced the paywall at more relevant, high-intent moments.</p>
+          <p class="cs-body">Upgrade rate among active users improved as the AI-powered suggestions surfaced the paywall at more relevant, high-intent moments.</p>
         </div>
         <div class="cs-impact-card">
           <span class="cs-stat">+19%</span>
           <span class="cs-card-title">Return rate</span>
-          <p class="cs-card-desc">Users returning to the AI coach in subsequent sessions, driven by more contextual and actionable responses that rewarded re-engagement.</p>
+          <p class="cs-body">Users returning to the AI coach in subsequent sessions, driven by more contextual and actionable responses that rewarded re-engagement.</p>
         </div>
         <div class="cs-impact-card">
           <span class="cs-stat">+13%</span>
           <span class="cs-card-title">FLTV</span>
-          <p class="cs-card-desc">Projected increase in long-term value, modelled from improved conversion and retention rates post-launch.</p>
+          <p class="cs-body">Projected increase in long-term value, modelled from improved conversion and retention rates post-launch.</p>
         </div>
       </div>
     </section>
@@ -1774,6 +1790,35 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Count-up on key figures ──
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const re = /^(\D*?)(\d+(?:\.\d+)?)(\D*)$/;
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        const c = e.target._count;
+        const start = performance.now(), dur = 1400;
+        (function tick(now) {
+          const p = Math.min((now - start) / dur, 1);
+          e.target.textContent = p < 1 ? c.pre + (c.target * ease(p)).toFixed(c.dec) + c.suf : c.final;
+          if (p < 1) requestAnimationFrame(tick);
+        })(start);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.cs-stat, .cs-stat-value').forEach(el => {
+      const final = el.textContent.trim();
+      const m = final.match(re);
+      if (!m) return;
+      const dec = (m[2].split('.')[1] || '').length;
+      el._count = { pre: m[1], target: parseFloat(m[2]), dec: dec, suf: m[3], final: final };
+      el.textContent = m[1] + (0).toFixed(dec) + m[3];
+      io.observe(el);
+    });
+  })();
 
   // ── Nav glass on scroll ──
   const nav = document.querySelector('nav');

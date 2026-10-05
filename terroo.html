@@ -535,12 +535,6 @@
       font-weight: 600; font-size: 24px; line-height: normal;
       color: #10042c;
     }
-    .cs-card-desc {
-      font-family: 'Lato', Helvetica, Arial, sans-serif;
-      font-weight: 300; font-size: 18px; line-height: 28px;
-      color: #776c92;
-    }
-
     /* ── Footer ── */
     footer {
       background: #10042c; width: 100%;
@@ -971,17 +965,17 @@
         <div class="cs-impact-card">
           <span class="cs-stat">No code</span>
           <span class="cs-card-title">Self-serve editing</span>
-          <p class="cs-card-desc">The founder makes changes straight from the WordPress back office, no pull request required.</p>
+          <p class="cs-body">The founder makes changes straight from the WordPress back office, no pull request required.</p>
         </div>
         <div class="cs-impact-card">
           <span class="cs-stat">40%+</span>
           <span class="cs-card-title">Of the web</span>
-          <p class="cs-card-desc">WordPress runs a huge share of the internet, so any future developer can open the project and understand it immediately, no proprietary platform to relearn.</p>
+          <p class="cs-body">WordPress runs a huge share of the internet, so any future developer can open the project and understand it immediately, no proprietary platform to relearn.</p>
         </div>
         <div class="cs-impact-card">
           <span class="cs-stat">1:1</span>
           <span class="cs-card-title">Design fidelity</span>
-          <p class="cs-card-desc">Every block is a custom Elementor widget bound to the same design tokens as the Figma library, so new pages stay on-brand even when someone else is editing them.</p>
+          <p class="cs-body">Every block is a custom Elementor widget bound to the same design tokens as the Figma library, so new pages stay on-brand even when someone else is editing them.</p>
         </div>
       </div>
       <div class="reveal reveal-delay-3">
@@ -1058,6 +1052,35 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Count-up on key figures ──
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const re = /^(\D*?)(\d+(?:\.\d+)?)(\D*)$/;
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        const c = e.target._count;
+        const start = performance.now(), dur = 1400;
+        (function tick(now) {
+          const p = Math.min((now - start) / dur, 1);
+          e.target.textContent = p < 1 ? c.pre + (c.target * ease(p)).toFixed(c.dec) + c.suf : c.final;
+          if (p < 1) requestAnimationFrame(tick);
+        })(start);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.cs-stat, .cs-stat-value').forEach(el => {
+      const final = el.textContent.trim();
+      const m = final.match(re);
+      if (!m) return;
+      const dec = (m[2].split('.')[1] || '').length;
+      el._count = { pre: m[1], target: parseFloat(m[2]), dec: dec, suf: m[3], final: final };
+      el.textContent = m[1] + (0).toFixed(dec) + m[3];
+      io.observe(el);
+    });
+  })();
 
   // ── Nav glass on scroll ──
   const nav = document.querySelector('nav');

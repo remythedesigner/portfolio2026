@@ -511,6 +511,20 @@
       gap: 16px;
       flex-wrap: wrap;
     }
+    /* Flow pills appear one after the other */
+    .cs-flow.reveal { opacity: 1; transform: none; }
+    .cs-flow.reveal > * {
+      opacity: 0; transform: translateY(14px);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-flow.reveal.visible > * { opacity: 1; transform: none; }
+    .cs-flow.reveal.visible > :nth-child(2) { transition-delay: 0.2s; }
+    .cs-flow.reveal.visible > :nth-child(3) { transition-delay: 0.4s; }
+    .cs-flow.reveal.visible > :nth-child(4) { transition-delay: 0.6s; }
+    .cs-flow.reveal.visible > :nth-child(5) { transition-delay: 0.8s; }
+    @media (prefers-reduced-motion: reduce) {
+      .cs-flow.reveal > * { opacity: 1; transform: none; transition: none; }
+    }
     .cs-flow-tag {
       background: rgba(104, 190, 166, 0.1);
       border: 1px solid rgba(104, 190, 166, 0.2);
@@ -544,7 +558,7 @@
     .cs-constraint-item { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
     .cs-constraint-tag { font-weight: 500; font-size: 13px; line-height: 20px; color: #3D9E87; background: rgba(104,190,166,0.1); border-radius: 6px; padding: 2px 10px; white-space: nowrap; flex-shrink: 0; }
     .cs-constraint-implication {
-      font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 16px; line-height: 24px; color: #776c92; }
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 18px; line-height: 28px; color: #10042c; }
     .cs-flow-block { display: flex; flex-direction: column; gap: 0; }
 
     /* ── Steps ── */
@@ -595,8 +609,9 @@
       color: #10042c;
     }
     .cs-step-body {
-      font-weight: 300; font-size: 28px; line-height: 40px;
-      color: #776c92;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #10042c;
     }
     .cs-step-list {
       display: flex;
@@ -877,12 +892,6 @@
       font-weight: 600; font-size: 28px; line-height: normal;
       color: #10042c;
     }
-    .cs-card-desc {
-      font-family: 'Lato', Helvetica, Arial, sans-serif;
-      font-weight: 300; font-size: 20px; line-height: 30px;
-      color: #776c92;
-    }
-
     /* ── Extending Impact ── */
     .cs-extending-phones {
       display: flex;
@@ -1123,7 +1132,7 @@
       .cs-step-right-flush { align-items: center; padding-bottom: 24px; }
       .cs-step-title { font-size: 28px; line-height: 36px; }
       .cs-step-body {
-      font-size: 22px; line-height: 32px; }
+      font-size: 20px; line-height: 32px; }
       .cs-step-list li {
       font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
       .cs-new-design { flex-direction: column; align-items: center; gap: 48px; padding: 60px 40px; min-height: auto; }
@@ -1232,17 +1241,24 @@
     /* ── New design highlights ── */
     .cs-new-design-highlights {
       list-style: none; padding: 0; margin: 0;
-      display: flex; flex-direction: column; gap: 10px;
+      display: flex; flex-direction: column; gap: 4px;
     }
     .cs-new-design-highlights li {
-      font-size: 16px; font-weight: 300; line-height: 24px;
-      color: rgba(255,255,255,0.65);
-      padding-left: 20px; position: relative;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      display: flex; align-items: flex-start; gap: 16px;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #ffffff;
     }
     .cs-new-design-highlights li::before {
-      content: '—'; position: absolute; left: 0;
-      color: rgba(255,255,255,0.30);
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #68bea6;
+      flex-shrink: 0;
+      margin-top: 10px;
     }
+    @media (max-width: 960px) { .cs-new-design-highlights li { font-size: 18px; } }
+    @media (max-width: 600px) { .cs-new-design-highlights li { font-size: 16px; } }
 
     /* ── Next project ── */
     .cs-next {
@@ -1494,7 +1510,7 @@
       </div>
       <div class="cs-flow-block reveal reveal-delay-1">
         <p class="cs-constraint-label">New flow:</p>
-        <div class="cs-flow" style="margin-top:12px;">
+        <div class="cs-flow reveal" style="margin-top:12px;">
           <span class="cs-flow-tag">Retrieving users' logs</span>
           <span class="cs-flow-arrow">→</span>
           <span class="cs-flow-tag">Customization options</span>
@@ -1746,17 +1762,17 @@
         <div class="cs-impact-card">
           <span class="cs-stat">+22%</span>
           <span class="cs-card-title">Return Rate</span>
-          <p class="cs-card-desc">Monthly return rate to the Food Center rose from 31% to 38%, driven by better content discoverability and a more engaging entry point.</p>
+          <p class="cs-body">Monthly return rate to the Food Center rose from 31% to 38%, driven by better content discoverability and a more engaging entry point.</p>
         </div>
         <div class="cs-impact-card">
           <span class="cs-stat">+31%</span>
           <span class="cs-card-title">Recipe engagement</span>
-          <p class="cs-card-desc">Taps on recipes and meal plans increased sharply, with the new visual hierarchy and contextual surfacing driving more intentional browsing.</p>
+          <p class="cs-body">Taps on recipes and meal plans increased sharply, with the new visual hierarchy and contextual surfacing driving more intentional browsing.</p>
         </div>
         <div class="cs-impact-card">
           <span class="cs-stat">+11%</span>
           <span class="cs-card-title">Trial Conversion</span>
-          <p class="cs-card-desc">Free-to-paid conversion rate rose from 4.2% to 4.7%, with more users reaching the paywall after engaging with premium recipe content.</p>
+          <p class="cs-body">Free-to-paid conversion rate rose from 4.2% to 4.7%, with more users reaching the paywall after engaging with premium recipe content.</p>
         </div>
       </div>
     </section>
@@ -1791,12 +1807,12 @@
           <div class="cs-extending-stat-inner">
             <span class="cs-stat">+9%</span>
             <span class="cs-card-title">Food Center visits</span>
-            <p class="cs-card-desc">The new onboarding drove a good increase in Food Center visits among first-time users.</p>
+            <p class="cs-body">The new onboarding drove a good increase in Food Center visits among first-time users.</p>
           </div>
           <div class="cs-extending-stat-inner">
             <span class="cs-stat">+7%</span>
             <span class="cs-card-title">Trial Conversion</span>
-            <p class="cs-card-desc">This led to a further increase in the trial conversion.</p>
+            <p class="cs-body">This led to a further increase in the trial conversion.</p>
           </div>
         </div>
       </div>
@@ -1880,6 +1896,35 @@
     });
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Count-up on key figures ──
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const re = /^(\D*?)(\d+(?:\.\d+)?)(\D*)$/;
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        const c = e.target._count;
+        const start = performance.now(), dur = 1400;
+        (function tick(now) {
+          const p = Math.min((now - start) / dur, 1);
+          e.target.textContent = p < 1 ? c.pre + (c.target * ease(p)).toFixed(c.dec) + c.suf : c.final;
+          if (p < 1) requestAnimationFrame(tick);
+        })(start);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.cs-stat, .cs-stat-value').forEach(el => {
+      const final = el.textContent.trim();
+      const m = final.match(re);
+      if (!m) return;
+      const dec = (m[2].split('.')[1] || '').length;
+      el._count = { pre: m[1], target: parseFloat(m[2]), dec: dec, suf: m[3], final: final };
+      el.textContent = m[1] + (0).toFixed(dec) + m[3];
+      io.observe(el);
+    });
+  })();
 
   // ── Extending carousel controls ──
   const extCarousel = document.getElementById('extending-carousel');
