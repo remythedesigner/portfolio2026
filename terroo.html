@@ -31,7 +31,7 @@
       {
         "@type": "CreativeWork",
         "name": "Terroo — Travel Brand & Website Case Study",
-        "headline": "A landing page designed to make people want in",
+        "headline": "From first sketch to a site the client can run",
         "description": "Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.",
         "url": "https://remytartanac.com/terroo.html",
         "image": "https://remytartanac.com/assets/terroo-shot-hero.jpg",
@@ -45,8 +45,8 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter+Tight:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter+Tight:wght@400;500;600&display=swap"></noscript>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter+Tight:wght@400;500;600;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter+Tight:wght@400;500;600;800&display=swap"></noscript>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -441,6 +441,7 @@
       color: rgba(255,255,255,0.5);
       margin-left: 6px;
     }
+    .cs-figma-frame-wide { max-width: 1040px; }
     .cs-figma-img { width: 100%; height: auto; display: block; }
     .cs-figma-img-tall { max-height: 620px; object-fit: cover; object-position: top; }
     .cs-figma-caption {
@@ -637,6 +638,24 @@
     }
 
     /* ── Next project ── */
+    /* ── Visit the live site ── */
+    .cs-visit { background: #f5f0e8; align-items: center; text-align: center; }
+    .cs-visit .cs-section-header { align-items: center; }
+    .cs-visit-text { max-width: 640px; }
+    .cs-visit-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Inter Tight', Inter, sans-serif;
+      font-weight: 800; font-size: 16px; line-height: 1;
+      padding: 16px 32px;
+      background: #b84c32; color: #ffffff;
+      border: 2px solid #2b2118; border-radius: 999px;
+      box-shadow: 4px 4px 0 #2b2118;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .cs-visit-btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #2b2118; }
+    .cs-visit-btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #2b2118; }
+    .cs-visit-btn:focus-visible { outline: 3px solid #2b2118; outline-offset: 4px; }
     .cs-next { width: 100%; background: #403462; border-bottom: 1px solid rgba(255,255,255,0.25); }
     .cs-next .cs-label { color: rgba(255,255,255,0.65); }
     .cs-next-link { display: block; padding: 64px 128px; text-decoration: none; transition: background 0.25s ease; }
@@ -772,7 +791,7 @@
           </a>
           <span class="cs-tag">Travel Platform · Website</span>
         </div>
-        <h1 class="cs-hero-title reveal reveal-delay-1">A landing page<br>designed to make<br>people want in</h1>
+        <h1 class="cs-hero-title reveal reveal-delay-1">From first<br>sketch to a site<br>the client<br>can run</h1>
         <div class="cs-meta reveal reveal-delay-2">
           <div class="cs-meta-item">
             <span class="cs-meta-label">Role</span>
@@ -980,7 +999,7 @@
       </div>
       <div class="reveal reveal-delay-3">
         <p class="cs-figma-lead" style="color:#776c92;">Editing a page, live</p>
-        <div class="cs-figma-frame">
+        <div class="cs-figma-frame cs-figma-frame-wide">
           <div class="cs-figma-bar">
             <span class="cs-figma-dot" style="background:#ff5f57;"></span>
             <span class="cs-figma-dot" style="background:#febc2e;"></span>
@@ -997,6 +1016,18 @@
     <section class="cs-section cs-section-purple cs-centered">
       <span class="cs-label reveal">Final note</span>
       <p class="cs-quote reveal reveal-delay-1">The site went live before the community did.<br>Because a product that people <u>trust</u> is the starting point for bringing people together.</p>
+    </section>
+
+    <!-- Visit the live site -->
+    <section class="cs-section cs-visit">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Visit the site</span>
+        <h2 class="cs-heading">See Terroo live</h2>
+      </div>
+      <p class="cs-body cs-visit-text reveal reveal-delay-1">The site is live in English, French and Spanish. Browse it the way a traveler would, from the homepage to the principles, and see if it makes you want in.</p>
+      <div class="reveal reveal-delay-2">
+        <a class="cs-visit-btn" href="https://terroo.world/" target="_blank" rel="noopener">Visit terroo.world</a>
+      </div>
     </section>
 
     <!-- Next project -->
