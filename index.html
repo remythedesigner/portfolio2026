@@ -4,20 +4,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="jM9cdW7TXn87Q3XH0sFJ_BOV3BWikAb4t9z9cKK32Qg" />
-  <title>Rémy Tartanac · Product Designer</title>
-  <meta name="description" content="Portfolio of Rémy Tartanac, a product designer specializing in growth, retention, and complex user flows for B2B and B2C mobile apps, working with AI-assisted workflows.">
+  <title>Rémy Tartanac · Freelance Product Designer · Websites &amp; Apps</title>
+  <meta name="description" content="Freelance product designer in Paris. I design apps and websites, then build WordPress sites you can manage yourself and that are made to rank on Google.">
   <link rel="canonical" href="https://remytartanac.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rémy Tartanac">
-  <meta property="og:title" content="Rémy Tartanac · Product Designer">
-  <meta property="og:description" content="Portfolio of Rémy Tartanac, a product designer specializing in growth, retention, and complex user flows for B2B and B2C mobile apps, working with AI-assisted workflows.">
+  <meta property="og:title" content="Rémy Tartanac · Freelance Product Designer · Websites &amp; Apps">
+  <meta property="og:description" content="Freelance product designer in Paris. I design apps and websites, then build WordPress sites you can manage yourself and that are made to rank on Google.">
   <meta property="og:url" content="https://remytartanac.com/">
-  <meta property="og:image" content="https://remytartanac.com/assets/photo-remy.webp">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="https://remytartanac.com/assets/og-home.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_AU">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Rémy Tartanac · Product Designer">
-  <meta name="twitter:description" content="Portfolio of Rémy Tartanac, a product designer specializing in growth, retention, and complex user flows for B2B and B2C mobile apps, working with AI-assisted workflows.">
-  <meta name="twitter:image" content="https://remytartanac.com/assets/photo-remy.webp">
+  <meta name="twitter:title" content="Rémy Tartanac · Freelance Product Designer · Websites &amp; Apps">
+  <meta name="twitter:description" content="Freelance product designer in Paris. I design apps and websites, then build WordPress sites you can manage yourself and that are made to rank on Google.">
+  <meta name="twitter:image" content="https://remytartanac.com/assets/og-home.jpg">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -25,8 +27,8 @@
     "name": "Rémy Tartanac",
     "url": "https://remytartanac.com/",
     "image": "https://remytartanac.com/assets/photo-remy.webp",
-    "jobTitle": "Product Designer",
-    "description": "Product designer specializing in growth, retention, and complex user flows for B2B and B2C mobile apps, working with AI-assisted workflows.",
+    "jobTitle": "Freelance Product Designer",
+    "description": "Freelance product designer who designs B2C apps and builds editable, SEO-ready websites for founders and business owners.",
     "email": "mailto:remy.tartanac@gmail.com",
     "sameAs": [
       "https://www.linkedin.com/in/remy-tartanac"
@@ -44,8 +46,28 @@
       "Retention Design",
       "Onboarding Design",
       "AI-assisted Design Workflows",
-      "iOS App Design"
+      "iOS App Design",
+      "Website Design",
+      "WordPress",
+      "Elementor",
+      "SEO",
+      "Brand Identity",
+      "Product Strategy"
     ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Rémy Tartanac, Freelance Product Designer",
+    "url": "https://remytartanac.com/",
+    "image": "https://remytartanac.com/assets/photo-remy.webp",
+    "email": "mailto:remy.tartanac@gmail.com",
+    "founder": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
+    "areaServed": [ { "@type": "Country", "name": "France" }, { "@type": "Country", "name": "Australia" } ],
+    "serviceType": ["Mobile app design", "Website design", "WordPress website build", "Brand identity", "Product strategy", "SEO foundations"],
+    "address": { "@type": "PostalAddress", "addressLocality": "Paris", "addressCountry": "FR" }
   }
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -274,7 +296,7 @@
     .hero-title {
       font-weight: 700; font-size: 32px; line-height: 48px;
       letter-spacing: 2.4px; text-transform: uppercase;
-      color: #10042c; width: 429px;
+      color: #10042c; width: auto; max-width: 100%;
     }
     .hero-desc {
       font-family: 'Lato', Helvetica, Arial, sans-serif;
@@ -530,6 +552,15 @@
     .about-app-logos a:nth-child(odd):hover  { transform: scale(1.3) translateY(-6px) rotate(-10deg); box-shadow: 0 8px 20px rgba(16,4,44,0.18); }
     .about-app-logos a:nth-child(even):hover { transform: scale(1.3) translateY(-6px) rotate(10deg);  box-shadow: 0 8px 20px rgba(16,4,44,0.18); }
     .about-app-logo-ctk img { width: 100%; height: 100%; object-fit: cover; }
+
+
+    /* ── Services ── */
+    .about-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+    .about-link {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px;
+      letter-spacing: 1.96px; text-transform: uppercase; color: #10042c;
+      border-bottom: 1px solid #10042c; padding-bottom: 2px;
+    }
 
     /* ── Personal Section ── */
     .personal {
@@ -810,6 +841,8 @@
 
     @media (max-width: 600px) {
       .nav-inner { padding: 0 20px; height: 64px; }
+      .nav-links { gap: 20px; }
+      .nav-link { font-size: 12px; letter-spacing: 1.4px; }
       .hero { padding: 48px 28px 40px; gap: 36px; }
       .wave-halo { width: 200px; height: 200px; }
       .hero-name-first { font-size: 80px; margin-bottom: -28px; }
@@ -871,6 +904,7 @@
     <nav>
       <div class="nav-inner">
         <div class="nav-links">
+          <a class="nav-link" href="#services">Services</a>
           <a class="nav-link" href="#projects">Projects</a>
           <a class="nav-link" href="#about">About</a>
           <a class="nav-link" href="#contact">Contact</a>
@@ -901,8 +935,8 @@
 
       <div class="hero-sub">
         <div class="hero-copy">
-          <h2 class="hero-title">Product Designer</h2>
-          <p class="hero-desc">specializing in complex user flows for B2C products across mobile and web, taking each project from art direction to a product that's ready and easy to use, with AI-assisted workflows throughout.</p>
+          <h2 class="hero-title">Freelance Product Designer</h2>
+          <p class="hero-desc">Got an idea for an app, or a business that needs a website? I design it from the first sketch to the final handover. I can also build the website myself, easy for you to manage and structured to rank on Google from day one.</p>
         </div>
         <div class="hero-tags">
           <span class="hero-tag"><b>Product</b> Strategy</span>
@@ -911,6 +945,45 @@
         </div>
       </div>
     </section>
+
+    <!-- Services divider -->
+    <div id="services" class="section-divider full-width">
+      <h2 class="section-divider-title reveal from-left" style="position:relative;">Services</h2>
+    </div>
+
+    <!-- Services -->
+    <div class="about-stats">
+      <div class="about-card reveal from-left">
+        <div class="about-card-header">
+          <span class="about-emoji">💡</span>
+          <div class="about-metric">
+            <p class="about-metric-label">For entrepreneurs</p>
+          </div>
+        </div>
+        <div class="about-body">
+          <h3 class="about-heading">You have a concept and nothing built yet</h3>
+          <p class="about-text">I shape the positioning, run user research, design the interface and prototype it, then hand it to developers with everything they need. &amp;Joy went from a rough idea to a developer-ready prototype in under a month.</p>
+        </div>
+        <div class="about-links">
+          <a class="about-link" href="joy.html">See &amp;Joy</a>
+        </div>
+      </div>
+      <div class="about-card reveal from-right reveal-delay-2">
+        <div class="about-card-header">
+          <span class="about-emoji">🫆</span>
+          <div class="about-metric">
+            <p class="about-metric-label">For business owners</p>
+          </div>
+        </div>
+        <div class="about-body">
+          <h3 class="about-heading">You need a website you can run yourself</h3>
+          <p class="about-text">I design the brand and the pages, then build them on WordPress so you can edit every text and image without a developer. SEO research shapes the structure and the copy from the first wireframe.</p>
+        </div>
+        <div class="about-links">
+          <a class="about-link" href="terroo.html">See Terroo</a>
+        </div>
+      </div>
+    </div>
 
     <!-- Projects divider -->
     <div id="projects" class="section-divider full-width">
@@ -938,7 +1011,7 @@
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img loading="lazy" class="project-card-preview project-card-preview-wide" src="assets/preview-terroo.webp" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview project-card-preview-wide" src="assets/preview-terroo.webp" alt="Terroo website homepage on mobile and desktop, with the headline 'Travel through people, not places'">
       </a>
 
       <!-- Yogspace -->
@@ -953,13 +1026,13 @@
               <span class="project-tag">Website</span>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Redesigning a wellness platform to earn its trust visually</h3>
+              <h3 class="project-title">Redesigning a yoga platform to earn its trust visually</h3>
               <p class="project-desc">Took a live product from chunky and generic to editorial and credible, launching soon.</p>
             </div>
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img loading="lazy" class="project-card-preview project-card-preview-wide" src="assets/preview-yogspace.webp" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview project-card-preview-wide" src="assets/preview-yogspace.webp" alt="Yogspace redesigned homepage on mobile and desktop, with the headline 'Learn yoga from its source'">
       </a>
 
       <!-- &Joy (featured) -->
@@ -980,7 +1053,7 @@
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img loading="lazy" class="project-card-preview project-card-preview-featured" src="assets/joy-projectcard-phones.webp" alt="&amp;Joy app screens" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview project-card-preview-featured" src="assets/joy-projectcard-phones.webp" alt="&amp;Joy app screens: home feed, activity map of Paris and booking confirmation">
       </a>
 
       <!-- ParrotPal -->
@@ -1001,7 +1074,7 @@
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img loading="lazy" class="project-card-preview" src="assets/preview-parrotpal.webp" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview" src="assets/preview-parrotpal.webp" alt="Parrot Pal Food Center redesign: meal plan and cookbook screen next to a recipe screen">
       </a>
 
       <!-- Grit -->
@@ -1022,7 +1095,7 @@
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img loading="lazy" class="project-card-preview" src="assets/grit-hero-phones.webp" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview" src="assets/grit-hero-phones.webp" alt="Grit custom habit creation screens, from an empty name field to a live preview with detected options">
       </a>
 
       <!-- PepTalk -->
@@ -1043,7 +1116,7 @@
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img loading="lazy" class="project-card-preview" src="assets/preview-peptalk.webp" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview" src="assets/preview-peptalk.webp" alt="PepTalk AI Coach screens: topic selection and a coaching chat with audio content cards">
       </a>
 
       <!-- Couch to 5K -->
@@ -1064,7 +1137,7 @@
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>
-        <img loading="lazy" class="project-card-preview" src="assets/preview-ctk.webp" alt="" aria-hidden="true">
+        <img loading="lazy" class="project-card-preview" src="assets/preview-ctk.webp" alt="Couch to 5K onboarding screens: a community statistic and the 'What do you want to achieve?' goal question">
       </a>
 
     </div><!-- /projects-grid -->
@@ -1080,13 +1153,13 @@
         <div class="about-card-header">
           <span class="about-emoji">🚀</span>
           <div class="about-metric">
-            <p class="about-metric-value">2026</p>
-            <p class="about-metric-label">mobile app publisher</p>
+            <p class="about-metric-value">5 apps</p>
+            <p class="about-metric-label">Health &amp; Productivity</p>
           </div>
         </div>
         <div class="about-body">
           <h3 class="about-heading">End-to-end design across a 5-app portfolio</h3>
-          <p class="about-text">Responsible for a portfolio of 5 apps in Health and Productivity, used by hundreds of thousands of people and generating over $1M MRR.</p>
+          <p class="about-text">Designed across a portfolio of 5 apps in Health and Productivity, used by hundreds of thousands of people and generating over $1M MRR.</p>
         </div>
         <div class="about-app-logos">
           <a href="https://apps.apple.com/fr/app/bend-etirements-et-souplesse/id1513988468" target="_blank" rel="noopener">
@@ -1164,7 +1237,7 @@
           </div>
         </div>
         <div class="personal-location">
-          <p>Based in Paris. Open to remote. Always up for a coffee chat.</p>
+          <p>Based in Paris, moving to Australia soon. Open to remote projects. Always up for a coffee chat.</p>
         </div>
       </div>
     </div>
@@ -1177,10 +1250,10 @@
         <p>together.</p>
       </div>
       <div class="footer-right reveal from-right reveal-delay-2">
-        <p class="footer-desc">Always happy to hear about new design challenges!</p>
+        <p class="footer-desc">Got a concept to build or a website to launch? Tell me about it.</p>
         <div class="footer-actions">
-          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
-            <span>Send an email</span>
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com?subject=Project%20inquiry">
+            <span>Tell me about your project</span>
           </a>
           <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
             <span>LinkedIn</span>
