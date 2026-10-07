@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>&amp;Joy · Mobile App Design from Concept to Prototype</title>
-  <meta name="description" content="Case study: designing &amp;Joy from the ground up, an activity booking app turning Paris's last-minute unsold spots into spontaneous experiences.">
+  <meta name="description" content="Case study: strategy, design system, AI-powered prototype, user tests and dev specs for &amp;Joy, an app that fills Paris's last-minute unsold spots.">
   <link rel="canonical" href="https://remytartanac.com/joy.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rémy Tartanac">
   <meta property="og:title" content="&amp;Joy · Mobile App Design from Concept to Prototype">
-  <meta property="og:description" content="Case study: designing &amp;Joy from the ground up, an activity booking app turning Paris's last-minute unsold spots into spontaneous experiences.">
+  <meta property="og:description" content="Case study: strategy, design system, AI-powered prototype, user tests and dev specs for &amp;Joy, an app that fills Paris's last-minute unsold spots.">
   <meta property="og:url" content="https://remytartanac.com/joy.html">
   <meta property="og:image" content="https://remytartanac.com/assets/og-joy.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="&amp;Joy · Mobile App Design from Concept to Prototype">
-  <meta name="twitter:description" content="Case study: designing &amp;Joy from the ground up, an activity booking app turning Paris's last-minute unsold spots into spontaneous experiences.">
+  <meta name="twitter:description" content="Case study: strategy, design system, AI-powered prototype, user tests and dev specs for &amp;Joy, an app that fills Paris's last-minute unsold spots.">
   <meta name="twitter:image" content="https://remytartanac.com/assets/og-joy.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -34,13 +34,13 @@
         "@type": "CreativeWork",
         "name": "&Joy: Activity Booking App Case Study",
         "headline": "Designing the activity app Paris was missing",
-        "description": "Case study: designing &Joy from the ground up, an activity booking app turning Paris's last-minute unsold spots into spontaneous experiences.",
+        "description": "Case study: strategy, design system, AI-powered prototype, user tests and dev specs for &Joy, an app that fills Paris's last-minute unsold spots.",
         "url": "https://remytartanac.com/joy.html",
         "image": "https://remytartanac.com/assets/joy-hero-phones.webp",
         "datePublished": "2026",
         "author": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
         "creator": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
-        "about": "Product design case study covering positioning, user research, and UI design for an activity booking app"
+        "about": "Product design case study covering product strategy, artistic direction, design system, screens and flows, an AI-powered prototype, user tests and technical specifications for an activity booking app"
       }
     ]
   }
@@ -1504,6 +1504,30 @@
     .cs-feature-callout-label { font-weight: 600; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #776c92; }
     .cs-feature-callout-text { font-weight: 500; font-size: 20px; line-height: normal; color: #22222e; }
 
+    .cs-features-head { padding: 80px 128px 48px; background: linear-gradient(90deg, #efeffa 0%, #ffffff 65%); }
+    @media (max-width: 1200px) { .cs-features-head { padding: 64px 64px 40px; } }
+    @media (max-width: 960px) { .cs-features-head { padding: 56px 40px 32px; } }
+    @media (max-width: 600px) { .cs-features-head { padding: 48px 20px 32px; } }
+    /* ── Design system + process flows ── */
+    .cs-sys-lede { max-width: 820px; }
+    .jflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; width: 100%; }
+    .jflow-step { flex: 1 1 120px; min-width: 110px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 16px; background: #fcfbfe; border: 1px solid rgba(34,34,46,0.1); }
+    .jflow-step-accent { background: #4e5af2; border-color: #4e5af2; }
+    .jflow-tag { font-weight: 600; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #4e5af2; }
+    .jflow-title { font-weight: 600; font-size: 20px; line-height: 26px; color: #10042c; }
+    .jflow-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; line-height: 22px; color: #544869; }
+    .jflow-step-accent .jflow-tag, .jflow-step-accent .jflow-title, .jflow-step-accent .jflow-desc { color: #ffffff; }
+    .jflow-arrow { align-self: center; flex: 0 0 auto; font-size: 18px; color: #776c92; }
+    .cs-proto-section { background: #f7f6f8; }
+    @media (max-width: 960px) {
+      .jflow-arrow { flex: 1 1 100%; text-align: center; transform: rotate(90deg); line-height: 1; height: 22px; }
+    }
+    .jflow-col { flex-direction: column; flex-wrap: nowrap; max-width: 520px; gap: 8px; }
+    .jflow-col .jflow-arrow { flex: 0 0 auto; transform: rotate(90deg); height: 20px; line-height: 1; text-align: center; }
+    .jflow-col .jflow-step { flex: 0 0 auto; padding: 24px; }
+    .jflow-col .jflow-title { font-size: 24px; line-height: 30px; }
+    .jflow-col .jflow-desc { font-size: 18px; line-height: 28px; }
+
     /* ── User Tests ── */
     .cs-testing-row { display: flex; gap: 80px; align-items: center; justify-content: center; width: 100%; }
     .cs-testing-left { display: flex; flex-direction: column; gap: 48px; flex: 1 1 600px; min-width: 0; max-width: 600px; }
@@ -1586,7 +1610,7 @@
         <div class="cs-meta reveal reveal-delay-2">
           <div class="cs-meta-item">
             <span class="cs-meta-label">Role</span>
-            <span class="cs-meta-value">Product Design, Product Strategy</span>
+            <span class="cs-meta-value">Product Strategy, Art Direction, UX/UI, AI Prototype, Tech Specs</span>
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Year</span>
@@ -1615,6 +1639,7 @@
         <div class="cs-problem-content reveal reveal-delay-1">
           <p class="cs-body">I joined the &amp;joy project when it was still a concept. A few screens made with Lovable, but mostly a great idea: what if someone turned last-minute unsold spots into spontaneous Parisian experiences, the way Too Good To Go turned unsold food into a market?</p>
           <p class="cs-body">Before any real design work began, I helped shape the app's positioning and identity: what &amp;joy should stand for, and what voice it should carry.</p>
+          <p class="cs-body">From there I took the project end to end, in six steps: strategy, artistic direction and design system, screens and flows, a realistic AI-powered prototype, user tests and technical specifications. Each section below carries the number of its step.</p>
         </div>
       </div>
       <div class="cs-scope-card reveal reveal-delay-2">
@@ -1623,59 +1648,82 @@
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">01</span>
-              <span class="cs-scope-phase-title">Positioning &amp; Identity</span>
+              <span class="cs-scope-phase-title">Product Strategy</span>
             </div>
-            <p class="cs-scope-phase-desc">Brand strategy, voice, market framing</p>
+            <p class="cs-scope-phase-desc">Positioning, analysis of the founder's interviews, design principles, V1 scope</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">02</span>
-              <span class="cs-scope-phase-title">User Research</span>
+              <span class="cs-scope-phase-title">Artistic Direction &amp; Design System</span>
             </div>
-            <p class="cs-scope-phase-desc">Analysis of interviews conducted by the founder</p>
+            <p class="cs-scope-phase-desc">Palette, typography, shape language and voice, built into 12 tokens and reusable components</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">03</span>
-              <span class="cs-scope-phase-title">Product Strategy</span>
+              <span class="cs-scope-phase-title">Screens &amp; Flows</span>
             </div>
-            <p class="cs-scope-phase-desc">Design principles, V1 scope, and the ambassador review mechanism</p>
+            <p class="cs-scope-phase-desc">Every screen and the five key moments, from onboarding to ticket</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">04</span>
-              <span class="cs-scope-phase-title">UI Design</span>
+              <span class="cs-scope-phase-title">AI-Powered Prototype</span>
             </div>
-            <p class="cs-scope-phase-desc">Full interface design, component system, V1 → V2</p>
+            <p class="cs-scope-phase-desc">A realistic prototype used for the user tests, improved after each round</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">05</span>
-              <span class="cs-scope-phase-title">Testing</span>
+              <span class="cs-scope-phase-title">User Tests</span>
             </div>
-            <p class="cs-scope-phase-desc">17 participants · 2 waves · semi-structured interviews</p>
+            <p class="cs-scope-phase-desc">17 participants · 2 waves · 45-minute interviews</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">06</span>
+              <span class="cs-scope-phase-title">Technical Specs</span>
+            </div>
+            <p class="cs-scope-phase-desc">Specifications written for the developers during the build</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- User Research hypothesis + Quote -->
+    <!-- User Research: hypothesis, interviews, problem -->
     <section class="cs-hypothesis-row">
       <div class="cs-hypothesis-col">
         <div class="cs-section-header reveal">
-          <span class="cs-label">User research</span>
-          <h2 class="cs-heading">A starting hypothesis</h2>
+          <span class="cs-label">Step 1 · Product strategy</span>
+          <h2 class="cs-heading">From a hypothesis to a clear problem</h2>
         </div>
-        <p class="cs-body reveal reveal-delay-1">The first interviews proved me half wrong. For most respondents, looking for weekend activities is a source of stress, not indecision, because the good events sell out fast.</p>
+        <p class="cs-body reveal reveal-delay-1">Before designing anything, the founder and I wrote down what we believed. The interviews then reshaped it into a problem we could design for. The principles below are how I answered it.</p>
       </div>
       <div class="cs-quote-card">
-        <div class="cs-centered reveal reveal-delay-1" style="padding:0; gap:24px;">
-          <span class="cs-label">The problem</span>
-          <p class="cs-quote-light">I'd assumed the main problem was choice overload in a buzzing city, smaller events struggling to find their audience, and vice versa.</p>
+        <div class="jflow jflow-col reveal reveal-delay-1">
+          <div class="jflow-step">
+            <span class="jflow-tag">1 · Hypothesis</span>
+            <span class="jflow-title">What the founder and I assumed</span>
+            <p class="jflow-desc">The main problem was choice overload in a buzzing city, and smaller events struggling to find their audience.</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">2 · Interviews</span>
+            <span class="jflow-title">What people actually said</span>
+            <p class="jflow-desc">The founder ran the first interviews and I analysed them. They proved us half wrong.</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">3 · The problem</span>
+            <span class="jflow-title">Scattered options, sold-out events</span>
+            <p class="jflow-desc">Finding something to do is stressful. The options are everywhere but scattered and unorganised, and the events people hear about are already sold out.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1684,7 +1732,7 @@
     <section class="cs-section cs-principles-section">
       <img class="cs-principles-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Design principles</span>
+        <span class="cs-label">Product strategy · Design principles</span>
         <h2 class="cs-heading">Three decisions that shape the experience</h2>
       </div>
       <div class="cs-principles-grid reveal reveal-delay-1">
@@ -1709,7 +1757,7 @@
     <!-- Artistic Direction -->
     <section class="cs-section cs-art-section">
       <div class="cs-section-header reveal">
-        <span class="cs-label cs-art-label">Artistic direction</span>
+        <span class="cs-label cs-art-label">Step 2 · Artistic direction &amp; design system</span>
         <h2 class="cs-heading cs-art-heading">Warm, human, and deliberately un-corporate</h2>
       </div>
       <div class="cs-art-row reveal reveal-delay-1">
@@ -1795,9 +1843,9 @@
     </section>
 
     <!-- Features: The app in 5 key moments -->
-    <section class="cs-section" style="padding:80px 128px 48px; background:linear-gradient(90deg, #efeffa 0%, #ffffff 65%);">
+    <section class="cs-section cs-features-head">
       <div class="cs-section-header reveal" style="gap:16px;">
-        <span class="cs-label">Features</span>
+        <span class="cs-label">Step 3 · Screens and flows</span>
         <h2 class="cs-heading">The app in 5 key moments</h2>
       </div>
     </section>
@@ -1812,7 +1860,7 @@
         <h3 class="cs-feature-title">An onboarding flow that gets straight to the point</h3>
         <div class="cs-feature-desc">
           <p>Users reach a personalised home without a lengthy setup. They are mainly asked about their preferences, so that the activities suggested on the homepage suit them.</p>
-          <p>No blank slate, no friction before the first discovery.</p>
+          <p>The first screen after onboarding already shows activities that fit.</p>
         </div>
       </div>
     </div>
@@ -1881,24 +1929,82 @@
       <div class="cs-feature-content">
         <span class="cs-feature-num-bg" aria-hidden="true">5</span>
         <span class="cs-feature-label">Confirmation</span>
-        <h3 class="cs-feature-title">A code or QR?</h3>
+        <h3 class="cs-feature-title">Code, QR, or both?</h3>
         <div class="cs-feature-desc">
-          <p>Venue professionals are diverse. Not all have a scanner. I chose a 6-character code over a QR: it works with a tablet, a printed list, or just a pair of eyes. No equipment required, no friction at the door!</p>
+          <p>Venue professionals are diverse, and not all of them have a scanner. I first chose a 6-character code over a QR: it works with a tablet, a printed list, or just a pair of eyes.</p>
+          <p>The question had a big impact on the product, and we finally offered both. The QR code is scanned with the partner's own phone, with the app installed and signed in with a partner ID. Each venue uses whichever suits it.</p>
         </div>
         <div class="cs-feature-sep"></div>
         <div class="cs-feature-callout">
           <span class="cs-feature-callout-label">Research insight</span>
           <p class="cs-feature-callout-text">Almost all users said they expected a QR code here, but none asked for one back after seeing the code and reading the note below.</p>
         </div>
+        <div class="cs-feature-sep"></div>
+        <div class="cs-feature-callout">
+          <span class="cs-feature-callout-label">Partner insight</span>
+          <p class="cs-feature-callout-text">Talking with venue professionals made it clear that the QR code was needed for effectiveness.</p>
+        </div>
       </div>
     </div>
+
+    <!-- AI-powered prototype -->
+    <section class="cs-section cs-proto-section">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Step 4 · AI-powered prototype</span>
+        <h2 class="cs-heading">A realistic prototype, improved after every test</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Static screens can't show whether people trust a booking page. So I built a realistic, AI-powered prototype and used it for the user tests. Each round changed it: team recommendations after the first, the ambassador system after the second. The final version went to the developers as the reference for how the app should behave.</p>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Input</span>
+            <span class="jflow-title">Final designs</span>
+            <p class="jflow-desc">Screens and components</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Built with AI tools</span>
+            <span class="jflow-title">Prototype V1</span>
+            <p class="jflow-desc">A realistic version people can test</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Wave 1</span>
+            <span class="jflow-title">14 / 17</span>
+            <p class="jflow-desc">Could not commit without reviews</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Improved</span>
+            <span class="jflow-title">Prototype V2</span>
+            <p class="jflow-desc">Team recommendations added</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Wave 2</span>
+            <span class="jflow-title">9 / 17</span>
+            <p class="jflow-desc">Did not trust team reviews</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Improved</span>
+            <span class="jflow-title">Final V2</span>
+            <p class="jflow-desc">Ambassador reviews added</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Handover</span>
+            <span class="jflow-title">Developers</span>
+            <p class="jflow-desc">V2 used as the reference</p>
+          </div>
+        </div>
+    </section>
 
     <!-- User Tests -->
     <section class="cs-section cs-section-purple">
       <div class="cs-testing-row">
         <div class="cs-testing-left">
           <div class="cs-section-header reveal" style="gap:16px;">
-            <span class="cs-label">User tests</span>
+            <span class="cs-label">Step 5 · User tests</span>
             <h2 class="cs-heading">Testing the prototypes</h2>
             <p class="cs-testing-meta">17 participants · 2 waves of 45-minute semi-structured interviews</p>
           </div>
@@ -1940,6 +2046,40 @@
       </div>
     </div>
 
+    <!-- Technical specs -->
+    <section class="cs-section cs-proto-section">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Step 6 · Technical specs</span>
+        <h2 class="cs-heading">Staying on the project during development</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Handing over a prototype is not the end of the job. While the developers build the app, I write the technical specifications they need, and the V2 prototype stays their reference for how every screen should behave.</p>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Handed over</span>
+            <span class="jflow-title">V2 prototype</span>
+            <p class="jflow-desc">The reference for how the app behaves</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Written during the build</span>
+            <span class="jflow-title">Technical specs</span>
+            <p class="jflow-desc">What the developers need to build it</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">In progress</span>
+            <span class="jflow-title">Development</span>
+            <p class="jflow-desc">The app is being built</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Late 2026</span>
+            <span class="jflow-title">Release</span>
+            <p class="jflow-desc">Scheduled for release</p>
+          </div>
+        </div>
+    </section>
+
     <!-- Project Recap -->
     <section class="cs-new-design">
       <img loading="lazy" class="cs-new-design-bg" src="assets/bg-dark-overlay.webp" alt="">
@@ -1948,7 +2088,7 @@
           <span class="cs-new-design-label">Project recap</span>
           <h2 class="cs-new-design-heading">From concept to final prototype in less than 1 month</h2>
         </div>
-        <p class="cs-new-design-body reveal reveal-delay-2">I joined the &amp;joy project to help with positioning. Seventeen interviews and dozens of iterations later, the final prototype was handed off to developers. I ended up touching most of the chain along the way: product strategy, user research, visual identity, interface design.</p>
+        <p class="cs-new-design-body reveal reveal-delay-2">I joined the &amp;joy project to help with positioning. Seventeen interviews and dozens of iterations later, the final prototype was handed off to developers. I ended up covering the whole chain: product strategy, artistic direction, design system, interface design, an AI-powered prototype, user tests and technical specifications.</p>
       </div>
       <div class="cs-phone-frame reveal from-right reveal-delay-3">
         <video class="cs-phone-video" loop muted playsinline preload="none" data-autoplay>
