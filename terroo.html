@@ -4,17 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Terroo · WordPress Website Design &amp; Build Case Study</title>
-  <meta name="description" content="Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.">
+  <meta name="description" content="Case study: art direction, design system, screens and an AI-powered custom WordPress theme for Terroo, a travel site its founder edits herself.">
   <link rel="canonical" href="https://remytartanac.com/terroo.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rémy Tartanac">
   <meta property="og:title" content="Terroo · WordPress Website Design &amp; Build Case Study">
-  <meta property="og:description" content="Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.">
+  <meta property="og:description" content="Case study: art direction, design system, screens and an AI-powered custom WordPress theme for Terroo, a travel site its founder edits herself.">
   <meta property="og:url" content="https://remytartanac.com/terroo.html">
   <meta property="og:image" content="https://remytartanac.com/assets/og-terroo.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Terroo · WordPress Website Design &amp; Build Case Study">
-  <meta name="twitter:description" content="Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.">
+  <meta name="twitter:description" content="Case study: art direction, design system, screens and an AI-powered custom WordPress theme for Terroo, a travel site its founder edits herself.">
   <meta name="twitter:image" content="https://remytartanac.com/assets/og-terroo.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -34,13 +34,13 @@
         "@type": "CreativeWork",
         "name": "Terroo: Travel Brand & Website Case Study",
         "headline": "From first sketch to a site the client can run",
-        "description": "Case study: designing Terroo's landing page and a custom WordPress site, with SEO research shaping the structure, so its founder can manage content without a developer.",
+        "description": "Case study: art direction, design system, screens and an AI-powered custom WordPress theme for Terroo, a travel site its founder edits herself.",
         "url": "https://remytartanac.com/terroo.html",
         "image": "https://remytartanac.com/assets/terroo-shot-hero.jpg",
         "datePublished": "2026",
         "author": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
         "creator": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/" },
-        "about": "UX/UI design and WordPress development case study covering landing page and screen design, delivered as a custom-built back office for a travel community platform"
+        "about": "Design and development case study covering artistic direction, design system, screens and flows, and an AI-powered custom WordPress theme for a travel community platform"
       }
     ]
   }
@@ -623,6 +623,24 @@
       color: rgba(255,255,255,0.75);
     }
 
+    /* ── Process flows (steps) ── */
+    .jflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; width: 100%; }
+    .jflow-step { flex: 1 1 120px; min-width: 110px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 16px; background: #fcfbfe; border: 1px solid rgba(34,34,46,0.1); }
+    .jflow-step-accent { background: #b84c32; border-color: #b84c32; }
+    .jflow-tag { font-weight: 600; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #b84c32; }
+    .jflow-title { font-weight: 600; font-size: 20px; line-height: 26px; color: #10042c; }
+    .jflow-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; line-height: 22px; color: #544869; }
+    .jflow-step-accent .jflow-tag, .jflow-step-accent .jflow-title, .jflow-step-accent .jflow-desc { color: #ffffff; }
+    .jflow-arrow { align-self: center; flex: 0 0 auto; font-size: 18px; color: #776c92; }
+    .cs-sys-lede { max-width: 820px; }
+    @media (max-width: 960px) {
+      .jflow-arrow { flex: 1 1 100%; text-align: center; transform: rotate(90deg); line-height: 1; height: 22px; }
+    }
+    @media (min-width: 961px) {
+      .cs-center-intro .cs-section-header { align-items: center; text-align: center; }
+      .cs-center-intro .cs-sys-lede { margin-left: auto; margin-right: auto; text-align: center; }
+    }
+
     @media (min-width: 961px) {
       .btn-scroll-top {
         position: fixed;
@@ -797,7 +815,7 @@
         <div class="cs-meta reveal reveal-delay-2">
           <div class="cs-meta-item">
             <span class="cs-meta-label">Role</span>
-            <span class="cs-meta-value">UX/UI</span>
+            <span class="cs-meta-value">Art Direction, UX/UI, WordPress</span>
           </div>
           <div class="cs-meta-item">
             <span class="cs-meta-label">Focus</span>
@@ -834,6 +852,7 @@
         <div class="cs-problem-content reveal reveal-delay-1">
           <p class="cs-body-bold">Terroo is a free platform where travelers meet locals for real encounters: a shared meal, a neighbourhood walk, an evening out. Travelers arrange each encounter directly with the local.</p>
           <p class="cs-body">The brief was to build a website anchored by a landing page strong enough to make people want to join a platform that didn't exist yet. I came on before a single screen existed, starting with an art direction that translated the founder's concept into something visual. From there I designed the full set of screens and built them into a WordPress site the founder could administer herself, with SEO research shaping the structure and copy from the first wireframe rather than bolted on at the end.</p>
+          <p class="cs-body">I took the project end to end, in four steps: artistic direction, a design system, screens and flows, and an AI-powered custom WordPress theme. Each section below carries the number of its step.</p>
         </div>
       </div>
       <div class="cs-scope-card reveal reveal-delay-2">
@@ -842,41 +861,33 @@
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">01</span>
-              <span class="cs-scope-phase-title">Brand Identity</span>
+              <span class="cs-scope-phase-title">Artistic Direction</span>
             </div>
-            <p class="cs-scope-phase-desc">Logo mark, palette, type system</p>
+            <p class="cs-scope-phase-desc">Logo mark, palette, type system and the details that make the brand feel tactile</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">02</span>
-              <span class="cs-scope-phase-title">Website Design</span>
+              <span class="cs-scope-phase-title">Design System</span>
             </div>
-            <p class="cs-scope-phase-desc">Homepage through legal pages</p>
+            <p class="cs-scope-phase-desc">A Figma component library: buttons, cards, form fields and footer, organised for developers</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">03</span>
-              <span class="cs-scope-phase-title">WordPress Build</span>
+              <span class="cs-scope-phase-title">Screens &amp; Flows</span>
             </div>
-            <p class="cs-scope-phase-desc">Custom theme, editable from the back office</p>
+            <p class="cs-scope-phase-desc">Homepage through legal pages, with copy in English, French and Spanish and a structure shaped by SEO research</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">04</span>
-              <span class="cs-scope-phase-title">Copywriting</span>
+              <span class="cs-scope-phase-title">AI-Powered WordPress Theme</span>
             </div>
-            <p class="cs-scope-phase-desc">English, French, Spanish</p>
-            <div class="cs-scope-divider"></div>
-          </div>
-          <div class="cs-scope-phase">
-            <div class="cs-scope-phase-row">
-              <span class="cs-scope-phase-num">05</span>
-              <span class="cs-scope-phase-title">SEO Foundations</span>
-            </div>
-            <p class="cs-scope-phase-desc">Keyword research, on-page structure</p>
+            <p class="cs-scope-phase-desc">A custom theme on Elementor built with AI from my Figma screens, editable by the founder from the back office</p>
           </div>
         </div>
       </div>
@@ -886,7 +897,7 @@
     <section class="cs-section cs-principles-section">
       <img class="cs-principles-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Art direction</span>
+        <span class="cs-label">Step 1 · Artistic direction</span>
         <h2 class="cs-heading">Four decisions that built the brand</h2>
       </div>
       <div class="cs-principles-grid reveal reveal-delay-1">
@@ -925,8 +936,42 @@
           </div>
         </div>
       </div>
+    </section>
+
+    <!-- Design system -->
+    <section class="cs-section cs-section-purple cs-center-intro">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Step 2 · Design system</span>
+        <h2 class="cs-heading">One library behind every page</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">The four decisions above became a design system in Figma: the palette and the two typefaces as the foundation, then the components every page is built from. I named and organised it the way a developer expects to receive it, because building it was the next step.</p>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Foundations</span>
+            <span class="jflow-title">Tokens</span>
+            <p class="jflow-desc">Rust, cream and ink, Fraunces and Inter Tight</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Library</span>
+            <span class="jflow-title">Components</span>
+            <p class="jflow-desc">Buttons, cards, form fields and footer</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Applied</span>
+            <span class="jflow-title">Pages</span>
+            <p class="jflow-desc">Every screen of the site</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Handover</span>
+            <span class="jflow-title">Elementor widgets</span>
+            <p class="jflow-desc">Each component rebuilt as a widget, bound to the tokens</p>
+          </div>
+        </div>
       <div class="reveal reveal-delay-2">
-        <p class="cs-figma-lead">The result: a real component library</p>
+        <p class="cs-figma-lead" style="color:#776c92;">The component library in Figma</p>
         <div class="cs-figma-frame">
           <div class="cs-figma-bar">
             <span class="cs-figma-dot" style="background:#F24E1E;"></span>
@@ -945,9 +990,41 @@
     <section class="cs-section cs-section-white">
       <div class="cs-gallery-container">
       <div class="cs-section-header reveal">
-        <span class="cs-label">The final design</span>
+        <span class="cs-label">Step 3 · Screens and flows</span>
         <h2 class="cs-heading">A brand that holds up page after page</h2>
       </div>
+      <p class="cs-body reveal reveal-delay-1">I designed every screen of the site: the homepage, a page for travelers, a page for locals, safety, the manifesto, contact, the blog and the legal pages. All of it exists in English, French and Spanish, and SEO research shaped the structure and the copy from the first wireframe. A visitor moves through it like this:</p>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Home</span>
+            <span class="jflow-title">The promise</span>
+            <p class="jflow-desc">Six kinds of encounters, the safety principles and two ways in</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">For travelers</span>
+            <span class="jflow-title">How it works</span>
+            <p class="jflow-desc">Discover, connect, show up</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">For locals</span>
+            <span class="jflow-title">Five principles</span>
+            <p class="jflow-desc">What a founding local should know</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Safety</span>
+            <span class="jflow-title">Why trust it</span>
+            <p class="jflow-desc">Reference system, consequence ladder and community transparency</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Join</span>
+            <span class="jflow-title">Join Terroo</span>
+            <p class="jflow-desc">The button every page leads to</p>
+          </div>
+        </div>
       <div class="cs-gallery reveal reveal-delay-1">
         <div class="cs-gallery-item" style="grid-column: 1 / -1;">
           <img loading="lazy" src="assets/terroo-final-hero.jpg" alt="Terroo homepage hero: 'Travel through people, not places,' with a photo of a traveler meeting locals and a language switcher">
@@ -976,12 +1053,44 @@
     <!-- The Build (WordPress) -->
     <section class="cs-section cs-section-light">
       <div class="cs-section-header reveal">
-        <span class="cs-label">The build</span>
+        <span class="cs-label">Step 4 · AI-powered WordPress theme</span>
         <h2 class="cs-heading">A WordPress theme the founder can run without me</h2>
       </div>
       <div class="cs-brief reveal reveal-delay-1">
         <p class="cs-body">Design and brand were only half the brief. The founder needed to edit the site herself, down to a single typo, without opening a ticket with a developer every time. I built Terroo as a custom WordPress theme on Elementor, with every block wired to the same colors and type styles as the Figma library, so the back office looks and behaves like an extension of the brand rather than a generic admin panel bolted on top of it.</p>
+        <p class="cs-body">I used AI to turn my Figma screens into a custom theme, to write the PHP and to set up the right plugins, all following my instructions. The person who designed the library also directed the build, which is why the two match one to one.</p>
       </div>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Design</span>
+            <span class="jflow-title">Figma screens</span>
+            <p class="jflow-desc">The library and every page</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Direction</span>
+            <span class="jflow-title">My instructions</span>
+            <p class="jflow-desc">What to build, and with which plugins</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">AI build</span>
+            <span class="jflow-title">Custom theme</span>
+            <p class="jflow-desc">Screens turned into a theme, PHP written by AI</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Assembly</span>
+            <span class="jflow-title">Pages in the back office</span>
+            <p class="jflow-desc">Custom Elementor widgets bound to the tokens</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Handover</span>
+            <span class="jflow-title">Founder edits and publishes</span>
+            <p class="jflow-desc">Text, images and pages, without a developer</p>
+          </div>
+        </div>
       <div class="cs-impact-cards reveal reveal-delay-2">
         <div class="cs-impact-card">
           <span class="cs-stat">No code</span>
