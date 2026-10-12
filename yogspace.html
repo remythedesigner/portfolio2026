@@ -266,6 +266,18 @@
       font-size: 20px;
     }
     .cs-icon-chip img { width: 28px; height: 28px; object-fit: contain; display: block; }
+    .jflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; width: 100%; }
+    .jflow-step { flex: 1 1 120px; min-width: 110px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 16px; background: #fcfbfe; border: 1px solid rgba(34,34,46,0.1); }
+    .jflow-step-accent { background: #c96a2f; border-color: #c96a2f; }
+    .jflow-tag { font-weight: 600; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c96a2f; }
+    .jflow-title { font-weight: 600; font-size: 20px; line-height: 26px; color: #10042c; }
+    .jflow-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; line-height: 22px; color: #544869; }
+    .jflow-step-accent .jflow-tag, .jflow-step-accent .jflow-title, .jflow-step-accent .jflow-desc { color: #ffffff; }
+    .jflow-arrow { align-self: center; flex: 0 0 auto; font-size: 18px; color: #776c92; }
+    .jflow-note { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; color: #776c92; }
+    @media (max-width: 960px) {
+      .jflow-arrow { flex: 1 1 100%; text-align: center; transform: rotate(90deg); line-height: 1; height: 22px; }
+    }
 
     /* ── Behind the scenes (Figma / AI process) ── */
     .cs-figma-frame {
@@ -696,11 +708,49 @@
     <section class="cs-section cs-section-white">
       <div class="cs-section-header reveal">
         <span class="cs-label">New teacher onboarding</span>
-        <h2 class="cs-heading">Turning a six-step signup into something teachers actually finish</h2>
+        <h2 class="cs-heading">A new onboarding for the teachers</h2>
       </div>
       <div class="cs-section-intro reveal reveal-delay-1">
         <p class="cs-body">Getting a teacher from sign-up to a bookable profile meant collecting a lot: certifications, rates, a weekly schedule, a video. The real work was in the form itself, structuring that data in a way that meets teachers where they are, since not everyone has every answer ready on the first pass.</p>
       </div>
+      <div class="jflow reveal reveal-delay-2">
+        <div class="jflow-step jflow-step-accent">
+          <span class="jflow-tag">Step 1</span>
+          <span class="jflow-title">Identity</span>
+          <p class="jflow-desc">Who the teacher is: photo, name, short title and a few words of introduction</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Step 2</span>
+          <span class="jflow-title">Certifications</span>
+          <p class="jflow-desc">The training and credentials students see on the profile</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Step 3</span>
+          <span class="jflow-title">Teaching</span>
+          <p class="jflow-desc">The yoga styles and lessons the teacher offers</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Step 4</span>
+          <span class="jflow-title">Rates</span>
+          <p class="jflow-desc">How much a session costs and how long it lasts</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step jflow-step-accent">
+          <span class="jflow-tag">Step 5</span>
+          <span class="jflow-title">Schedule</span>
+          <p class="jflow-desc">When the teacher is available each week, day by day</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Step 6</span>
+          <span class="jflow-title">Profile video</span>
+          <p class="jflow-desc">A presentation video that introduces the teacher to students</p>
+        </div>
+      </div>
+      <p class="jflow-note reveal reveal-delay-2">Steps 1 and 5 are shown below.</p>
       <div class="cs-compare-row reveal reveal-delay-2">
         <div class="cs-compare-col">
           <span class="cs-compare-label cs-compare-label-after">Step 1 · Identity</span>
