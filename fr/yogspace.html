@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yogspace · Refonte UX/UI d'un site internet de yoga</title>
+  <meta name="description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, pour passer d'un produit fonctionnel à une marque crédible.">
+  <link rel="canonical" href="https://remytartanac.com/fr/yogspace.html">
+  <link rel="alternate" hreflang="en" href="https://remytartanac.com/yogspace.html">
+  <link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/yogspace.html">
+  <link rel="alternate" hreflang="x-default" href="https://remytartanac.com/yogspace.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rémy Tartanac">
+  <meta property="og:title" content="Yogspace · Refonte UX/UI d'un site internet de yoga">
+  <meta property="og:description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, pour passer d'un produit fonctionnel à une marque crédible.">
+  <meta property="og:url" content="https://remytartanac.com/fr/yogspace.html">
+  <meta property="og:image" content="https://remytartanac.com/assets/og-yogspace.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Yogspace · Refonte UX/UI d'un site internet de yoga">
+  <meta name="twitter:description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, pour passer d'un produit fonctionnel à une marque crédible.">
+  <meta name="twitter:image" content="https://remytartanac.com/assets/og-yogspace.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Rémy Tartanac", "item": "https://remytartanac.com/fr/" },
+          { "@type": "ListItem", "position": 2, "name": "Yogspace", "item": "https://remytartanac.com/fr/yogspace.html" }
+        ]
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Yogspace : refonte UX/UI d'un site internet de yoga",
+        "headline": "Refonte d'une plateforme de yoga pour qu'elle inspire confiance au premier regard",
+        "description": "Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, pour passer d'un produit fonctionnel à une marque crédible.",
+        "url": "https://remytartanac.com/fr/yogspace.html",
+        "image": "https://remytartanac.com/assets/yog-shot-hero.webp",
+        "datePublished": "2026",
+        "author": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/fr/" },
+        "creator": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/fr/" },
+        "about": "Étude de cas UX/UI : refonte de la direction artistique d'une plateforme de réservation bien-être"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,500&family=Karla:wght@400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,500&family=Karla:wght@400;600;700&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible     { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
+    html { overflow-x: hidden; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      width: 100%;
+      background: #403462;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 80px; padding: 0 128px; }
+    .cs-nav-back {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 0.8px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75); text-decoration: none; flex-shrink: 0;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.2s ease, transform 0.25s ease;
+    }
+    .cs-nav-back:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      color: #fff; transform: translateY(-2px);
+    }
+    .cs-nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 24px; line-height: 1;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #eba874;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal { opacity: 0; transform: translateY(36px); transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+      display: flex; flex-direction: row; align-items: flex-end; gap: 40px;
+      padding: 80px 128px; overflow: hidden; min-height: 752px; position: relative;
+    }
+    .cs-hero-tint {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(22deg, rgba(232,144,89,0.26) 29%, rgba(232,144,89,0.06) 71%);
+      pointer-events: none;
+    }
+    .cs-hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; opacity: 0.6; }
+    .cs-hero-left { flex: 1; min-width: 480px; align-self: flex-start; display: flex; flex-direction: column; gap: 80px; }
+    /* Hero image, in-flow flex sibling */
+    .cs-hero-image {
+      position: relative;
+      flex-shrink: 0;
+      margin-bottom: -80px;
+      margin-right: -128px;
+      width: 830px;
+      height: 614px;
+    }
+    .cs-hero-image img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+    .cs-hero-brand { display: flex; align-items: center; gap: 16px; }
+    .cs-logo-link { display: block; flex-shrink: 0; border-radius: 16px; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease; }
+    .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
+    .cs-logo {
+      width: 72px; height: 72px; border-radius: 16px; object-fit: contain; flex-shrink: 0; display: block;
+      background: #fff8ec; padding: 16px;
+    }
+    .cs-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #f0ab7c;
+      border: 1px solid rgba(255,255,255,0.45);
+      padding: 8px 16px; border-radius: 160px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+    .cs-hero-title { font-weight: 500; font-size: 72px; line-height: 88px; color: white; }
+    .cs-meta { border-top: 1px solid rgba(255,255,255,0.25); padding-top: 20px; display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; }
+    .cs-meta-item { display: flex; flex-direction: column; gap: 4px; }
+    .cs-meta-label { font-weight: 400; font-size: 14px; line-height: 20px; letter-spacing: 1.96px; text-transform: uppercase; color: #f0ab7c; }
+    .cs-meta-value { font-weight: 500; font-size: 20px; line-height: 28px; color: white; }
+    .cs-status-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-weight: 500; font-size: 16px; color: white;
+    }
+    .cs-status-dot { width: 8px; height: 8px; border-radius: 50%; background: #e89059; box-shadow: 0 0 0 4px rgba(232,144,89,0.25); }
+
+
+    /* ── Common Section ── */
+    .cs-section { width: 100%; padding: 80px 128px; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; gap: 40px; overflow-x: clip; }
+    .cs-section-white { background: #ffffff; }
+    .cs-section-light { background: #f7f6f8; }
+    .cs-section-purple { background: #e6e0f2; }
+    .cs-section-header { display: flex; flex-direction: column; gap: 8px; }
+    .cs-label { font-weight: 400; font-size: 16px; line-height: 24px; letter-spacing: 2.4px; text-transform: uppercase; color: #776c92; }
+    .cs-heading { font-weight: 500; font-size: 52px; line-height: normal; color: #10042c; }
+
+    .cs-body-bold { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 24px; line-height: 40px; color: #10042c; }
+    .cs-body { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 24px; line-height: 40px; color: #10042c; }
+    .cs-body-grey { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 24px; line-height: 40px; color: #776c92; }
+    /* ── Intro (Brief + Scope) ── */
+    .cs-intro { display: flex; align-items: stretch; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-brief-left {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column; gap: 40px;
+      padding: 80px 128px;
+      background: #ffffff;
+    }
+    .cs-problem-content { display: flex; flex-direction: column; gap: 16px; }
+    .cs-scope-card {
+      flex: 0 0 480px;
+      display: flex; flex-direction: column; gap: 32px;
+      align-items: flex-start; justify-content: center;
+      padding: 40px;
+      background: #403462;
+    }
+    .cs-scope-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phases { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+    .cs-scope-phase { display: flex; flex-direction: column; width: 100%; }
+    .cs-scope-phase-row { display: flex; gap: 16px; align-items: center; color: #ffffff; }
+    .cs-scope-phase-num {
+      font-weight: 400; font-size: 14px; letter-spacing: 1.96px;
+      color: #ffffff;
+    }
+    .cs-scope-phase-title {
+      flex: 1; font-weight: 600; font-size: 24px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phase-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: rgba(255,255,255,0.75);
+    }
+    .cs-scope-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 24px; }
+
+    /* ── Before / after ── */
+    .cs-compare { display: flex; flex-direction: column; gap: 56px; }
+    .cs-compare-group { display: flex; flex-direction: column; gap: 32px; }
+    .cs-compare-row { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: start; }
+    .cs-compare-col { display: flex; flex-direction: column; gap: 14px; }
+    .cs-compare-label {
+      font-weight: 400; font-size: 13px; letter-spacing: 1.8px; text-transform: uppercase;
+      display: inline-flex; align-items: center; gap: 8px; width: fit-content;
+      padding: 6px 14px; border-radius: 160px;
+    }
+    .cs-compare-label-before { color: #8a8478; background: rgba(0,0,0,0.05); }
+    .cs-compare-label-after { color: #b5622a; background: rgba(232,144,89,0.14); }
+    .cs-compare-img-wrap { border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 12px 32px rgba(16,4,44,0.08); max-height: 1200px; }
+    .cs-compare-img-wrap img { width: 100%; height: auto; display: block; }
+    .cs-section-intro { max-width: 760px; }
+
+    /* ── Design decisions (dark) ── */
+    .cs-principles-section { position: relative; overflow: hidden; background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%); }
+    .cs-principles-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; opacity: 0.6; }
+    .cs-principles-section .cs-section-header { gap: 16px; }
+    .cs-principles-section .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-principles-section .cs-heading { color: #ffffff; }
+    .cs-principles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; width: 100%; position: relative; background: rgba(255,255,255,0.08); }
+    .cs-principle { background: #16102e; padding: 48px 44px; display: flex; flex-direction: column; gap: 16px; position: relative; overflow: hidden; }
+    .cs-principle-num {
+      position: absolute; top: -4px; right: 20px;
+      font-weight: 700; font-size: 96px; line-height: 1; letter-spacing: -4px;
+      color: rgba(255,255,255,0.1); pointer-events: none; user-select: none;
+    }
+    .cs-principle-title { font-weight: 600; font-size: 26px; line-height: normal; color: #ffffff; position: relative; }
+    .cs-principle-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 19px; line-height: 30px; color: rgba(255,255,255,0.78); position: relative; }
+    .cs-swatches { display: flex; gap: 10px; margin-top: 4px; position: relative; }
+    .cs-swatch { width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); flex-shrink: 0; }
+    .cs-font-sample { font-family: 'EB Garamond', Georgia, serif; font-size: 36px; color: #fff; margin-top: 4px; position: relative; }
+    .cs-font-sample em { color: #eba874; font-style: italic; }
+    .cs-font-sample-sub { font-family: 'Karla', sans-serif; font-size: 15px; color: rgba(255,255,255,0.6); margin-top: 6px; position: relative; }
+    .cs-icon-row { display: flex; gap: 12px; margin-top: 4px; position: relative; }
+    .cs-icon-chip {
+      width: 48px; height: 48px; border-radius: 12px;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .cs-icon-chip img { width: 28px; height: 28px; object-fit: contain; display: block; }
+    .jflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; width: 100%; }
+    .jflow-step { flex: 1 1 120px; min-width: 110px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 16px; background: #fcfbfe; border: 1px solid rgba(34,34,46,0.1); }
+    .jflow-step-accent { background: #c96a2f; border-color: #c96a2f; }
+    .jflow-tag { font-weight: 600; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c96a2f; }
+    .jflow-title { font-weight: 600; font-size: 20px; line-height: 26px; color: #10042c; }
+    .jflow-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; line-height: 22px; color: #544869; }
+    .jflow-step-accent .jflow-tag, .jflow-step-accent .jflow-title, .jflow-step-accent .jflow-desc { color: #ffffff; }
+    .jflow-arrow { align-self: center; flex: 0 0 auto; font-size: 18px; color: #776c92; }
+    .jflow-note { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; color: #776c92; }
+    @media (max-width: 960px) {
+      .jflow-arrow { flex: 1 1 100%; text-align: center; transform: rotate(90deg); line-height: 1; height: 22px; }
+    }
+
+    /* ── Behind the scenes (Figma / AI process) ── */
+    .cs-figma-frame {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 20px 48px rgba(16,4,44,0.1);
+      max-width: 788px;
+      margin: 0 auto;
+    }
+    .cs-figma-bar {
+      height: 36px;
+      background: #2c2c34;
+      display: flex; align-items: center; gap: 7px;
+      padding: 0 14px;
+      flex-shrink: 0;
+    }
+    .cs-figma-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .cs-figma-bar-label {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-left: 6px;
+    }
+    .cs-figma-img { width: 100%; height: auto; display: block; }
+    .cs-figma-img-tall { max-height: 1163px; object-fit: cover; object-position: top; }
+    .cs-figma-caption {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #776c92;
+      text-align: center;
+      max-width: 560px;
+      margin: 20px auto 0;
+    }
+    .cs-figma-lead {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 15px; letter-spacing: 1.6px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .cs-principles-section .cs-figma-caption { color: rgba(255,255,255,0.65); }
+
+    /* ── Full showcase ── */
+    .cs-showcase-img { width: 100%; border-radius: 16px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+    .cs-showcase-img img { width: 100%; height: auto; display: block; }
+
+    /* ── Quote ── */
+
+    /* ── Outcome cards ── */
+    .cs-impact-section { gap: 24px; }
+    .cs-impact-cards { display: flex; gap: 1px; flex-wrap: wrap; }
+    .cs-impact-card { flex: 1; min-width: 200px; padding: 40px; display: flex; flex-direction: column; gap: 12px; }
+    .cs-stat { font-weight: 700; font-size: 44px; line-height: normal; color: #c96a2f; }
+    .cs-card-title { font-weight: 600; font-size: 24px; line-height: normal; color: #10042c; }
+    .cs-card-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 18px; line-height: 28px; color: #776c92; }
+
+    /* ── Footer ── */
+    footer { background: #10042c; width: 100%; padding: 80px 128px; display: flex; align-items: flex-end; justify-content: space-between; overflow: hidden; position: relative; }
+    .footer-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+    .footer-headline { font-weight: 300; font-size: 110px; line-height: 100px; color: white; flex-shrink: 0; position: relative; }
+    .footer-right { width: 440px; flex-shrink: 0; display: flex; flex-direction: column; gap: 32px; position: relative; }
+    .footer-desc { font-weight: 500; font-size: 36px; line-height: 45px; color: rgba(255,255,255,0.5); }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px; border-radius: 9999px; display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.24) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-linkedin {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.05), 0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px; border-radius: 9999px; display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.18) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-scroll-top {
+      width: 56px; height: 56px; border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4); -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-scroll-top-arrow { display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.75); }
+
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed; bottom: 32px; right: 32px; z-index: 999; opacity: 0; pointer-events: none; transform: translateY(10px);
+        background: rgba(16,4,44,0.5); border-color: rgba(255,255,255,0.12); box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
+    }
+
+    /* ── Next project ── */
+    .cs-next { width: 100%; background: #403462; border-bottom: 1px solid rgba(255,255,255,0.25); }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-next-link { display: block; padding: 64px 128px; text-decoration: none; transition: background 0.25s ease; }
+    .cs-next-link:hover { background: rgba(255,255,255,0.04); }
+    .cs-next-header { margin-bottom: 28px; }
+    .cs-next-body { display: flex; align-items: center; gap: 28px; }
+    .cs-next-logo {
+      width: 72px; height: 72px; border-radius: 16px; object-fit: cover; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: #faf4f1;
+    }
+    .cs-next-link:hover .cs-next-logo { transform: scale(1.07) rotate(-2deg); }
+    .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .cs-next-name { font-weight: 500; font-size: 44px; line-height: 1; color: #ffffff; }
+    .cs-next-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 20px; line-height: 30px; color: rgba(255,255,255,0.85); }
+    .cs-next-logo-glyph {
+      width: 72px; height: 72px; border-radius: 16px; flex-shrink: 0;
+      background: #faf4f1; display: flex; align-items: center; justify-content: center;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      font-family: Georgia, 'Times New Roman', serif; font-weight: 700; font-size: 34px; color: #3b82f6;
+    }
+    .cs-next-link:hover .cs-next-logo-glyph { transform: scale(1.07) rotate(-2deg); }
+    .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      border-radius: 160px; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-next-link:hover .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      width: 134px;
+    }
+    .project-btn span {
+      color: rgba(255,255,255,0.75); display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
+    }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #fff; }
+
+    /* ── Responsive ── */
+    @media (max-width: 1200px) {
+      .nav-inner { padding: 0 64px; }
+      .cs-hero { padding: 64px; }
+      .cs-hero-left { width: auto; }
+      .cs-hero-image { width: 613px; height: 454px; margin-bottom: -64px; }
+      .cs-hero-title { font-size: 56px; line-height: 70px; }
+      .cs-section { padding: 64px; }
+      .cs-brief-left { padding: 64px; }
+      footer { padding: 64px; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner { padding: 0 40px; }
+      .cs-hero { padding: 40px 40px; min-height: auto; flex-direction: column; align-items: flex-start; }
+      .cs-hero-left { flex: 0 0 100%; width: 100%; min-width: 0; gap: 32px; }
+      .cs-hero-image { display: none; }
+      .cs-hero-title { font-size: 64px; line-height: 78px; }
+      .cs-meta { flex-wrap: wrap; gap: 20px; }
+      .cs-section { padding: 56px 40px; gap: 28px; }
+      .cs-intro { flex-direction: column; }
+      .cs-brief-left { padding: 56px 40px; }
+      .cs-scope-card { flex: none; width: 100%; padding: 40px; }
+      .cs-heading { font-size: 36px; }
+      .cs-body-bold, .cs-body, .cs-body-grey { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
+      .cs-compare-row { grid-template-columns: 1fr; }
+      .cs-figma-img-tall { max-height: 825px; }
+      .cs-principles-grid { grid-template-columns: 1fr; }
+      .cs-principle { padding: 40px; }
+      .cs-font-sample { font-size: 28px; }
+      .cs-impact-cards { flex-direction: column; }
+      .cs-next-link { padding: 48px 40px; }
+      .cs-next-name { font-size: 36px; }
+      .cs-next-link:hover .project-btn { width: 70px; }
+      footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .footer-headline { font-size: 72px; line-height: 72px; }
+      .footer-right { width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .cs-hero { padding: 32px 20px; }
+      .cs-hero-left { gap: 24px; }
+      .cs-hero-title { font-size: 48px; line-height: 58px; }
+      .cs-hero-brand { gap: 12px; }
+      .cs-meta { gap: 16px; }
+      .cs-meta-value { font-size: 16px; }
+      .cs-section { padding: 48px 20px; gap: 24px; }
+      .cs-brief-left { padding: 48px 20px; gap: 24px; }
+      .cs-scope-card { padding: 32px 20px; }
+      .cs-heading { font-size: 26px; }
+      .cs-body-bold, .cs-body, .cs-body-grey { font-size: 18px; line-height: 28px; }
+      .cs-principle { padding: 32px 24px; }
+      .cs-stat { font-size: 36px; }
+      .cs-next-link { padding: 36px 20px; }
+      .cs-next-name { font-size: 28px; }
+      .cs-next-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+      footer { padding: 48px 20px; }
+      .footer-headline { font-size: 48px; line-height: 52px; }
+      .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+  
+    /* ── Language switch ── */
+    .cs-nav-end { display: flex; align-items: center; gap: 32px; }
+    .lang-switch {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px; line-height: 1;
+    }
+    .lang-switch a { color: #fff; opacity: 0.48; padding: 16px 8px; margin: -16px -8px; transition: opacity 0.25s ease; }
+    .lang-switch a:hover { opacity: 1; }
+    .lang-switch a[aria-current] { opacity: 1; pointer-events: none; }
+    .lang-switch-sep { width: 1px; height: 8px; background: #fff; opacity: 0.32; }
+    @media (max-width: 600px) { .cs-nav-end { gap: 16px; } }
+  </style>
+  <link rel="preload" as="image" href="/assets/yog-shot-hero-tall.jpg" type="image/jpeg">
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a class="cs-nav-back" href="/fr/" aria-label="Retour aux projets"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="cs-nav-end"><span class="cs-nav-brand">Yogspace</span><div class="lang-switch"><a href="/yogspace.html" hreflang="en" lang="en" aria-label="English">EN</a><span class="lang-switch-sep" aria-hidden="true"></span><a href="/fr/yogspace.html" hreflang="fr" lang="fr" aria-label="Français" aria-current="true">FR</a></div></div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="cs-hero-tint" aria-hidden="true"></div>
+      <img class="cs-hero-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-hero-left">
+        <div class="cs-hero-brand reveal">
+          <div class="cs-logo-link">
+            <img loading="lazy" class="cs-logo" src="/assets/logo-yogspace.png" alt="Logo Yogspace">
+          </div>
+          <span class="cs-tag">Plateforme bien-être · Site internet</span>
+        </div>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Une plateforme<br>de yoga repensée<br>pour inspirer<br>confiance</h1>
+        <div class="cs-meta reveal reveal-delay-2">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Rôle</span>
+            <span class="cs-meta-value">UX/UI</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Focus</span>
+            <span class="cs-meta-value">Refonte visuelle</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Plateforme</span>
+            <span class="cs-meta-value">Site internet</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Année</span>
+            <span class="cs-meta-value">2026</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Statut</span>
+            <span class="cs-meta-value">En développement</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero image, absolutely positioned -->
+      <div class="cs-hero-image reveal from-right reveal-delay-3">
+        <img loading="lazy" src="/assets/preview-yogspace.webp" alt="Page d'accueil repensée de Yogspace sur mobile et ordinateur, avec le titre « Learn yoga from its source »">
+      </div>
+    </section>
+
+    <!-- Intro / Brief + Scope -->
+    <section class="cs-intro">
+      <div class="cs-brief-left">
+        <div class="cs-section-header reveal">
+          <span class="cs-label">Le brief</span>
+          <h2 class="cs-heading">Un produit qui marchait, mais qui n'inspirait pas encore confiance</h2>
+        </div>
+        <div class="cs-problem-content reveal reveal-delay-1">
+          <p class="cs-body-bold">Yogspace met en relation des élèves avec des professeurs de yoga certifiés, pour des cours particuliers en direct, dans la tradition des grandes lignées indiennes. Je ne partais pas d'une page blanche : le produit était déjà construit et en ligne.</p>
+          <p class="cs-body">Ce que Yogspace vendait, c'était de la crédibilité. Un certificat vérifié, une vraie lignée, un professeur qui vaut qu'on paie plutôt que de suivre une vidéo YouTube gratuite. Visuellement, le site n'en disait rien. Des boutons en forme de pilule, une typo épaisse et ronde, des aplats crème sans relief : on se serait cru dans une app pour enfants, alors que la plateforme demande de confier sa pratique à un inconnu. Je n'inventais pas une marque à partir de rien. Il fallait que le site ait enfin l'air aussi sérieux que le service qu'il propose.</p>
+        </div>
+      </div>
+      <div class="cs-scope-card reveal reveal-delay-2">
+        <span class="cs-scope-label">Mon périmètre</span>
+        <div class="cs-scope-phases">
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">01</span>
+              <span class="cs-scope-phase-title">Refonte visuelle</span>
+            </div>
+            <p class="cs-scope-phase-desc">Typographie, couleurs, composants d'interface</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">02</span>
+              <span class="cs-scope-phase-title">Confiance &amp; crédibilité</span>
+            </div>
+            <p class="cs-scope-phase-desc">Badges de confiance &amp; frise des certifications</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">03</span>
+              <span class="cs-scope-phase-title">Bibliothèque de composants</span>
+            </div>
+            <p class="cs-scope-phase-desc">Une bibliothèque de composants Figma complète</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">04</span>
+              <span class="cs-scope-phase-title">Suivi de l'intégration</span>
+            </div>
+            <p class="cs-scope-phase-desc">Tout au long du développement en Next.js</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Art direction -->
+    <section class="cs-section cs-principles-section">
+      <img class="cs-principles-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Direction artistique</span>
+        <h2 class="cs-heading">Quatre choix pour la refonte</h2>
+      </div>
+      <div class="cs-principles-grid reveal reveal-delay-1">
+        <div class="cs-principle">
+          <span class="cs-principle-num">01</span>
+          <span class="cs-principle-title">Une typo éditoriale plutôt qu'une police de mascotte</span>
+          <p class="cs-principle-desc">La typo d'origine, ronde et massive, donnait un côté ludique à une plateforme de certification. J'ai passé les titres en EB Garamond, associée à Karla pour les textes d'interface. Le rendu évoque un hôtel haut de gamme plus qu'une app de fitness.</p>
+          <p class="cs-font-sample">Apprendre le yoga à sa <em>source.</em></p>
+          <p class="cs-font-sample-sub">EB Garamond / Karla</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">02</span>
+          <span class="cs-principle-title">Loin du cliché vert d'eau du bien-être</span>
+          <p class="cs-principle-desc">Toutes les apps de yoga piochent dans le même vert sauge ou le même bleu spa. J'ai choisi une terre cuite chaude, qui tire vers le safran, un clin d'œil discret au drapeau indien et aux lignées dans lesquelles ces professeurs se sont vraiment formés. Posée sur du crème, avec un bleu nuit presque noir pour structurer l'interface, elle évoque une marque de voyage ou d'hôtellerie soignée bien plus qu'un template.</p>
+          <div class="cs-swatches">
+            <span class="cs-swatch" style="background:#E89059;"></span>
+            <span class="cs-swatch" style="background:#FFF8EC;"></span>
+            <span class="cs-swatch" style="background:#404657;"></span>
+          </div>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">03</span>
+          <span class="cs-principle-title">Une confiance qui se voit</span>
+          <p class="cs-principle-desc">« Certifié », écrit simplement dans un paragraphe, ne voulait rien dire. J'ai dessiné une petite série de badges sur mesure (Top professeur, Certifié, Spécialiste) et j'ai transformé l'historique de certification de chaque professeur en vraie frise chronologique. Le diplôme devient quelque chose qu'on voit.</p>
+          <div class="cs-icon-row">
+            <span class="cs-icon-chip"><img loading="lazy" src="/assets/yog-badge-toprated.png" alt="Badge Yogspace « Top professeur »"></span>
+            <span class="cs-icon-chip"><img loading="lazy" src="/assets/yog-badge-certified.png" alt="Badge Yogspace « Professeur certifié »"></span>
+            <span class="cs-icon-chip"><img loading="lazy" src="/assets/yog-badge-specialist.png" alt="Badge Yogspace « Spécialiste »"></span>
+          </div>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">04</span>
+          <span class="cs-principle-title">Moins de pilules, plus d'air</span>
+          <p class="cs-principle-desc">Je voulais que ces pages soient douces et qu'elles respirent, les deux choses qu'un professeur de yoga vous demande sur le tapis. La douceur, c'était abandonner les bordures dures au profit d'ombres aux tons chauds, qui séparent les blocs sans arête franche. La respiration, c'était des blocs moins nombreux et plus grands, avec de larges espacements, là où l'original enchaînait des pilules toutes identiques. Le but est de rassurer : une interface calme inspire plus facilement confiance.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="cs-figma-lead">Le résultat : une vraie bibliothèque de composants</p>
+        <div class="cs-figma-frame">
+          <div class="cs-figma-bar">
+            <span class="cs-figma-dot" style="background:#F24E1E;"></span>
+                <span class="cs-figma-dot" style="background:#A259FF;"></span>
+                <span class="cs-figma-dot" style="background:#1ABCFE;"></span>
+                <span class="cs-figma-dot" style="background:#0ACF83;"></span>
+                <span class="cs-figma-bar-label">Figma · Composants</span>
+          </div>
+          <img loading="lazy" class="cs-figma-img cs-figma-img-tall" src="/assets/yog-figma-components.webp" alt="Bibliothèque de composants Figma de Yogspace : navigation, boutons, champs de formulaire, cartes de connexion et icônes, générés et organisés avec Claude">
+        </div>
+        <p class="cs-figma-caption">Navigation, boutons, champs de formulaire, cartes de connexion, icônes : tout est généré et rangé dans le fichier que l'équipe ouvre tous les jours.</p>
+      </div>
+    </section>
+
+    <!-- Before / after -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Avant &amp; après</span>
+        <h2 class="cs-heading">Deux pages, avant et après la refonte</h2>
+      </div>
+      <div class="cs-compare reveal reveal-delay-1">
+        <div class="cs-compare-group">
+          <p class="cs-body-grey">La page d'accueil est passée d'un mur vert compact, sans hiérarchie visuelle, à des sections aérées : une barre de recherche bien visible en haut, puis les garanties et les professeurs, chacun avec assez d'espace pour être lu.</p>
+          <div class="cs-compare-row">
+            <div class="cs-compare-col">
+              <span class="cs-compare-label cs-compare-label-before">Avant</span>
+              <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-before-home.webp" alt="Page d'accueil de Yogspace avant la refonte"></div>
+            </div>
+            <div class="cs-compare-col">
+              <span class="cs-compare-label cs-compare-label-after">Après</span>
+              <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-shot-home-after.webp" alt="Page d'accueil de Yogspace après la refonte, en entier"></div>
+            </div>
+          </div>
+        </div>
+        <div class="cs-compare-group">
+          <p class="cs-body-grey">Sur le profil professeur, la liste de tarifs est désormais accompagnée de trois badges de confiance que j'ai dessinés à la main (Top professeur, Certifié, Spécialiste) et d'une vraie frise de certifications à la place d'une liste à puces. Le diplôme, sur lequel repose toute la plateforme, est la première chose que l'on voit.</p>
+          <div class="cs-compare-row">
+            <div class="cs-compare-col">
+              <span class="cs-compare-label cs-compare-label-before">Avant</span>
+              <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-before-profile.webp" alt="Profil professeur de Yogspace avant la refonte"></div>
+            </div>
+            <div class="cs-compare-col">
+              <span class="cs-compare-label cs-compare-label-after">Après</span>
+              <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-shot-profile-after.jpg" alt="Profil professeur de Yogspace après la refonte, avec les badges de confiance et la frise des certifications"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- New teacher onboarding -->
+    <section class="cs-section cs-section-white">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Zoom sur l'inscription des professeurs</span>
+        <h2 class="cs-heading">Un nouveau parcours d'inscription pour les professeurs</h2>
+      </div>
+      <div class="cs-section-intro reveal reveal-delay-1">
+        <p class="cs-body">Avant qu'un professeur puisse recevoir ses premières réservations, il faut recueillir beaucoup d'informations : certifications, tarifs, planning de la semaine, vidéo. Tout l'enjeu était dans le formulaire : organiser ces informations pour que chaque professeur avance à son rythme, car personne n'a toutes les réponses sous la main du premier coup.</p>
+      </div>
+      <div class="jflow reveal reveal-delay-2">
+        <div class="jflow-step jflow-step-accent">
+          <span class="jflow-tag">Étape 1</span>
+          <span class="jflow-title">Identité</span>
+          <p class="jflow-desc">Qui est le professeur : photo, nom, titre court et quelques mots de présentation</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Étape 2</span>
+          <span class="jflow-title">Certifications</span>
+          <p class="jflow-desc">Les formations et diplômes que les élèves voient sur le profil</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Étape 3</span>
+          <span class="jflow-title">Enseignement</span>
+          <p class="jflow-desc">Les styles de yoga et les cours proposés</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Étape 4</span>
+          <span class="jflow-title">Tarifs</span>
+          <p class="jflow-desc">Le prix d'une séance et sa durée</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step jflow-step-accent">
+          <span class="jflow-tag">Étape 5</span>
+          <span class="jflow-title">Planning</span>
+          <p class="jflow-desc">Les disponibilités du professeur chaque semaine, jour par jour</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Étape 6</span>
+          <span class="jflow-title">Vidéo de profil</span>
+          <p class="jflow-desc">Une vidéo pour présenter le professeur aux élèves</p>
+        </div>
+      </div>
+      <p class="jflow-note reveal reveal-delay-2">Ci-dessous, les étapes 1 et 5.</p>
+      <div class="cs-compare-row reveal reveal-delay-2">
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Étape 1 · Identité</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-onboarding-identity.webp" alt="Inscription des professeurs sur Yogspace, étape Identité : photo de profil, nom, titre court et présentation"></div>
+        </div>
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Étape 5 · Planning</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-onboarding-schedule.png" alt="Inscription des professeurs sur Yogspace, étape Planning : interrupteurs de disponibilité par jour avec heures de début et de fin"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Next project -->
+    <section class="cs-next">
+      <a href="joy.html" class="cs-next-link">
+        <div class="cs-next-header">
+          <span class="cs-label">Projet suivant</span>
+        </div>
+        <div class="cs-next-body">
+          <div class="cs-next-logo-glyph" aria-hidden="true">&amp;</div>
+          <div class="cs-next-info">
+            <p class="cs-next-name">&amp;Joy</p>
+            <p class="cs-next-desc">Conception d'une app de sorties de dernière minute à&nbsp;Paris</p>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </a>
+    </section>
+
+    <footer id="contact">
+      <img loading="lazy" class="footer-bg" src="/assets/bg-dark-overlay.webp" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Travaillons</p>
+        <p>ensemble.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Vous avez un projet similaire ? Parlons-en.</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>M'envoyer un e-mail</span>
+          </a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
+</script>
+</body>
+</html>

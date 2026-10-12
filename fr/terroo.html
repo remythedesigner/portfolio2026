@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terroo · Création d'un site internet WordPress et d'une identité visuelle</title>
+  <meta name="description" content="Étude de cas : création de l'identité visuelle et du site internet WordPress de Terroo, une plateforme de voyage que sa fondatrice gère elle-même, sans développeur.">
+  <link rel="canonical" href="https://remytartanac.com/fr/terroo.html">
+  <link rel="alternate" hreflang="en" href="https://remytartanac.com/terroo.html">
+  <link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/terroo.html">
+  <link rel="alternate" hreflang="x-default" href="https://remytartanac.com/terroo.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rémy Tartanac">
+  <meta property="og:title" content="Terroo · Création d'un site internet WordPress et d'une identité visuelle">
+  <meta property="og:description" content="Étude de cas : création de l'identité visuelle et du site internet WordPress de Terroo, une plateforme de voyage que sa fondatrice gère elle-même, sans développeur.">
+  <meta property="og:url" content="https://remytartanac.com/fr/terroo.html">
+  <meta property="og:image" content="https://remytartanac.com/assets/og-terroo.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Terroo · Création d'un site internet WordPress et d'une identité visuelle">
+  <meta name="twitter:description" content="Étude de cas : création de l'identité visuelle et du site internet WordPress de Terroo, une plateforme de voyage que sa fondatrice gère elle-même, sans développeur.">
+  <meta name="twitter:image" content="https://remytartanac.com/assets/og-terroo.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Rémy Tartanac", "item": "https://remytartanac.com/fr/" },
+          { "@type": "ListItem", "position": 2, "name": "Terroo", "item": "https://remytartanac.com/fr/terroo.html" }
+        ]
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Terroo : création d'un site internet WordPress et d'une identité visuelle",
+        "headline": "Création du site d'une nouvelle plateforme communautaire de voyage",
+        "description": "Étude de cas : création de l'identité visuelle et du site internet WordPress de Terroo, une plateforme de voyage que sa fondatrice gère elle-même, sans développeur.",
+        "url": "https://remytartanac.com/fr/terroo.html",
+        "image": "https://remytartanac.com/assets/terroo-shot-hero.jpg",
+        "datePublished": "2026",
+        "author": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/fr/" },
+        "creator": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/fr/" },
+        "about": "Étude de cas design et développement : direction artistique, design system, écrans et parcours, et thème WordPress sur mesure développé avec l'IA pour une plateforme communautaire de voyage"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter+Tight:wght@400;500;600;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Fraunces:ital,wght@0,400;0,600;1,500&family=Inter+Tight:wght@400;500;600;800&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible     { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
+    html { overflow-x: hidden; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      width: 100%;
+      background: #403462;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px; padding: 0 128px;
+    }
+    .cs-nav-back {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 0.8px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.2s ease, transform 0.25s ease;
+    }
+    .cs-nav-back:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .cs-nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 24px; line-height: 1;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #d68a6c;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 40px;
+      padding: 80px 128px;
+      overflow: hidden;
+      min-height: 752px;
+      position: relative;
+    }
+    .cs-hero-tint {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(22deg, rgba(184,76,50,0.26) 29%, rgba(184,76,50,0.06) 71%);
+      pointer-events: none;
+    }
+    .cs-hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-hero-left {
+      flex: 1;
+      min-width: 480px;
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+    /* Hero image, in-flow flex sibling */
+    .cs-hero-image {
+      position: relative;
+      flex-shrink: 0;
+      margin-bottom: -80px;
+      margin-right: -128px;
+      width: 830px;
+      height: 614px;
+    }
+    .cs-hero-image img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+    .cs-hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cs-logo-link {
+      display: block; flex-shrink: 0; border-radius: 16px;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+    .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
+    .cs-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: contain;
+      flex-shrink: 0;
+      display: block;
+      background: #f5f0e8;
+      padding: 12px;
+    }
+    .cs-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #e8a37f;
+      border: 1px solid rgba(255,255,255,0.45);
+      padding: 8px 16px;
+      border-radius: 160px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+    .cs-hero-title {
+      font-weight: 500; font-size: 80px; line-height: 100px;
+      color: white;
+    }
+    .cs-meta {
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 20px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .cs-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cs-meta-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #e8a37f;
+    }
+    .cs-meta-value {
+      font-weight: 500; font-size: 20px; line-height: 28px;
+      color: white;
+    }
+    .cs-meta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: white;
+      transition: color 0.25s ease;
+    }
+    .cs-meta-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
+    .cs-meta-link-text { text-decoration: underline; text-underline-offset: 3px; }
+    .cs-meta-link:hover { color: #e8a37f; }
+    .cs-meta-link:hover svg { transform: translateX(2px); }
+
+    /* ── Common Section ── */
+    .cs-section {
+      width: 100%;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      overflow-x: clip;
+    }
+    .cs-section-white { background: #ffffff; }
+    .cs-section-light { background: #f7f6f8; }
+    .cs-section-purple { background: #e6e0f2; }
+
+    .cs-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+    }
+
+    /* ── Body text ── */
+    .cs-body-bold {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body-grey {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #776c92;
+    }
+
+    /* ── Intro (Brief + Scope) ── */
+    .cs-intro { display: flex; align-items: stretch; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-brief-left {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column; gap: 40px;
+      padding: 80px 128px;
+      background: #ffffff;
+    }
+    .cs-problem-content { display: flex; flex-direction: column; gap: 16px; }
+    .cs-scope-card {
+      flex: 0 0 480px;
+      display: flex; flex-direction: column; gap: 32px;
+      align-items: flex-start; justify-content: center;
+      padding: 40px;
+      background: #403462;
+    }
+    .cs-scope-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phases { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+    .cs-scope-phase { display: flex; flex-direction: column; width: 100%; }
+    .cs-scope-phase-row { display: flex; gap: 16px; align-items: center; color: #ffffff; }
+    .cs-scope-phase-num {
+      font-weight: 400; font-size: 14px; letter-spacing: 1.96px;
+      color: #ffffff;
+    }
+    .cs-scope-phase-title {
+      flex: 1; font-weight: 600; font-size: 24px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phase-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: rgba(255,255,255,0.75);
+    }
+    .cs-scope-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 24px; }
+
+    /* ── Design decisions (dark) ── */
+    .cs-principles-section {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+    }
+    .cs-principles-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-principles-section .cs-section-header { gap: 16px; }
+    .cs-principles-section .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-principles-section .cs-heading { color: #ffffff; }
+    .cs-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      width: 100%;
+      position: relative;
+      background: rgba(255,255,255,0.08);
+    }
+    .cs-principle {
+      background: #16102e;
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-principle-num {
+      position: absolute;
+      top: -4px;
+      right: 20px;
+      font-weight: 700;
+      font-size: 96px;
+      line-height: 1;
+      letter-spacing: -4px;
+      color: rgba(255,255,255,0.1);
+      pointer-events: none;
+      user-select: none;
+    }
+    .cs-principle-title {
+      font-weight: 600; font-size: 26px; line-height: normal;
+      color: #ffffff;
+      position: relative;
+    }
+    .cs-principle-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 19px; line-height: 30px;
+      color: rgba(255,255,255,0.78);
+      position: relative;
+    }
+    .cs-swatches { display: flex; gap: 10px; margin-top: 4px; position: relative; }
+    .cs-swatch { width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); flex-shrink: 0; }
+    .cs-font-sample {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 34px; color: #fff; margin-top: 4px; position: relative;
+    }
+    .cs-font-sample em { color: #d68a6c; font-style: italic; }
+    .cs-font-sample-sub {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 15px; color: rgba(255,255,255,0.6); margin-top: 6px; position: relative;
+    }
+    .cs-stamp-demo { margin-top: 20px; position: relative; }
+    .cs-stamp-wrap { position: relative; display: inline-block; }
+    .cs-stamp-shadow {
+      position: absolute;
+      top: 6px; left: 6px; right: -6px; bottom: -6px;
+      background: #6b2216;
+      border-radius: 160px;
+      z-index: 0;
+    }
+    .cs-stamp-btn {
+      position: relative; z-index: 1; display: inline-block;
+      background: #b84c32; color: #fff;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 700; font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 160px;
+      cursor: pointer; user-select: none;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cs-stamp-wrap:hover .cs-stamp-btn { transform: translate(6px, 6px); }
+    .cs-stamp-hint {
+      display: block; margin-top: 12px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── Behind the scenes (Figma / AI process) ── */
+    .cs-figma-frame {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 20px 48px rgba(16,4,44,0.1);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .cs-figma-bar {
+      height: 36px;
+      background: #2c2c34;
+      display: flex; align-items: center; gap: 7px;
+      padding: 0 14px;
+      flex-shrink: 0;
+    }
+    .cs-figma-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .cs-figma-bar-label {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-left: 6px;
+    }
+    .cs-figma-frame-wide { max-width: 1040px; }
+    .cs-figma-img { width: 100%; height: auto; display: block; }
+    .cs-figma-img-tall { max-height: 620px; object-fit: cover; object-position: top; }
+    .cs-figma-caption {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #776c92;
+      text-align: center;
+      max-width: 560px;
+      margin: 20px auto 0;
+    }
+    .cs-figma-lead {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 15px; letter-spacing: 1.6px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .cs-principles-section .cs-figma-caption { color: rgba(255,255,255,0.65); }
+
+    /* ── Outcome card linking to the live site ── */
+    .cs-impact-card-link { text-decoration: none; color: inherit; cursor: pointer; }
+    .cs-impact-card-link .cs-card-title { display: inline-flex; align-items: center; gap: 8px; transition: color 0.25s ease; }
+    .cs-impact-card-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
+    .cs-impact-card-link:hover .cs-card-title { color: #b84c32; }
+    .cs-impact-card-link:hover svg { transform: translate(2px, -2px); }
+
+    /* ── Visual showcase gallery ── */
+    .cs-gallery-container { width: 100%; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+    .cs-gallery {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+    }
+    .cs-gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: #f5f0e8;
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-gallery-item img { width: 100%; height: auto; display: block; }
+    .cs-gallery-item-tall { grid-row: span 2; }
+    .cs-gallery-item-tall img { flex: 1; min-height: 0; height: 100%; object-fit: cover; }
+    .cs-gallery-caption {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #776c92;
+      padding: 16px 20px;
+    }
+
+    /* ── Manifesto quote ── */
+
+    /* ── Outcome cards ── */
+    .cs-impact-section { gap: 24px; }
+    .cs-impact-subtitle {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: #10042c;
+    }
+    .cs-impact-cards {
+      display: flex;
+      gap: 1px;
+      flex-wrap: wrap;
+    }
+    .cs-impact-card {
+      flex: 1;
+      min-width: 200px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cs-stat {
+      font-weight: 700; font-size: 44px; line-height: normal;
+      color: #b84c32;
+    }
+    .cs-card-title {
+      font-weight: 600; font-size: 24px; line-height: normal;
+      color: #10042c;
+    }
+    /* ── Footer ── */
+    footer {
+      background: #10042c; width: 100%;
+      padding: 80px 128px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      overflow: hidden; position: relative;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .footer-headline {
+      font-weight: 300; font-size: 110px; line-height: 100px;
+      color: white; flex-shrink: 0; position: relative;
+    }
+    .footer-right {
+      width: 440px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+    }
+    .footer-desc {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.24) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-linkedin {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.05), 0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.18) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-scroll-top {
+      width: 56px; height: 56px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-scroll-top-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── Process flows (steps) ── */
+    .jflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; width: 100%; }
+    .jflow-step { flex: 1 1 120px; min-width: 110px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 16px; background: #fcfbfe; border: 1px solid rgba(34,34,46,0.1); }
+    .jflow-step-accent { background: #b84c32; border-color: #b84c32; }
+    .jflow-tag { font-weight: 600; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #b84c32; }
+    .jflow-title { font-weight: 600; font-size: 20px; line-height: 26px; color: #10042c; }
+    .jflow-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; line-height: 22px; color: #544869; }
+    .jflow-step-accent .jflow-tag, .jflow-step-accent .jflow-title, .jflow-step-accent .jflow-desc { color: #ffffff; }
+    .jflow-arrow { align-self: center; flex: 0 0 auto; font-size: 18px; color: #776c92; }
+    .cs-sys-lede { max-width: 820px; }
+    @media (max-width: 960px) {
+      .jflow-arrow { flex: 1 1 100%; text-align: center; transform: rotate(90deg); line-height: 1; height: 22px; }
+    }
+    @media (min-width: 961px) {
+      .cs-center-intro .cs-section-header { align-items: center; text-align: center; }
+      .cs-center-intro .cs-sys-lede { margin-left: auto; margin-right: auto; text-align: center; }
+    }
+
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        background: rgba(16,4,44,0.5);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
+    }
+
+    /* ── Next project ── */
+    /* ── Visit the live site ── */
+    .cs-visit { background: #f5f0e8; align-items: center; text-align: center; }
+    .cs-visit .cs-section-header { align-items: center; }
+    .cs-visit-text { max-width: 640px; }
+    .cs-visit-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Inter Tight', Inter, sans-serif;
+      font-weight: 800; font-size: 16px; line-height: 1;
+      padding: 16px 32px;
+      background: #b84c32; color: #ffffff;
+      border: 2px solid #2b2118; border-radius: 999px;
+      box-shadow: 4px 4px 0 #2b2118;
+      cursor: pointer; text-decoration: none;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .cs-visit-btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 #2b2118; }
+    .cs-visit-btn:active { transform: translate(4px, 4px); box-shadow: 0 0 0 #2b2118; }
+    .cs-visit-btn:focus-visible { outline: 3px solid #2b2118; outline-offset: 4px; }
+    .cs-next { width: 100%; background: #403462; border-bottom: 1px solid rgba(255,255,255,0.25); }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-next-link { display: block; padding: 64px 128px; text-decoration: none; transition: background 0.25s ease; }
+    .cs-next-link:hover { background: rgba(255,255,255,0.04); }
+    .cs-next-header { margin-bottom: 28px; }
+    .cs-next-body { display: flex; align-items: center; gap: 28px; }
+    .cs-next-logo {
+      width: 72px; height: 72px; border-radius: 16px; object-fit: cover; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: #fff8ec; padding: 12px;
+    }
+    .cs-next-link:hover .cs-next-logo { transform: scale(1.07) rotate(-2deg); }
+    .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .cs-next-name { font-weight: 500; font-size: 44px; line-height: 1; color: #ffffff; }
+    .cs-next-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: rgba(255,255,255,0.85);
+    }
+    .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      border-radius: 160px;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-next-link:hover .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      width: 134px;
+    }
+    .project-btn span {
+      color: rgba(255,255,255,0.75);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
+    }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #fff; }
+
+    /* ── Responsive ── */
+    @media (min-width: 1440px) {
+      .cs-hero-title { font-size: 72px; line-height: 90px; }
+      .cs-hero-image { width: 760px; height: 562px; }
+    }
+    @media (min-width: 1201px) and (max-width: 1439px) {
+      .cs-hero-title { font-size: 60px; line-height: 74px; }
+    }
+    @media (max-width: 1200px) {
+      .nav-inner { padding: 0 64px; }
+      .cs-hero { padding: 64px; }
+      .cs-hero-left { width: auto; }
+      .cs-hero-image { width: 613px; height: 454px; margin-bottom: -64px; }
+      .cs-hero-title { font-size: 60px; line-height: 74px; }
+      .cs-section { padding: 64px; }
+      .cs-brief-left { padding: 64px; }
+      .cs-figma-img-tall { max-height: 440px; }
+      .cs-gallery { grid-template-columns: 1fr; }
+      .cs-gallery-item-tall { grid-row: auto; }
+      footer { padding: 64px; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner { padding: 0 40px; }
+      .cs-hero { padding: 40px 40px; min-height: auto; flex-direction: column; align-items: flex-start; }
+      .cs-hero-left { flex: 0 0 100%; width: 100%; min-width: 0; gap: 32px; }
+      .cs-hero-image { display: none; }
+      .cs-hero-title { font-size: 64px; line-height: 78px; }
+      .cs-meta { flex-wrap: wrap; gap: 20px; }
+      .cs-section { padding: 56px 40px; gap: 28px; }
+      .cs-intro { flex-direction: column; }
+      .cs-brief-left { padding: 56px 40px; }
+      .cs-scope-card { flex: none; width: 100%; padding: 40px; }
+      .cs-heading { font-size: 36px; }
+      .cs-body-bold, .cs-body, .cs-body-grey { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
+      .cs-principles-grid { grid-template-columns: 1fr; }
+      .cs-principle { padding: 40px; }
+      .cs-font-sample { font-size: 28px; }
+      .cs-impact-cards { flex-direction: column; }
+      .cs-next-link { padding: 48px 40px; }
+      .cs-next-name { font-size: 36px; }
+      .cs-next-link:hover .project-btn { width: 70px; }
+      footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .footer-headline { font-size: 72px; line-height: 72px; }
+      .footer-right { width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .cs-hero { padding: 32px 20px; }
+      .cs-hero-left { gap: 24px; }
+      .cs-hero-title { font-size: 48px; line-height: 58px; }
+      .cs-hero-brand { gap: 12px; }
+      .cs-meta { gap: 16px; }
+      .cs-meta-value { font-size: 16px; }
+      .cs-section { padding: 48px 20px; gap: 24px; }
+      .cs-brief-left { padding: 48px 20px; gap: 24px; }
+      .cs-scope-card { padding: 32px 20px; }
+      .cs-heading { font-size: 26px; }
+      .cs-body-bold, .cs-body, .cs-body-grey { font-size: 18px; line-height: 28px; }
+      .cs-principle { padding: 32px 24px; }
+      .cs-stat { font-size: 36px; }
+      .cs-next-link { padding: 36px 20px; }
+      .cs-next-name { font-size: 28px; }
+      .cs-next-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+      footer { padding: 48px 20px; }
+      .footer-headline { font-size: 48px; line-height: 52px; }
+      .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+  
+    /* ── Language switch ── */
+    .cs-nav-end { display: flex; align-items: center; gap: 32px; }
+    .lang-switch {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px; line-height: 1;
+    }
+    .lang-switch a { color: #fff; opacity: 0.48; padding: 16px 8px; margin: -16px -8px; transition: opacity 0.25s ease; }
+    .lang-switch a:hover { opacity: 1; }
+    .lang-switch a[aria-current] { opacity: 1; pointer-events: none; }
+    .lang-switch-sep { width: 1px; height: 8px; background: #fff; opacity: 0.32; }
+    @media (max-width: 600px) { .cs-nav-end { gap: 16px; } }
+  </style>
+  <link rel="preload" as="image" href="/assets/terroo-shot-hero-tall.jpg" type="image/jpeg">
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a class="cs-nav-back" href="/fr/" aria-label="Retour aux projets"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="cs-nav-end"><span class="cs-nav-brand">Terroo</span><div class="lang-switch"><a href="/terroo.html" hreflang="en" lang="en" aria-label="English">EN</a><span class="lang-switch-sep" aria-hidden="true"></span><a href="/fr/terroo.html" hreflang="fr" lang="fr" aria-label="Français" aria-current="true">FR</a></div></div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="cs-hero-tint" aria-hidden="true"></div>
+      <img class="cs-hero-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-hero-left">
+        <div class="cs-hero-brand reveal">
+          <a class="cs-logo-link" href="https://terroo.world/" target="_blank" rel="noopener">
+            <img loading="lazy" class="cs-logo" src="/assets/logo-terroo.png" alt="Logo Terroo">
+          </a>
+          <span class="cs-tag">Plateforme de voyage · Site internet</span>
+        </div>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Création du site<br>internet d'une<br>plateforme<br>de voyage</h1>
+        <div class="cs-meta reveal reveal-delay-2">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Rôle</span>
+            <span class="cs-meta-value">UX/UI</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Focus</span>
+            <span class="cs-meta-value">Marque &amp; création du site</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Plateforme</span>
+            <span class="cs-meta-value">WordPress</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Année</span>
+            <span class="cs-meta-value">2026</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Statut</span>
+            <a class="cs-meta-value cs-meta-link" href="https://terroo.world/" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="cs-meta-link-text">En ligne</span></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero image, absolutely positioned -->
+      <div class="cs-hero-image reveal from-right reveal-delay-3">
+        <img loading="lazy" src="/assets/preview-terroo.webp" alt="Page d'accueil du site Terroo sur mobile et desktop, avec le titre « Travel through people, not places »">
+      </div>
+    </section>
+
+    <!-- Intro / Brief + Scope -->
+    <section class="cs-intro">
+      <div class="cs-brief-left">
+        <div class="cs-section-header reveal">
+          <span class="cs-label">Le brief</span>
+          <h2 class="cs-heading">Donner une identité visuelle à un concept</h2>
+        </div>
+        <div class="cs-problem-content reveal reveal-delay-1">
+          <p class="cs-body-bold">Terroo est une plateforme gratuite où les voyageurs rencontrent des locaux pour de vrais moments partagés : un repas, une balade dans le quartier, une soirée. Chaque rencontre s'organise directement entre le voyageur et le local.</p>
+          <p class="cs-body">La mission : un site, et surtout une page d'accueil assez forte pour donner envie de rejoindre une plateforme qui n'existait pas encore. Je suis arrivé avant le moindre écran, et j'ai commencé par une direction artistique qui donnait une forme visuelle au concept de la fondatrice. J'ai ensuite conçu toutes les pages, puis je les ai intégrées sur WordPress pour qu'elle puisse gérer son site seule. Le référencement a guidé la structure et les textes dès la première maquette, au lieu d'arriver en fin de projet.</p>
+          <p class="cs-body">J'ai mené le projet de bout en bout, en quatre étapes : direction artistique, design system, écrans et parcours, puis thème WordPress sur mesure développé avec l'IA. Les sections ci-dessous suivent ces quatre étapes.</p>
+        </div>
+      </div>
+      <div class="cs-scope-card reveal reveal-delay-2">
+        <span class="cs-scope-label">Mon périmètre</span>
+        <div class="cs-scope-phases">
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">01</span>
+              <span class="cs-scope-phase-title">Direction artistique</span>
+            </div>
+            <p class="cs-scope-phase-desc">Logo, palette, typographies et les détails qui donnent du relief à la marque</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">02</span>
+              <span class="cs-scope-phase-title">Design system</span>
+            </div>
+            <p class="cs-scope-phase-desc">Une bibliothèque de composants Figma : boutons, cartes, champs de formulaire et footer, prête à être développée</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">03</span>
+              <span class="cs-scope-phase-title">Écrans &amp; parcours</span>
+            </div>
+            <p class="cs-scope-phase-desc">De la page d'accueil aux mentions légales, avec des textes en anglais, en français et en espagnol, et une structure issue de la recherche SEO</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">04</span>
+              <span class="cs-scope-phase-title">Thème WordPress avec l'IA</span>
+            </div>
+            <p class="cs-scope-phase-desc">Un thème sur mesure sous Elementor, construit avec l'IA à partir de mes écrans Figma, et modifiable par la fondatrice depuis le back-office</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Art direction -->
+    <section class="cs-section cs-principles-section">
+      <img class="cs-principles-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 1 · Direction artistique</span>
+        <h2 class="cs-heading">Quatre choix qui font la marque</h2>
+      </div>
+      <div class="cs-principles-grid reveal reveal-delay-1">
+        <div class="cs-principle">
+          <span class="cs-principle-num">01</span>
+          <span class="cs-principle-title">Une serif avec du grain</span>
+          <p class="cs-principle-desc">La plupart des startups de voyage choisissent une typo sans serif bien lisse et s'arrêtent là. J'ai associé la Fraunces, une serif au rendu légèrement brut, presque composée à la main, à l'Inter Tight pour le texte courant. La première donne sa voix à la marque, la seconde garde tout le reste lisible.</p>
+          <p class="cs-font-sample">Voyager par les <em>rencontres</em>.</p>
+          <p class="cs-font-sample-sub">Fraunces / Inter Tight</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">02</span>
+          <span class="cs-principle-title">De la rouille plutôt que le bleu des apps de voyage</span>
+          <p class="cs-principle-desc">Toutes les apps de réservation partent sur du bleu. J'ai construit la palette autour d'une couleur rouille, comme brûlée par le soleil, posée sur un crème qui rappelle le papier. On est plus près du tampon de passeport que du tableau de bord de logiciel. Avant même de lire un mot, on ressent quelque chose de chaleureux, de fait main.</p>
+          <div class="cs-swatches">
+            <span class="cs-swatch" style="background:#B84C32;"></span>
+            <span class="cs-swatch" style="background:#F5F0E8;"></span>
+            <span class="cs-swatch" style="background:#2B2118;"></span>
+          </div>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">03</span>
+          <span class="cs-principle-title">Des photos épinglées comme des cartes postales</span>
+          <p class="cs-principle-desc">J'ai été tenté de ranger les photos d'expériences dans une grille propre et régulière, comme sur tous les sites de voyage. C'était ranger Terroo parmi les sites dont elle veut justement se démarquer. En épinglant chaque photo comme une carte postale, scotch compris, chaque rencontre semble vous être envoyée personnellement.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">04</span>
+          <span class="cs-principle-title">Des boutons tamponnés</span>
+          <p class="cs-principle-desc">Chaque bouton pilule a une seconde forme plus sombre décalée derrière lui, comme un tampon appliqué un peu de travers. C'est un petit détail, présent sur chaque bouton du site, et c'est lui qui donne à la marque son côté fait main, à mille lieues d'un site sorti d'un template.</p>
+          <div class="cs-stamp-demo">
+            <div class="cs-stamp-wrap">
+              <span class="cs-stamp-shadow" aria-hidden="true"></span>
+                  <span class="cs-stamp-btn">Rejoindre Terroo</span>
+            </div>
+            <span class="cs-stamp-hint">Survolez-le pour voir l'effet</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design system -->
+    <section class="cs-section cs-section-purple cs-center-intro">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 2 · Design system</span>
+        <h2 class="cs-heading">Une seule bibliothèque pour toutes les pages</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Ces quatre décisions sont devenues un design system dans Figma : la palette et les deux typos comme fondations, puis les composants qui servent à construire chaque page. Je l'ai structuré et nommé comme un développeur aime le recevoir, puisque le développement était l'étape suivante.</p>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Fondations</span>
+            <span class="jflow-title">Tokens</span>
+            <p class="jflow-desc">Rouille, crème et encre, Fraunces et Inter Tight</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Bibliothèque</span>
+            <span class="jflow-title">Composants</span>
+            <p class="jflow-desc">Boutons, cartes, champs de formulaire et footer</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Mise en page</span>
+            <span class="jflow-title">Pages</span>
+            <p class="jflow-desc">Chaque écran du site</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Passation</span>
+            <span class="jflow-title">Widgets Elementor</span>
+            <p class="jflow-desc">Chaque composant recréé en widget, relié aux tokens</p>
+          </div>
+        </div>
+      <div class="reveal reveal-delay-2">
+        <p class="cs-figma-lead" style="color:#776c92;">Un extrait de la bibliothèque de composants</p>
+        <div class="cs-figma-frame">
+          <div class="cs-figma-bar">
+            <span class="cs-figma-dot" style="background:#F24E1E;"></span>
+                <span class="cs-figma-dot" style="background:#A259FF;"></span>
+                <span class="cs-figma-dot" style="background:#1ABCFE;"></span>
+                <span class="cs-figma-dot" style="background:#0ACF83;"></span>
+                <span class="cs-figma-bar-label">Figma · Composants</span>
+          </div>
+          <img loading="lazy" class="cs-figma-img" src="/assets/terroo-figma-components.webp" alt="Extrait de la bibliothèque de composants Figma de Terroo : boutons, cartes et footer, organisés et générés avec Claude">
+        </div>
+        <p class="cs-figma-caption">Boutons, cartes, champs de formulaire et footer : tout est nommé et rangé, prêt à être transmis à un développeur.</p>
+      </div>
+    </section>
+
+    <!-- Final design showcase -->
+    <section class="cs-section cs-section-white">
+      <div class="cs-gallery-container">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 3 · Écrans et parcours</span>
+        <h2 class="cs-heading">Une marque cohérente, d'une page à l'autre</h2>
+      </div>
+      <p class="cs-body reveal reveal-delay-1">J'ai conçu tous les écrans du site : la page d'accueil, une page pour les voyageurs, une pour les locaux, la sécurité, le manifeste, le contact, le blog et les pages légales. Le tout existe en anglais, en français et en espagnol, et la recherche SEO a guidé la structure et les textes dès le premier wireframe. Voici le parcours d'un visiteur :</p>
+      </div>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Accueil</span>
+            <span class="jflow-title">La promesse</span>
+            <p class="jflow-desc">Six types de rencontres, les principes de sécurité et deux portes d'entrée</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Voyageurs</span>
+            <span class="jflow-title">Comment ça marche</span>
+            <p class="jflow-desc">Découvrir, échanger, se retrouver</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Locaux</span>
+            <span class="jflow-title">Cinq principes</span>
+            <p class="jflow-desc">Ce qu'il faut savoir avant d'accueillir</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Sécurité</span>
+            <span class="jflow-title">Pourquoi faire confiance</span>
+            <p class="jflow-desc">Système de références, échelle de sanctions et transparence de la communauté</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Inscription</span>
+            <span class="jflow-title">Rejoindre Terroo</span>
+            <p class="jflow-desc">Le bouton vers lequel tout le site mène</p>
+          </div>
+        </div>
+      <div class="cs-gallery-container">
+      <div class="cs-gallery reveal reveal-delay-1">
+        <div class="cs-gallery-item" style="grid-column: 1 / -1;">
+          <img loading="lazy" src="/assets/terroo-final-hero.jpg" alt="Haut de la page d'accueil de Terroo : « Travel through people, not places », avec la photo d'un voyageur qui rencontre des locaux et un sélecteur de langue">
+          <p class="cs-gallery-caption">Le haut de la page d'accueil, en anglais, en français et en espagnol.</p>
+        </div>
+        <div class="cs-gallery-item cs-gallery-item-tall">
+          <img loading="lazy" src="/assets/terroo-final-cards.jpg" alt="Page d'accueil de Terroo : cartes façon cartes postales épinglées, qui montrent ce qu'un local peut proposer et ce qu'un voyageur peut vivre">
+          <p class="cs-gallery-caption">L'effet carte postale de la maquette Figma, intégré à l'identique.</p>
+        </div>
+        <div class="cs-gallery-item">
+          <img loading="lazy" src="/assets/terroo-final-safety.jpg" alt="Section sécurité de la page d'accueil de Terroo : système de références, échelle de sanctions et transparence de la communauté">
+          <p class="cs-gallery-caption">La sécurité d'abord, expliquée avant même la première rencontre.</p>
+        </div>
+        <div class="cs-gallery-item">
+          <img loading="lazy" src="/assets/terroo-final-quote.jpg" alt="Citation du manifeste sur fond rouille, suivie de la définition de « Terroir », sur la page d'accueil de Terroo">
+          <p class="cs-gallery-caption">La voix du manifeste revient de section en section, bien au-delà de la page d'accueil.</p>
+        </div>
+        <div class="cs-gallery-item" style="grid-column: 1 / -1;">
+          <img loading="lazy" src="/assets/terroo-final-contact.jpg" alt="Section contact de Terroo : « Not a form. A message. »">
+          <p class="cs-gallery-caption">Même la page contact a le ton de Terroo, à mille lieues du formulaire de support classique.</p>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <!-- The Build (WordPress) -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 4 · Thème WordPress avec l'IA</span>
+        <h2 class="cs-heading">Un site WordPress que la fondatrice gère sans moi</h2>
+      </div>
+      <div class="cs-brief reveal reveal-delay-1">
+        <p class="cs-body">Je me suis servi de l'IA pour transformer mes écrans Figma en thème sur mesure, écrire le PHP et installer les bons plugins, toujours en suivant mes instructions. Comme j'ai dessiné les maquettes et piloté le développement, le site correspond au design au pixel près.</p>
+      </div>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Design</span>
+            <span class="jflow-title">Écrans Figma</span>
+            <p class="jflow-desc">La bibliothèque et chaque page</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Direction</span>
+            <span class="jflow-title">Mes instructions</span>
+            <p class="jflow-desc">Quoi construire, et avec quels plugins</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Développement avec l'IA</span>
+            <span class="jflow-title">Thème sur mesure</span>
+            <p class="jflow-desc">Les écrans transformés en thème, le PHP écrit par l'IA</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Assemblage</span>
+            <span class="jflow-title">Pages dans le back-office</span>
+            <p class="jflow-desc">Widgets Elementor sur mesure, reliés aux tokens</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Passation</span>
+            <span class="jflow-title">La fondatrice modifie et publie</span>
+            <p class="jflow-desc">Textes, images et pages, sans développeur</p>
+          </div>
+        </div>
+      <div class="cs-impact-cards reveal reveal-delay-2">
+        <div class="cs-impact-card">
+          <span class="cs-stat">Zéro code</span>
+          <span class="cs-card-title">Autonomie totale</span>
+          <p class="cs-body">La fondatrice modifie son site directement depuis le back-office WordPress, sans dépendre de personne.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">40 %+</span>
+          <span class="cs-card-title">Standard du web</span>
+          <p class="cs-body">WordPress fait tourner plus de 40 % des sites dans le monde. N'importe quel développeur pourra reprendre le projet et s'y retrouver tout de suite, sans outil propriétaire à apprendre.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">1:1</span>
+          <span class="cs-card-title">Fidélité au design</span>
+          <p class="cs-body">Chaque bloc est un widget Elementor sur mesure, relié aux mêmes design tokens que la bibliothèque Figma. Les nouvelles pages restent dans la charte, même quand quelqu'un d'autre les modifie.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <p class="cs-figma-lead" style="color:#776c92;">Modification d'une page, en direct</p>
+        <div class="cs-figma-frame cs-figma-frame-wide">
+          <div class="cs-figma-bar">
+            <span class="cs-figma-dot" style="background:#ff5f57;"></span>
+                <span class="cs-figma-dot" style="background:#febc2e;"></span>
+                <span class="cs-figma-dot" style="background:#28c840;"></span>
+                <span class="cs-figma-bar-label">Elementor · Éditeur</span>
+          </div>
+          <img loading="lazy" class="cs-figma-img" src="/assets/terroo-elementor-editor.png" alt="Modification de la page « For locals » de Terroo dans le back-office Elementor, avec les textes de la fondatrice modifiables directement">
+        </div>
+        <p class="cs-figma-caption">Ce texte, la fondatrice le modifie elle-même.</p>
+      </div>
+    </section>
+
+    <!-- Visit the live site -->
+    <section class="cs-section cs-visit">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Voir le site</span>
+        <h2 class="cs-heading">Découvrez Terroo en ligne</h2>
+      </div>
+      <p class="cs-body cs-visit-text reveal reveal-delay-1">Le site est en ligne en anglais, en français et en espagnol. Parcourez-le comme le ferait un voyageur, de la page d'accueil jusqu'aux principes, et voyez si vous avez envie de partir.</p>
+      <div class="reveal reveal-delay-2">
+        <a class="cs-visit-btn" href="https://terroo.world/" target="_blank" rel="noopener">Visiter terroo.world</a>
+      </div>
+    </section>
+
+    <!-- Next project -->
+    <section class="cs-next">
+      <a href="yogspace.html" class="cs-next-link">
+        <div class="cs-next-header">
+          <span class="cs-label">Projet suivant</span>
+        </div>
+        <div class="cs-next-body">
+          <img loading="eager" class="cs-next-logo" src="/assets/logo-yogspace.png" alt="Logo Yogspace">
+          <div class="cs-next-info">
+            <p class="cs-next-name">Yogspace</p>
+            <p class="cs-next-desc">Refonte du site d'une plateforme de cours de yoga en ligne</p>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </a>
+    </section>
+
+    <footer id="contact">
+      <img loading="lazy" class="footer-bg" src="/assets/bg-dark-overlay.webp" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Travaillons</p>
+        <p>ensemble.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Vous avez un projet similaire ? Parlons-en.</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>M'envoyer un e-mail</span>
+          </a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Count-up on key figures ──
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const re = /^(\D*?)(\d+(?:[.,]\d+)?)(\D*)$/;
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        const c = e.target._count;
+        const start = performance.now(), dur = 1400;
+        (function tick(now) {
+          const p = Math.min((now - start) / dur, 1);
+          e.target.textContent = p < 1 ? c.pre + (c.target * ease(p)).toFixed(c.dec).replace('.', ',') + c.suf : c.final;
+          if (p < 1) requestAnimationFrame(tick);
+        })(start);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.cs-stat, .cs-stat-value').forEach(el => {
+      const final = el.textContent.trim();
+      const m = final.match(re);
+      if (!m) return;
+      const dec = (m[2].split(/[.,]/)[1] || '').length;
+      el._count = { pre: m[1], target: parseFloat(m[2].replace(',', '.')), dec: dec, suf: m[3], final: final };
+      el.textContent = m[1] + (0).toFixed(dec).replace('.', ',') + m[3];
+      io.observe(el);
+    });
+  })();
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
+</script>
+</body>
+</html>

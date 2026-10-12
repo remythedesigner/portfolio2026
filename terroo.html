@@ -6,6 +6,9 @@
   <title>Terroo · WordPress Website Design &amp; Build Case Study</title>
   <meta name="description" content="Case study: art direction, design system, screens and an AI-powered custom WordPress theme for Terroo, a travel site its founder edits herself.">
   <link rel="canonical" href="https://remytartanac.com/terroo.html">
+  <link rel="alternate" hreflang="en" href="https://remytartanac.com/terroo.html">
+  <link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/terroo.html">
+  <link rel="alternate" hreflang="x-default" href="https://remytartanac.com/terroo.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rémy Tartanac">
   <meta property="og:title" content="Terroo · WordPress Website Design &amp; Build Case Study">
@@ -774,6 +777,19 @@
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 24px; line-height: 34px; }
     }
+  
+    /* ── Language switch ── */
+    .cs-nav-end { display: flex; align-items: center; gap: 32px; }
+    .lang-switch {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px; line-height: 1;
+    }
+    .lang-switch a { color: #fff; opacity: 0.48; padding: 16px 8px; margin: -16px -8px; transition: opacity 0.25s ease; }
+    .lang-switch a:hover { opacity: 1; }
+    .lang-switch a[aria-current] { opacity: 1; pointer-events: none; }
+    .lang-switch-sep { width: 1px; height: 8px; background: #fff; opacity: 0.32; }
+    @media (max-width: 600px) { .cs-nav-end { gap: 16px; } }
   </style>
   <link rel="preload" as="image" href="assets/terroo-shot-hero-tall.jpg" type="image/jpeg">
 </head>
@@ -786,7 +802,7 @@
     <nav>
       <div class="nav-inner">
         <a class="cs-nav-back" href="/" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <span class="cs-nav-brand">Terroo</span>
+        <div class="cs-nav-end"><span class="cs-nav-brand">Terroo</span><div class="lang-switch"><a href="/terroo.html" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><span class="lang-switch-sep" aria-hidden="true"></span><a href="/fr/terroo.html" hreflang="fr" lang="fr" aria-label="Français">FR</a></div></div>
       </div>
     </nav>
 
@@ -1136,7 +1152,7 @@
           <img loading="eager" class="cs-next-logo" src="assets/logo-yogspace.png" alt="Yogspace logo">
           <div class="cs-next-info">
             <p class="cs-next-name">Yogspace</p>
-            <p class="cs-next-desc">Redesigning a yoga platform to earn its trust visually</p>
+            <p class="cs-next-desc">Website redesign for an online yoga platform</p>
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>

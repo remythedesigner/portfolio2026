@@ -6,6 +6,9 @@
   <title>Yogspace · Website Redesign Case Study</title>
   <meta name="description" content="Case study: redesigning Yogspace, a live 1:1 yoga platform, from a working product into a considered editorial brand.">
   <link rel="canonical" href="https://remytartanac.com/yogspace.html">
+  <link rel="alternate" hreflang="en" href="https://remytartanac.com/yogspace.html">
+  <link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/yogspace.html">
+  <link rel="alternate" hreflang="x-default" href="https://remytartanac.com/yogspace.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rémy Tartanac">
   <meta property="og:title" content="Yogspace · Website Redesign Case Study">
@@ -503,6 +506,19 @@
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 24px; line-height: 34px; }
     }
+  
+    /* ── Language switch ── */
+    .cs-nav-end { display: flex; align-items: center; gap: 32px; }
+    .lang-switch {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px; line-height: 1;
+    }
+    .lang-switch a { color: #fff; opacity: 0.48; padding: 16px 8px; margin: -16px -8px; transition: opacity 0.25s ease; }
+    .lang-switch a:hover { opacity: 1; }
+    .lang-switch a[aria-current] { opacity: 1; pointer-events: none; }
+    .lang-switch-sep { width: 1px; height: 8px; background: #fff; opacity: 0.32; }
+    @media (max-width: 600px) { .cs-nav-end { gap: 16px; } }
   </style>
   <link rel="preload" as="image" href="assets/yog-shot-hero-tall.jpg" type="image/jpeg">
 </head>
@@ -515,7 +531,7 @@
     <nav>
       <div class="nav-inner">
         <a class="cs-nav-back" href="/" aria-label="Back to projects"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        <span class="cs-nav-brand">Yogspace</span>
+        <div class="cs-nav-end"><span class="cs-nav-brand">Yogspace</span><div class="lang-switch"><a href="/yogspace.html" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><span class="lang-switch-sep" aria-hidden="true"></span><a href="/fr/yogspace.html" hreflang="fr" lang="fr" aria-label="Français">FR</a></div></div>
       </div>
     </nav>
 
@@ -773,7 +789,7 @@
           <div class="cs-next-logo-glyph" aria-hidden="true">&amp;</div>
           <div class="cs-next-info">
             <p class="cs-next-name">&amp;Joy</p>
-            <p class="cs-next-desc">Designing the activity app Paris was missing</p>
+            <p class="cs-next-desc">App design for last-minute outings in&nbsp;Paris</p>
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
         </div>

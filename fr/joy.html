@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>&amp;Joy · Conception d'une application mobile, du concept au prototype</title>
+  <meta name="description" content="Étude de cas : stratégie, design system, prototype réalisé avec l'IA, tests utilisateurs et specs pour &amp;Joy, l'app qui remplit les places invendues de dernière minute à Paris.">
+  <link rel="canonical" href="https://remytartanac.com/fr/joy.html">
+  <link rel="alternate" hreflang="en" href="https://remytartanac.com/joy.html">
+  <link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/joy.html">
+  <link rel="alternate" hreflang="x-default" href="https://remytartanac.com/joy.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rémy Tartanac">
+  <meta property="og:title" content="&amp;Joy · Conception d'une application mobile, du concept au prototype">
+  <meta property="og:description" content="Étude de cas : stratégie, design system, prototype réalisé avec l'IA, tests utilisateurs et specs pour &amp;Joy, l'app qui remplit les places invendues de dernière minute à Paris.">
+  <meta property="og:url" content="https://remytartanac.com/fr/joy.html">
+  <meta property="og:image" content="https://remytartanac.com/assets/og-joy.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="&amp;Joy · Conception d'une application mobile, du concept au prototype">
+  <meta name="twitter:description" content="Étude de cas : stratégie, design system, prototype réalisé avec l'IA, tests utilisateurs et specs pour &amp;Joy, l'app qui remplit les places invendues de dernière minute à Paris.">
+  <meta name="twitter:image" content="https://remytartanac.com/assets/og-joy.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Rémy Tartanac", "item": "https://remytartanac.com/fr/" },
+          { "@type": "ListItem", "position": 2, "name": "&Joy", "item": "https://remytartanac.com/fr/joy.html" }
+        ]
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "&Joy : conception d'une application mobile de réservation d'activités",
+        "headline": "Concevoir l'app d'activités qui manquait à Paris",
+        "description": "Étude de cas : stratégie, design system, prototype réalisé avec l'IA, tests utilisateurs et specs pour &Joy, l'app qui remplit les places invendues de dernière minute à Paris.",
+        "url": "https://remytartanac.com/fr/joy.html",
+        "image": "https://remytartanac.com/assets/joy-hero-phones.webp",
+        "datePublished": "2026",
+        "author": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/fr/" },
+        "creator": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/fr/" },
+        "about": "Étude de cas product design : stratégie produit, direction artistique, design system, écrans et parcours, prototype réalisé avec l'IA, tests utilisateurs et spécifications techniques pour une application de réservation d'activités"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    /* Light ring on dark backgrounds */
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    /* Shape-matched radii */
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible,
+    .cs-carousel-btn:focus-visible,
+    .cs-screens-btn:focus-visible  { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .project-card:focus-visible    { border-radius: 8px;  outline-offset: 0; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
+    html { overflow-x: hidden; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: hidden; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Nav (case study) ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      width: 100%;
+      background: #403462;
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px; padding: 0 128px;
+    }
+    .cs-nav-back {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 0.8px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.2s ease, transform 0.25s ease;
+    }
+    .cs-nav-back:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .cs-nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 24px; line-height: 1;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #3b82f6;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 80px;
+      padding: 80px 128px;
+      overflow: hidden;
+      min-height: 752px;
+      position: relative;
+    }
+    .cs-hero-tint {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(21deg, rgba(78,90,242,0.24) 29%, rgba(78,90,242,0.06) 71%);
+      pointer-events: none;
+    }
+    .cs-hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-hero-left {
+      flex: 1;
+      min-width: 0;
+      align-self: flex-start;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+    .cs-hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cs-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+    .cs-logo-link {
+      display: block; flex-shrink: 0; border-radius: 16px;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+    .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
+    .cs-logo-mark {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      background: #e6e0f2;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      font-family: Georgia, 'Times New Roman', serif;
+      font-weight: 700; font-size: 44px;
+      color: #3b82f6;
+      text-shadow: 0 4px 4px rgba(0,0,0,0.25);
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+    .cs-logo-mark:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
+    .cs-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #3b82f6;
+      border: 1px solid rgba(255,255,255,0.45);
+      padding: 8px 16px;
+      border-radius: 160px;
+      background: rgba(255,255,255,0.28);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+    }
+    .cs-hero-title {
+      font-weight: 500; font-size: 80px; line-height: 100px;
+      color: white;
+    }
+    .cs-meta {
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 20px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+    }
+    .cs-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cs-meta-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #3b82f6;
+    }
+    .cs-meta-value {
+      font-weight: 500; font-size: 20px; line-height: 28px;
+      color: white;
+    }
+
+    /* Hero image: in-flow flex sibling */
+    .cs-hero-image {
+      position: relative;
+      flex-shrink: 0;
+      margin-bottom: -80px;
+      margin-right: -128px;
+      width: 646px;
+      height: 614px;
+    }
+    .cs-hero-image img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+
+    /* ── Common Section ── */
+    .cs-section {
+      width: 100%;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      overflow-x: clip;
+    }
+    .cs-section-white { background: #ffffff; }
+    .cs-section-light { background: #f7f6f8; }
+    .cs-section-purple { background: #e6e0f2; }
+
+    .cs-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+    }
+
+    /* ── Body text ── */
+    .cs-body-bold {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body-grey {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #776c92;
+    }
+
+    /* ── Bullet list ── */
+    .cs-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-list li {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #10042c;
+    }
+    .cs-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+    }
+
+    /* ── Problem ── */
+    .cs-section.cs-problem {
+      padding: 0;
+      gap: 0;
+    }
+    .cs-problem-layout {
+      display: flex;
+      align-items: stretch;
+    }
+    .cs-problem-left {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 80px 128px;
+      background: #ffffff;
+    }
+    .cs-problem-content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cs-problem-stats {
+      flex: 0 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: #403462;
+    }
+    .cs-problem-stats-inner {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+    }
+    .cs-stat-card {
+      padding: 32px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-stat-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+    }
+    .cs-stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      line-height: normal;
+      font-weight: 700;
+      color: #ffffff;
+    }
+    .cs-stat-label {
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 1.5;
+      color: rgba(255,255,255,0.85);
+    }
+
+    /* ── Old Design ── */
+    .cs-old-design-content {
+      display: flex;
+      gap: 76px;
+      align-items: center;
+    }
+    .cs-screens {
+      display: flex;
+      gap: 32px;
+      flex-shrink: 0;
+    }
+    .cs-screen-img {
+      width: 295px; height: 640px;
+      border-radius: 32px;
+      object-fit: cover;
+      box-shadow: 4px 4px 40px -8px rgba(0,0,0,0.25);
+    }
+    /* ── Screen carousel controls ── */
+    .cs-screens-carousel { display: contents; }
+    .cs-screens-btn {
+      display: none;
+      flex-shrink: 0; width: 40px; height: 40px; border-radius: 50%;
+      background: white; border: 1px solid rgba(0,0,0,0.1);
+      align-items: center; justify-content: center;
+      cursor: pointer; color: #776c92;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cs-screens-btn:hover { background: rgba(0,0,0,0.04); transform: scale(1.06); }
+    .cs-screens-btn:disabled { opacity: 0.25; pointer-events: none; }
+    .cs-screen-slide { display: contents; }
+    .cs-analysis-list {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-analysis-item {
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      padding-bottom: 21px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .cs-analysis-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+      margin-top: 18px;
+    }
+    .cs-analysis-text {
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-analysis-title {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-analysis-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #776c92;
+    }
+
+    /* ── Wireframes ── */
+    .cs-wireframe { margin-top: 20px; border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.06); }
+    .cs-wireframe svg { display: block; width: 100%; height: auto; }
+
+    /* ── Key Insight / Final Note ── */
+    .cs-centered {
+      align-items: center;
+      justify-content: center;
+      padding: 120px 80px;
+      gap: 24px;
+      text-align: center;
+    }
+
+    /* ── Design Principles ── */
+    .cs-principles-section {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+    }
+    .cs-principles-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-principles-section .cs-section-header { gap: 16px; }
+    .cs-principles-section .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-principles-section .cs-heading { color: #ffffff; }
+    .cs-principles-grid {
+      display: flex;
+      gap: 40px;
+      width: 100%;
+      position: relative;
+    }
+    .cs-principle {
+      flex: 1;
+      min-width: 0;
+      padding: 64px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-principle-num {
+      position: absolute;
+      top: -4px;
+      right: 16px;
+      font-weight: 700;
+      font-size: 112px;
+      line-height: 1;
+      letter-spacing: -4px;
+      color: rgba(255,255,255,0.18);
+      pointer-events: none;
+      user-select: none;
+    }
+    .cs-principle-title {
+      font-weight: 600; font-size: 26px; line-height: normal;
+      color: #ffffff;
+    }
+    .cs-principle-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #ffffff;
+    }
+
+    /* ── Solution ── */
+    .cs-flow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .cs-flow-tag {
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      padding: 10px 28px;
+      border-radius: 9999px;
+      font-weight: 400; font-size: 24px; line-height: 36px;
+      color: #2f5fd6;
+    }
+    .cs-flow-arrow {
+      font-weight: 300; font-size: 24px; line-height: 32px;
+      color: rgba(59, 130, 246, 0.5);
+    }
+    .cs-constraint-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-constraint-text {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #10042c;
+      margin-top: 8px;
+    }
+    .cs-constraint-block {
+      background: white;
+      border: 1px solid rgba(0, 0, 0, 0.07);
+      border-radius: 16px;
+      padding: 28px 32px;
+    }
+    .cs-constraint-list { list-style: none; margin: 16px 0 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+    .cs-constraint-item { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .cs-constraint-tag { font-weight: 500; font-size: 13px; line-height: 20px; color: #2f5fd6; background: rgba(59,130,246,0.1); border-radius: 6px; padding: 2px 10px; white-space: nowrap; flex-shrink: 0; }
+    .cs-constraint-implication {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 18px; line-height: 28px; color: #10042c; }
+    .cs-flow-block { display: flex; flex-direction: column; gap: 0; }
+
+    /* ── Steps ── */
+    .cs-steps { width: 100%; }
+    .cs-step {
+      width: 100%;
+      display: flex;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .cs-step-left {
+      width: 57.89%;
+      flex-shrink: 0;
+      padding: 80px 128px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      background: #ffffff;
+    }
+    .cs-step-left-alt { background: rgba(236,243,244,0.25); }
+    .cs-step-right {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(236,243,244,0.15);
+    }
+    .cs-step-right-alt { background: rgba(239,246,241,0.5); }
+    .cs-step-right-flush { align-items: flex-end; padding-bottom: 0; }
+    .cs-step-num-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .cs-step-num {
+      font-weight: 400; font-size: 14px; line-height: 16px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #776c92;
+      white-space: nowrap;
+    }
+    .cs-step-line {
+      flex: 1;
+      height: 1px;
+      background: rgba(0,0,0,0.1);
+    }
+    .cs-step-title {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: #10042c;
+    }
+    .cs-step-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-step-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      list-style: none;
+      padding: 0;
+    }
+    .cs-step-list li {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #10042c;
+    }
+    .cs-step-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    /* ── Step 1 UI: Priority cards ── */
+    .ui-priority-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 360px;
+    }
+    .ui-priority-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 16px;
+      padding: 13px 17px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ui-priority-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 18px; line-height: 24px;
+      color: #10042c;
+    }
+    .ui-priority-badge {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 14px; line-height: 18px;
+      padding: 2px 12px;
+      border-radius: 9999px;
+    }
+    .ui-priority-high { color: #6baa80; background: rgba(107,170,128,0.08); }
+    .ui-priority-medium { color: #6baa80; background: rgba(107,170,128,0.08); }
+    .ui-priority-low { color: #776c92; background: rgba(0,0,0,0.04); }
+
+    /* ── Step 2 UI: Move diagram ── */
+    .ui-move-diagram {
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ui-move-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 12px; line-height: 16px;
+      letter-spacing: 0.6px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .ui-move-item {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 14px;
+      padding: 13px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      position: relative;
+    }
+    .ui-move-item-removed {
+      opacity: 0.5;
+      background: rgba(0,0,0,0.05);
+    }
+    .ui-move-item-icon {
+      font-size: 14px; line-height: 21px;
+    }
+    .ui-move-item-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #10042c;
+      flex: 1;
+    }
+    .ui-move-item-text.strikethrough {
+      text-decoration: line-through;
+    }
+    .ui-move-badge {
+      background: #6baa80;
+      border-radius: 9999px;
+      width: 21px; height: 19px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 10px; color: white;
+      flex-shrink: 0;
+    }
+    .ui-move-divider {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .ui-move-divider-line {
+      flex: 1; height: 1px;
+      background: rgba(0,0,0,0.08);
+    }
+    .ui-move-divider-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300; font-size: 14px; line-height: 20px;
+      color: #776c92;
+    }
+
+    /* ── Step 3 UI: Recipe suggestions ── */
+    .ui-recipe-section {
+      width: 360px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .ui-recipe-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 0 2px;
+    }
+    .ui-recipe-title {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 15px; font-weight: 600;
+      color: #10042c;
+    }
+    .ui-recipe-sub {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px; color: #6baa80;
+    }
+    .ui-recipe-card {
+      background: white;
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .ui-recipe-info { display: flex; flex-direction: column; gap: 2px; }
+    .ui-recipe-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500; font-size: 18px; line-height: 24px;
+      color: #10042c;
+    }
+    .ui-recipe-cal {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 12px; color: #6baa80;
+    }
+    .ui-recipe-tag {
+      background: rgba(59,130,246,0.12);
+      border-radius: 9999px;
+      padding: 4px 10px;
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px; color: #3b82f6;
+      flex-shrink: 0;
+    }
+    .ui-calorie-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+    .ui-calorie-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .ui-calorie-label {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 11px; color: #776c92;
+    }
+    .ui-calorie-val {
+      font-family: -apple-system, system-ui, sans-serif;
+      font-size: 13px; font-weight: 600; color: #10042c;
+    }
+    .ui-progress-track {
+      height: 4px; border-radius: 2px;
+      background: rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .ui-progress-fill {
+      height: 100%; border-radius: 2px;
+      background: #3b82f6;
+    }
+
+    /* ── New Design ── */
+    .cs-new-design {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      gap: 160px;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px;
+      min-height: 820px;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+    }
+    .cs-new-design-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-new-design-text {
+      width: 400px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 40px;
+      position: relative;
+    }
+    .cs-new-design-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      display: block; margin-bottom: 8px;
+    }
+    .cs-new-design-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: white;
+    }
+    .cs-new-design-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: rgba(255,255,255,0.85);
+    }
+    /* Pal phone frame is narrower than Grit */
+    .cs-phone-frame {
+      width: 323px; height: 720px;
+      border: 4px solid #000;
+      border-radius: 32px;
+      background: #0d0d0d;
+      box-shadow: 4px 4px 80px 24px rgba(16,4,44,0.5);
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .cs-phone-video {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Impact ── */
+    .cs-impact-section { gap: 24px; }
+    .cs-impact-subtitle {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: #10042c;
+    }
+    .cs-impact-cards {
+      display: flex;
+      gap: 1px;
+    }
+    .cs-impact-card {
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cs-impact-card.faded .cs-stat { opacity: 0.5; }
+    .cs-stat {
+      font-weight: 700; font-size: 52px; line-height: normal;
+      color: #3b82f6;
+    }
+    .cs-card-title {
+      font-weight: 600; font-size: 28px; line-height: normal;
+      color: #10042c;
+    }
+    .cs-card-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #776c92;
+    }
+
+    /* ── Extending Impact ── */
+    .cs-extending-phones {
+      display: flex;
+      gap: 1px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .cs-ext-phone {
+      width: 295px;
+      flex-shrink: 0;
+    }
+    .cs-ext-phone img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 800px;
+      display: block;
+      margin: 0 auto;
+    }
+    .cs-extending-stat {
+      display: flex;
+      justify-content: center;
+      margin-top: 0;
+    }
+    .cs-extending-stat-card {
+      background: rgba(0,0,0,0.05);
+      border-radius: 32px;
+      overflow: hidden;
+      width: 800px;
+      display: flex;
+      gap: 1px;
+    }
+    .cs-extending-stat-inner {
+      background: white;
+      padding: 40px;
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      height: 271px;
+      box-sizing: border-box;
+    }
+
+    /* ── Carousel controls ── */
+    .cs-carousel-wrapper { display: contents; }
+    .cs-carousel-btn {
+      display: none;
+      flex-shrink: 0;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: white; border: 1px solid rgba(0,0,0,0.1);
+      align-items: center; justify-content: center;
+      cursor: pointer; color: #776c92;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .cs-carousel-btn:hover { background: rgba(0,0,0,0.04); transform: scale(1.06); }
+    .cs-carousel-btn:disabled { opacity: 0.25; pointer-events: none; }
+
+    /* ── Footer ── */
+    footer {
+      background: #10042c; width: 100%;
+      padding: 80px 128px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      overflow: hidden; position: relative;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .footer-headline {
+      font-weight: 300; font-size: 110px; line-height: 100px;
+      color: white; flex-shrink: 0; position: relative;
+    }
+    .footer-right {
+      width: 440px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+    }
+    .footer-desc {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.24) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-linkedin {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.05), 0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.18) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-scroll-top {
+      width: 56px; height: 56px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-scroll-top-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+    }
+
+
+    /* ── Scroll-to-top: floating on desktop ── */
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        background: rgba(16,4,44,0.5);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
+    }
+
+    /* ── Responsive ── */
+    @media (min-width: 1440px) {
+      .cs-hero-title { font-size: 72px; line-height: 90px; }
+    }
+    @media (max-width: 1439px) {
+      .cs-carousel-wrapper { display: flex; align-items: center; gap: 12px; width: 100%; }
+      .cs-carousel-btn { display: flex; }
+      .cs-extending-phones { flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 16px; padding: 0; margin: 0; justify-content: flex-start; }
+      .cs-extending-phones::-webkit-scrollbar { display: none; }
+      .cs-ext-phone { scroll-snap-align: start; flex-shrink: 0; width: calc(50% - 8px); }
+      .cs-extending-stat { width: 100%; }
+      .cs-extending-stat-card { width: 100%; flex-direction: column; }
+      .cs-extending-stat-inner { height: auto; }
+    }
+
+    @media (max-width: 1200px) {
+      .nav-inner { padding: 0 64px; }
+      .cs-hero { padding: 64px; }
+      .cs-hero-left { width: auto; }
+      .cs-hero-image { width: 480px; height: 456px; margin-bottom: -64px; }
+      .cs-section { padding: 64px; }
+      .cs-problem-left { padding: 64px; }
+      .cs-step-left { padding: 64px; }
+      footer { padding: 64px; }
+      /* Extending impact: carousel (2 phones at a time) */
+      .cs-carousel-wrapper { display: flex; align-items: center; gap: 12px; width: 100%; }
+      .cs-carousel-btn { display: flex; }
+      .cs-extending-phones { flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 16px; padding: 0; margin: 0; justify-content: flex-start; }
+      .cs-extending-phones::-webkit-scrollbar { display: none; }
+      .cs-ext-phone { scroll-snap-align: start; flex-shrink: 0; width: calc(50% - 8px); }
+      .cs-extending-stat { width: 100%; }
+      .cs-extending-stat-card { width: 100%; flex-direction: column; }
+      .cs-extending-stat-inner { height: auto; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner { padding: 0 40px; }
+      .cs-hero { padding: 40px 40px; min-height: auto; }
+      .cs-hero-left { width: 100%; gap: 32px; }
+      .cs-hero-phones { display: none; }
+      .cs-hero-image { display: none; }
+      .cs-hero-title { font-size: 64px; line-height: 78px; }
+      .cs-meta { flex-wrap: wrap; gap: 20px; }
+      .cs-section { padding: 56px 40px; gap: 28px; }
+      .cs-problem-layout { flex-direction: column; }
+      .cs-problem-left { padding: 56px 40px; }
+      .cs-problem-stats { flex: none; width: 100%; padding: 40px; }
+      .cs-problem-stats-inner { flex-direction: row; width: 100%; gap: 24px; }
+      .cs-stat-card { flex: 1; padding: 0; }
+      .cs-stat-divider { width: 1px; height: auto; align-self: stretch; }
+      .cs-heading { font-size: 36px; }
+      .cs-body-bold {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
+      .cs-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
+      .cs-body-grey {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 22px; line-height: 34px; }
+      .cs-list li {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+      .cs-old-design-content { flex-direction: column; gap: 40px; }
+      .cs-screens { justify-content: center; }
+      .cs-screen-img { width: 200px; height: auto; }
+      .cs-centered { padding: 80px 40px; }
+      .cs-principles-grid { flex-wrap: wrap; }
+      .cs-principle { flex: 0 0 calc(50% - 20px); }
+      .cs-flow-tag { font-size: 22px; }
+      .cs-step { flex-direction: column; }
+      .cs-step-left { width: 100%; padding: 48px 40px; }
+      .cs-step-right { flex: none; padding: 32px 40px; min-height: auto; }
+      .cs-step-right-flush { align-items: center; padding-bottom: 24px; }
+      .cs-step-title { font-size: 28px; line-height: 36px; }
+      .cs-step-body {
+      font-size: 20px; line-height: 32px; }
+      .cs-step-list li {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+      .cs-new-design { flex-direction: column; align-items: center; gap: 48px; padding: 60px 40px; min-height: auto; }
+      .cs-new-design-text { width: 100%; }
+      .cs-phone-frame { width: 330px; height: 717px; }
+      .cs-impact-cards { flex-direction: column; }
+      /* Extending impact: carousel at tablet (2 phones at a time) */
+      .cs-carousel-wrapper { display: flex; align-items: center; gap: 12px; width: 100%; }
+      .cs-carousel-btn { display: flex; }
+      .cs-extending-phones { flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; gap: 16px; padding: 0; margin: 0; justify-content: flex-start; }
+      .cs-extending-phones::-webkit-scrollbar { display: none; }
+      .cs-ext-phone { scroll-snap-align: start; flex-shrink: 0; width: calc(50% - 8px); }
+      .cs-extending-stat { width: 100%; }
+      .cs-extending-stat-card { width: 100%; flex-direction: column; }
+      .cs-extending-stat-inner { height: auto; }
+      footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .footer-headline { font-size: 72px; line-height: 72px; }
+      .footer-right { width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .cs-hero { padding: 32px 20px; }
+      .cs-hero-left { gap: 24px; }
+      .cs-hero-title { font-size: 48px; line-height: 58px; }
+      .cs-hero-brand { gap: 12px; }
+      .cs-meta { gap: 16px; }
+      .cs-meta-value { font-size: 16px; }
+      .cs-section { padding: 48px 20px; gap: 24px; }
+      .cs-problem-left { padding: 48px 20px; }
+      .cs-problem-stats { padding: 32px 20px; }
+      .cs-problem-stats-inner { flex-direction: column; width: 100%; gap: 16px; }
+      .cs-stat-divider { width: 100%; height: 1px; align-self: auto; }
+      .cs-stat-value { font-size: 40px; }
+      .cs-heading { font-size: 26px; }
+      .cs-body-bold {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 28px; }
+      .cs-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 28px; }
+      .cs-body-grey {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 28px; }
+      .cs-list li {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; }
+      .cs-screens-carousel { display: flex; align-items: center; gap: 12px; width: 100%; }
+      .cs-screens-btn { display: flex; }
+      .cs-screens { flex: 1; min-width: 0; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-direction: row; gap: 0; padding: 0; justify-content: flex-start; }
+      .cs-screens::-webkit-scrollbar { display: none; }
+      .cs-screen-slide { display: block; scroll-snap-align: start; flex-shrink: 0; width: 100%; border-radius: 32px; overflow: hidden; }
+      .cs-screen-img { width: 100%; height: auto; border-radius: 0; box-shadow: none; }
+      .cs-analysis-title {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
+      .cs-analysis-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; }
+      .cs-centered { padding: 56px 20px; }
+      .cs-principle { flex: 1 1 100%; padding: 32px 24px; }
+      .cs-principles-grid { flex-direction: column; gap: 8px; }
+      .cs-flow-tag { font-size: 18px; line-height: 32px; padding: 6px 16px; }
+      .cs-constraint-text {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 28px; }
+      .cs-step-left { padding: 40px 20px; gap: 16px; }
+      .cs-step-right { padding: 24px 20px; }
+      .cs-step-title { font-size: 24px; line-height: 32px; }
+      .cs-step-body {
+      font-size: 18px; line-height: 28px; }
+      .cs-step-list li {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 16px; }
+      .cs-new-design { padding: 48px 20px; gap: 52px; }
+      .cs-new-design-heading { font-size: 32px; }
+      .cs-new-design-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; line-height: 28px; }
+      .cs-new-design-highlights { margin-top: -16px; }
+      .cs-phone-frame { width: 286px; height: 623px; }
+      .cs-stat { font-size: 40px; }
+      .cs-card-title { font-size: 22px; }
+      /* Extending impact: carousel */
+      .cs-carousel-wrapper {
+        display: flex; align-items: center; gap: 12px; width: 100%;
+      }
+      .cs-carousel-btn { display: flex; }
+      .cs-extending-phones {
+        flex: 1; min-width: 0;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 0;
+        padding: 0;
+        margin: 0;
+        justify-content: flex-start;
+      }
+      .cs-extending-phones::-webkit-scrollbar { display: none; }
+      .cs-ext-phone {
+        scroll-snap-align: start;
+        flex-shrink: 0;
+        width: 100%;
+      }
+      /* Extending stat card */
+      .cs-extending-stat { width: 100%; }
+      .cs-extending-stat-card { width: 100%; flex-direction: column; }
+      .cs-extending-stat-inner { height: auto; }
+      footer { padding: 48px 20px; }
+      .footer-headline { font-size: 48px; line-height: 52px; }
+      .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+    /* ── New design highlights ── */
+    .cs-new-design-highlights {
+      list-style: none; padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .cs-new-design-highlights li {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      display: flex; align-items: flex-start; gap: 16px;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: #ffffff;
+    }
+    .cs-new-design-highlights li::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #3b82f6;
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+    @media (max-width: 960px) { .cs-new-design-highlights li { font-size: 18px; } }
+    @media (max-width: 600px) { .cs-new-design-highlights li { font-size: 16px; } }
+
+    /* ── Next project ── */
+    .cs-next {
+      width: 100%;
+      background: #403462;
+      border-bottom: 1px solid rgba(255,255,255,0.25);
+    }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-next-link {
+      display: block;
+      padding: 64px 128px;
+      text-decoration: none;
+      transition: background 0.25s ease;
+    }
+    .cs-next-link:hover { background: rgba(255,255,255,0.04); }
+    .cs-next-header { margin-bottom: 28px; }
+    .cs-next-body {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+    .cs-next-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: cover;
+      flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cs-next-link:hover .cs-next-logo { transform: scale(1.07) rotate(-2deg); }
+    .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .cs-next-name {
+      font-weight: 500; font-size: 44px; line-height: 1;
+      color: #ffffff;
+    }
+    .cs-next-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: rgba(255,255,255,0.85);
+    }
+    .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      border-radius: 160px;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-next-link:hover .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      width: 134px;
+    }
+    .project-btn span {
+      color: rgba(255,255,255,0.75);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
+    }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #fff; }
+    @media (max-width: 960px) {
+      .cs-next-link { padding: 48px 40px; }
+      .cs-next-name { font-size: 36px; }
+      .cs-next-link:hover .project-btn { width: 70px; }
+    }
+    @media (max-width: 600px) {
+      .cs-next-link { padding: 36px 20px; }
+      .cs-next-name { font-size: 28px; }
+      .cs-next-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+    }
+
+    /* ── Intro (Context + Scope) ── */
+    .cs-intro { display: flex; align-items: stretch; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-scope-card {
+      flex: 0 0 480px;
+      display: flex; flex-direction: column; gap: 32px;
+      align-items: flex-start; justify-content: center;
+      padding: 40px;
+      background: #403462;
+    }
+    .cs-scope-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phases { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+    .cs-scope-phase { display: flex; flex-direction: column; width: 100%; }
+    .cs-scope-phase-row { display: flex; gap: 16px; align-items: center; color: #ffffff; }
+    .cs-scope-phase-num {
+      font-weight: 400; font-size: 14px; letter-spacing: 1.96px;
+      color: #ffffff;
+    }
+    .cs-scope-phase-title {
+      flex: 1; font-weight: 600; font-size: 24px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phase-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: rgba(255,255,255,0.75);
+    }
+    .cs-scope-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 24px; }
+
+    /* ── Hypothesis + Quote row ── */
+    .cs-hypothesis-row { display: flex; align-items: stretch; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-hypothesis-col {
+      flex: 1; min-width: 0;
+      padding: 80px 128px;
+      display: flex; flex-direction: column; gap: 40px;
+      background: #faf4f1;
+    }
+    .cs-quote-card {
+      flex: 1; min-width: 0;
+      display: flex; align-items: center; justify-content: center;
+      padding: 80px;
+      background: #e6e0f2;
+    }
+    .cs-quote-light {
+      font-weight: 300; font-size: 48px; line-height: normal;
+      color: #10042c;
+      text-align: center;
+    }
+
+    /* ── Artistic Direction ── */
+    .cs-art-section { background: #faf4f1; }
+    .cs-art-heading { color: #22222e; }
+    .cs-art-label { color: #776c92; }
+    .cs-art-row { display: flex; gap: 22px; width: 100%; flex-wrap: wrap; }
+    .cs-art-tile {
+      flex: 1 1 340px; min-width: 300px;
+      display: flex; flex-direction: column; gap: 20px;
+      padding: 28px;
+      border-radius: 16px;
+      background: #fcfbfe;
+      border: 1px solid rgba(34,34,46,0.1);
+    }
+    .cs-art-tile-tag {
+      font-weight: 600; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: #4e5af2;
+    }
+    /* Palette tile */
+    .cs-art-tile-palette { background: #efeffe; border: none; }
+    .cs-art-swatch-grid { display: flex; flex-direction: column; gap: 12px; }
+    .cs-art-swatch-row { display: flex; gap: 16px; }
+    .cs-art-swatch { width: 69px; height: 69px; border-radius: 50%; flex-shrink: 0; }
+    /* Type tile */
+    .cs-art-specimen { font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-weight: 300; font-size: 96px; color: #22222e; line-height: 1; }
+    .cs-art-type-note { font-weight: 300; font-size: 14px; color: #78788c; }
+    .cs-art-type-note-strong { font-weight: 600; font-size: 14px; color: #78788c; }
+    .cs-art-rule { height: 1px; background: rgba(34,34,46,0.15); width: 100%; }
+    .cs-art-type-line {
+      font-weight: 400; font-size: 16px; letter-spacing: 2.4px; text-transform: uppercase;
+      color: #22222e;
+    }
+    /* Shapes tile */
+    .cs-art-tile-shapes { background: #eff0ff; border: none; }
+    .ui-mock { font-family: -apple-system, 'Segoe UI', system-ui, sans-serif; }
+    .ui-mock-btn {
+      background: #5170ff; color: #fff; font-weight: 700; font-size: 16px;
+      height: 54px; border-radius: 16px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .ui-mock-row { display: flex; gap: 8px; }
+    .ui-mock-cat {
+      flex: 1; display: flex; align-items: center; gap: 10px;
+      background: #fff; border-radius: 16px; padding: 12px;
+      font-weight: 600; font-size: 13px; color: #1a1a24;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+    .ui-mock-cat-active { background: #eef1ff; border: 2px solid #5170ff; color: #5170ff; }
+    .ui-mock-cat-icon { width: 34px; height: 34px; border-radius: 10px; background: #fff0f5; display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+    .ui-mock-pill { background: #fff; border-radius: 9999px; padding: 8px 14px; font-weight: 700; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; color: #1a1a24; box-shadow: 0 2px 4px rgba(0,0,0,0.08); }
+    .ui-mock-pill-active { background: #5170ff; color: #fff; }
+    .ui-mock-slider { position: relative; height: 4px; border-radius: 999px; background: #e2deda; }
+    .ui-mock-slider-fill { position: absolute; left: 0; top: 0; height: 4px; border-radius: 999px; background: #5170ff; width: 66%; }
+    .ui-mock-slider-thumb { position: absolute; top: 50%; left: 66%; width: 16px; height: 16px; border-radius: 50%; background: #fff; border: 4px solid #5170ff; transform: translate(-50%,-50%); box-shadow: 0 2px 4px rgba(0,0,0,0.2); }
+    /* Voice tile */
+    .cs-art-voice-greeting { font-family: Georgia, serif; font-weight: 600; font-size: 32px; }
+    .cs-art-voice-greeting span { color: #5170ff; }
+    .cs-art-voice-sub { font-weight: 500; font-size: 22px; color: #22222e; }
+    .cs-art-voice-tip { background: #efeffe; border-radius: 12px; padding: 14px 16px; font-weight: 300; font-size: 17px; color: #4e5af2; }
+    .cs-art-voice-cta { font-weight: 500; font-size: 22px; color: #22222e; }
+    /* Emoji tile */
+    .cs-art-emoji-row { display: flex; gap: 8px; flex-wrap: wrap; }
+    .cs-art-emoji-chip { background: #ededf5; color: #22222e; font-weight: 300; font-size: 15px; padding: 9px 14px; border-radius: 9999px; }
+    .cs-art-emoji-chip-active { background: #4e5af2; color: #fff; font-weight: 600; }
+    /* Mood tile */
+    .cs-art-tile-mood { position: relative; padding: 28px; overflow: hidden; min-height: 278px; justify-content: flex-end; }
+    .cs-art-mood-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .cs-art-mood-badge { position: relative; align-self: flex-start; background: #f5c842; color: #261a00; font-weight: 600; font-size: 15px; padding: 7px 16px; border-radius: 9999px; }
+    .cs-art-mood-title { position: relative; font-weight: 500; font-size: 26px; color: #fff; margin-top: 44px; }
+    .cs-art-mood-price { position: relative; align-self: flex-start; background: rgba(255,255,255,0.9); color: #22222e; font-weight: 600; font-size: 17px; padding: 7px 14px; border-radius: 9999px; margin-top: 90px; }
+    .cs-art-mood-tag { position: relative; text-align: center; width: 100%; margin-top: 16px; }
+
+    /* ── Features (5 key moments) ── */
+    .cs-feature {
+      width: 100%;
+      display: flex; align-items: center; justify-content: center; gap: 120px;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      background: linear-gradient(90deg, #efeffa 0%, #ffffff 65%);
+      position: relative; overflow: hidden;
+    }
+    .cs-feature-reverse { flex-direction: row-reverse; background: linear-gradient(270deg, #efeffa 0%, #ffffff 65%); }
+    .cs-feature-img { flex-shrink: 0; width: 360px; border-radius: 36px; overflow: hidden; box-shadow: 4px 4px 32px -8px rgba(0,0,0,0.25); }
+    .cs-feature-img img { width: 100%; display: block; }
+    .cs-feature-phones { flex-shrink: 0; display: flex; align-items: flex-start; }
+    .cs-feature-phones img { width: 300px; aspect-ratio: 390 / 844; object-fit: cover; border-radius: 32px; box-shadow: 4px 4px 32px -8px rgba(0,0,0,0.25); }
+    .cs-feature-phones img:last-child { margin-left: -24px; margin-top: 104px; }
+    .cs-feature-content { flex: 0 0 400px; width: 400px; display: flex; flex-direction: column; gap: 20px; position: relative; }
+    .cs-feature-num-bg {
+      position: absolute; top: -70px; left: -8px;
+      font-weight: 500; font-size: 260px; line-height: 1;
+      color: #776c92; opacity: 0.06;
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+    .cs-feature-label, .cs-feature-title, .cs-feature-desc, .cs-feature-callout { position: relative; z-index: 1; }
+    .cs-feature-label {
+      font-weight: 400; font-size: 14px; letter-spacing: 1.96px; text-transform: uppercase;
+      color: #10042c;
+    }
+    .cs-feature-title { font-weight: 500; font-size: 44px; line-height: 44px; color: #10042c; }
+    .cs-feature-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 20px; line-height: 30px; color: #776c92; display: flex; flex-direction: column; gap: 16px; }
+    .cs-feature-sep { width: 64px; height: 1px; background: rgba(78,90,242,0.35); border: none; }
+    .cs-feature-callout {
+      background: #e6e0f2;
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex; flex-direction: column; gap: 8px;
+      width: 100%;
+    }
+    .cs-feature-callout-label { font-weight: 600; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #776c92; }
+    .cs-feature-callout-text { font-weight: 500; font-size: 20px; line-height: normal; color: #22222e; }
+
+    .cs-features-head { padding: 80px 128px 48px; background: linear-gradient(90deg, #efeffa 0%, #ffffff 65%); }
+    @media (max-width: 1200px) { .cs-features-head { padding: 64px 64px 40px; } }
+    @media (max-width: 960px) { .cs-features-head { padding: 56px 40px 32px; } }
+    @media (max-width: 600px) { .cs-features-head { padding: 48px 20px 32px; } }
+    @media (min-width: 961px) {
+      .cs-scope-card { flex-basis: 560px; }
+      .cs-scope-phases { gap: 16px; }
+      .cs-scope-divider { margin-top: 16px; }
+      .cs-problem-left { justify-content: center; }
+    }
+    /* ── Design system + process flows ── */
+    .cs-sys-lede { max-width: 820px; }
+    .jflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; width: 100%; }
+    .jflow-step { flex: 1 1 120px; min-width: 110px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 16px; background: #fcfbfe; border: 1px solid rgba(34,34,46,0.1); }
+    .jflow-step-accent { background: #4e5af2; border-color: #4e5af2; }
+    .jflow-tag { font-weight: 600; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #4e5af2; }
+    .jflow-title { font-weight: 600; font-size: 20px; line-height: 26px; color: #10042c; }
+    .jflow-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; line-height: 22px; color: #544869; }
+    .jflow-step-accent .jflow-tag, .jflow-step-accent .jflow-title, .jflow-step-accent .jflow-desc { color: #ffffff; }
+    .jflow-arrow { align-self: center; flex: 0 0 auto; font-size: 18px; color: #776c92; }
+    .cs-proto-section { background: #f7f6f8; }
+    @media (min-width: 961px) {
+      .cs-proto-section .cs-section-header { align-items: center; text-align: center; }
+      .cs-proto-section .cs-sys-lede { margin-left: auto; margin-right: auto; text-align: center; }
+    }
+    @media (max-width: 960px) {
+      .jflow-arrow { flex: 1 1 100%; text-align: center; transform: rotate(90deg); line-height: 1; height: 22px; }
+    }
+    .jflow-col { flex-direction: column; flex-wrap: nowrap; max-width: 520px; gap: 8px; }
+    .jflow-col .jflow-arrow { flex: 0 0 auto; transform: rotate(90deg); height: 20px; line-height: 1; text-align: center; }
+    .jflow-col .jflow-step { flex: 0 0 auto; padding: 24px; }
+    .jflow-col .jflow-title { font-size: 24px; line-height: 30px; }
+    .jflow-col .jflow-desc { font-size: 18px; line-height: 28px; }
+
+    /* ── User Tests ── */
+    .cs-testing-row { display: flex; gap: 80px; align-items: center; justify-content: center; width: 100%; }
+    .cs-testing-left { display: flex; flex-direction: column; gap: 48px; flex: 1 1 600px; min-width: 0; max-width: 600px; }
+    .cs-testing-meta {
+      font-weight: 600; font-size: 18px; line-height: normal;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #3b82f6;
+    }
+    .cs-testing-lede {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; display: flex; flex-direction: column; gap: 16px; font-weight: 300; font-size: 20px; line-height: 30px; color: #10042c; }
+    .cs-testing-cards { display: flex; flex-direction: column; gap: 24px; flex: 1 1 400px; min-width: 0; max-width: 400px; }
+    .cs-testing-card { background: #fcfbfe; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+    .cs-testing-num { font-weight: 700; font-size: 20px; line-height: 30px; letter-spacing: 2.4px; color: #3b82f6; }
+    .cs-testing-title { font-weight: 600; font-size: 20px; line-height: 30px; color: #10042c; }
+    .cs-testing-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 18px; line-height: 28px; color: #10042c; }
+
+    /* ── Community ── */
+
+    @media (max-width: 960px) {
+      .cs-intro { flex-direction: column; }
+      .cs-scope-card { flex: none; width: 100%; padding: 40px; }
+      .cs-hypothesis-row { flex-direction: column; }
+      .cs-hypothesis-col { padding: 56px 40px; }
+      .cs-quote-card { padding: 56px 40px; }
+      .cs-quote-light { font-size: 32px; }
+      .cs-art-row { flex-wrap: wrap; }
+      .cs-feature { flex-direction: column !important; gap: 40px; padding: 56px 40px; background: #efeffa !important; }
+      .cs-feature-content { width: 100%; flex: 1 1 auto; }
+      .cs-feature-img { width: 100%; max-width: 320px; }
+      .cs-feature-phones { max-width: 100%; }
+      .cs-feature-phones img { width: 45%; }
+      .cs-feature-title { font-size: 32px; }
+      .cs-feature-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+      .cs-feature-num-bg { font-size: 160px; top: -40px; }
+      .cs-testing-row { flex-direction: column; gap: 40px; }
+      .cs-testing-left { width: 100%; flex: 1 1 auto; max-width: none; }
+      .cs-testing-cards { width: 100%; flex: 1 1 auto; max-width: none; }
+      .cs-testing-meta { font-size: 18px; }
+    }
+    @media (max-width: 600px) {
+      .cs-scope-card { padding: 32px 20px; }
+      .cs-hypothesis-col { padding: 48px 20px; }
+      .cs-quote-card { padding: 48px 20px; }
+      .cs-quote-light { font-size: 26px; }
+      .cs-feature { padding: 48px 20px; }
+      .cs-feature-title { font-size: 26px; }
+      .cs-testing-lede {
+      font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+      .cs-testing-title { font-size: 22px; }
+    }
+
+  
+    /* ── Language switch ── */
+    .cs-nav-end { display: flex; align-items: center; gap: 32px; }
+    .lang-switch {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px; line-height: 1;
+    }
+    .lang-switch a { color: #fff; opacity: 0.48; padding: 16px 8px; margin: -16px -8px; transition: opacity 0.25s ease; }
+    .lang-switch a:hover { opacity: 1; }
+    .lang-switch a[aria-current] { opacity: 1; pointer-events: none; }
+    .lang-switch-sep { width: 1px; height: 8px; background: #fff; opacity: 0.32; }
+    @media (max-width: 600px) { .cs-nav-end { gap: 16px; } }
+  </style>
+  <link rel="preload" as="image" href="/assets/joy-hero-phones.webp" type="image/webp">
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a class="cs-nav-back" href="/fr/" aria-label="Retour aux projets"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="cs-nav-end"><span class="cs-nav-brand">&amp;Joy</span><div class="lang-switch"><a href="/joy.html" hreflang="en" lang="en" aria-label="English">EN</a><span class="lang-switch-sep" aria-hidden="true"></span><a href="/fr/joy.html" hreflang="fr" lang="fr" aria-label="Français" aria-current="true">FR</a></div></div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="cs-hero-tint" aria-hidden="true"></div>
+      <img class="cs-hero-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-hero-left">
+        <div class="cs-hero-brand reveal">
+          <div class="cs-logo-mark" aria-hidden="true">&amp;</div>
+          <span class="cs-tag">App de réservation d'activités</span>
+        </div>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Concevoir<br>l'app d'activités<br>qui manquait à Paris</h1>
+        <div class="cs-meta reveal reveal-delay-2">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Rôle</span>
+            <span class="cs-meta-value">Stratégie produit, direction artistique, UX/UI</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Année</span>
+            <span class="cs-meta-value">2026</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Statut</span>
+            <span class="cs-meta-value">En développement</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero image: absolutely positioned -->
+      <div class="cs-hero-image reveal from-right reveal-delay-3">
+        <img loading="lazy" src="/assets/joy-hero-phones.webp" alt="Écran d'accueil de l'application &amp;Joy avec une activité de yoga sur un rooftop, à côté d'une confirmation de réservation avec son code">
+      </div>
+    </section>
+
+    <!-- Intro / Context + Scope -->
+    <section class="cs-intro">
+      <div class="cs-problem-left">
+        <div class="cs-section-header reveal">
+          <span class="cs-label">Contexte</span>
+          <h2 class="cs-heading">Le « Too Good To Go » des loisirs parisiens.</h2>
+        </div>
+        <div class="cs-problem-content reveal reveal-delay-1">
+          <p class="cs-body">J'ai rejoint le projet &amp;joy alors qu'il n'était encore qu'un concept. Quelques écrans faits avec Lovable, et surtout une très bonne idée : et si on transformait les places invendues de dernière minute en sorties spontanées à Paris, comme Too Good To Go l'a fait avec les invendus alimentaires ?</p>
+          <p class="cs-body">Avant de commencer le design à proprement parler, j'ai aidé à définir le positionnement et l'identité de l'app : ce que &amp;joy devait représenter, et sur quel ton elle devait parler.</p>
+          <p class="cs-body">J'ai ensuite mené le projet de bout en bout, en six étapes : stratégie, direction artistique et design system, écrans et parcours, prototype réaliste réalisé avec l'IA, tests utilisateurs et spécifications techniques. Les sections ci-dessous suivent ces six étapes.</p>
+        </div>
+      </div>
+      <div class="cs-scope-card reveal reveal-delay-2">
+        <span class="cs-scope-label">Mon périmètre</span>
+        <div class="cs-scope-phases">
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">01</span>
+              <span class="cs-scope-phase-title">Stratégie produit</span>
+            </div>
+            <p class="cs-scope-phase-desc">Positionnement, analyse des entretiens menés par la fondatrice, principes de design, périmètre de la V1</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">02</span>
+              <span class="cs-scope-phase-title">Direction artistique &amp; design system</span>
+            </div>
+            <p class="cs-scope-phase-desc">Palette, typographie, formes et ton, déclinés en 12 tokens et en composants réutilisables</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">03</span>
+              <span class="cs-scope-phase-title">Écrans &amp; parcours</span>
+            </div>
+            <p class="cs-scope-phase-desc">Tous les écrans et les cinq moments clés, de l'inscription au billet</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">04</span>
+              <span class="cs-scope-phase-title">Prototype réalisé avec l'IA</span>
+            </div>
+            <p class="cs-scope-phase-desc">Un prototype réaliste utilisé pour les tests utilisateurs, amélioré après chaque session</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">05</span>
+              <span class="cs-scope-phase-title">Tests utilisateurs</span>
+            </div>
+            <p class="cs-scope-phase-desc">17 participants · 2 vagues · entretiens de 45 minutes</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">06</span>
+              <span class="cs-scope-phase-title">Spécifications techniques</span>
+            </div>
+            <p class="cs-scope-phase-desc">Rédigées pour les développeurs, au fil du développement</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- User Research: hypothesis, interviews, problem -->
+    <section class="cs-hypothesis-row">
+      <div class="cs-hypothesis-col">
+        <div class="cs-section-header reveal">
+          <span class="cs-label">Étape 1 · Stratégie produit</span>
+          <h2 class="cs-heading">D'une hypothèse à un problème clair</h2>
+        </div>
+        <p class="cs-body reveal reveal-delay-1">Avant de dessiner quoi que ce soit, la fondatrice et moi avons mis nos intuitions par écrit. Les entretiens les ont ensuite transformées en un problème concret. Les principes ci-dessous sont ma réponse.</p>
+      </div>
+      <div class="cs-quote-card">
+        <div class="jflow jflow-col reveal reveal-delay-1">
+          <div class="jflow-step">
+            <span class="jflow-tag">1 · Hypothèse</span>
+            <span class="jflow-title">Ce que nous imaginions</span>
+            <p class="jflow-desc">Le problème principal : trop de choix dans une ville qui bouge sans arrêt, et des petits événements qui peinent à trouver leur public.</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">2 · Entretiens</span>
+            <span class="jflow-title">Ce que les gens ont vraiment dit</span>
+            <p class="jflow-desc">La fondatrice a mené les premiers entretiens et je les ai analysés. Nous avions à moitié tort.</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">3 · Le problème</span>
+            <span class="jflow-title">Des options éparpillées, des événements complets</span>
+            <p class="jflow-desc">Trouver une sortie devient vite stressant. Les options sont partout, mais éparpillées et mal organisées, et les événements dont on entend parler affichent déjà complet.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Design Principles -->
+    <section class="cs-section cs-principles-section">
+      <img class="cs-principles-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Stratégie produit · Principes de design</span>
+        <h2 class="cs-heading">Trois choix qui guident l'expérience</h2>
+      </div>
+      <div class="cs-principles-grid reveal reveal-delay-1">
+        <div class="cs-principle">
+          <span class="cs-principle-num">01</span>
+          <span class="cs-principle-title">La sélection avant la quantité</span>
+          <p class="cs-principle-desc">30 activités choisies et vérifiées valent mieux que 300 annonces non filtrées. Le catalogue doit être une promesse de qualité, pas une simple liste de suggestions.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">02</span>
+          <span class="cs-principle-title">La spontanéité d'abord</span>
+          <p class="cs-principle-desc">De l'inscription à la réservation confirmée, il doit se passer moins de 2 minutes. Chaque tap superflu doit disparaître.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">03</span>
+          <span class="cs-principle-title">Humaine par nature</span>
+          <p class="cs-principle-desc">Du « Salut Jane 👋 » aux descriptions d'activités écrites à la main, l'app parle comme une vraie personne, avec chaleur. Dans une catégorie remplie de plateformes génériques, le ton fait la marque.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Artistic Direction -->
+    <section class="cs-section cs-art-section">
+      <div class="cs-section-header reveal">
+        <span class="cs-label cs-art-label">Étape 2 · Direction artistique &amp; design system</span>
+        <h2 class="cs-heading cs-art-heading">Chaleureuse, humaine, et volontairement loin du corporate</h2>
+      </div>
+      <div class="cs-art-row reveal reveal-delay-1">
+        <div class="cs-art-tile cs-art-tile-palette">
+          <div class="cs-art-swatch-grid">
+            <div class="cs-art-swatch-row">
+              <span class="cs-art-swatch" style="background:#1E2130;"></span>
+              <span class="cs-art-swatch" style="background:#4E5AF2;"></span>
+              <span class="cs-art-swatch" style="background:#8080A0;"></span>
+              <span class="cs-art-swatch" style="background:#E0E0FA;"></span>
+            </div>
+            <div class="cs-art-swatch-row">
+              <span class="cs-art-swatch" style="background:#8866EE;"></span>
+              <span class="cs-art-swatch" style="background:#F45C5C;"></span>
+              <span class="cs-art-swatch" style="background:#F5A020;"></span>
+              <span class="cs-art-swatch" style="background:#F5C842;"></span>
+            </div>
+            <div class="cs-art-swatch-row">
+              <span class="cs-art-swatch" style="background:#2DD55B;"></span>
+              <span class="cs-art-swatch" style="background:#E06080;"></span>
+              <span class="cs-art-swatch" style="background:#E54040;"></span>
+              <span class="cs-art-swatch" style="background:#FAF6F1; border:1px solid rgba(0,0,0,0.08);"></span>
+            </div>
+          </div>
+          <span class="cs-art-tile-tag">Make it Colorful · 12 tokens</span>
+        </div>
+        <div class="cs-art-tile">
+          <p class="cs-art-specimen">Aa</p>
+          <p class="cs-art-type-note">Cormorant Garamond · Serif éditoriale</p>
+          <div class="cs-art-rule"></div>
+          <p class="cs-art-type-note-strong">Sans serif arrondie · Tous les textes d'interface</p>
+          <p class="cs-art-type-line">Deux voix. Une pour la sélection, une pour la clarté.</p>
+          <span class="cs-art-tile-tag">Typographie · Deux familles</span>
+        </div>
+        <div class="cs-art-tile cs-art-tile-shapes">
+          <div class="ui-mock" style="display:flex; flex-direction:column; gap:16px; width:100%;">
+            <div class="ui-mock-btn">Continuer</div>
+            <div class="ui-mock-row">
+              <div class="ui-mock-cat"><span class="ui-mock-cat-icon">🎵</span>Musique</div>
+              <div class="ui-mock-cat ui-mock-cat-active"><span class="ui-mock-cat-icon">🎵</span>Musique</div>
+            </div>
+            <div class="ui-mock-row">
+              <span class="ui-mock-pill">🎨 Atelier &amp; initiation</span>
+              <span class="ui-mock-pill ui-mock-pill-active">🎭 Spectacle</span>
+            </div>
+            <div class="ui-mock-slider"><span class="ui-mock-slider-fill"></span><span class="ui-mock-slider-thumb"></span></div>
+          </div>
+          <span class="cs-art-tile-tag">Formes · Tout en arrondi</span>
+        </div>
+      </div>
+      <div class="cs-art-row reveal reveal-delay-2">
+        <div class="cs-art-tile">
+          <div class="cs-art-voice-greeting">Salut <span>Jane</span> 👋</div>
+          <p class="cs-art-voice-sub">On fait quoi aujourd'hui ?</p>
+          <p class="cs-art-voice-tip">💡 Ton code, c'est ton billet. Montre-le simplement à l'entrée.</p>
+          <p class="cs-art-voice-cta">Plus que 4 places !</p>
+          <span class="cs-art-tile-tag">UX writing · Simple &amp; chaleureux</span>
+        </div>
+        <div class="cs-art-tile">
+          <div class="cs-art-emoji-row">
+            <span class="cs-art-emoji-chip">🎨 Atelier</span>
+            <span class="cs-art-emoji-chip cs-art-emoji-chip-active">🎭 Spectacle</span>
+          </div>
+          <div class="cs-art-emoji-row">
+            <span class="cs-art-emoji-chip">🍴 Gastronomie</span>
+            <span class="cs-art-emoji-chip">🏃 Sport</span>
+            <span class="cs-art-emoji-chip cs-art-emoji-chip-active">🎵 Musique</span>
+          </div>
+          <div class="cs-art-emoji-row">
+            <span class="cs-art-emoji-chip">🌿 Plein air</span>
+            <span class="cs-art-emoji-chip">🎲 Jeu</span>
+          </div>
+          <span class="cs-art-tile-tag">Des emojis et des couleurs pour se repérer en un coup d'œil</span>
+        </div>
+        <div class="cs-art-tile cs-art-tile-mood">
+          <img loading="lazy" class="cs-art-mood-bg" src="/assets/joy-mood-tile.jpg" alt="Image d'ambiance &amp;Joy : une personne qui médite sur une terrasse en bois au coucher du soleil">
+          <span class="cs-art-mood-badge">Plus que 4 places</span>
+          <p class="cs-art-mood-title">Yoga sur un rooftop au coucher du soleil</p>
+          <span class="cs-art-mood-price">18 €</span>
+          <span class="cs-art-tile-tag cs-art-mood-tag">La clarté avant tout</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features: The app in 5 key moments -->
+    <section class="cs-section cs-features-head">
+      <div class="cs-section-header reveal" style="gap:16px;">
+        <span class="cs-label">Étape 3 · Écrans et parcours</span>
+        <h2 class="cs-heading">L'app en 5 moments clés</h2>
+      </div>
+    </section>
+
+    <div class="cs-feature reveal">
+      <div class="cs-feature-img">
+        <img loading="lazy" src="/assets/joy-feat1-onboarding.webp" alt="Écran d'inscription &amp;Joy qui demande les préférences d'activités">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">1</span>
+        <span class="cs-feature-label">Personnalisation</span>
+        <h3 class="cs-feature-title">Une inscription qui va droit au but</h3>
+        <div class="cs-feature-desc">
+          <p>En quelques écrans, l'utilisateur arrive sur un accueil personnalisé. On lui demande surtout ses goûts, pour que les activités proposées lui correspondent.</p>
+          <p>Dès le premier écran, les activités proposées lui ressemblent.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-feature cs-feature-reverse reveal">
+      <div class="cs-feature-img">
+        <img loading="lazy" src="/assets/joy-feat2-discovery.webp" alt="Page d'accueil &amp;Joy avec une activité mise en avant et des recommandations personnelles">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">2</span>
+        <span class="cs-feature-label">Découverte</span>
+        <h3 class="cs-feature-title">Un accueil qui sélectionne au lieu d'empiler</h3>
+        <div class="cs-feature-desc">
+          <p>L'accueil s'ouvre sur le prénom de l'utilisateur, la météo du jour et une activité mise en avant, avec un badge de places restantes en temps réel. Puis les coups de cœur de l'équipe, les recommandations personnelles et ce qui se passe près de chez soi. Trois sections, trois bonnes raisons d'ouvrir l'app.</p>
+          <p>Chaque section a sa raison d'être, et son contenu change d'un jour à l'autre. Tout l'inverse d'un fil générique.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-feature reveal">
+      <div class="cs-feature-phones">
+        <img loading="lazy" src="/assets/joy-feat3-map.webp" alt="Écran carte &amp;Joy avec un pin emoji pour chaque catégorie d'activité">
+        <img loading="lazy" src="/assets/joy-feat3-filters.webp" alt="Écran filtres &amp;Joy : bandeau de dates, catégorie, fourchette de prix et nombre de personnes">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">3</span>
+        <span class="cs-feature-label">Exploration</span>
+        <h3 class="cs-feature-title">Explorer la ville à sa façon</h3>
+        <div class="cs-feature-desc">
+          <p>Chaque catégorie a son propre pin emoji sur la carte. Un 🧘 pour le bien-être, un 🎭 pour la culture, un 🍽 pour la gastronomie. En un coup d'œil, la ville devient lisible et variée. Un bouton liste permet de comparer les activités côte à côte sans perdre la carte de vue.</p>
+          <p>J'ai construit les filtres à partir des usages observés pendant la recherche, et non de ce que j'imaginais : un bandeau de dates sur 7 jours glissants (plutôt que juste « ce soir » ou « ce week-end »)*, un choix de catégorie, un curseur de prix, le nombre de personnes et un interrupteur pour les promos. Chaque filtre répond à une question que les utilisateurs ont réellement posée.</p>
+        </div>
+        <div class="cs-feature-sep"></div>
+        <div class="cs-feature-callout">
+          <span class="cs-feature-callout-label">Enseignement de la recherche</span>
+          <p class="cs-feature-callout-text">*13 participants sur 17 avaient besoin de filtrer par date précise.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-feature cs-feature-reverse reveal">
+      <div class="cs-feature-img">
+        <img loading="lazy" src="/assets/joy-feat4-detail.webp" alt="Fiche activité &amp;Joy avec galerie photo, note, conditions d'annulation et nombre de places restantes en temps réel">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">4</span>
+        <span class="cs-feature-label">Confiance</span>
+        <h3 class="cs-feature-title">La page où la décision se prend</h3>
+        <div class="cs-feature-desc">
+          <p>Une galerie photo à faire défiler plante le décor avant tout le reste. En dessous : une note, une station de métro, une durée, des conditions d'annulation et le nombre de places restantes en temps réel. Les rubriques « inclus / non inclus » et « Bon à savoir » lèvent les derniers doutes avant le paiement.</p>
+          <p>J'avais volontairement laissé les avis de côté pour la V1. C'était une erreur, ou au moins un choix incomplet, et je les ai réintégrés petit à petit en fonction des retours utilisateurs*.</p>
+        </div>
+        <div class="cs-feature-sep"></div>
+        <div class="cs-feature-callout">
+          <span class="cs-feature-callout-label">Enseignement de la recherche</span>
+          <p class="cs-feature-callout-text">*14 participants sur 17 ont cité l'absence d'avis comme leur principal frein.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-feature reveal" style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+      <div class="cs-feature-phones">
+        <img loading="lazy" src="/assets/joy-feat5-tickets.webp" alt="Écran Mes billets &amp;Joy avec la liste des activités réservées">
+        <img loading="lazy" src="/assets/joy-feat5-ticket.webp" alt="Écran billet &amp;Joy avec un code de réservation à 6 caractères">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">5</span>
+        <span class="cs-feature-label">Confirmation</span>
+        <h3 class="cs-feature-title">Code, QR code, ou les deux ?</h3>
+        <div class="cs-feature-desc">
+          <p>Les lieux partenaires sont très variés, et ils n'ont pas tous un scanner. J'ai d'abord choisi un code à 6 caractères plutôt qu'un QR code : il marche avec une tablette, une liste imprimée, ou simplement une paire d'yeux.</p>
+          <p>La question avait un vrai impact sur le produit, et nous avons fini par proposer les deux. Le QR code se scanne avec le téléphone du partenaire, connecté à l'app avec un compte partenaire. Chaque lieu utilise ce qui lui convient.</p>
+        </div>
+        <div class="cs-feature-sep"></div>
+        <div class="cs-feature-callout">
+          <span class="cs-feature-callout-label">Enseignement de la recherche</span>
+          <p class="cs-feature-callout-text">Presque tous les utilisateurs s'attendaient à un QR code ici, mais aucun ne l'a redemandé après avoir vu le code et lu la note en dessous.</p>
+        </div>
+        <div class="cs-feature-sep"></div>
+        <div class="cs-feature-callout">
+          <span class="cs-feature-callout-label">Retour des partenaires</span>
+          <p class="cs-feature-callout-text">Les échanges avec les lieux partenaires ont montré que le QR code était indispensable pour fluidifier l'entrée.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- AI-powered prototype -->
+    <section class="cs-section cs-proto-section">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 4 · Prototype réalisé avec l'IA</span>
+        <h2 class="cs-heading">Un prototype réaliste, amélioré après chaque test</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Des écrans statiques ne disent pas si les gens font confiance à une page de réservation. J'ai donc construit un prototype réaliste avec l'IA et je l'ai utilisé pour les tests utilisateurs. Chaque session l'a fait évoluer : les recommandations de l'équipe après la première, le système d'ambassadeurs après la deuxième. La version finale a servi de référence aux développeurs pour le comportement de l'app.</p>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Point de départ</span>
+            <span class="jflow-title">Maquettes finales</span>
+            <p class="jflow-desc">Écrans et composants</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Construit avec des outils d'IA</span>
+            <span class="jflow-title">Prototype V1</span>
+            <p class="jflow-desc">Une version réaliste que l'on peut tester</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Vague 1</span>
+            <span class="jflow-title">14 / 17</span>
+            <p class="jflow-desc">Impossible de réserver sans avis</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Amélioré</span>
+            <span class="jflow-title">Prototype V2</span>
+            <p class="jflow-desc">Ajout des recommandations de l'équipe</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Vague 2</span>
+            <span class="jflow-title">9 / 17</span>
+            <p class="jflow-desc">Méfiance envers les avis de l'équipe</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Amélioré</span>
+            <span class="jflow-title">V2 finale</span>
+            <p class="jflow-desc">Ajout des avis d'ambassadeurs</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Passation</span>
+            <span class="jflow-title">Développeurs</span>
+            <p class="jflow-desc">La V2 sert de référence</p>
+          </div>
+        </div>
+    </section>
+
+    <!-- User Tests -->
+    <section class="cs-section cs-section-purple">
+      <div class="cs-testing-row">
+        <div class="cs-testing-left">
+          <div class="cs-section-header reveal" style="gap:16px;">
+            <span class="cs-label">Étape 5 · Tests utilisateurs</span>
+            <h2 class="cs-heading">Tester les prototypes</h2>
+            <p class="cs-testing-meta">17 participants · 2 vagues d'entretiens semi-directifs de 45 minutes</p>
+          </div>
+          <div class="cs-testing-lede reveal reveal-delay-1">
+            <p>Avec la fondatrice, j'ai mené deux vagues de tests utilisateurs au fil du projet. Nous ne cherchions pas à confirmer ce que nous pensions déjà, mais à trouver où nous nous trompions.</p>
+            <p>Un constat est revenu dans presque toutes les sessions : sans avis, les utilisateurs n'arrivaient pas à se décider. La note globale indiquait combien de personnes étaient venues, mais ne les aidait pas à savoir s'ils devaient y aller.</p>
+            <p>Dans la V2, nous avons ajouté les recommandations de l'équipe &amp;joy, écrites avec conviction, comme un libraire qui conseille un livre. Mais les testeurs nous ont expliqué qu'ils ne pouvaient pas croire un avis écrit par ceux qui vendent l'expérience…</p>
+          </div>
+        </div>
+        <div class="cs-testing-cards reveal reveal-delay-2">
+          <div class="cs-testing-card">
+            <span class="cs-testing-num">14 / 17</span>
+            <span class="cs-testing-title">Avis manquants (test de la V1)</span>
+            <p class="cs-testing-desc">Une note sans commentaires paraissait inventée. « 21 avis et je ne peux pas les lire. » Ce manque de confiance sur la fiche activité a été le constat le plus net de l'étude.</p>
+          </div>
+          <div class="cs-testing-card">
+            <span class="cs-testing-num">9 / 17</span>
+            <span class="cs-testing-title">Avis éditoriaux biaisés (test de la V2)</span>
+            <p class="cs-testing-desc">« C'est l'équipe &amp;joy qui dit que c'est bien… Évidemment, ils ne vont pas dire que c'est nul. » Les avis de l'équipe étaient lus, mais personne n'y croyait.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community (feature 6) -->
+    <div class="cs-feature cs-feature-reverse reveal" style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+      <div class="cs-feature-phones">
+        <img loading="lazy" src="/assets/joy-community-ambassador.webp" alt="Écran profil ambassadeur &amp;Joy">
+        <img loading="lazy" src="/assets/joy-community-reviews.webp" alt="Écran avis &amp;Joy avec des avis d'ambassadeurs signés">
+      </div>
+      <div class="cs-feature-content">
+        <span class="cs-feature-num-bg" aria-hidden="true">6</span>
+        <span class="cs-feature-label">Communauté</span>
+        <h3 class="cs-feature-title">Validé par la communauté, approuvé par la ville</h3>
+        <div class="cs-feature-desc">
+          <p>Les ambassadeurs ne sont pas des critiques payés. Ce sont des utilisateurs sélectionnés pour leur connaissance de la ville et leur réputation en ligne. L'app leur donne un accès gratuit et en avant-première aux nouvelles activités. En échange, ils écrivent un avis détaillé et signé, lié à leur nom et à leur réputation. C'est ce qui le rend crédible, là où la voix de l'équipe ne l'était pas.</p>
+          <p>Les avis d'ambassadeurs sont mis en valeur visuellement et s'affichent à côté des avis classiques, sans les remplacer. Le mécanisme va plus loin que les avis : une activité qui n'obtient pas l'accord des ambassadeurs n'entre pas au catalogue. Les ambassadeurs sont plus que la voix de l'app. Ils sont son filtre qualité.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Technical specs -->
+    <section class="cs-section cs-proto-section">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 6 · Spécifications techniques</span>
+        <h2 class="cs-heading">Rester aux côtés de l'équipe pendant le développement</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Livrer un prototype ne marque pas la fin du travail. Pendant que les développeurs construisent l'app, je rédige les spécifications techniques dont ils ont besoin, et le prototype V2 reste leur référence pour le comportement de chaque écran.</p>
+      <div class="jflow reveal reveal-delay-2">
+          <div class="jflow-step">
+            <span class="jflow-tag">Livré</span>
+            <span class="jflow-title">Prototype V2</span>
+            <p class="jflow-desc">La référence pour le comportement de l'app</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">Rédigées pendant le développement</span>
+            <span class="jflow-title">Spécifications techniques</span>
+            <p class="jflow-desc">Ce dont les développeurs ont besoin pour la construire</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step">
+            <span class="jflow-tag">En cours</span>
+            <span class="jflow-title">Développement</span>
+            <p class="jflow-desc">L'app est en cours de développement</p>
+          </div>
+          <span class="jflow-arrow" aria-hidden="true">→</span>
+          <div class="jflow-step jflow-step-accent">
+            <span class="jflow-tag">Fin 2026</span>
+            <span class="jflow-title">Lancement</span>
+            <p class="jflow-desc">Sortie prévue</p>
+          </div>
+        </div>
+    </section>
+
+    <!-- Project Recap -->
+    <section class="cs-new-design">
+      <img loading="lazy" class="cs-new-design-bg" src="/assets/bg-dark-overlay.webp" alt="">
+      <div class="cs-new-design-text">
+        <div class="reveal">
+          <span class="cs-new-design-label">Bilan du projet</span>
+          <h2 class="cs-new-design-heading">Du concept au prototype final en moins d'un mois</h2>
+        </div>
+        <p class="cs-new-design-body reveal reveal-delay-2">Au départ, je devais simplement aider &amp;joy sur son positionnement. Dix-sept entretiens et des dizaines d'itérations plus tard, le prototype final était entre les mains des développeurs. J'ai fini par couvrir toute la chaîne : stratégie produit, direction artistique, design system, design d'interface, prototype réalisé avec l'IA, tests utilisateurs et spécifications techniques.</p>
+      </div>
+      <div class="cs-phone-frame reveal from-right reveal-delay-3">
+        <video class="cs-phone-video" loop muted playsinline preload="none" data-autoplay>
+          <source src="/assets/joy-showcase.mp4" type="video/mp4">
+        </video>
+      </div>
+    </section>
+
+    <!-- Final Note -->
+    <section class="cs-section cs-section-purple cs-centered">
+      <span class="cs-label reveal">En développement</span>
+      <p class="cs-quote-light reveal reveal-delay-1">Le prototype V2 a été transmis aux développeurs. La sortie de l'app est prévue fin 2026.</p>
+    </section>
+
+    <!-- Footer -->
+
+    <!-- Next project -->
+    <section class="cs-next">
+      <a href="parrotpal.html" class="cs-next-link">
+        <div class="cs-next-header">
+          <span class="cs-label">Projet suivant</span>
+        </div>
+        <div class="cs-next-body">
+          <img loading="lazy" class="cs-next-logo" src="/assets/logo-parrotpal.jpg" alt="Logo Parrot Pal">
+          <div class="cs-next-info">
+            <p class="cs-next-name">Parrot Pal</p>
+            <p class="cs-next-desc">Refonte de l'espace recettes d'une app de calories</p>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </a>
+    </section>
+
+
+    <footer id="contact">
+      <img loading="lazy" class="footer-bg" src="/assets/bg-dark-overlay.webp" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Travaillons</p>
+        <p>ensemble.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Vous avez un projet similaire ? Parlons-en.</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>M'envoyer un e-mail</span>
+          </a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Old Design carousel ──
+  document.querySelectorAll('.cs-screens-carousel').forEach(wrapper => {
+    const track = wrapper.querySelector('.cs-screens');
+    const prev  = wrapper.querySelector('.cs-screens-prev');
+    const next  = wrapper.querySelector('.cs-screens-next');
+    if (!track || !prev || !next) return;
+    function step() { return track.clientWidth || 240; }
+    function updateBtns() {
+      prev.disabled = track.scrollLeft <= 0;
+      next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 1;
+    }
+    prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => track.scrollBy({ left:  step(), behavior: 'smooth' }));
+    track.addEventListener('scroll', updateBtns, { passive: true });
+    prev.disabled = true;
+  });
+
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Extending carousel controls ──
+  const extCarousel = document.getElementById('extending-carousel');
+  const prevBtn = document.querySelector('.cs-carousel-prev');
+  const nextBtn = document.querySelector('.cs-carousel-next');
+  if (extCarousel && prevBtn && nextBtn) {
+    function cardStep() {
+      const card = extCarousel.querySelector('.cs-ext-phone');
+      return card ? card.offsetWidth + 12 : 252;
+    }
+    function updateBtns() {
+      prevBtn.disabled = extCarousel.scrollLeft <= 0;
+      nextBtn.disabled = extCarousel.scrollLeft >= extCarousel.scrollWidth - extCarousel.clientWidth - 1;
+    }
+    prevBtn.addEventListener('click', () => extCarousel.scrollBy({ left: -cardStep(), behavior: 'smooth' }));
+    nextBtn.addEventListener('click', () => extCarousel.scrollBy({ left:  cardStep(), behavior: 'smooth' }));
+    extCarousel.addEventListener('scroll', updateBtns, { passive: true });
+    updateBtns();
+  }
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // Play showcase videos when they scroll into view (avoids preloading ~5 MB off-screen)
+  document.querySelectorAll('video[data-autoplay]').forEach(function(video) {
+    new IntersectionObserver(function(entries, obs) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) { entry.target.play(); obs.unobserve(entry.target); }
+      });
+    }, { threshold: 0.25 }).observe(video);
+  });
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
+</script>
+</body>
+</html>

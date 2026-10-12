@@ -7,6 +7,9 @@
   <title>Rémy Tartanac · Freelance Product Designer · Websites &amp; Apps</title>
   <meta name="description" content="Freelance product designer in Paris. I design apps and websites, then build WordPress sites you can manage yourself and that are made to rank on Google.">
   <link rel="canonical" href="https://remytartanac.com/">
+  <link rel="alternate" hreflang="en" href="https://remytartanac.com/">
+  <link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/">
+  <link rel="alternate" hreflang="x-default" href="https://remytartanac.com/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rémy Tartanac">
   <meta property="og:title" content="Rémy Tartanac · Freelance Product Designer · Websites &amp; Apps">
@@ -589,7 +592,7 @@
       letter-spacing: 2.4px; text-transform: uppercase; color: #544869;
     }
     .personal-heading {
-      font-weight: 500; font-size: 52px; color: #10042c;
+      font-weight: 500; font-size: 36px; line-height: 45px; color: #10042c;
     }
     .personal-body {
       font-family: 'Lato', Helvetica, Arial, sans-serif;
@@ -600,10 +603,9 @@
       padding-top: 40px; width: 400px; flex-shrink: 0;
     }
     .tags-cloud {
-      position: relative; height: 108px; width: 400px;
+      display: flex; flex-wrap: wrap; gap: 8px; width: 400px;
     }
     .tag-pill {
-      position: absolute;
       background: rgba(255,255,255,0.1);
       border: 1px solid white;
       border-radius: 9999px; height: 50px;
@@ -871,18 +873,39 @@
       .personal { padding: 40px 20px; gap: 36px; }
       .personal-me { flex-direction: column; gap: 20px; }
       .personal-avatar { width: 80px; height: 80px; }
-      .personal-heading { font-size: 36px; line-height: 1.2; }
+      .personal-heading { font-size: 28px; line-height: 36px; }
       .personal-body {
       font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 34px; }
       .personal-left { gap: 24px; }
-      .tags-cloud { position: static; height: auto; width: 100%; display: flex; flex-wrap: wrap; gap: 8px; }
-      .tag-pill { position: static; }
+      .tags-cloud { width: 100%; }
       .personal-location p { white-space: normal; }
       footer { padding: 40px 20px; }
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 22px; line-height: 32px; }
     }
 
+  
+    /* ── Language switch ── */
+    .nav-inner { position: relative; }
+    .lang-switch {
+      position: absolute; right: 128px; top: 50%; transform: translateY(-50%);
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px; line-height: 1;
+    }
+    .lang-switch a { color: #544869; opacity: 0.56; padding: 16px 8px; margin: -16px -8px; transition: opacity 0.25s ease, color 0.25s ease; }
+    .lang-switch a:hover { opacity: 1; color: #10042c; }
+    .lang-switch a[aria-current] { opacity: 1; color: #10042c; pointer-events: none; }
+    .lang-switch-sep { width: 1px; height: 8px; background: #544869; opacity: 0.32; }
+    @media (max-width: 1200px) { .lang-switch { right: 64px; } }
+    @media (max-width: 960px)  { .lang-switch { right: 40px; } }
+    @media (max-width: 600px)  {
+      .nav-inner { justify-content: space-between; gap: 16px; }
+      .nav-links { gap: 16px; }
+      .nav-link { white-space: nowrap; letter-spacing: 1.2px; }
+      .lang-switch { position: static; transform: none; }
+      .lang-switch a[aria-current], .lang-switch-sep { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -909,6 +932,7 @@
           <a class="nav-link" href="#about">About</a>
           <a class="nav-link" href="#contact">Contact</a>
         </div>
+        <div class="lang-switch"><a href="/" hreflang="en" lang="en" aria-label="English" aria-current="true">EN</a><span class="lang-switch-sep" aria-hidden="true"></span><a href="/fr/" hreflang="fr" lang="fr" aria-label="Français">FR</a></div>
       </div>
     </nav>
 
@@ -936,7 +960,7 @@
       <div class="hero-sub">
         <div class="hero-copy">
           <h2 class="hero-title">Freelance Product Designer</h2>
-          <p class="hero-desc">Got an idea for an app, or a business that needs a website? I design it from the first sketch to the final handover. I can also build the website myself, easy for you to manage and structured to rank on Google from day one.</p>
+          <p class="hero-desc">Have an app project, or need a website? I'll guide you from defining your visual identity all the way to launch. I can also turn your design into a WordPress site you manage yourself, with SEO built in from the start.</p>
         </div>
         <div class="hero-tags">
           <span class="hero-tag"><b>Product</b> Strategy</span>
@@ -962,7 +986,7 @@
         </div>
         <div class="about-body">
           <h3 class="about-heading">You have a concept and nothing built yet</h3>
-          <p class="about-text">I shape the positioning, run user research, design the interface and prototype it, then hand it to developers with everything they need. &amp;Joy went from a rough idea to a developer-ready prototype in under a month.</p>
+          <p class="about-text">I shape the positioning, run user research, design the interface and prototype it, then hand it to developers with everything they need. The &amp;Joy app went from a rough idea to a developer-ready prototype in under a month.</p>
         </div>
         <div class="about-links">
           <a class="about-link" href="joy.html">See &amp;Joy</a>
@@ -1005,8 +1029,8 @@
               <span class="project-tag">Website</span>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Website creation for a new travel community platform</h3>
-              <p class="project-desc">Designed the visual identity and website from the founder's vision, now live to the public.</p>
+              <h3 class="project-title">Brand and website for a travel community platform</h3>
+              <p class="project-desc">A WordPress site the founder updates herself, without a developer. Now live.</p>
             </div>
           </div>
           <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
@@ -1026,7 +1050,7 @@
               <span class="project-tag">Website</span>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Redesigning a yoga platform to earn its trust visually</h3>
+              <h3 class="project-title">Website redesign for an online yoga platform</h3>
               <p class="project-desc">Took a live product from chunky and generic to editorial and credible, launching soon.</p>
             </div>
           </div>
@@ -1047,7 +1071,7 @@
               <span class="project-tag">Mobile App</span>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Creating the activity app Paris was missing</h3>
+              <h3 class="project-title">App design for last-minute outings in&nbsp;Paris</h3>
               <p class="project-desc">Designed a brand-new app from scratch, based on the founder's ideas.</p>
             </div>
           </div>
@@ -1068,7 +1092,7 @@
               <span class="project-tag">Mobile App</span>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Turning an unused section into a daily entry point</h3>
+              <h3 class="project-title">Recipe section redesign for a calorie-tracking app</h3>
               <p class="project-desc">Refocused the section around the main added value: help users cook according to their needs.</p>
             </div>
           </div>
@@ -1089,7 +1113,7 @@
               <span class="project-tag">Mobile App</span>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Redesigning task creation to feel effortless</h3>
+              <h3 class="project-title">Task creation redesign for a habit-tracking app</h3>
               <p class="project-desc">Limited manual actions through a smart text field that recognizes and pre-configures key settings.</p>
             </div>
           </div>
@@ -1110,7 +1134,7 @@
               <span class="project-tag">Mobile App</span>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Turning a generic chatbot into a content-driven coaching experience</h3>
+              <h3 class="project-title">AI coach redesign for a motivation app</h3>
               <p class="project-desc">Reframed an outdated AI feature as a guided, content-driven experience.</p>
             </div>
           </div>
@@ -1131,7 +1155,7 @@
               <span class="project-tag">Mobile App</span>
             </div>
             <div class="project-content">
-              <h3 class="project-title">Reimagining onboarding with adaptive flows &amp; liquid glass UI</h3>
+              <h3 class="project-title">Onboarding redesign for a running app</h3>
               <p class="project-desc">Shifted from a linear onboarding to adaptive flows.</p>
             </div>
           </div>
@@ -1213,31 +1237,29 @@
 
       <div class="personal-right reveal from-right reveal-delay-2">
         <div class="tags-cloud">
-          <!-- Row 1 -->
-          <div class="tag-pill" style="left:0; top:0;">
+          <div class="tag-pill">
             <span class="tag-pill-emoji">🎵</span>
             <span class="tag-pill-label">Live music</span>
           </div>
-          <div class="tag-pill" style="left:147px; top:0;">
+          <div class="tag-pill">
             <span class="tag-pill-emoji">🎸</span>
             <span class="tag-pill-label">Guitar</span>
           </div>
-          <div class="tag-pill" style="left:265px; top:0;">
+          <div class="tag-pill">
             <span class="tag-pill-emoji">🚞</span>
             <span class="tag-pill-label">Travel</span>
           </div>
-          <!-- Row 2 -->
-          <div class="tag-pill" style="left:0; top:58px;">
+          <div class="tag-pill">
             <span class="tag-pill-emoji">📸</span>
             <span class="tag-pill-label">Photography</span>
           </div>
-          <div class="tag-pill" style="left:162px; top:58px;">
+          <div class="tag-pill">
             <span class="tag-pill-emoji">🏔️</span>
             <span class="tag-pill-label">Hiking</span>
           </div>
         </div>
         <div class="personal-location">
-          <p>Based in Paris, moving to Australia soon. Open to remote projects. Always up for a coffee chat.</p>
+          <p>Based in Paris, working remotely.</p>
         </div>
       </div>
     </div>

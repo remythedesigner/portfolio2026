@@ -1,50 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://remytartanac.com/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://remytartanac.com/terroo.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/terroo.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/terroo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/terroo.html"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/terroo.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/terroo.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/terroo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/terroo.html"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://remytartanac.com/yogspace.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/yogspace.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/yogspace.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/yogspace.html"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/yogspace.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/yogspace.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/yogspace.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/yogspace.html"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://remytartanac.com/joy.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/joy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/joy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/joy.html"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/joy.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/joy.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/joy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/joy.html"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://remytartanac.com/parrotpal.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/parrotpal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/parrotpal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/parrotpal.html"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/parrotpal.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/parrotpal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/parrotpal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/parrotpal.html"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://remytartanac.com/grit.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/grit.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/grit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/grit.html"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/grit.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/grit.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/grit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/grit.html"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://remytartanac.com/peptalk.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/peptalk.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/peptalk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/peptalk.html"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/peptalk.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/peptalk.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/peptalk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/peptalk.html"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://remytartanac.com/couch-to-5k.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/couch-to-5k.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/couch-to-5k.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/couch-to-5k.html"/>
+    <lastmod>2026-10-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/couch-to-5k.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/couch-to-5k.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/couch-to-5k.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/couch-to-5k.html"/>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

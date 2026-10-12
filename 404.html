@@ -25,12 +25,24 @@
 </head>
 <body>
   <main>
-    <h1>This page took a wrong turn.</h1>
-    <p>The link may be broken or the page may have moved. The projects are one click away.</p>
+    <h1 id="nf-title">This page took a wrong turn.</h1>
+    <p id="nf-text">The link may be broken or the page may have moved. The projects are one click away.</p>
     <div class="links">
-      <a class="btn" href="/">Back to home</a>
-      <a class="btn secondary" href="/#projects">See the projects</a>
+      <a class="btn" id="nf-home" href="/">Back to home</a>
+      <a class="btn secondary" id="nf-projects" href="/#projects">See the projects</a>
     </div>
   </main>
+  <script>
+    // French version for any missing URL under /fr/
+    if (location.pathname.indexOf('/fr/') === 0) {
+      document.documentElement.lang = 'fr';
+      document.title = 'Page introuvable · Rémy Tartanac';
+      document.getElementById('nf-title').textContent = 'Cette page s\u2019est perdue en route.';
+      document.getElementById('nf-text').textContent = 'Le lien est peut-\u00eatre cass\u00e9, ou la page a chang\u00e9 d\u2019adresse. Les projets sont \u00e0 un clic.';
+      var home = document.getElementById('nf-home'), projects = document.getElementById('nf-projects');
+      home.textContent = 'Retour \u00e0 l\u2019accueil'; home.href = '/fr/';
+      projects.textContent = 'Voir les projets'; projects.href = '/fr/#projects';
+    }
+  </script>
 </body>
 </html>
