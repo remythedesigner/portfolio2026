@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Yogspace · Refonte UX/UI d'un site internet de yoga</title>
-  <meta name="description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, pour passer d'un produit fonctionnel à une marque crédible.">
+  <meta name="description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, avec une marque crédible, l'inscription des professeurs et un back-office pour les professeurs et les élèves.">
   <link rel="canonical" href="https://remytartanac.com/fr/yogspace.html">
   <link rel="alternate" hreflang="en" href="https://remytartanac.com/yogspace.html">
   <link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/yogspace.html">
@@ -12,12 +12,12 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Rémy Tartanac">
   <meta property="og:title" content="Yogspace · Refonte UX/UI d'un site internet de yoga">
-  <meta property="og:description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, pour passer d'un produit fonctionnel à une marque crédible.">
+  <meta property="og:description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, avec une marque crédible, l'inscription des professeurs et un back-office pour les professeurs et les élèves.">
   <meta property="og:url" content="https://remytartanac.com/fr/yogspace.html">
   <meta property="og:image" content="https://remytartanac.com/assets/og-yogspace.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yogspace · Refonte UX/UI d'un site internet de yoga">
-  <meta name="twitter:description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, pour passer d'un produit fonctionnel à une marque crédible.">
+  <meta name="twitter:description" content="Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, avec une marque crédible, l'inscription des professeurs et un back-office pour les professeurs et les élèves.">
   <meta name="twitter:image" content="https://remytartanac.com/assets/og-yogspace.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -37,7 +37,7 @@
         "@type": "CreativeWork",
         "name": "Yogspace : refonte UX/UI d'un site internet de yoga",
         "headline": "Refonte du site d'une plateforme de cours de yoga en ligne",
-        "description": "Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, pour passer d'un produit fonctionnel à une marque crédible.",
+        "description": "Étude de cas : refonte UX/UI du site internet de Yogspace, une plateforme de cours de yoga particuliers en ligne, avec une marque crédible, l'inscription des professeurs et un back-office pour les professeurs et les élèves.",
         "url": "https://remytartanac.com/fr/yogspace.html",
         "image": "https://remytartanac.com/assets/yog-shot-hero.webp",
         "datePublished": "2026",
@@ -239,7 +239,8 @@
     .cs-compare-label-after { color: #b5622a; background: rgba(232,144,89,0.14); }
     .cs-compare-img-wrap { border-radius: 14px; overflow: hidden; border: 1px solid rgba(0,0,0,0.07); box-shadow: 0 12px 32px rgba(16,4,44,0.08); max-height: 1200px; }
     .cs-compare-img-wrap img { width: 100%; height: auto; display: block; }
-    .cs-section-intro { max-width: 760px; }
+    .cs-section-intro { max-width: none; }
+    .bo-caption { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 16px; line-height: 26px; color: #544869; }
 
     /* ── Design decisions (dark) ── */
     .cs-principles-section { position: relative; overflow: hidden; background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%); }
@@ -590,7 +591,7 @@
         </div>
       </div>
       <div class="cs-scope-card reveal reveal-delay-2">
-        <span class="cs-scope-label">Mon périmètre</span>
+        <span class="cs-scope-label">Mon scope</span>
         <div class="cs-scope-phases">
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
@@ -622,6 +623,14 @@
               <span class="cs-scope-phase-title">Suivi de l'intégration</span>
             </div>
             <p class="cs-scope-phase-desc">Tout au long du développement en Next.js</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">05</span>
+              <span class="cs-scope-phase-title">Back-office</span>
+            </div>
+            <p class="cs-scope-phase-desc">Tableaux de bord professeurs et élèves</p>
           </div>
         </div>
       </div>
@@ -655,7 +664,7 @@
         <div class="cs-principle">
           <span class="cs-principle-num">03</span>
           <span class="cs-principle-title">Une confiance qui se voit</span>
-          <p class="cs-principle-desc">« Certifié », écrit simplement dans un paragraphe, ne voulait rien dire. J'ai dessiné une petite série de badges sur mesure (Top professeur, Certifié, Spécialiste) et j'ai transformé l'historique de certification de chaque professeur en vraie frise chronologique. Le diplôme devient quelque chose qu'on voit.</p>
+          <p class="cs-principle-desc">« Certifié », écrit simplement dans un paragraphe, ne voulait rien dire. J'ai dessiné une petite série de badges custom (Top professeur, Certifié, Spécialiste) et j'ai transformé l'historique de certification de chaque professeur en vraie frise chronologique. Le diplôme devient quelque chose qu'on voit.</p>
           <div class="cs-icon-row">
             <span class="cs-icon-chip"><img loading="lazy" src="/assets/yog-badge-toprated.png" alt="Badge Yogspace « Top professeur »"></span>
             <span class="cs-icon-chip"><img loading="lazy" src="/assets/yog-badge-certified.png" alt="Badge Yogspace « Professeur certifié »"></span>
@@ -692,7 +701,7 @@
       </div>
       <div class="cs-compare reveal reveal-delay-1">
         <div class="cs-compare-group">
-          <p class="cs-body-grey">La page d'accueil est passée d'un mur vert compact, sans hiérarchie visuelle, à des sections aérées : une barre de recherche bien visible en haut, puis les garanties et les professeurs, chacun avec assez d'espace pour être lu.</p>
+          <p class="cs-body">La page d'accueil est passée d'un mur vert compact, sans hiérarchie visuelle, à des sections aérées : une barre de recherche bien visible en haut, puis les garanties et les professeurs, chacun avec assez d'espace pour être lu.</p>
           <div class="cs-compare-row">
             <div class="cs-compare-col">
               <span class="cs-compare-label cs-compare-label-before">Avant</span>
@@ -705,7 +714,7 @@
           </div>
         </div>
         <div class="cs-compare-group">
-          <p class="cs-body-grey">Sur le profil professeur, la liste de tarifs est désormais accompagnée de trois badges de confiance que j'ai dessinés à la main (Top professeur, Certifié, Spécialiste) et d'une vraie frise de certifications à la place d'une liste à puces. Le diplôme, sur lequel repose toute la plateforme, est la première chose que l'on voit.</p>
+          <p class="cs-body">Sur le profil professeur, la liste de tarifs est désormais accompagnée de trois badges de confiance que j'ai dessinés à la main (Top professeur, Certifié, Spécialiste) et d'une vraie frise de certifications à la place d'une liste à puces. Le diplôme, sur lequel repose toute la plateforme, est la première chose que l'on voit.</p>
           <div class="cs-compare-row">
             <div class="cs-compare-col">
               <span class="cs-compare-label cs-compare-label-before">Avant</span>
@@ -775,6 +784,53 @@
         <div class="cs-compare-col">
           <span class="cs-compare-label cs-compare-label-after">Étape 5 · Planning</span>
           <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-onboarding-schedule.png" alt="Inscription des professeurs sur Yogspace, étape Planning : interrupteurs de disponibilité par jour avec heures de début et de fin"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Back-office -->
+    <section class="cs-section cs-section-light">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Back-office</span>
+        <h2 class="cs-heading">Un back-office pour les professeurs et les élèves</h2>
+      </div>
+      <div class="cs-section-intro reveal reveal-delay-1">
+        <p class="cs-body">Derrière le site public, Yogspace est utilisé chaque jour par deux types de personnes. Les professeurs gèrent leur activité : séances, disponibilités et revenus. Les élèves suivent leur pratique : réservations, crédits et messages. J'ai conçu les deux tableaux de bord sur une même structure, avec la même navigation, la même barre latérale et les mêmes composants, pour que les deux côtés forment un seul produit.</p>
+      </div>
+      <div class="cs-compare-row reveal reveal-delay-2">
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Professeur · Vue d'ensemble</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-bo-instructor-overview.webp" alt="Tableau de bord professeur Yogspace : tâches à faire, six prochains jours, prochaine séance avec le questionnaire de santé de l'élève, revenus du mois et réputation"></div>
+          <p class="bo-caption">La journée d'un coup d'œil. Une ligne de tâches, les six prochains jours avec leur nombre de séances, la prochaine séance avec le questionnaire de santé de l'élève, puis les revenus et la réputation.</p>
+        </div>
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Élève · Vue d'ensemble</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-bo-student-overview.webp" alt="Tableau de bord élève Yogspace : prochaine séance avec lien pour la rejoindre, séances du mois, crédits restants, séances récentes et professeurs à réserver à nouveau"></div>
+          <p class="bo-caption">La pratique d'un coup d'œil. La prochaine séance avec son lien pour la rejoindre, les séances du mois, les crédits restants, les séances récentes à évaluer et les professeurs à réserver à nouveau.</p>
+        </div>
+      </div>
+      <div class="cs-compare-row reveal reveal-delay-2">
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Professeur · Calendrier</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-bo-instructor-calendar.webp" alt="Calendrier professeur Yogspace avec les séances réservées et les heures disponibles de la semaine"></div>
+          <p class="bo-caption">Les séances et les disponibilités sur une seule grille. Un clic ou un glisser suffit pour bloquer un créneau libre.</p>
+        </div>
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Élève · Messages</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-bo-student-messages.webp" alt="Messagerie élève Yogspace : liste des conversations, fil de discussion avec un professeur et bouton pour réserver une séance"></div>
+          <p class="bo-caption">Les questions posées à un professeur avant de réserver, dans une boîte de réception simple : les conversations à gauche, le fil à droite et un accès direct à la réservation.</p>
+        </div>
+      </div>
+      <div class="cs-compare-row reveal reveal-delay-2">
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Professeur · Revenus</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-bo-instructor-earnings.webp" alt="Page des revenus d'un professeur Yogspace : montant retirable, montant en attente, graphique mensuel, retraits et revenus par séance avec commission"></div>
+          <p class="bo-caption">Ce que l'on peut retirer vient en premier, puis ce qui est encore dans la fenêtre de contestation et la commission, puis le brut, la commission et le net de chaque séance.</p>
+        </div>
+        <div class="cs-compare-col">
+          <span class="cs-compare-label cs-compare-label-after">Élève · Portefeuille</span>
+          <div class="cs-compare-img-wrap"><img loading="lazy" src="/assets/yog-bo-student-wallet.webp" alt="Portefeuille élève Yogspace : solde disponible, pack de crédits actif, packs de crédits et historique des transactions"></div>
+          <p class="bo-caption">Le solde, le pack de crédits actif, les packs de crédits chiffrés pour un professeur donné et l'historique des transactions.</p>
         </div>
       </div>
     </section>
