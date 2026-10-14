@@ -3,6 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Language: French browsers land on /fr/. An explicit EN/FR click is remembered and wins. */
+    (function (w, d, n) {
+      try {
+        var KEY = 'lang-pref';
+        d.addEventListener('click', function (e) {
+          var a = e.target && e.target.closest && e.target.closest('.lang-switch a');
+          if (a) { try { w.localStorage.setItem(KEY, a.getAttribute('hreflang')); } catch (x) {} }
+        });
+        var path = w.location.pathname;
+        if (path === '/fr' || path.indexOf('/fr/') === 0) return;
+        var saved = null;
+        try { saved = w.localStorage.getItem(KEY); } catch (x) {}
+        var langs = n.languages && n.languages.length ? n.languages : [n.language || ''];
+        var want = saved || (/^fr(-|$)/i.test(langs[0] || '') ? 'fr' : 'en');
+        if (want !== 'fr') return;
+        var target = (path === '/' || path === '/index.html') ? '/fr/' : '/fr' + path;
+        w.location.replace(target + w.location.search + w.location.hash);
+      } catch (err) {}
+    })(window, document, navigator);
+  </script>
   <title>PepTalk · Refonte UX d'un coach IA dans une app de motivation</title>
   <meta name="description" content="Étude de cas : comment j'ai repensé le chat IA de PepTalk en coaching guidé, nourri par les contenus de l'app, pour relancer les conversions premium.">
   <link rel="canonical" href="https://remytartanac.com/fr/peptalk.html">
