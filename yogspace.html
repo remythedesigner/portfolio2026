@@ -609,6 +609,7 @@
         <div class="cs-problem-content reveal reveal-delay-1">
           <p class="cs-body-bold">Yogspace connects students with certified yoga teachers for live, 1:1 classes taught in or inspired by traditional Indian lineages. This wasn't a blank page: the founder had already built and shipped it.</p>
           <p class="cs-body">What Yogspace was selling was an experience: live 1:1 classes with certified teachers rooted in real Indian lineages. The site said none of that. It looked basic and empty, far from yoga, flat in emotion and low in visual impact, like a lazy, AI-made template. In one word: not memorable. I created a full artistic direction, inspired by India, breath and zen, to make the product both reassuring and engaging.</p>
+        <p class="cs-body">I took the project from art direction to code, in six steps. Each section below carries the number of its step.</p>
         </div>
       </div>
       <div class="cs-scope-card reveal reveal-delay-2">
@@ -617,33 +618,49 @@
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">01</span>
-              <span class="cs-scope-phase-title">Visual Redesign</span>
+              <span class="cs-scope-phase-title">Artistic Direction</span>
             </div>
-            <p class="cs-scope-phase-desc">Type, color, UI system</p>
+            <p class="cs-scope-phase-desc">An India-inspired direction: palette, typography, spacing and tone</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">02</span>
-              <span class="cs-scope-phase-title">Component Library</span>
+              <span class="cs-scope-phase-title">Design System</span>
             </div>
-            <p class="cs-scope-phase-desc">Full Figma component library</p>
+            <p class="cs-scope-phase-desc">A Figma component library: navigation, buttons, form fields, auth cards and icons</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">03</span>
-              <span class="cs-scope-phase-title">Development</span>
+              <span class="cs-scope-phase-title">Public Pages</span>
             </div>
-            <p class="cs-scope-phase-desc">AI-assisted code in Next.js, delivered as pull requests on GitHub</p>
+            <p class="cs-scope-phase-desc">Homepage and teacher profile, with trust badges and a certification timeline</p>
             <div class="cs-scope-divider"></div>
           </div>
           <div class="cs-scope-phase">
             <div class="cs-scope-phase-row">
               <span class="cs-scope-phase-num">04</span>
+              <span class="cs-scope-phase-title">Teacher Onboarding</span>
+            </div>
+            <p class="cs-scope-phase-desc">A six-step flow, from identity to a presentation video</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">05</span>
               <span class="cs-scope-phase-title">Back Office</span>
             </div>
             <p class="cs-scope-phase-desc">Teacher and student dashboards</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">06</span>
+              <span class="cs-scope-phase-title">Development</span>
+            </div>
+            <p class="cs-scope-phase-desc">AI-assisted code in Next.js, delivered as pull requests on GitHub</p>
           </div>
         </div>
       </div>
@@ -653,7 +670,7 @@
     <section class="cs-section cs-principles-section">
       <img class="cs-principles-bg" src="assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Art direction</span>
+        <span class="cs-label">Step 1 · Artistic direction</span>
         <h2 class="cs-heading">Four decisions behind the redesign</h2>
       </div>
       <div class="cs-principles-grid reveal reveal-delay-1">
@@ -690,8 +707,44 @@
           <p class="cs-principle-desc">I wanted these pages to feel soft and to breathe, the same two things a yoga teacher asks of you on the mat. Soft meant dropping hard borders in favor of warm-toned shadows that separate containers without a hard edge. Breathing meant giving each section a purpose and real air around it, instead of the original's basic, empty blocks. Both exist to reassure more than to decorate: a calmer surface is easier to trust.</p>
         </div>
       </div>
+</section>
+
+    <!-- Design system -->
+    <section class="cs-section cs-section-white">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Step 2 · Design system</span>
+        <h2 class="cs-heading">One library for the whole product</h2>
+      </div>
+      <div class="cs-section-intro reveal reveal-delay-1">
+        <p class="cs-body">The four decisions above became a design system in Figma: terracotta and cream as the foundation, EB Garamond and Karla for type, then the components every screen is made of. All of it lives in the same file the founder works in every day.</p>
+      </div>
+      <div class="jflow reveal reveal-delay-2">
+        <div class="jflow-step">
+          <span class="jflow-tag">Foundations</span>
+          <span class="jflow-title">Tokens</span>
+          <p class="jflow-desc">Terracotta, cream and navy, EB Garamond and Karla</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Library</span>
+          <span class="jflow-title">Components</span>
+          <p class="jflow-desc">Navigation, buttons, form fields, auth cards and icons</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Applied</span>
+          <span class="jflow-title">Screens</span>
+          <p class="jflow-desc">Public pages, onboarding and dashboards</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step jflow-step-accent">
+          <span class="jflow-tag">Handover</span>
+          <span class="jflow-title">Next.js</span>
+          <p class="jflow-desc">The same components, coded page by page</p>
+        </div>
+      </div>
       <div class="reveal reveal-delay-2">
-        <p class="cs-figma-lead">The result: a real component library</p>
+        <p class="cs-figma-lead" style="color:#776c92;">The component library in Figma</p>
         <div class="cs-figma-frame">
           <div class="cs-figma-bar">
             <span class="cs-figma-dot" style="background:#F24E1E;"></span>
@@ -704,12 +757,12 @@
         </div>
         <p class="cs-figma-caption">Navigation, buttons, form fields, auth cards, icons, all generated and organized in the same file the founder works in every day.</p>
       </div>
-    </section>
+        </section>
 
     <!-- Before / after -->
     <section class="cs-section cs-section-light">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Before &amp; after</span>
+        <span class="cs-label">Step 3 · Public pages</span>
         <h2 class="cs-heading">Two pages, before the redesign and after</h2>
       </div>
       <div class="cs-compare reveal reveal-delay-1">
@@ -745,7 +798,7 @@
     <!-- New teacher onboarding -->
     <section class="cs-section cs-section-white">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Focus on the onboarding flow</span>
+        <span class="cs-label">Step 4 · Focus on the onboarding flow</span>
         <h2 class="cs-heading">A new onboarding for the teachers</h2>
       </div>
       <div class="cs-section-intro reveal reveal-delay-1">
@@ -804,7 +857,7 @@
     <!-- Back office -->
     <section class="cs-section cs-section-light">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Back office</span>
+        <span class="cs-label">Step 5 · Focus on the dashboards</span>
         <h2 class="cs-heading">A back office for teachers and students</h2>
       </div>
       <div class="cs-section-intro reveal reveal-delay-1">
@@ -851,7 +904,7 @@
     <!-- Development -->
     <section class="cs-section cs-section-white">
       <div class="cs-section-header reveal">
-        <span class="cs-label">Development</span>
+        <span class="cs-label">Step 6 · Development</span>
         <h2 class="cs-heading">From Figma to code</h2>
       </div>
       <div class="cs-section-intro reveal reveal-delay-1">
