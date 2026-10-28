@@ -813,6 +813,7 @@
       .cs-next-name { font-size: 36px; }
       .cs-next-link:hover .project-btn { width: 70px; }
       footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .btn-scroll-top { position: absolute; top: 40px; right: 40px; }
       .footer-headline { font-size: 72px; line-height: 72px; }
       .footer-right { width: 100%; }
     }
@@ -836,6 +837,7 @@
       .cs-next-name { font-size: 28px; }
       .cs-next-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
       footer { padding: 48px 20px; }
+      .btn-scroll-top { top: 32px; right: 20px; }
       .footer-headline { font-size: 48px; line-height: 52px; }
       .footer-desc { font-size: 24px; line-height: 34px; }
     }
@@ -937,7 +939,7 @@
     .osa-split-left .cs-swatch { border-color: rgba(255,255,255,0.45); border-radius: 14px; }    .osa-split-right { min-width: 0; align-self: stretch; }
     .osa-sticky { position: sticky; top: 112px; }
     .osa-scroll-frame { max-width: none; margin: 0; }
-    .osa-scroll { height: min(72vh, 680px); overflow-y: auto; overscroll-behavior: contain; background: #05080f; scrollbar-width: thin; }
+    .osa-scroll { height: min(72vh, 680px); overflow-y: auto; overscroll-behavior: auto; background: #05080f; scrollbar-width: thin; }
     .osa-scroll img { width: 100%; height: auto; display: block; }
     .osa-scroll:focus-visible { outline: 2px solid #ff9a6b; outline-offset: -2px; }
     @media (max-width: 960px) {
