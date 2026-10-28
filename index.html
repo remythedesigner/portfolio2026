@@ -519,6 +519,17 @@
       transform: scale(1.03);
     }
 
+    .project-card-featured-osa { min-height: 440px; }
+    .project-card-featured-osa .project-card-header { justify-content: flex-start; gap: 16px; }
+    .project-card-featured-osa .project-tag { position: absolute; top: 40px; right: 40px; z-index: 2; }
+    .project-card-preview-osa {
+      left: 51%; right: auto; bottom: 0; top: auto;
+      width: 47%; height: auto; max-height: calc(100% - 56px);
+      object-fit: cover; object-position: left top;
+      transform-origin: bottom left;
+    }
+    .project-card:hover .project-card-preview-osa { transform: scale(1.03); }
+
     /* ── About Stats ── */
     .about-stats {
       width: 100%;
@@ -1044,8 +1055,7 @@
           <p class="about-text">I design the brand and the pages, then build them myself with AI assistance, in one of two ways. Built on a CMS like WordPress, the site lets you edit every text and image without a developer. Custom-coded, it is ready to use or handed over to your developers on GitHub. SEO research shapes the structure and the copy from the first wireframe.</p>
         </div>
         <div class="about-links">
-          <a class="about-link" href="terroo.html">See Terroo</a>
-          <a class="about-link" href="yogspace.html">See Yogspace</a>
+          <a class="about-link" href="osapaclap.html">See Osapaclap</a>
         </div>
       </div>
     </div>
@@ -1057,6 +1067,27 @@
 
     <!-- Projects grid -->
     <div class="projects-grid">
+
+      <!-- Osapaclap -->
+      <a href="osapaclap.html" class="project-card project-card-featured project-card-featured-osa reveal">
+        <div class="project-card-bar" style="background:#f64900;"></div>
+        <div class="project-card-body project-card-body-featured">
+          <div class="project-card-top">
+            <div class="project-card-header">
+              <div class="project-logo" style="background:#f7f6fe;">
+                <img loading="lazy" src="assets/logo-osapaclap-mark.png" alt="Osapaclap" style="object-fit:contain; padding:12px;">
+              </div>
+              <span class="project-tag">Website</span>
+            </div>
+            <div class="project-content">
+              <h3 class="project-title">Custom WordPress website for a cultural association</h3>
+              <p class="project-desc">A library of linked content about cinema, games and art, that the team runs on its own. Now live.</p>
+            </div>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+        <img loading="lazy" class="project-card-preview project-card-preview-osa" src="assets/preview-osapaclap-v2.webp" alt="Osapaclap blog homepage mockup on desktop and mobile">
+      </a>
 
       <!-- Terroo -->
       <a href="terroo.html" class="project-card reveal">

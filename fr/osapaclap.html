@@ -1,0 +1,1709 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script>
+    /* Language: French browsers land on /fr/. An explicit EN/FR click is remembered and wins. */
+    (function (w, d, n) {
+      try {
+        var KEY = 'lang-pref';
+        d.addEventListener('click', function (e) {
+          var a = e.target && e.target.closest && e.target.closest('.lang-switch a');
+          if (a) { try { w.localStorage.setItem(KEY, a.getAttribute('hreflang')); } catch (x) {} }
+        });
+        var path = w.location.pathname;
+        if (path === '/fr' || path.indexOf('/fr/') === 0) return;
+        var saved = null;
+        try { saved = w.localStorage.getItem(KEY); } catch (x) {}
+        var langs = n.languages && n.languages.length ? n.languages : [n.language || ''];
+        var want = saved || (/^fr(-|$)/i.test(langs[0] || '') ? 'fr' : 'en');
+        if (want !== 'fr') return;
+        var target = (path === '/' || path === '/index.html') ? '/fr/' : '/fr' + path;
+        w.location.replace(target + w.location.search + w.location.hash);
+      } catch (err) {}
+    })(window, document, navigator);
+  </script>
+  <title>Osapaclap · Étude de cas, site internet WordPress custom</title>
+  <meta name="description" content="Étude de cas : découverte, direction artistique, design system, spécifications techniques, thème WordPress custom, formation des éditeurs et mise en ligne du site internet d'Osapaclap, une association culturelle.">
+  <link rel="canonical" href="https://remytartanac.com/fr/osapaclap.html">
+  <link rel="alternate" hreflang="en" href="https://remytartanac.com/osapaclap.html">
+  <link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/osapaclap.html">
+  <link rel="alternate" hreflang="x-default" href="https://remytartanac.com/osapaclap.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Rémy Tartanac">
+  <meta property="og:title" content="Osapaclap · Étude de cas, site internet WordPress custom">
+  <meta property="og:description" content="Étude de cas : découverte, direction artistique, design system, spécifications techniques, thème WordPress custom, formation des éditeurs et mise en ligne du site internet d'Osapaclap, une association culturelle.">
+  <meta property="og:url" content="https://remytartanac.com/fr/osapaclap.html">
+  <meta property="og:image" content="https://remytartanac.com/assets/og-osapaclap.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Osapaclap · Étude de cas, site internet WordPress custom">
+  <meta name="twitter:description" content="Étude de cas : découverte, direction artistique, design system, spécifications techniques, thème WordPress custom, formation des éditeurs et mise en ligne du site internet d'Osapaclap, une association culturelle.">
+  <meta name="twitter:image" content="https://remytartanac.com/assets/og-osapaclap.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="fr_FR">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Rémy Tartanac", "item": "https://remytartanac.com/fr/" },
+          { "@type": "ListItem", "position": 2, "name": "Osapaclap", "item": "https://remytartanac.com/fr/osapaclap.html" }
+        ]
+      },
+      {
+        "@type": "CreativeWork",
+        "name": "Osapaclap : étude de cas d'un site internet culturel",
+        "headline": "Un site internet culturel, du premier rendez-vous à la mise en ligne",
+        "description": "Étude de cas : découverte, direction artistique, design system, spécifications techniques, thème WordPress custom, formation des éditeurs et mise en ligne du site internet d'Osapaclap, une association culturelle.",
+        "url": "https://remytartanac.com/fr/osapaclap.html",
+        "image": "https://remytartanac.com/assets/preview-osapaclap-v2.webp",
+        "datePublished": "2026",
+        "author": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/fr/" },
+        "creator": { "@type": "Person", "name": "Rémy Tartanac", "url": "https://remytartanac.com/fr/" },
+        "about": "Étude de cas d'un site internet de bout en bout : découverte, direction artistique, design system, spécifications techniques, thème WordPress custom, back office et formation, puis mise en ligne pour une association culturelle"
+      }
+    ]
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Jost:wght@500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Lato:wght@300;400;700&family=Jost:wght@500&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap"></noscript>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ── Keyboard focus styles (WCAG 2.1 AA) ── */
+    :focus                         { outline: none; }
+    :focus-visible                 { outline: 2px solid #10042c; outline-offset: 3px; border-radius: 4px; }
+    footer :focus-visible          { outline-color: rgba(255,255,255,0.7); }
+    .btn-email:focus-visible,
+    .btn-linkedin:focus-visible    { border-radius: 9999px; }
+    .btn-scroll-top:focus-visible,
+    .cs-nav-back:focus-visible     { border-radius: 50%; }
+    .cs-logo-link:focus-visible    { border-radius: 16px; }
+    .cs-next-link:focus-visible    { border-radius: 4px;  outline-offset: -3px; }
+
+    html { overflow-x: hidden; }
+    body { font-family: 'Cormorant Garamond', Georgia, serif; background: #ffffff; overflow-x: clip; }
+    a { text-decoration: none; }
+    img { display: block; }
+
+    /* ── Layout ── */
+    .page { position: relative; min-height: 100vh; }
+    .content { display: flex; flex-direction: column; align-items: center; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      width: 100%;
+      background: #2b265c;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 80px; padding: 0 128px;
+    }
+    .cs-nav-back {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 0.8px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      flex-shrink: 0;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.2s ease, transform 0.25s ease;
+    }
+    .cs-nav-back:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .cs-nav-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 600; font-size: 24px; line-height: 1;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ff9a6b;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.from-left  { transform: translateX(-40px); }
+    .reveal.from-right { transform: translateX(40px); }
+    .reveal.visible { opacity: 1; transform: translate(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ── Hero ── */
+    .cs-hero {
+      width: 100%;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+      display: flex;
+      flex-direction: row;
+      align-items: flex-end;
+      gap: 40px;
+      padding: 80px 128px;
+      overflow: hidden;
+      min-height: 752px;
+      position: relative;
+    }
+    .cs-hero-tint {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(22deg, rgba(58,79,162,0.34) 29%, rgba(58,79,162,0.06) 71%);
+      pointer-events: none;
+    }
+    .cs-hero-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-hero-left {
+      flex: 1;
+      min-width: 480px;
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      gap: 80px;
+    }
+    /* Hero image, in-flow flex sibling */
+    .cs-hero-image {
+      position: relative;
+      flex-shrink: 0;
+      margin-bottom: -80px;
+      margin-right: -128px;
+      width: 830px;
+      height: 614px;
+    }
+    .cs-hero-image img {
+      width: 100%; height: 100%;
+      object-fit: contain;
+      object-position: center bottom;
+      display: block;
+    }
+    .cs-hero-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .cs-logo-link {
+      display: block; flex-shrink: 0; border-radius: 16px;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
+    }
+    .cs-logo-link:hover { transform: scale(1.15) translateY(-5px) rotate(-8deg); box-shadow: 0 8px 20px rgba(16,4,44,0.2); }
+    .cs-logo {
+      width: 72px; height: 72px;
+      border-radius: 16px;
+      object-fit: contain;
+      flex-shrink: 0;
+      display: block;
+      background: #f5f0e8;
+      padding: 12px;
+    }
+    .cs-tag {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ff9a6b;
+      border: 1px solid rgba(255,255,255,0.45);
+      padding: 8px 16px;
+      border-radius: 160px;
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.35);
+    }
+    .cs-hero-title {
+      margin-top: auto;
+      max-width: 640px;
+      text-wrap: balance;
+      font-weight: 500; font-size: 80px; line-height: 100px;
+      color: white;
+    }
+    .cs-meta {
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.25);
+      padding-top: 20px;
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .cs-meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .cs-meta-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ff9a6b;
+    }
+    .cs-meta-value {
+      font-weight: 500; font-size: 20px; line-height: 28px;
+      color: white;
+    }
+    .cs-meta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: white;
+      transition: color 0.25s ease;
+    }
+    .cs-meta-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
+    .cs-meta-link-text { text-decoration: underline; text-underline-offset: 3px; }
+    .cs-meta-link:hover { color: #ff9a6b; }
+    .cs-meta-link:hover svg { transform: translateX(2px); }
+
+    /* ── Common Section ── */
+    .cs-section {
+      width: 100%;
+      padding: 80px 128px;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      overflow-x: clip;
+    }
+    .cs-section-white { background: #ffffff; }
+    .cs-section-light { background: #f7f6f8; }
+    .cs-section-purple { background: #e6e0f2; }
+
+    .cs-section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cs-section > .cs-section-header, .osa-split-left > .cs-section-header { margin-bottom: -12px; }
+    .cs-label {
+      font-weight: 400; font-size: 16px; line-height: 24px;
+      letter-spacing: 2.4px; text-transform: uppercase;
+      color: #776c92;
+    }
+    .cs-heading {
+      font-weight: 500; font-size: 52px; line-height: normal;
+      color: #10042c;
+    }
+
+    /* ── Body text ── */
+    .cs-body-bold {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #10042c;
+    }
+    .cs-body-grey {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 24px; line-height: 40px;
+      color: #776c92;
+    }
+
+    /* ── Intro (Brief + Scope) ── */
+    .cs-intro { display: flex; align-items: stretch; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .cs-brief-left {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column; gap: 40px;
+      padding: 80px 128px;
+      background: #ffffff;
+    }
+    .cs-problem-content { display: flex; flex-direction: column; gap: 16px; }
+    .cs-scope-card {
+      flex: 0 0 480px;
+      display: flex; flex-direction: column; gap: 32px;
+      align-items: flex-start; justify-content: center;
+      padding: 40px;
+      background: #2b265c;
+    }
+    .cs-scope-label {
+      font-weight: 400; font-size: 14px; line-height: 20px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phases { display: flex; flex-direction: column; gap: 24px; width: 100%; }
+    .cs-scope-phase { display: flex; flex-direction: column; width: 100%; }
+    .cs-scope-phase-row { display: flex; gap: 16px; align-items: center; color: #ffffff; }
+    .cs-scope-phase-num {
+      font-weight: 400; font-size: 14px; letter-spacing: 1.96px;
+      color: #ffffff;
+    }
+    .cs-scope-phase-title {
+      flex: 1; font-weight: 600; font-size: 24px;
+      letter-spacing: 1.96px; text-transform: uppercase;
+      color: #ffffff;
+    }
+    .cs-scope-phase-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: rgba(255,255,255,0.75);
+    }
+    .cs-scope-divider { height: 1px; background: rgba(255,255,255,0.08); margin-top: 24px; }
+
+    /* ── Design decisions (dark) ── */
+    .cs-principles-section {
+      position: relative;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 60% 50%, #2d1e56 0%, #16102e 55%, #100c24 100%);
+    }
+    .cs-principles-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+      opacity: 0.6;
+    }
+    .cs-principles-section .cs-section-header { gap: 16px; }
+    .cs-principles-section .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-principles-section .cs-heading { color: #ffffff; }
+    .cs-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      width: 100%;
+      position: relative;
+      background: rgba(255,255,255,0.08);
+    }
+    .cs-principle {
+      background: #16102e;
+      padding: 48px 44px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-principle-num {
+      position: absolute;
+      top: -4px;
+      right: 20px;
+      font-weight: 700;
+      font-size: 96px;
+      line-height: 1;
+      letter-spacing: -4px;
+      color: rgba(255,255,255,0.1);
+      pointer-events: none;
+      user-select: none;
+    }
+    .cs-principle-title {
+      font-weight: 600; font-size: 26px; line-height: normal;
+      color: #ffffff;
+      position: relative;
+    }
+    .cs-principle-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 19px; line-height: 30px;
+      color: rgba(255,255,255,0.78);
+      position: relative;
+    }
+    .cs-swatches { display: flex; gap: 10px; margin-top: 4px; position: relative; }
+    .cs-swatch { width: 44px; height: 44px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); flex-shrink: 0; }
+    .cs-font-sample {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 34px; color: #fff; margin-top: 4px; position: relative;
+    }
+    .cs-font-sample em { color: #ff9a6b; font-style: italic; }
+    .cs-font-sample-sub {
+      font-family: 'Inter Tight', sans-serif;
+      font-size: 15px; color: rgba(255,255,255,0.6); margin-top: 6px; position: relative;
+    }
+    .cs-stamp-demo { margin-top: 20px; position: relative; }
+    .cs-stamp-wrap { position: relative; display: inline-block; }
+    .cs-stamp-shadow {
+      position: absolute;
+      top: 6px; left: 6px; right: -6px; bottom: -6px;
+      background: #6b2216;
+      border-radius: 160px;
+      z-index: 0;
+    }
+    .cs-stamp-btn {
+      position: relative; z-index: 1; display: inline-block;
+      background: #b84c32; color: #fff;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 700; font-size: 16px;
+      padding: 14px 28px;
+      border-radius: 160px;
+      cursor: pointer; user-select: none;
+      transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .cs-stamp-wrap:hover .cs-stamp-btn { transform: translate(6px, 6px); }
+    .cs-stamp-hint {
+      display: block; margin-top: 12px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; letter-spacing: 1.4px; text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ── Behind the scenes (Figma / AI process) ── */
+    .cs-figma-frame {
+      border-radius: 14px;
+      overflow: hidden;
+      background: #ffffff;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 20px 48px rgba(16,4,44,0.1);
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .cs-figma-bar {
+      height: 36px;
+      background: #2c2c34;
+      display: flex; align-items: center; gap: 7px;
+      padding: 0 14px;
+      flex-shrink: 0;
+    }
+    .cs-figma-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .cs-figma-bar-label {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 12px; letter-spacing: 1.2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-left: 6px;
+    }
+    .cs-figma-frame-wide { max-width: 1040px; }
+    .cs-figma-img { width: 100%; height: auto; display: block; }
+    .cs-figma-img-tall { max-height: 620px; object-fit: cover; object-position: top; }
+    .cs-figma-caption {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #776c92;
+      text-align: center;
+      max-width: 560px;
+      margin: 20px auto 0;
+    }
+    .cs-figma-lead {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 400; font-size: 15px; letter-spacing: 1.6px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .cs-principles-section .cs-figma-caption { color: rgba(255,255,255,0.65); }
+
+    /* ── Outcome card linking to the live site ── */
+    .cs-impact-card-link { text-decoration: none; color: inherit; cursor: pointer; }
+    .cs-impact-card-link .cs-card-title { display: inline-flex; align-items: center; gap: 8px; transition: color 0.25s ease; }
+    .cs-impact-card-link svg { transition: transform 0.25s ease; flex-shrink: 0; }
+    .cs-impact-card-link:hover .cs-card-title { color: #b84c32; }
+    .cs-impact-card-link:hover svg { transform: translate(2px, -2px); }
+
+    /* ── Visual showcase gallery ── */
+    .cs-gallery-container { width: 100%; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 40px; }
+    .cs-gallery {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+    }
+    .cs-gallery-item {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-gallery-item img { width: 100%; height: auto; display: block; }
+    .cs-gallery-item-tall { grid-row: span 2; }
+    .cs-gallery-item-tall img { flex: 1; min-height: 0; height: 100%; object-fit: cover; }
+    .cs-gallery-caption {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 16px; line-height: 24px;
+      color: #776c92;
+      padding: 16px 20px;
+    }
+
+
+    /* Osapaclap template viewer */
+    .osa-tv { width: 100%; max-width: 1040px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; align-items: center; }
+    .osa-tv-tabs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+    .osa-tv-tab { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 400; color: #5a4f78; background: #ffffff; border: 1px solid rgba(43,38,92,0.14); border-radius: 9999px; padding: 8px 20px; cursor: pointer; transition: background .2s ease, color .2s ease, border-color .2s ease; }
+    .osa-tv-tab:hover { border-color: #2b265c; color: #2b265c; }
+    .osa-tv-tab[aria-selected="true"] { background: #2b265c; border-color: #2b265c; color: #ffffff; }
+    .osa-tv-tab:focus-visible { outline: 2px solid #f64900; outline-offset: 2px; }
+    .osa-tv-frame { width: 100%; max-width: 1040px; margin: 0; transition: max-width .45s ease; }
+    .osa-tv-frame.is-mobile { max-width: 440px; }
+    .osa-tv-scroll { background: #f7f6fe; height: calc(100vh - 300px); min-height: 360px; max-height: 760px; overflow: hidden; }
+    .osa-tv-scroll img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .osa-tv-scroll img.is-fading { opacity: 0; }
+    .osa-tv-scroll img { transition: opacity .25s ease; }
+    .osa-tv-caption { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 16px; line-height: 24px; color: #776c92; text-align: center; margin: 0; max-width: 560px; min-height: 48px; }
+    @media (max-width: 753px) { .osa-tv-tab { padding: 8px 16px; font-size: 14px; } }
+
+    /* ── Manifesto quote ── */
+
+    /* ── Outcome cards ── */
+    .cs-impact-section { gap: 24px; }
+    .cs-impact-subtitle {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 18px; line-height: 28px;
+      color: #10042c;
+    }
+    .cs-impact-cards {
+      display: flex;
+      gap: 1px;
+      flex-wrap: wrap;
+    }
+    .cs-impact-card {
+      flex: 1;
+      min-width: 200px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .cs-impact-card .cs-body { font-size: 18px; line-height: 28px; }
+    @media (max-width: 600px) { .cs-impact-card .cs-body { font-size: 16px; line-height: 26px; } }
+    .cs-stat {
+      font-weight: 700; font-size: 44px; line-height: normal;
+      color: #c23b00;
+    }
+    .cs-card-title {
+      font-weight: 600; font-size: 24px; line-height: normal;
+      color: #10042c;
+    }
+    /* ── Footer ── */
+    footer {
+      background: #10042c; width: 100%;
+      padding: 80px 128px;
+      display: flex; align-items: flex-end; justify-content: space-between;
+      overflow: hidden; position: relative;
+    }
+    .footer-bg {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; pointer-events: none;
+    }
+    .footer-headline {
+      font-weight: 300; font-size: 110px; line-height: 100px;
+      color: white; flex-shrink: 0; position: relative;
+    }
+    .footer-right {
+      width: 440px; flex-shrink: 0;
+      display: flex; flex-direction: column; gap: 32px;
+      position: relative;
+    }
+    .footer-desc {
+      font-weight: 500; font-size: 36px; line-height: 45px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-actions { display: flex; gap: 16px; align-items: center; }
+    .btn-email {
+      background: linear-gradient(135deg, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.15) 100%);
+      border: 1px solid rgba(255,255,255,0.30);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 20px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 44px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-email:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.34) 0%, rgba(255,255,255,0.14) 50%, rgba(255,255,255,0.24) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-email span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-linkedin {
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.05) 50%, rgba(255,255,255,0.10) 100%);
+      border: 1px solid rgba(255,255,255,0.26);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.28), inset 0 -1px 0 rgba(0,0,0,0.05), 0 4px 20px rgba(16,4,44,0.10);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      height: 46px; padding: 0 32px;
+      border-radius: 9999px;
+      display: flex; align-items: center;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-linkedin:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.26) 0%, rgba(255,255,255,0.10) 50%, rgba(255,255,255,0.18) 100%);
+      border-color: rgba(255,255,255,0.50);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.42), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 28px rgba(16,4,44,0.14);
+      transform: translateY(-2px);
+    }
+    .btn-linkedin span { font-weight: 300; font-size: 16px; color: white; }
+    .btn-scroll-top {
+      width: 56px; height: 56px;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      backdrop-filter: blur(14px) saturate(1.4);
+      -webkit-backdrop-filter: blur(14px) saturate(1.4);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0; position: relative;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, transform 0.25s ease;
+    }
+    .btn-scroll-top:hover {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      transform: translateY(-2px);
+    }
+    .btn-scroll-top-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ── Process flows (steps) ── */
+    .jflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; width: 100%; }
+    .jflow-step { flex: 1 1 120px; min-width: 110px; display: flex; flex-direction: column; gap: 8px; padding: 16px; border-radius: 16px; background: #fcfbfe; border: 1px solid rgba(34,34,46,0.1); }
+    .jflow-step-accent { background: #2b265c; border-color: #2b265c; }
+    .jflow-tag { font-weight: 600; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #c23b00; }
+    .jflow-title { font-weight: 600; font-size: 20px; line-height: 26px; color: #10042c; }
+    .jflow-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 300; font-size: 15px; line-height: 22px; color: #544869; }
+    .jflow-step-accent .jflow-tag, .jflow-step-accent .jflow-title, .jflow-step-accent .jflow-desc { color: #ffffff; }
+    .jflow-arrow { align-self: center; flex: 0 0 auto; font-size: 18px; color: #776c92; }
+    .cs-sys-lede { max-width: 820px; }
+    @media (max-width: 960px) {
+      .jflow-arrow { flex: 1 1 100%; text-align: center; transform: rotate(90deg); line-height: 1; height: 22px; }
+    }
+    @media (min-width: 961px) {
+      .cs-center-intro .cs-section-header { align-items: center; text-align: center; }
+      .cs-center-intro .cs-sys-lede, .cs-center-intro .osa-dark-text { margin-left: auto; margin-right: auto; text-align: center; }
+      .cs-center-intro .cs-figma-lead { text-align: center; }
+    }
+
+    @media (min-width: 961px) {
+      .btn-scroll-top {
+        position: fixed;
+        bottom: 32px; right: 32px;
+        z-index: 999;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        background: rgba(16,4,44,0.5);
+        border-color: rgba(255,255,255,0.12);
+        box-shadow: 0 4px 20px rgba(16,4,44,0.25);
+      }
+      .btn-scroll-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .btn-scroll-top-arrow { color: rgba(255,255,255,0.8); }
+    }
+
+    /* ── Next project ── */
+    /* ── Visit the live site ── */
+    .cs-visit { background: #eef0fa; align-items: center; text-align: center; }
+    .cs-visit .cs-section-header { align-items: center; }
+    .cs-visit-text { max-width: 640px; }
+    .osa-result-action { display: flex; justify-content: center; position: relative; }
+    .osa-result .cs-visit-btn { background: #ffffff; color: #10042c; }
+    .osa-result .cs-visit-btn:hover { background: #e6e0f2; box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .osa-result .cs-visit-btn:focus-visible { outline-color: #ffffff; }
+    .cs-visit.osa-cta { position: relative; overflow: hidden; background: #e6e0f2; text-align: left; align-items: stretch; }
+    .osa-cta-card { position: relative; width: 100%; display: grid; grid-template-columns: minmax(0, 1fr); align-items: center; gap: 40px; }
+    .osa-cta-copy { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 24px; z-index: 1; }
+    .osa-cta .cs-section-header { align-items: flex-start; text-align: left; margin-bottom: 0; }
+        .osa-cta .cs-visit-text { max-width: 520px; text-align: left; margin: 0; }
+    .osa-cta-steps { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; max-width: 680px; }
+    .osa-cta-steps li { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 13px; line-height: 1; color: #10042c; border: 1px solid rgba(16,4,44,0.25); border-radius: 9999px; padding: 8px 14px; }
+    .osa-cta-steps li span { color: #776c92; margin-right: 6px; }
+    .osa-cta-illus { position: absolute; right: 0; bottom: 0; width: min(38%, 460px); height: auto; display: block; pointer-events: none; }
+    .osa-cta-copy { max-width: 760px; }
+    @media (max-width: 1200px) { .osa-cta-illus { width: min(34%, 400px); } }
+    @media (max-width: 960px) { .osa-cta-illus { position: relative; width: min(100%, 380px); margin: 16px 0 -48px auto; } }
+    .cs-visit-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 700; font-size: 16px; line-height: 1;
+      padding: 16px 32px;
+      background: #10042c; color: #ffffff;
+      border-radius: 9999px;
+      cursor: pointer; text-decoration: none;
+      transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .cs-visit-btn:hover { background: #2b265c; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(16,4,44,0.16); }
+    .cs-visit-btn:focus-visible { outline: 2px solid #10042c; outline-offset: 4px; }
+    .cs-next { width: 100%; background: #2b265c; }
+    .cs-next .cs-label { color: rgba(255,255,255,0.65); }
+    .cs-next-link { display: block; padding: 64px 128px; text-decoration: none; transition: background 0.25s ease; }
+    .cs-next-link:hover { background: rgba(255,255,255,0.04); }
+    .cs-next-header { margin-bottom: 28px; }
+    .cs-next-body { display: flex; align-items: center; gap: 28px; }
+    .cs-next-logo {
+      width: 72px; height: 72px; border-radius: 16px; object-fit: cover; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      background: #fff8ec; padding: 12px;
+    }
+    .cs-next-link:hover .cs-next-logo { transform: scale(1.07) rotate(-2deg); }
+    .cs-next-info { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .cs-next-name { font-weight: 500; font-size: 44px; line-height: 1; color: #ffffff; }
+    .cs-next-desc {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-weight: 300; font-size: 20px; line-height: 30px;
+      color: rgba(255,255,255,0.85);
+    }
+    .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%);
+      border: 1px solid rgba(255,255,255,0.28);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.38), inset 0 -1px 0 rgba(0,0,0,0.06), 0 4px 16px rgba(16,4,44,0.12);
+      border-radius: 160px;
+      width: 70px; height: 70px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; overflow: hidden;
+      transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cs-next-link:hover .project-btn {
+      background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%);
+      border-color: rgba(255,255,255,0.45);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.52), inset 0 -1px 0 rgba(0,0,0,0.04), 0 8px 24px rgba(16,4,44,0.16);
+      width: 134px;
+    }
+    .project-btn span {
+      color: rgba(255,255,255,0.75);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), color 0.35s ease, opacity 0.35s ease;
+    }
+    .cs-next-link:hover .project-btn span { transform: translateX(4px); color: #fff; }
+
+    /* ── Responsive ── */
+    @media (min-width: 1440px) {
+      .cs-hero-title { font-size: 72px; line-height: 90px; }
+      .cs-hero-image { width: 760px; height: 562px; }
+    }
+    @media (min-width: 1201px) and (max-width: 1439px) {
+      .cs-hero-title { font-size: 60px; line-height: 74px; }
+    }
+    @media (max-width: 1200px) {
+      .nav-inner { padding: 0 64px; }
+      .cs-hero { padding: 64px; }
+      .cs-hero-left { width: auto; }
+      .cs-hero-image { width: 613px; height: 454px; margin-bottom: -64px; }
+      .cs-hero-title { font-size: 60px; line-height: 74px; }
+      .cs-section { padding: 64px; }
+      .cs-brief-left { padding: 64px; }
+      .cs-figma-img-tall { max-height: 440px; }
+      .cs-gallery { grid-template-columns: 1fr; }
+      .cs-gallery-item-tall { grid-row: auto; }
+      footer { padding: 64px; }
+    }
+
+    @media (max-width: 960px) {
+      .nav-inner { padding: 0 40px; }
+      .cs-hero { padding: 40px 40px; min-height: auto; flex-direction: column; align-items: flex-start; }
+      .cs-hero-left { flex: 0 0 100%; width: 100%; min-width: 0; gap: 32px; }
+      .cs-hero-image { display: none; }
+      .cs-hero-title { font-size: 64px; line-height: 78px; }
+      .cs-meta { flex-wrap: wrap; gap: 20px; }
+      .cs-section { padding: 56px 40px; gap: 28px; }
+      .cs-intro { flex-direction: column; }
+      .cs-brief-left { padding: 56px 40px; }
+      .cs-scope-card { flex: none; width: 100%; padding: 40px; }
+      .cs-heading { font-size: 36px; }
+      .cs-body-bold, .cs-body, .cs-body-grey { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 20px; line-height: 32px; }
+      .cs-principles-grid { grid-template-columns: 1fr; }
+      .cs-principle { padding: 40px; }
+      .cs-font-sample { font-size: 28px; }
+      .cs-impact-cards { flex-direction: column; }
+      .cs-next-link { padding: 48px 40px; }
+      .cs-next-name { font-size: 36px; }
+      .cs-next-link:hover .project-btn { width: 70px; }
+      footer { padding: 56px 40px; flex-direction: column; gap: 40px; align-items: flex-start; }
+      .footer-headline { font-size: 72px; line-height: 72px; }
+      .footer-right { width: 100%; }
+    }
+
+    @media (max-width: 600px) {
+      .nav-inner { padding: 0 20px; height: 64px; }
+      .cs-hero { padding: 32px 20px; }
+      .cs-hero-left { gap: 24px; }
+      .cs-hero-title { font-size: 48px; line-height: 58px; }
+      .cs-hero-brand { gap: 12px; }
+      .cs-meta { gap: 16px; }
+      .cs-meta-value { font-size: 16px; }
+      .cs-section { padding: 48px 20px; gap: 24px; }
+      .cs-brief-left { padding: 48px 20px; gap: 24px; }
+      .cs-scope-card { padding: 32px 20px; }
+      .cs-heading { font-size: 26px; }
+      .cs-body-bold, .cs-body, .cs-body-grey { font-size: 18px; line-height: 28px; }
+      .cs-principle { padding: 32px 24px; }
+      .cs-stat { font-size: 36px; }
+      .cs-next-link { padding: 36px 20px; }
+      .cs-next-name { font-size: 28px; }
+      .cs-next-desc { font-family: 'Lato', Helvetica, Arial, sans-serif; font-size: 18px; }
+      footer { padding: 48px 20px; }
+      .footer-headline { font-size: 48px; line-height: 52px; }
+      .footer-desc { font-size: 24px; line-height: 34px; }
+    }
+  
+    /* ── Language switch ── */
+    .cs-nav-end { display: flex; align-items: center; gap: 32px; }
+    .lang-switch {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: 1.4px; line-height: 1;
+    }
+    .lang-switch a { color: #fff; opacity: 0.48; padding: 16px 8px; margin: -16px -8px; transition: opacity 0.25s ease; }
+    .lang-switch a:hover { opacity: 1; }
+    .lang-switch a[aria-current] { opacity: 1; pointer-events: none; }
+    .lang-switch-sep { width: 1px; height: 8px; background: #fff; opacity: 0.32; }
+    @media (max-width: 600px) { .cs-nav-end { gap: 16px; } }
+
+    /* ── Osapaclap: logo, content map, editor features ── */
+    .osa-map { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; max-width: 1040px; margin: 0 auto; }
+    .osa-map-hub { grid-column: 1 / -1; }
+    .osa-dark-text { position: relative; max-width: 820px; color: rgba(255,255,255,0.85); }
+    .osa-features { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; width: 100%; }
+    @media (max-width: 1200px) { .osa-features { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
+    .osa-feature { position: relative; overflow: hidden; background: #ffffff; border: 1px solid rgba(16,4,44,0.06); border-radius: 16px; padding: 24px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 1px 2px rgba(16,4,44,0.04); }
+    .osa-feature-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; }
+    .osa-feature-icon { width: 44px; height: 44px; border-radius: 12px; background: #2b265c; color: #ffffff; display: flex; align-items: center; justify-content: center; }
+    .osa-feature-num { font-weight: 700; font-size: 40px; line-height: 1; letter-spacing: -1px; color: rgba(43,38,92,0.12); user-select: none; }
+    .osa-feature .cs-card-title { font-size: 22px; }
+    .osa-feature .cs-body { font-size: 16px; line-height: 24px; }
+    .osa-edit-pair { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; width: 100%; align-items: start; }
+    .osa-edit .cs-figma-frame { max-width: none; }
+    @media (max-width: 960px) {
+      .osa-map { grid-template-columns: repeat(2, 1fr); }
+      .osa-features { grid-template-columns: 1fr; }
+      .osa-edit-pair { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 600px) {
+      .osa-map { grid-template-columns: 1fr; }
+      .osa-feature { padding: 24px 20px; }
+      .osa-feature .cs-body { font-size: 15px; line-height: 24px; }
+    }
+
+    /* ── Osapaclap live components (from the Figma library) ── */
+    .osa-comp-frame { max-width: 1240px; background: #ffffff; }
+    .osa-ui { background: #ffffff; padding: 40px; display: flex; flex-direction: column; gap: 40px; font-family: 'Inter', Helvetica, Arial, sans-serif; color: #0b0b0c; text-align: left; }
+    .osa-ui img { display: block; }
+    .osa-ui-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+    .osa-btn { display: inline-flex; align-items: center; gap: 16px; height: 40px; padding: 12px 24px; border-radius: 9999px; background: #ffffff; border: 1px solid #ffffff; font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; line-height: 20px; color: #05080f; white-space: nowrap; transition: transform 0.25s ease; }
+    .osa-btn:hover img { transform: translateX(3px); }
+    .osa-btn img { transition: transform 0.25s ease; }
+    .osa-btn-secondary { background: transparent; border-color: #05080f; }
+    .osa-ui-row > .osa-btn:not(.osa-btn-secondary) { border-color: #e6e4df; box-shadow: 0 2px 8px rgba(5,8,15,0.08); }
+    .osa-chips, .osa-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .osa-chip { font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; line-height: normal; color: #3a3a3f; background: #ffffff; border: 1px solid #e6e4df; border-radius: 9999px; padding: 8px 16px; cursor: pointer; transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease; }
+    .osa-chip:hover { border-color: #05080f; }
+    .osa-chip.is-active { background: #05080f; border-color: #05080f; color: #ffffff; }
+    .osa-tag { display: inline-flex; align-items: center; gap: 8px; height: 24px; padding: 4px 12px; border-radius: 9999px; background: rgba(5,8,15,0.6); box-shadow: 0 0 0 1px rgba(255,255,255,0.2); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 16px; letter-spacing: 1.47px; text-transform: uppercase; color: #ffffff; white-space: nowrap; }
+    .osa-tag-dot { width: 6px; height: 6px; border-radius: 9999px; flex-shrink: 0; }
+    .osa-ui-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: start; }
+    .osa-card { display: flex; flex-direction: column; }
+    .osa-card-media { position: relative; height: 180px; border-radius: 12px; overflow: hidden; background: #05080f; }
+    .osa-card-media > img { width: 100%; height: 100%; object-fit: cover; }
+    .osa-person-media { height: 288px; background: #e2e8f3; display: flex; align-items: center; justify-content: center; }
+    .osa-person-media > img { width: 96px; height: 96px; object-fit: contain; }
+    .osa-card-tag { position: absolute; top: 12px; left: 12px; }
+    .osa-card-title { font-family: 'Jost', sans-serif; font-weight: 500; font-size: 22px; line-height: 1.4; color: #0b0b0c; padding-top: 16px; }
+    .osa-card-text { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 24.375px; color: #60606c; padding-top: 12px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+    .osa-card-meta { display: flex; align-items: center; gap: 6px; margin-top: 16px; padding-top: 16px; border-top: 1px solid #e6e4df; font-size: 13px; line-height: 19.5px; color: #60606c; white-space: nowrap; }
+    .osa-card-author { font-weight: 500; color: #3a3a3f; margin-right: 6px; }
+    .osa-card-author.osa-dark { color: #0b0b0c; margin-right: 2px; }
+    .osa-card-sep { width: 1px; height: 12px; background: #e6e4df; margin-right: 6px; }
+    .osa-eyebrow { display: block; font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.2; letter-spacing: 2px; text-transform: uppercase; color: #f24e0a; }
+    .osa-person-role { color: #d03e00; padding-top: 8px; }
+    .osa-promo { min-height: 388px; padding: 28px; border-radius: 16px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; background: #23306b url('/assets/osa-ui-promo.webp') center / cover no-repeat; }
+    .osa-promo-title { font-family: 'Jost', sans-serif; font-weight: 500; font-size: 27px; line-height: 29.7px; letter-spacing: -0.54px; color: #ffffff; padding-top: 16px; }
+    .osa-promo-text { font-family: 'Inter', sans-serif; font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.7); padding-top: 20px; }
+    .osa-promo-bars { display: flex; gap: 8px; padding-bottom: 24px; }
+    .osa-promo-bars span { width: 32px; height: 4px; border-radius: 9999px; }
+    .osa-category { position: relative; display: block; aspect-ratio: 400 / 540; border-radius: 16px; overflow: hidden; border-top: 4px solid #d64a5c; color: #ffffff; }
+    .osa-category > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .osa-category::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(5,8,15,0.95), rgba(5,8,15,0.3) 50%, rgba(5,8,15,0.1)); }
+    .osa-category:hover > img { transform: scale(1.05); }
+    .osa-category-body { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; padding: 28px; display: flex; flex-direction: column; }
+    .osa-category-title { font-family: 'Jost', sans-serif; font-weight: 500; font-size: 36px; line-height: 40px; }
+    .osa-category-text { font-family: 'Inter', sans-serif; font-size: 15px; line-height: 22.5px; color: rgba(255,255,255,0.85); padding-top: 8px; }
+    .osa-category-link { align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; margin-top: 24px; padding-bottom: 4px; border-bottom: 1px solid rgba(255,255,255,0.4); font-family: 'Inter', sans-serif; font-weight: 500; font-size: 14px; line-height: 20px; }
+    @media (max-width: 1200px) { .osa-ui-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 600px) { .osa-ui { padding: 24px 16px; gap: 32px; } .osa-ui-cards { grid-template-columns: 1fr; } }
+
+    /* ── Osapaclap step 2: two columns, scrollable homepage ── */
+    .osa-step2 { overflow: clip; }
+    .osa-split { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start; width: 100%; }
+    .osa-split-left { display: flex; flex-direction: column; gap: 40px; min-width: 0; }
+    .osa-split-left .osa-dark-text { max-width: none; }
+    .osa-split-left .cs-principles-grid { grid-template-columns: 1fr; }
+    .osa-split-left .cs-principle { padding: 32px; background: linear-gradient(145deg, #4a5fb8 0%, #3a4fa2 45%, #2b3f87 100%); border: 1px solid rgba(255,255,255,0.22); border-radius: 24px; }
+    .osa-split-left .cs-principle-num { color: rgba(255,255,255,0.2); }
+    .osa-split-left .cs-principle-desc { color: rgba(255,255,255,0.92); }
+    .osa-split-left .cs-swatch { border-color: rgba(255,255,255,0.45); border-radius: 14px; }    .osa-split-right { min-width: 0; align-self: stretch; }
+    .osa-sticky { position: sticky; top: 112px; }
+    .osa-scroll-frame { max-width: none; margin: 0; }
+    .osa-scroll { height: min(72vh, 680px); overflow-y: auto; overscroll-behavior: contain; background: #05080f; scrollbar-width: thin; }
+    .osa-scroll img { width: 100%; height: auto; display: block; }
+    .osa-scroll:focus-visible { outline: 2px solid #ff9a6b; outline-offset: -2px; }
+    @media (max-width: 960px) {
+      .osa-split { grid-template-columns: 1fr; gap: 40px; }
+      .osa-sticky { position: static; }
+      .osa-scroll { height: 520px; }
+    }
+
+    /* ── Osapaclap step 2 carousel ── */
+    .osa-carousel { width: 100%; }
+    .osa-carousel:focus-visible { outline: 2px solid #ff9a6b; outline-offset: 4px; }
+    .osa-viewport { overflow: hidden; touch-action: pan-y; }
+    .osa-track { display: flex; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .osa-track > .cs-principle { flex: 0 0 100%; min-width: 0; }
+    .osa-controls { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
+    .osa-arrow { width: 48px; height: 48px; border-radius: 50%; flex-shrink: 0; cursor: pointer; color: rgba(255,255,255,0.8); background: linear-gradient(135deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0.06) 100%); border: 1px solid rgba(255,255,255,0.28); display: flex; align-items: center; justify-content: center; transition: background 0.3s ease, color 0.2s ease, transform 0.25s ease; }
+    .osa-arrow:hover { background: linear-gradient(135deg, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.12) 100%); color: #fff; transform: translateY(-2px); }
+    .osa-dots { display: flex; gap: 8px; flex: 1; }
+    .osa-dot { width: 32px; height: 28px; padding: 12px 0; border: 0; background: rgba(255,255,255,0.25); background-clip: content-box; cursor: pointer; transition: background-color 0.3s ease; }
+    .osa-dot.is-active { background-color: #ff9a6b; }
+    .osa-count { font-family: 'Lato', Helvetica, Arial, sans-serif; font-weight: 400; font-size: 14px; letter-spacing: 1.96px; color: rgba(255,255,255,0.65); }
+    @media (prefers-reduced-motion: reduce) { .osa-track { transition: none; } }
+
+    /* ── Osapaclap step 5 cards ── */
+    .osa-impact { gap: 24px; }
+    .osa-impact .cs-impact-card { position: relative; overflow: hidden; background: #ffffff; border: 1px solid rgba(16,4,44,0.06); border-radius: 16px; padding: 24px; gap: 8px; box-shadow: 0 1px 2px rgba(16,4,44,0.04); }
+    .osa-impact .cs-stat { font-size: 40px; line-height: 1; letter-spacing: -1px; color: #2b265c; }
+    .osa-impact .cs-card-title { font-size: 20px; }
+    .osa-impact .cs-body { font-size: 16px; line-height: 24px; }
+    .osa-impact .cs-stat::after { content: ''; display: block; width: 32px; height: 4px; border-radius: 9999px; background: #f64900; margin-top: 12px; }
+    @media (max-width: 600px) { .osa-impact .cs-stat { font-size: 36px; } }
+  </style>
+  <link rel="preload" as="image" href="/assets/preview-osapaclap-v2.webp" type="image/webp">
+</head>
+<body>
+
+<div class="page">
+  <div class="content">
+
+    <!-- Navigation -->
+    <nav>
+      <div class="nav-inner">
+        <a class="cs-nav-back" href="/fr/" aria-label="Retour aux projets"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <div class="cs-nav-end"><span class="cs-nav-brand">Osapaclap</span><div class="lang-switch"><a href="/osapaclap.html" hreflang="en" lang="en" aria-label="English">EN</a><span class="lang-switch-sep" aria-hidden="true"></span><a href="/fr/osapaclap.html" hreflang="fr" lang="fr" aria-label="Français" aria-current="true">FR</a></div></div>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="cs-hero">
+      <div class="cs-hero-tint" aria-hidden="true"></div>
+      <img class="cs-hero-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-hero-left">
+        <div class="cs-hero-brand reveal">
+          <span class="cs-logo-link">
+            <img class="cs-logo" src="/assets/logo-osapaclap-mark.png" alt="Logo Osapaclap" style="background:#f7f6fe;">
+          </span>
+          <span class="cs-tag">Association · Site internet</span>
+        </div>
+        <h1 class="cs-hero-title reveal reveal-delay-1">Un site internet culturel, du premier rendez-vous à la mise en ligne</h1>
+        <div class="cs-meta reveal reveal-delay-2">
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Rôle</span>
+            <span class="cs-meta-value">UX/UI &amp; Développement</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Plateforme</span>
+            <span class="cs-meta-value">WordPress</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Année</span>
+            <span class="cs-meta-value">2026</span>
+          </div>
+          <div class="cs-meta-item">
+            <span class="cs-meta-label">Statut</span>
+            <a class="cs-meta-value cs-meta-link" href="https://blog.osapaclap.fr/" target="_blank" rel="noopener"><span class="cs-meta-link-text">En ligne</span><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M4 10L10 4M5 4h5v5" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="cs-hero-image reveal from-right reveal-delay-3">
+        <img src="/assets/preview-osapaclap-v2.webp" alt="Site Osapaclap sur mobile et ordinateur : l'en-tête d'un article sur mobile, les cartes jeu vidéo et arts visuels sur ordinateur">
+      </div>
+    </section>
+
+    <!-- Intro / Brief + Scope -->
+    <section class="cs-intro">
+      <div class="cs-brief-left">
+        <div class="cs-section-header reveal">
+          <span class="cs-label">Le brief</span>
+          <h2 class="cs-heading">Sur le papier un blog, en pratique une bibliothèque de contenus reliés</h2>
+        </div>
+        <div class="cs-problem-content reveal reveal-delay-1">
+          <p class="cs-body-bold">Osapaclap est une association qui écrit sur le cinéma, le jeu vidéo et les arts visuels. Elle m'a demandé un site internet WordPress pour publier ses textes et toucher un public plus large.</p>
+          <p class="cs-body">Au départ, cela ressemblait à un blog. Une fois la liste de tout ce qu'ils voulaient publier dressée, le projet est devenu bien plus large : des articles, des parcours d'apprentissage qui se terminent par un quiz, une bibliothèque de personnalités, d'œuvres et de vocabulaire du cinéma, un agenda d'événements et une page équipe. Chacun demandait son propre modèle de page, et tous devaient être reliés entre eux.</p>
+          <p class="cs-body">Ce projet illustre le mieux ma façon de travailler sur un site internet, du premier rendez-vous au jour de la mise en ligne. J'ai suivi sept étapes, et chaque section ci-dessous en présente une.</p>
+        </div>
+      </div>
+      <div class="cs-scope-card reveal reveal-delay-2">
+        <span class="cs-scope-label">Mon périmètre</span>
+        <div class="cs-scope-phases">
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">01</span>
+              <span class="cs-scope-phase-title">Découverte</span>
+            </div>
+            <p class="cs-scope-phase-desc">Contenus et besoins, listés en premier</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">02</span>
+              <span class="cs-scope-phase-title">Direction artistique</span>
+            </div>
+            <p class="cs-scope-phase-desc">Identité validée sur la page d'accueil</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">03</span>
+              <span class="cs-scope-phase-title">Design system</span>
+            </div>
+            <p class="cs-scope-phase-desc">Composants et modèles de page clés</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">04</span>
+              <span class="cs-scope-phase-title">Spécifications</span>
+            </div>
+            <p class="cs-scope-phase-desc">Types de contenu, champs et règles</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">05</span>
+              <span class="cs-scope-phase-title">Thème custom</span>
+            </div>
+            <p class="cs-scope-phase-desc">Thème WordPress et extensions</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">06</span>
+              <span class="cs-scope-phase-title">Formation</span>
+            </div>
+            <p class="cs-scope-phase-desc">Back office et guide des éditeurs</p>
+            <div class="cs-scope-divider"></div>
+          </div>
+          <div class="cs-scope-phase">
+            <div class="cs-scope-phase-row">
+              <span class="cs-scope-phase-num">07</span>
+              <span class="cs-scope-phase-title">Mise en ligne</span>
+            </div>
+            <p class="cs-scope-phase-desc">DNS, domaine et lancement</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 1: Discovery -->
+    <section class="cs-section cs-section-light cs-center-intro">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 1 · Découverte</span>
+        <h2 class="cs-heading">Partir de ce qu'ils veulent publier</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Avant d'ouvrir Figma, j'ai rencontré l'équipe pour lister tout ce que le site devait contenir et à qui il s'adressait. Cette liste a montré à quel point les contenus étaient liés. Un article sur un film cite un réalisateur, une œuvre et quelques termes techniques, et chacun mérite sa propre page. Voici la carte sur laquelle nous nous sommes accordés :</p>
+      <div class="osa-map reveal reveal-delay-2">
+        <div class="jflow-step jflow-step-accent osa-map-hub">
+          <span class="jflow-tag">Le pivot</span>
+          <span class="jflow-title">Articles</span>
+          <p class="jflow-desc">Cinéma, jeu vidéo et arts visuels, classés par thème. Tous les autres contenus renvoient vers eux.</p>
+        </div>
+        <div class="jflow-step">
+          <span class="jflow-tag">Apprendre</span>
+          <span class="jflow-title">Parcours</span>
+          <p class="jflow-desc">Des articles lus dans l'ordre, avec un quiz à la fin</p>
+        </div>
+        <div class="jflow-step">
+          <span class="jflow-tag">Bibliothèque</span>
+          <span class="jflow-title">Personnalités</span>
+          <p class="jflow-desc">Réalisateurs, artistes et game designers</p>
+        </div>
+        <div class="jflow-step">
+          <span class="jflow-tag">Bibliothèque</span>
+          <span class="jflow-title">Œuvres</span>
+          <p class="jflow-desc">Films, jeux et œuvres d'art</p>
+        </div>
+        <div class="jflow-step">
+          <span class="jflow-tag">Bibliothèque</span>
+          <span class="jflow-title">Lexique</span>
+          <p class="jflow-desc">Les termes techniques expliqués simplement</p>
+        </div>
+        <div class="jflow-step">
+          <span class="jflow-tag">Agenda</span>
+          <span class="jflow-title">Événements</span>
+          <p class="jflow-desc">Projections, conférences et ateliers</p>
+        </div>
+        <div class="jflow-step">
+          <span class="jflow-tag">Équipe</span>
+          <span class="jflow-title">Équipe</span>
+          <p class="jflow-desc">Les auteurs et leurs articles</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="cs-figma-lead" style="color:#776c92;">Sur le site en ligne</p>
+        <p class="cs-body cs-sys-lede" style="margin-bottom:32px;">Côté visiteur, cette carte devient des liens. À la fin de chaque article, un bloc « Dans cet article » liste les personnalités, les œuvres et les termes du lexique cités, et chacun ouvre sa propre page. Ces liens gardent les lecteurs en mouvement d'une page à l'autre, et ils aident le référencement : les moteurs de recherche suivent les liens internes pour comprendre comment les contenus s'articulent.</p>
+        <div class="cs-figma-frame">
+          <div class="cs-figma-bar">
+            <span class="cs-figma-dot" style="background:#ff5f57;"></span>
+            <span class="cs-figma-dot" style="background:#febc2e;"></span>
+            <span class="cs-figma-dot" style="background:#28c840;"></span>
+            <span class="cs-figma-bar-label">Osapaclap · Article</span>
+          </div>
+          <img loading="lazy" class="cs-figma-img" src="/assets/osa-linked-content.webp" alt="Bloc « Dans cet article » à la fin d'un article Osapaclap, avec les personnalités, œuvres et termes du lexique liés, et une définition affichée au survol">
+        </div>
+        <p class="cs-figma-caption">Survoler un terme affiche sa définition sans quitter l'article.</p>
+      </div>
+    </section>
+
+    <!-- Step 2: Artistic direction -->
+    <section class="cs-section cs-principles-section osa-step2">
+      <img class="cs-principles-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="osa-split">
+        <div class="osa-split-left">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 2 · Direction artistique</span>
+        <h2 class="cs-heading">D'abord la page d'accueil, pour s'accorder sur l'identité</h2>
+      </div>
+      <p class="cs-body osa-dark-text reveal reveal-delay-1">J'ai dessiné la page d'accueil avant toutes les autres. C'est là que l'identité doit travailler le plus, et cela donnait à l'association quelque chose de concret sur quoi réagir. Une fois validée, tous les autres modèles de page ont suivi les mêmes règles.</p>
+          <div class="osa-carousel reveal reveal-delay-1" role="group" aria-roledescription="carousel" aria-label="Quatre décisions artistiques" tabindex="0">
+            <div class="osa-viewport">
+              <div class="osa-track">
+        <div class="cs-principle">
+          <span class="cs-principle-num">01</span>
+          <span class="cs-principle-title">Le bleu d'une salle obscure</span>
+          <p class="cs-principle-desc">Le site parle d'images, le cadre autour d'elles devait donc rester discret. Un dégradé de bleu profond rappelle l'obscurité d'un cinéma et fait ressortir affiches, photogrammes et œuvres.</p>
+          <div class="cs-swatches">
+            <span class="cs-swatch" style="background:#2b265c;"></span>
+            <span class="cs-swatch" style="background:#3a4fa2;"></span>
+            <span class="cs-swatch" style="background:#f7f6fe;"></span>
+          </div>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">02</span>
+          <span class="cs-principle-title">Une seule couleur chaude</span>
+          <p class="cs-principle-desc">L'orange du point du logo est la seule couleur chaude du site. Je l'ai gardé pour les petits signaux, comme les intitulés de section et le repère du quiz, pour qu'il attire toujours l'œil.</p>
+          <div class="cs-swatches">
+            <span class="cs-swatch" style="background:#f64900;"></span>
+          </div>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">03</span>
+          <span class="cs-principle-title">Une pellicule entre les sections</span>
+          <p class="cs-principle-desc">Une fine bordure de pellicule sépare les grandes sections de la page. C'est un petit détail, mais il dit de quoi parle le site avant même de lire un mot.</p>
+        </div>
+        <div class="cs-principle">
+          <span class="cs-principle-num">04</span>
+          <span class="cs-principle-title">Les images d'abord, le texte ensuite</span>
+          <p class="cs-principle-desc">L'en-tête est un slider pleine largeur des derniers articles, et chaque domaine a sa grande carte photo. Les lecteurs viennent pour le cinéma, les jeux et l'art : autant les leur montrer en premier.</p>
+        </div>
+      </div>
+            </div>
+            <div class="osa-controls">
+              <button type="button" class="osa-arrow" data-dir="-1" aria-label="Décision précédente"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2L4 7L9 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <div class="osa-dots"><button type="button" class="osa-dot is-active" aria-label="Afficher la décision 1"></button><button type="button" class="osa-dot" aria-label="Afficher la décision 2"></button><button type="button" class="osa-dot" aria-label="Afficher la décision 3"></button><button type="button" class="osa-dot" aria-label="Afficher la décision 4"></button></div>
+              <span class="osa-count" aria-live="polite">01 / 04</span>
+              <button type="button" class="osa-arrow" data-dir="1" aria-label="Décision suivante"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+          </div>
+        </div>
+        <div class="osa-split-right">
+          <div class="osa-sticky reveal reveal-delay-2">
+            <p class="cs-figma-lead">La page d'accueil, telle que validée par l'association</p>
+            <div class="cs-figma-frame osa-scroll-frame">
+              <div class="cs-figma-bar">
+                <span class="cs-figma-dot" style="background:#F24E1E;"></span>
+                <span class="cs-figma-dot" style="background:#A259FF;"></span>
+                <span class="cs-figma-dot" style="background:#1ABCFE;"></span>
+                <span class="cs-figma-dot" style="background:#0ACF83;"></span>
+                <span class="cs-figma-bar-label">Figma · Home</span>
+              </div>
+              <div class="osa-scroll" tabindex="0" role="region" aria-label="Maquette de la page d'accueil Osapaclap, défilante">
+                <img loading="lazy" src="/assets/osa-home-scroll-hd.webp" width="1500" height="4946" alt="Maquette de la page d'accueil Osapaclap : slider d'en-tête, derniers articles, catégories, agenda des événements, équipe et pied de page">
+              </div>
+            </div>
+            <p class="cs-figma-caption">Faites défiler dans le cadre : derniers articles, les trois domaines, prochains événements et équipe, le tout sur une seule page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 3: Design system and templates -->
+    <section class="cs-section cs-section-light cs-center-intro">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 3 · Design system et modèles de page</span>
+        <h2 class="cs-heading">Une bibliothèque de composants, puis les modèles clés</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">L'identité validée, je l'ai transformée en design system dans Figma : navigation, boutons, filtres, une carte pour chaque type de contenu, lignes de parcours, en-tête et pied de page. Je m'en suis ensuite servi pour dessiner les modèles de page les plus importants du site.</p>
+      <div class="reveal reveal-delay-2">
+                <div class="cs-figma-frame osa-comp-frame">
+          <div class="cs-figma-bar">
+            <span class="cs-figma-dot" style="background:#F24E1E;"></span>
+            <span class="cs-figma-dot" style="background:#A259FF;"></span>
+            <span class="cs-figma-dot" style="background:#1ABCFE;"></span>
+            <span class="cs-figma-dot" style="background:#0ACF83;"></span>
+            <span class="cs-figma-bar-label">Figma · Composants</span>
+          </div>
+        <div class="osa-ui">
+          <div class="osa-ui-row">
+            <a class="osa-btn" href="#" tabindex="-1">Tous les articles <img src="/assets/osa-ui-arrow-dark.svg" width="16" height="16" alt=""></a>
+            <a class="osa-btn osa-btn-secondary" href="#" tabindex="-1">Tous les articles <img src="/assets/osa-ui-arrow-dark.svg" width="16" height="16" alt=""></a>
+            <div class="osa-chips" role="group" aria-label="Démonstration des filtres">
+              <button type="button" class="osa-chip is-active">Tous</button>
+              <button type="button" class="osa-chip">Rétrospective</button>
+              <button type="button" class="osa-chip">Analyse</button>
+            </div>
+            <div class="osa-tags">
+              <span class="osa-tag"><span class="osa-tag-dot" style="background:#d64a5c;"></span>Cinéma</span>
+              <span class="osa-tag"><span class="osa-tag-dot" style="background:#2fa98d;"></span>Arts visuels</span>
+              <span class="osa-tag"><span class="osa-tag-dot" style="background:#7a6cf0;"></span>Jeu vidéo</span>
+            </div>
+          </div>
+          <div class="osa-ui-cards">
+            <article class="osa-card">
+              <div class="osa-card-media">
+                <img src="/assets/osa-ui-article.webp" alt="" loading="lazy">
+                <span class="osa-tag osa-card-tag"><span class="osa-tag-dot" style="background:#d64a5c;"></span>Cinéma</span>
+              </div>
+              <h3 class="osa-card-title">Fauteuils rouges : petite histoire des salles de quartier</h3>
+              <p class="osa-card-text">De l’âge d’or des cinémas de quartier à leur renaissance associative.</p>
+              <div class="osa-card-meta"><span class="osa-card-author">Lucas Galvand</span><span class="osa-card-sep"></span><img src="/assets/osa-ui-clock.svg" width="14" height="14" alt="">8 min de lecture</div>
+            </article>
+            <div class="osa-promo">
+              <div>
+                <span class="osa-eyebrow">On vous propose</span>
+                <h3 class="osa-promo-title">Des rétrospectives</h3>
+                <p class="osa-promo-text">Retrouvez ici des articles où l'on remonte le fil du temps. On revient sans distinction ce qui compose le jeu vidéo, le cinéma et les arts visuels.</p>
+              </div>
+              <div>
+                <div class="osa-promo-bars"><span style="background:#d64a5c;"></span><span style="background:#7a6cf0;"></span><span style="background:#2fa98d;"></span></div>
+                <a class="osa-btn" href="#" tabindex="-1">Tous les articles <img src="/assets/osa-ui-arrow-dark.svg" width="16" height="16" alt=""></a>
+              </div>
+            </div>
+            <article class="osa-card">
+              <div class="osa-card-media osa-person-media">
+                <img src="/assets/osa-ui-placeholder.svg" width="96" height="96" alt="">
+                <span class="osa-tag osa-card-tag"><span class="osa-tag-dot" style="background:#d64a5c;"></span>Cinéma</span>
+              </div>
+              <h3 class="osa-card-title">Agnès Varda</h3>
+              <span class="osa-eyebrow osa-person-role">Réalisatrice</span>
+              <p class="osa-card-text">Figure de la Nouvelle Vague, du documentaire et de la photographie.</p>
+              <div class="osa-card-meta"><span class="osa-card-author osa-dark">6 articles</span><img src="/assets/osa-ui-arrow-dark.svg" width="16" height="16" alt=""></div>
+            </article>
+            <a class="osa-category" href="#" tabindex="-1">
+              <img src="/assets/osa-ui-category.webp" alt="" loading="lazy">
+              <span class="osa-category-body">
+                <span class="osa-category-title">Cinéma</span>
+                <span class="osa-category-text">Le septième art, de la salle obscure aux plateaux.</span>
+                <span class="osa-category-link">Découvrir <img src="/assets/osa-ui-arrow-white.svg" width="16" height="16" alt=""></span>
+              </span>
+            </a>
+          </div>
+        </div>
+        </div>
+        <p class="cs-figma-caption">Les principaux composants de la bibliothèque Figma, reconstruits ici en code. Essayez les filtres.</p>
+      </div>
+    </section>
+
+    <!-- Step 4: Technical specifications -->
+    <section class="cs-section cs-section-white cs-center-intro">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 4 · Spécifications techniques</span>
+        <h2 class="cs-heading">Des maquettes aux spécifications</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Les maquettes montrent à quoi ressemble une page. Avant d'écrire le moindre code, je les ai traduites en spécifications : quels types de contenu existent, quels champs chacun demande, comment ils se relient et ce que les éditeurs ont le droit de modifier. L'association a validé ce document, le développement a donc démarré sur des bases solides.</p>
+      <div class="jflow reveal reveal-delay-2">
+        <div class="jflow-step">
+          <span class="jflow-tag">Design</span>
+          <span class="jflow-title">Maquettes</span>
+          <p class="jflow-desc">Les pages validées dans Figma</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Structure</span>
+          <span class="jflow-title">Types de contenu</span>
+          <p class="jflow-desc">Articles, parcours, bibliothèque, événements</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Données</span>
+          <span class="jflow-title">Champs et liens</span>
+          <p class="jflow-desc">Auteur, catégorie, thème, personnalités et œuvres liées</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Édition</span>
+          <span class="jflow-title">Règles</span>
+          <p class="jflow-desc">Champs obligatoires et blocs autorisés</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step jflow-step-accent">
+          <span class="jflow-tag">Validation</span>
+          <span class="jflow-title">Spécifications validées</span>
+          <p class="jflow-desc">Approuvées par l'association avant le développement</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 5: WordPress theme -->
+    <section class="cs-section cs-section-light cs-center-intro">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 5 · Thème WordPress custom</span>
+        <h2 class="cs-heading">Un thème custom, conçu pour durer</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">J'ai développé un thème WordPress entièrement custom sur l'éditeur de blocs natif, avec un modèle de page pour chaque type de contenu. Les fonctionnalités propres au site vivent dans une extension à part. Pour le reste, j'ai choisi des extensions gratuites et très utilisées : un agenda d'événements, des champs personnalisés, des avatars locaux et le tri des pages. L'association n'a aucune licence à renouveler chaque année.</p>
+      <div class="cs-impact-cards osa-impact reveal reveal-delay-2">
+        <div class="cs-impact-card">
+          <span class="cs-stat">100%</span>
+          <span class="cs-card-title">Custom</span>
+          <p class="cs-body">Chaque modèle de page est construit à partir de la maquette Figma, sans thème prêt à l'emploi à contourner.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">0 €</span>
+          <span class="cs-card-title">De licences d'extensions</span>
+          <p class="cs-body">Uniquement des extensions gratuites avec une large base d'utilisateurs : le site continue de tourner sans frais annuels.</p>
+        </div>
+        <div class="cs-impact-card">
+          <span class="cs-stat">Natif</span>
+          <span class="cs-card-title">Éditeur de blocs</span>
+          <p class="cs-body">Construit sur l'éditeur fourni avec WordPress : n'importe quel développeur WordPress peut reprendre le projet plus tard.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="cs-figma-lead" style="color:#776c92;margin-bottom:0;">Les modèles de page, un pour chaque type de contenu</p>
+      </div>
+      <div class="osa-tv reveal reveal-delay-1">
+        <div class="osa-tv-tabs" role="tablist" aria-label="Modèles de page">
+          <button type="button" class="osa-tv-tab" role="tab" aria-selected="true" data-src="/assets/osa-t-articles.webp" data-alt="Liste des articles Osapaclap avec filtres par catégorie et cartes d'articles" data-cap="La liste des articles, filtrée par domaine et par thème." data-mobile="0">Liste d'articles</button>
+          <button type="button" class="osa-tv-tab" role="tab" aria-selected="false" data-src="/assets/osa-t-article.webp" data-alt="Modèle d'article Osapaclap avec une grande image d'en-tête, un paragraphe d'introduction et le corps du texte" data-cap="L'article, le modèle que l'équipe utilise le plus." data-mobile="0">Article</button>
+          <button type="button" class="osa-tv-tab" role="tab" aria-selected="false" data-src="/assets/osa-t-parcours.webp" data-alt="Page de parcours Osapaclap listant les étapes dans l'ordre et un quiz final" data-cap="Un parcours, étape par étape, jusqu'au quiz." data-mobile="0">Parcours</button>
+          <button type="button" class="osa-tv-tab" role="tab" aria-selected="false" data-src="/assets/osa-t-personnalites.webp" data-alt="Bibliothèque de personnalités Osapaclap avec des cartes portrait" data-cap="La bibliothèque de personnalités." data-mobile="0">Personnalités</button>
+          <button type="button" class="osa-tv-tab" role="tab" aria-selected="false" data-src="/assets/osa-t-oeuvres.webp" data-alt="Bibliothèque d'œuvres Osapaclap avec des cartes affiche pour les films, jeux et œuvres d'art" data-cap="La bibliothèque d'œuvres, pour les films, jeux et œuvres d'art." data-mobile="0">Œuvres</button>
+          <button type="button" class="osa-tv-tab" role="tab" aria-selected="false" data-src="/assets/osa-t-lexique.webp" data-alt="Lexique Osapaclap avec des lettres de l'alphabet et des lignes de termes" data-cap="Le lexique, à parcourir lettre par lettre." data-mobile="0">Lexique</button>
+          </div>
+        <div class="cs-figma-frame osa-tv-frame">
+          <div class="cs-figma-bar">
+            <span class="cs-figma-dot" style="background:#F24E1E;"></span>
+            <span class="cs-figma-dot" style="background:#A259FF;"></span>
+            <span class="cs-figma-dot" style="background:#1ABCFE;"></span>
+            <span class="cs-figma-dot" style="background:#0ACF83;"></span>
+            <span class="cs-figma-bar-label">Figma · Modèles</span>
+          </div>
+          <div class="osa-tv-scroll">
+            <img src="/assets/osa-t-articles.webp" width="1600" height="2813" alt="Liste des articles Osapaclap avec filtres par catégorie et cartes d'articles">
+          </div>
+        </div>
+        <p class="osa-tv-caption" aria-live="polite">La liste des articles, filtrée par domaine et par thème.</p>
+      </div>
+    </section>
+
+    <!-- Step 6: Dashboard and training -->
+    <section class="cs-section cs-section-purple cs-center-intro">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 6 · Back office et formation</span>
+        <h2 class="cs-heading">Un back office que les éditeurs gèrent seuls</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Mon objectif : que l'équipe n'ait jamais besoin de moi pour publier. J'ai façonné le back office WordPress autour de ce que les éditeurs font tous les jours, puis je les ai formés à s'en servir.</p>
+      <div class="osa-features reveal reveal-delay-2">
+        <div class="osa-feature">
+          <div class="osa-feature-top">
+            <span class="osa-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></span>
+            <span class="osa-feature-num" aria-hidden="true">01</span>
+          </div>
+          <span class="cs-card-title">Mises en page verrouillées</span>
+          <p class="cs-body">Les éditeurs modifient le contenu d'une page, jamais sa structure : le design reste intact.</p>
+        </div>
+        <div class="osa-feature">
+          <div class="osa-feature-top">
+            <span class="osa-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="M3.5 6.5l1.5 1.5 2.5-3M3.5 12.5l1.5 1.5 2.5-3M3.5 18.5l1.5 1.5 2.5-3"/></svg></span>
+            <span class="osa-feature-num" aria-hidden="true">02</span>
+          </div>
+          <span class="cs-card-title">Champs obligatoires</span>
+          <p class="cs-body">Un article ne peut pas être publié sans titre, auteur, image principale, extrait, catégorie et thème.</p>
+        </div>
+        <div class="osa-feature">
+          <div class="osa-feature-top">
+            <span class="osa-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg></span>
+            <span class="osa-feature-num" aria-hidden="true">03</span>
+          </div>
+          <span class="cs-card-title">Uniquement les blocs utiles</span>
+          <p class="cs-body">Les éditeurs ne voient que les blocs prévus par le design, ce qui garde tous les articles cohérents.</p>
+        </div>
+        <div class="osa-feature">
+          <div class="osa-feature-top">
+            <span class="osa-feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"/></svg></span>
+            <span class="osa-feature-num" aria-hidden="true">04</span>
+          </div>
+          <span class="cs-card-title">Un guide et une formation</span>
+          <p class="cs-body">J'ai rédigé un guide d'administration en français et animé une session de formation avec les éditeurs avant la mise en ligne.</p>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-2">
+        <p class="cs-figma-lead" style="color:#776c92;">À quoi ressemble l'édition</p>
+        <div class="osa-edit-pair">
+          <figure class="osa-edit">
+            <div class="cs-figma-frame">
+              <div class="cs-figma-bar">
+                <span class="cs-figma-dot" style="background:#ff5f57;"></span>
+                <span class="cs-figma-dot" style="background:#febc2e;"></span>
+                <span class="cs-figma-dot" style="background:#28c840;"></span>
+                <span class="cs-figma-bar-label">WordPress · Page d'accueil</span>
+              </div>
+              <img loading="lazy" class="cs-figma-img" src="/assets/osa-edit-home.webp" alt="Modification du texte « Notre démarche » sur la page d'accueil Osapaclap dans WordPress, avec une petite barre d'outils pour le gras, l'italique et les liens">
+            </div>
+            <figcaption class="cs-figma-caption">Sur la page d'accueil, les éditeurs cliquent sur un texte et écrivent. La mise en page autour reste verrouillée.</figcaption>
+          </figure>
+          <figure class="osa-edit">
+            <div class="cs-figma-frame">
+              <div class="cs-figma-bar">
+                <span class="cs-figma-dot" style="background:#ff5f57;"></span>
+                <span class="cs-figma-dot" style="background:#febc2e;"></span>
+                <span class="cs-figma-dot" style="background:#28c840;"></span>
+                <span class="cs-figma-bar-label">WordPress · Article</span>
+              </div>
+              <img loading="lazy" class="cs-figma-img" src="/assets/osa-edit-article.webp" alt="Ajout d'un bloc vidéo dans un article Osapaclap sous WordPress en collant un lien YouTube">
+            </div>
+            <figcaption class="cs-figma-caption">Dans un article, ajouter une vidéo revient à coller un lien. WordPress fait le reste.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 7: Launch -->
+    <section class="cs-section cs-section-white cs-center-intro">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Étape 7 · Mise en ligne</span>
+        <h2 class="cs-heading">En ligne, sans aucune démarche technique pour eux</h2>
+      </div>
+      <p class="cs-body cs-sys-lede reveal reveal-delay-1">Je me suis aussi occupé de la mise en ligne : tout vérifier avant la bascule, configurer les DNS, puis connecter le nom de domaine. L'association a reçu un site internet terminé, prêt à accueillir ses publications.</p>
+      <div class="jflow reveal reveal-delay-2">
+        <div class="jflow-step">
+          <span class="jflow-tag">Contrôles</span>
+          <span class="jflow-title">Relecture finale</span>
+          <p class="jflow-desc">Pages, liens et formulaires testés avant la bascule</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Configuration</span>
+          <span class="jflow-title">Réglages DNS</span>
+          <p class="jflow-desc">Enregistrements pointés vers le serveur</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step">
+          <span class="jflow-tag">Adresse</span>
+          <span class="jflow-title">Nom de domaine</span>
+          <p class="jflow-desc">La bascule vers le nouveau site, dernière étape avant la mise en ligne</p>
+        </div>
+        <span class="jflow-arrow" aria-hidden="true">→</span>
+        <div class="jflow-step jflow-step-accent">
+          <span class="jflow-tag">Remise</span>
+          <span class="jflow-title">En ligne</span>
+          <p class="jflow-desc">L'équipe publie dès le premier jour</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Result -->
+    <section class="cs-section cs-principles-section osa-result cs-center-intro">
+      <img class="cs-principles-bg" src="/assets/bg-dark-overlay.webp" alt="" aria-hidden="true">
+      <div class="cs-section-header reveal">
+        <span class="cs-label">Le résultat</span>
+        <h2 class="cs-heading">Visibilité et crédibilité pour l'association</h2>
+      </div>
+      <p class="cs-body osa-dark-text reveal reveal-delay-1">Osapaclap a désormais un site internet à l'image de ce qu'elle publie. Les lecteurs passent d'un article à un réalisateur, un film ou un terme technique sans perdre le fil. Le site est agréable à parcourir, et tout aussi agréable à gérer : l'équipe publie seule, et chaque page reste fidèle à l'identité, quel que soit l'auteur.</p>
+      <div class="osa-result-action reveal reveal-delay-2">
+        <a class="cs-visit-btn" href="https://blog.osapaclap.fr/" target="_blank" rel="noopener">Visiter blog.osapaclap.fr</a>
+      </div>
+    </section>
+
+    <!-- Call to action -->
+    <section class="cs-section cs-visit osa-cta">
+      <div class="osa-cta-card reveal">
+        <div class="osa-cta-copy">
+          <div class="cs-section-header">
+            <span class="cs-label">Votre projet</span>
+            <h2 class="cs-heading">Besoin d'un site internet que votre équipe gère seule ?</h2>
+          </div>
+          <p class="cs-body cs-visit-text">Je suis ces sept étapes pour chaque site internet que je crée. Parlez-moi de votre projet, et je vous dirai comment je l'aborderais.</p>
+          <ol class="osa-cta-steps" aria-label="Les sept étapes"><li><span>01</span>Découverte</li><li><span>02</span>Direction artistique</li><li><span>03</span>Design system</li><li><span>04</span>Spécifications</li><li><span>05</span>Thème custom</li><li><span>06</span>Formation</li><li><span>07</span>Mise en ligne</li></ol>
+          <a class="cs-visit-btn" href="#contact">Parlez-moi de votre projet</a>
+        </div>
+
+      </div>
+      <svg class="osa-cta-illus" viewBox="0 0 420 360" preserveAspectRatio="xMaxYMax meet" role="img" aria-label="Sept étapes qui montent de la découverte à la mise en ligne" xmlns="http://www.w3.org/2000/svg"><path d="M8 360V280a16 16 0 0 1 16-16h20a16 16 0 0 1 16 16V360z" fill="#d9d1ee"/><g transform="translate(22.0 280)" fill="none" stroke="#2b265c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></g><path d="M68 360V238a16 16 0 0 1 16-16h20a16 16 0 0 1 16 16V360z" fill="#c3b8e4"/><g transform="translate(82.0 238)" fill="none" stroke="#2b265c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></g><path d="M128 360V196a16 16 0 0 1 16-16h20a16 16 0 0 1 16 16V360z" fill="#a597d2"/><g transform="translate(142.0 196)" fill="none" stroke="#2b265c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></g><path d="M188 360V154a16 16 0 0 1 16-16h20a16 16 0 0 1 16 16V360z" fill="#8576bd"/><g transform="translate(202.0 154)" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></g><path d="M248 360V112a16 16 0 0 1 16-16h20a16 16 0 0 1 16 16V360z" fill="#62539f"/><g transform="translate(262.0 112)" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 6l-3 12"/></g><path d="M308 360V70a16 16 0 0 1 16-16h20a16 16 0 0 1 16 16V360z" fill="#41377c"/><g transform="translate(322.0 70)" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v15H5.5A1.5 1.5 0 0 0 4 20.5z"/><path d="M20 5.5A1.5 1.5 0 0 0 18.5 4H13v15h5.5a1.5 1.5 0 0 1 1.5 1.5z"/></g><path d="M368 360V26a16 16 0 0 1 16-16h20a16 16 0 0 1 16 16V360z" fill="#f66f3c"/><g transform="translate(382.0 26)" fill="none" stroke="#ffffff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 21V4M6 5h11l-2 4 2 4H6"/></g></svg>
+    </section>
+
+    <!-- Next project -->
+    <section class="cs-next">
+      <a href="terroo.html" class="cs-next-link">
+        <div class="cs-next-header">
+          <span class="cs-label">Projet suivant</span>
+        </div>
+        <div class="cs-next-body">
+          <img loading="eager" class="cs-next-logo" src="/assets/logo-terroo.png" alt="Logo Terroo">
+          <div class="cs-next-info">
+            <p class="cs-next-name">Terroo</p>
+            <p class="cs-next-desc">Identité et site internet d'une plateforme communautaire de voyage</p>
+          </div>
+          <div class="project-btn"><span><svg width="20" height="20" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M5 2L10 7L5 12" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+        </div>
+      </a>
+    </section>
+
+
+    <footer id="contact">
+      <img loading="lazy" class="footer-bg" src="/assets/bg-dark-overlay.webp" alt="">
+      <div class="footer-headline reveal from-left">
+        <p>Travaillons</p>
+        <p>ensemble.</p>
+      </div>
+      <div class="footer-right reveal from-right reveal-delay-2">
+        <p class="footer-desc">Vous avez un projet similaire ? Parlons-en.</p>
+        <div class="footer-actions">
+          <a class="btn-email" href="mailto:remy.tartanac@gmail.com">
+            <span>M'envoyer un e-mail</span>
+          </a>
+          <a class="btn-linkedin" href="https://www.linkedin.com/in/remy-tartanac" target="_blank">
+            <span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <button class="btn-scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">
+        <span class="btn-scroll-top-arrow"><svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 9L7 4L12 9" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </button>
+    </footer>
+
+  </div><!-- /content -->
+</div><!-- /page -->
+
+<script>
+  // ── Scroll reveal ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ── Count-up on key figures ──
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const re = /^(\D*?)(\d+(?:\.\d+)?)(\D*)$/;
+    const ease = t => 1 - Math.pow(1 - t, 3);
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        io.unobserve(e.target);
+        const c = e.target._count;
+        const start = performance.now(), dur = 1400;
+        (function tick(now) {
+          const p = Math.min((now - start) / dur, 1);
+          e.target.textContent = p < 1 ? c.pre + (c.target * ease(p)).toFixed(c.dec) + c.suf : c.final;
+          if (p < 1) requestAnimationFrame(tick);
+        })(start);
+      });
+    }, { threshold: 0.6 });
+    document.querySelectorAll('.cs-stat, .cs-stat-value').forEach(el => {
+      const final = el.textContent.trim();
+      const m = final.match(re);
+      if (!m) return;
+      const dec = (m[2].split('.')[1] || '').length;
+      el._count = { pre: m[1], target: parseFloat(m[2]), dec: dec, suf: m[3], final: final };
+      el.textContent = m[1] + (0).toFixed(dec) + m[3];
+      io.observe(el);
+    });
+  })();
+
+  // ── Nav glass on scroll ──
+  const nav = document.querySelector('nav');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        nav.classList.toggle('scrolled', window.scrollY > 40);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+
+  // ── Floating scroll-to-top (desktop only) ──
+  const scrollTopBtn = document.querySelector('.btn-scroll-top');
+  if (scrollTopBtn) {
+    window.addEventListener('scroll', function() {
+      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+    }, { passive: true });
+  }
+
+  // ── Osapaclap filter chips demo ──
+  document.querySelectorAll('.osa-chips').forEach(group => {
+    group.addEventListener('click', e => {
+      const chip = e.target.closest('.osa-chip');
+      if (!chip) return;
+      group.querySelectorAll('.osa-chip').forEach(c => c.classList.toggle('is-active', c === chip));
+    });
+  });
+  document.querySelectorAll('.osa-ui a[href="#"]').forEach(a => a.addEventListener('click', e => e.preventDefault()));
+
+  // ── Osapaclap carousel ──
+  document.querySelectorAll('.osa-carousel').forEach(c => {
+    const track = c.querySelector('.osa-track');
+    const slides = [...track.children];
+    const dots = [...c.querySelectorAll('.osa-dot')];
+    const count = c.querySelector('.osa-count');
+    let i = 0;
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-100 * i) + '%)';
+      slides.forEach((sl, k) => { sl.setAttribute('aria-hidden', k === i ? 'false' : 'true'); sl.inert = k !== i; });
+      dots.forEach((d, k) => d.classList.toggle('is-active', k === i));
+      count.textContent = String(i + 1).padStart(2, '0') + ' / ' + String(slides.length).padStart(2, '0');
+    }
+    c.querySelectorAll('.osa-arrow').forEach(b => b.addEventListener('click', () => go(i + Number(b.dataset.dir))));
+    dots.forEach((d, k) => d.addEventListener('click', () => go(k)));
+    c.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { go(i - 1); e.preventDefault(); }
+      if (e.key === 'ArrowRight') { go(i + 1); e.preventDefault(); }
+    });
+    let x0 = null;
+    const vp = c.querySelector('.osa-viewport');
+    vp.addEventListener('pointerdown', e => { x0 = e.clientX; });
+    vp.addEventListener('pointerup', e => {
+      if (x0 === null) return;
+      const dx = e.clientX - x0; x0 = null;
+      if (Math.abs(dx) > 40) go(i + (dx < 0 ? 1 : -1));
+    });
+    vp.addEventListener('pointercancel', () => { x0 = null; });
+    go(0);
+  });
+
+  (function(){
+    var tv=document.querySelector('.osa-tv'); if(!tv) return;
+    var tabs=[].slice.call(tv.querySelectorAll('.osa-tv-tab')), frame=tv.querySelector('.osa-tv-frame'),
+        scroll=tv.querySelector('.osa-tv-scroll'), img=scroll.querySelector('img'), cap=tv.querySelector('.osa-tv-caption');
+    // preload the rest once the viewer is on screen
+    function preload(){ tabs.forEach(function(t){ new Image().src=t.dataset.src; }); }
+    if('IntersectionObserver' in window){ var io=new IntersectionObserver(function(e){ if(e[0].isIntersecting){ preload(); io.disconnect(); } },{rootMargin:'400px'}); io.observe(tv); } else preload();
+    function select(t){
+      tabs.forEach(function(x){ x.setAttribute('aria-selected', x===t ? 'true':'false'); });
+      img.classList.add('is-fading');
+      var done=false, n=new Image();
+      function show(w,h){ if(done) return; done=true; img.src=t.dataset.src; img.alt=t.dataset.alt; if(w){ img.width=w; img.height=h; } img.classList.remove('is-fading'); }
+      n.onload=function(){ show(n.naturalWidth,n.naturalHeight); };
+      n.onerror=function(){ show(); };
+      setTimeout(function(){ show(); },1500);
+      n.src=t.dataset.src;
+      var tabsEl=tv.querySelector('.osa-tv-tabs'); if(tabsEl.getBoundingClientRect().top<90){ window.scrollTo({top:window.scrollY+tabsEl.getBoundingClientRect().top-110,behavior:'smooth'}); }
+      frame.classList.toggle('is-mobile', t.dataset.mobile==='1');
+      cap.textContent=t.dataset.cap;
+    }
+    tabs.forEach(function(t,i){
+      t.addEventListener('click', function(){ select(t); });
+      t.addEventListener('keydown', function(e){ var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(d){ var nt=tabs[(i+d+tabs.length)%tabs.length]; nt.focus(); select(nt); e.preventDefault(); } });
+    });
+  })();
+</script>
+</body>
+</html>

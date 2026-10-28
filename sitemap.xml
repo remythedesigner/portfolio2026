@@ -19,6 +19,24 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://remytartanac.com/osapaclap.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/osapaclap.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/osapaclap.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/osapaclap.html"/>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://remytartanac.com/fr/osapaclap.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/osapaclap.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/osapaclap.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://remytartanac.com/osapaclap.html"/>
+    <lastmod>2026-10-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://remytartanac.com/terroo.html</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://remytartanac.com/terroo.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://remytartanac.com/fr/terroo.html"/>
